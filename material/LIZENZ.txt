@@ -1,0 +1,50 @@
+LOGHEX – Simulation von Logikgattern, Halbleiterschaltungen und einem Von-Neumann-Rechner
+Copyright (c) 2026 Johannes Süpke
+MINT-Spezialklassen am Albert-Schweitzer-Gymnasium Erfurt – www.asgspez.de
+
+========================================================================
+1. Programm (LOGHEX.html, LOGHEX-web.html)
+========================================================================
+
+SPDX-License-Identifier: EUPL-1.2
+
+Das Programm ist lizenziert unter der Open-Source-Lizenz für die
+Europäische Union (EUPL), Version 1.2.
+
+Sie dürfen das Programm nutzen, vervielfältigen, verändern und
+weitergeben. Veränderte Fassungen müssen wieder unter der EUPL
+weitergegeben werden. Die HTML-Datei ist zugleich der Quelltext.
+
+Amtlicher Lizenztext in allen EU-Amtssprachen (auch Deutsch):
+https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12
+
+Das Programm wird ohne Gewährleistung bereitgestellt; es gelten die
+Artikel 7 (Gewährleistungsausschluss) und 8 (Haftungsausschluss)
+der EUPL.
+
+========================================================================
+2. Handbuch und Beispieldateien
+   (LOGHEX-Handbuch.pdf, LaTeX-Quellen, Beispielschaltungen.json,
+    Rechner-Beispiele.json)
+========================================================================
+
+SPDX-License-Identifier: CC-BY-SA-4.0
+
+Lizenziert unter Creative Commons Namensnennung – Weitergabe unter
+gleichen Bedingungen 4.0 International (CC BY-SA 4.0).
+https://creativecommons.org/licenses/by-sa/4.0/deed.de
+
+Namensnennung: „LOGHEX von Johannes Süpke, CC BY-SA 4.0“
+
+========================================================================
+3. Ausnahme: Logos
+========================================================================
+
+Ausgenommen von beiden Lizenzen sind das Logo der MINT-Spezialklassen
+am Albert-Schweitzer-Gymnasium Erfurt sowie das LOGHEX-Logo, das dieses
+enthält (auch LOGHEX-Logo.svg und LOGHEX-Logo.png). Alle Rechte daran
+bleiben vorbehalten.
+
+Die unveränderte Weitergabe von Programm und Handbuch mitsamt Logo ist
+erlaubt. Jede andere Verwendung der Logos, insbesondere in veränderten
+Fassungen oder in anderen Werken, bedarf der vorherigen Erlaubnis.

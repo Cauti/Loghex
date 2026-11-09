@@ -1,0 +1,1805 @@
+{
+ "app": "loghex",
+ "version": 2,
+ "title": "Beispielprogramme für den Rechner (Lehrkraft)",
+ "collection": [
+  {
+   "name": "Addition zweier Zahlen",
+   "desc": "Lädt zwei Zahlen aus dem Speicher, addiert sie und legt das Ergebnis wieder im Speicher ab.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Addition zweier Zahlen aus dem Speicher\n\tLDA zahl1\t; A := RAM[zahl1]\n\tADD zahl2\t; A := A + RAM[zahl2]\n\tSTA summe\t; RAM[summe] := A\n\tOUT\t\t; Ergebnis ausgeben\n\tHLT\n\nzahl1:\tDB 23\nzahl2:\tDB 19\nsumme:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Countdown mit Schleife",
+   "desc": "Zählt von 10 bis 0 herunter und gibt jeden Wert aus. Zeigt bedingte Sprünge und das Zero-Flag.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Countdown von 10 bis 0\n\tLDA #10\nloop:\tOUT\t\t; Wert ausgeben\n\tDEC\t\t; A := A - 1, setzt Z\n\tJNZ loop\t; solange A ≠ 0\n\tOUT\n\tHLT\n"
+   }
+  },
+  {
+   "name": "Multiplikation durch Addition",
+   "desc": "Berechnet 6 · 7 durch wiederholte Addition – so multiplizieren einfache Prozessoren ohne Multiplizierwerk.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Multiplikation faktor * zaehler durch wiederholte Addition\n\tLDA #0\n\tSTA erg\nschleife:\n\tLDA zaehler\t; setzt Z, wenn zaehler = 0\n\tJZ fertig\n\tDEC\n\tSTA zaehler\n\tLDA erg\n\tADD faktor\n\tSTA erg\n\tJMP schleife\nfertig:\tLDA erg\n\tOUT\n\tHLT\n\nfaktor:\tDB 6\nzaehler: DB 7\nerg:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Unterprogramm mit CALL und RET",
+   "desc": "Ein Unterprogramm verdoppelt den Akku. Die Rücksprungadresse liegt auf dem Stapel (beobachte SP und das Ende des RAM).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Unterprogramm-Aufruf mit Stapel\n\tLDA #5\n\tCALL verdoppeln\n\tOUT\t\t; 10\n\tCALL verdoppeln\n\tOUT\t\t; 20\n\tHLT\n\nverdoppeln:\n\tSTA tmp\n\tADD tmp\n\tRET\n\ntmp:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Eingabe verarbeiten",
+   "desc": "Liest die Eingabeschalter, addiert 1 und gibt das Ergebnis aus – in einer Endlosschleife. Schalter unter „Eingabe“ antippen.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Echo: Ausgabe = Eingabe + 1\nloop:\tIN\n\tADD #1\n\tOUT\n\tJMP loop\n"
+   }
+  },
+  {
+   "name": "Größere von zwei Zahlen",
+   "desc": "Vergleicht zwei Zahlen mit CMP und dem Carry-Flag und gibt die größere aus.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Maximum von a und b\n\tLDA a\n\tCMP b\t\t; A - b: C = 1, wenn a < b\n\tJC nimm_b\n\tOUT\n\tHLT\nnimm_b:\tLDA b\n\tOUT\n\tHLT\n\na:\tDB 37\nb:\tDB 58\n"
+   }
+  },
+  {
+   "name": "Lauflicht",
+   "desc": "Ein einzelnes Licht wandert mit SHL über die Ausgabe-LEDs. Nach 8 Schritten ist A = 0 – dann beginnt es von vorn. Gut mit „Start“ und mittlerer Geschwindigkeit.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Lauflicht mit Linksschieben\nstart:\tLDA #1\nloop:\tOUT\n\tSHL\t\t; A := A · 2, setzt Z bei 0\n\tJNZ loop\t; nach dem 8. Schieben ist A = 0\n\tJMP start\n"
+   }
+  },
+  {
+   "name": "Lauflicht hin und zurück (eigener Befehl SHR)",
+   "desc": "Nutzt den selbst gebauten Befehl SHR (Opcode $16, im Reiter „Befehlssatz“ zu sehen). Daran lässt sich zeigen, wie man mit Torsteuerung einen neuen Befehl ergänzt.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Lauflicht hin und zurück\n; SHR ist ein selbst gebauter Befehl (siehe Befehlssatz, Opcode $16)\n\tLDA #1\nlinks:\tOUT\n\tSHL\n\tCMP #$80\n\tJNZ links\nrechts:\tOUT\n\tSHR\n\tCMP #1\n\tJNZ rechts\n\tJMP links\n",
+    "isa": [
+     {
+      "op": 0,
+      "mn": "NOP",
+      "mode": "none",
+      "desc": "keine Operation",
+      "steps": [],
+      "lock": true
+     },
+     {
+      "op": 1,
+      "mn": "LDA",
+      "mode": "imm",
+      "desc": "A := n (Konstante laden, setzt Z und N)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "B",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 2,
+      "mn": "LDA",
+      "mode": "adr",
+      "desc": "A := RAM[adr] (aus Speicher laden, setzt Z und N)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "B",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 3,
+      "mn": "STA",
+      "mode": "adr",
+      "desc": "RAM[adr] := A (in Speicher schreiben)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "A",
+        "dst": [
+         "DR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 1,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 4,
+      "mn": "ADD",
+      "mode": "imm",
+      "desc": "A := A + n",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "ADD",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 5,
+      "mn": "ADD",
+      "mode": "adr",
+      "desc": "A := A + RAM[adr]",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "ADD",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 6,
+      "mn": "SUB",
+      "mode": "imm",
+      "desc": "A := A − n",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 7,
+      "mn": "SUB",
+      "mode": "adr",
+      "desc": "A := A − RAM[adr]",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 8,
+      "mn": "AND",
+      "mode": "imm",
+      "desc": "A := A ∧ n (bitweise)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "AND",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 9,
+      "mn": "OR",
+      "mode": "imm",
+      "desc": "A := A ∨ n (bitweise)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "OR",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 10,
+      "mn": "XOR",
+      "mode": "imm",
+      "desc": "A := A ⊕ n (bitweise)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "XOR",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 11,
+      "mn": "INC",
+      "mode": "none",
+      "desc": "A := A + 1",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "INC",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 12,
+      "mn": "DEC",
+      "mode": "none",
+      "desc": "A := A − 1",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "DEC",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 13,
+      "mn": "CMP",
+      "mode": "imm",
+      "desc": "Flags setzen nach A − n (A bleibt)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 14,
+      "mn": "CMP",
+      "mode": "adr",
+      "desc": "Flags setzen nach A − RAM[adr]",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 15,
+      "mn": "SHL",
+      "mode": "none",
+      "desc": "A um ein Bit nach links schieben (·2)",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SHL",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 16,
+      "mn": "JMP",
+      "mode": "adr",
+      "desc": "Sprung nach adr",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 17,
+      "mn": "JZ",
+      "mode": "adr",
+      "desc": "Sprung, wenn Z = 1 (Ergebnis war 0)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "Z",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 18,
+      "mn": "JNZ",
+      "mode": "adr",
+      "desc": "Sprung, wenn Z = 0",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "NZ",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 19,
+      "mn": "JC",
+      "mode": "adr",
+      "desc": "Sprung, wenn C = 1 (Übertrag)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "C",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 20,
+      "mn": "JNC",
+      "mode": "adr",
+      "desc": "Sprung, wenn C = 0",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "NC",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 21,
+      "mn": "JN",
+      "mode": "adr",
+      "desc": "Sprung, wenn N = 1 (Ergebnis negativ)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "N",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 22,
+      "mn": "SHR",
+      "mode": "none",
+      "desc": "A um ein Bit nach rechts schieben (:2) – selbst gebauter Befehl",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SHR",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": false
+     },
+     {
+      "op": 24,
+      "mn": "OUT",
+      "mode": "none",
+      "desc": "Ausgabe := A",
+      "steps": [
+       {
+        "src": "A",
+        "dst": [
+         "OUT"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 25,
+      "mn": "IN",
+      "mode": "none",
+      "desc": "A := Eingabe",
+      "steps": [
+       {
+        "src": "IN",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 26,
+      "mn": "PUSH",
+      "mode": "none",
+      "desc": "A auf den Stapel legen",
+      "steps": [
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [
+         "SP-"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "A",
+        "dst": [
+         "DR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 1,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 27,
+      "mn": "POP",
+      "mode": "none",
+      "desc": "A vom Stapel holen",
+      "steps": [
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "SP+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 28,
+      "mn": "CALL",
+      "mode": "adr",
+      "desc": "Unterprogramm aufrufen (Rücksprungadresse auf den Stapel)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [
+         "SP-"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "PC",
+        "dst": [
+         "DR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 1,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "B",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 29,
+      "mn": "RET",
+      "mode": "none",
+      "desc": "Rücksprung aus dem Unterprogramm",
+      "steps": [
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "SP+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 255,
+      "mn": "HLT",
+      "mode": "none",
+      "desc": "Programm anhalten",
+      "steps": [
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 1
+       }
+      ],
+      "lock": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "Fibonacci-Zahlen",
+   "desc": "Gibt 1, 1, 2, 3, 5, 8, … aus, bis die nächste Zahl nicht mehr in 8 Bit passt. Das Carry-Flag erkennt den Überlauf (letzte Ausgabe: 144).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Fibonacci-Folge bis zum 8-Bit-Überlauf\n\tLDA #1\n\tSTA a\n\tSTA b\nloop:\tLDA a\n\tOUT\n\tADD b\t\t; nächste Zahl = a + b\n\tJC ende\t\t; Übertrag: passt nicht mehr in 8 Bit\n\tSTA t\n\tLDA b\n\tSTA a\t\t; a := b\n\tLDA t\n\tSTA b\t\t; b := a + b\n\tJMP loop\nende:\tHLT\n\na:\tDB 0\nb:\tDB 0\nt:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Summe 1 + 2 + … + n",
+   "desc": "Addiert alle Zahlen von 1 bis n (hier n = 10, Ergebnis 55) mit einer Zählschleife. Vergleich mit der Gauß-Formel n(n+1)/2 bietet sich an.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Summe der Zahlen von 1 bis n\n\tLDA n\n\tSTA i\nloop:\tLDA summe\n\tADD i\n\tSTA summe\t; summe := summe + i\n\tLDA i\n\tDEC\n\tSTA i\t\t; i := i - 1\n\tJNZ loop\t; Flags stammen noch von DEC\n\tLDA summe\n\tOUT\t\t; 55\n\tHLT\n\nn:\tDB 10\ni:\tDB 0\nsumme:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Quadratzahlen",
+   "desc": "Gibt 1, 4, 9, 16, … , 225 aus – ohne Multiplikation: Jede Quadratzahl entsteht durch Addition der nächsten ungeraden Zahl (n² = 1 + 3 + 5 + … ).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Quadratzahlen als Summe ungerader Zahlen\n\tLDA #1\n\tSTA ung\n\tLDA #0\nloop:\tADD ung\t\t; nächste Quadratzahl\n\tJC ende\t\t; > 255: fertig\n\tOUT\n\tSTA q\n\tLDA ung\n\tADD #2\n\tSTA ung\t\t; nächste ungerade Zahl\n\tLDA q\n\tJMP loop\nende:\tHLT\n\nung:\tDB 0\nq:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Division mit Rest",
+   "desc": "Berechnet 47 : 5 = 9 Rest 2 durch wiederholte Subtraktion. Der Quotient wird ausgegeben, der Rest steht im Speicher (Marke „rest“).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Ganzzahlige Division durch wiederholte Subtraktion\n\tLDA dividend\nloop:\tCMP divisor\t; C = 1, wenn A < divisor\n\tJC fertig\n\tSUB divisor\n\tSTA rest\n\tLDA quot\n\tINC\n\tSTA quot\t; quot := quot + 1\n\tLDA rest\n\tJMP loop\nfertig:\tSTA rest\n\tLDA quot\n\tOUT\t\t; Quotient 9\n\tHLT\n\ndividend: DB 47\ndivisor: DB 5\nquot:\tDB 0\nrest:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Gerade oder ungerade?",
+   "desc": "Prüft mit der Bitmaske AND #1 das niedrigste Bit der Eingabe. Ungerade → alle LEDs an, gerade → alle aus. Endlosschleife: Eingabe während des Laufs ändern.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Gerade/ungerade über Bitmaske\nloop:\tIN\n\tAND #1\t\t; nur Bit 0 bleibt übrig\n\tJZ gerade\n\tLDA #$FF\t; ungerade: alle LEDs an\n\tOUT\n\tJMP loop\ngerade:\tLDA #0\n\tOUT\n\tJMP loop\n"
+   }
+  },
+  {
+   "name": "Einsen zählen",
+   "desc": "Zählt, wie viele Bits der Eingabe 1 sind. SHL schiebt das höchste Bit ins Carry-Flag, JNC wertet es aus.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Anzahl der gesetzten Bits der Eingabe\nloop:\tIN\n\tSTA x\n\tLDA #0\n\tSTA anz\n\tLDA #8\n\tSTA k\t\t; 8 Bits prüfen\nbit:\tLDA x\n\tSHL\t\t; höchstes Bit → Carry\n\tSTA x\n\tJNC null\n\tLDA anz\n\tINC\n\tSTA anz\nnull:\tLDA k\n\tDEC\n\tSTA k\n\tJNZ bit\n\tLDA anz\n\tOUT\n\tJMP loop\n\nx:\tDB 0\nanz:\tDB 0\nk:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Zahlenraten",
+   "desc": "Die Schüler stellen an der Eingabe eine Zahl ein. Ausgabe: rechte LEDs = zu klein, linke LEDs = zu groß, alle = richtig (geheime Zahl im Speicher: 42).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Zahlenraten mit CMP\n; %00001111 = zu klein, %11110000 = zu groß, %11111111 = richtig\nloop:\tIN\n\tCMP geheim\n\tJZ richtig\n\tJC klein\t; Eingabe < geheim\n\tLDA #%11110000\n\tOUT\n\tJMP loop\nklein:\tLDA #%00001111\n\tOUT\n\tJMP loop\nrichtig: LDA #$FF\n\tOUT\n\tJMP loop\n\ngeheim:\tDB 42\n"
+   }
+  },
+  {
+   "name": "Stapel: Reihenfolge umkehren",
+   "desc": "Legt drei Zahlen mit PUSH auf den Stapel und holt sie mit POP zurück – in umgekehrter Reihenfolge (LIFO). Beobachte SP und das Ende des RAM ($FD–$FF).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Last In – First Out\n\tLDA w1\n\tPUSH\n\tLDA w2\n\tPUSH\n\tLDA w3\n\tPUSH\n\tPOP\n\tSTA r1\t\t; bekommt w3\n\tPOP\n\tSTA r2\n\tPOP\n\tSTA r3\t\t; bekommt w1\n\tHLT\n\nw1:\tDB 1\nw2:\tDB 2\nw3:\tDB 3\nr1:\tDB 0\nr2:\tDB 0\nr3:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Programm verändert sich selbst",
+   "desc": "Addiert eine Liste von 5 Zahlen (Ergebnis 100). Weil Befehle und Daten im selben Speicher liegen (Von-Neumann), kann das Programm die Adresse im eigenen ADD-Befehl erhöhen – beobachte die Zelle hinter „lese“.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Summe einer Liste – das Programm verändert sich selbst!\nloop:\tLDA summe\nlese:\tADD liste\t; dieser Operand wird jedes Mal erhöht\n\tSTA summe\n\tLDA lese+1\t; Adresse aus dem Befehl lesen ...\n\tINC\t\t; ... um 1 erhöhen ...\n\tSTA lese+1\t; ... und zurückschreiben\n\tLDA zaehler\n\tDEC\n\tSTA zaehler\n\tJNZ loop\n\tLDA summe\n\tOUT\t\t; 100\n\tHLT\n\nzaehler: DB 5\nsumme:\tDB 0\nliste:\tDB 12, 7, 30, 1, 50\n"
+   }
+  },
+  {
+   "name": "Pseudocode: Summe 1 bis 10",
+   "desc": "WHILE-Schleife mit Zähler. Vergleiche die Übersetzung mit und ohne Optimierung: Die Schleife wird umgedreht und spart pro Durchlauf einen Sprung.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Summe der Zahlen von 1 bis 10\nsumme := 0\ni := 10\nWHILE i <> 0 DO\n  summe := summe + i\n  i := i - 1\nEND WHILE\nOUTPUT summe      // 55\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Countdown",
+   "desc": "FOR … DOWNTO: Zählschleife rückwärts. Im Assembler wird daraus SUB/DEC, ein Vergleich und ein bedingter Sprung.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Countdown mit einer Zählschleife\nFOR i := 10 DOWNTO 0\n  OUTPUT i\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Einmaleins der 7",
+   "desc": "Der Operator * wird zu einem Aufruf des Unterprogramms _mul (wiederholte Addition) – ein einziges Zeichen in der Hochsprache, viele Befehle im Rechner.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Kleines Einmaleins der 7\nFOR i := 1 TO 10\n  OUTPUT 7 * i\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Division mit Rest",
+   "desc": "DIV und MOD nutzen das Unterprogramm _div (wiederholte Subtraktion). 47 DIV 5 = 9, 47 MOD 5 = 2.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Ganzzahlige Division\na := 47\nb := 5\nOUTPUT a DIV b    // 9\nOUTPUT a MOD b    // 2\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: ggT nach Euklid",
+   "desc": "WHILE mit IF … ELSE: der klassische Algorithmus von Euklid mit Subtraktion. Ergebnis für 84 und 36: 12.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Größter gemeinsamer Teiler (Euklid)\na := 84\nb := 36\nWHILE a <> b DO\n  IF a > b THEN\n    a := a - b\n  ELSE\n    b := b - a\n  END IF\nEND WHILE\nOUTPUT a          // 12\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Primzahlen",
+   "desc": "Verschachtelte Schleifen, MOD und eine logische Verknüpfung mit AND. Gibt alle Primzahlen bis 60 aus. Mit hoher Geschwindigkeit laufen lassen!",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Primzahlen bis 60\nFOR n := 2 TO 60\n  prim := TRUE\n  t := 2\n  WHILE t * t <= n AND prim DO\n    IF n MOD t = 0 THEN\n      prim := FALSE\n    END IF\n    t := t + 1\n  END WHILE\n  IF prim THEN\n    OUTPUT n\n  END IF\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Fibonacci",
+   "desc": "REPEAT … UNTIL: Die Schleife endet, wenn die nächste Zahl wegen des 8-Bit-Überlaufs kleiner wird (nach 233).",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Fibonacci-Zahlen bis zum Überlauf\na := 0\nb := 1\nREPEAT\n  OUTPUT b\n  c := a + b\n  a := b\n  b := c\nUNTIL b < a       // Überlauf: die neue Zahl ist kleiner\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Bubblesort",
+   "desc": "Sortiert ein Feld (ARRAY). Weil der Rechner keine indirekte Adressierung kennt, schreibt das Programm die Adresse von z[j] zur Laufzeit in seine eigenen Befehle – Von-Neumann in Reinform.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Bubblesort: sortiert fünf Zahlen\nARRAY z := [42, 7, 99, 13, 58]\nFOR i := 0 TO 3\n  FOR j := 0 TO 3 - i\n    IF z[j] > z[j + 1] THEN\n      tmp := z[j]\n      z[j] := z[j + 1]\n      z[j + 1] := tmp\n    END IF\n  END FOR\nEND FOR\nFOR i := 0 TO 4\n  OUTPUT z[i]\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Lauflicht mit Prozedur",
+   "desc": "PROCEDURE und CALL werden zu CALL und RET mit Rücksprungadresse auf dem Stapel. << 1 wird zu SHL.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Lauflicht mit einer Warte-Prozedur\nPROCEDURE warten\n  FOR w := 1 TO 3\n  END FOR\nEND PROCEDURE\n\nx := 1\nREPEAT\n  OUTPUT x\n  CALL warten\n  x := x << 1\nUNTIL x = 0\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Zahlenraten",
+   "desc": "Endlosschleife mit INPUT und IF … ELSE IF … ELSE. Während des Laufs die Eingabe ändern: rechts = zu klein, links = zu groß, alle = richtig.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Zahlenraten: Eingabe einstellen!\ngeheim := 42\nWHILE TRUE DO\n  rate := INPUT\n  IF rate < geheim THEN\n    OUTPUT %00001111\n  ELSE IF rate > geheim THEN\n    OUTPUT %11110000\n  ELSE\n    OUTPUT 255\n  END IF\nEND WHILE\n",
+     "opt": true
+    }
+   }
+  }
+ ],
+ "modules": []
+}

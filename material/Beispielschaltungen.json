@@ -1,0 +1,8239 @@
+{
+ "app": "loghex",
+ "version": 2,
+ "title": "Beispielschaltungen (Lehrkraft)",
+ "collection": [
+  {
+   "name": "Halbaddierer",
+   "desc": "Addiert zwei Bits: Summe S (XOR) und Übertrag C (UND).",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 1,
+      "type": "text",
+      "x": 3,
+      "y": 1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Halbaddierer: A + B = C S (dual)",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 2,
+      "type": "switch",
+      "x": 3,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "A"
+     },
+     {
+      "id": 3,
+      "type": "switch",
+      "x": 3,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "B"
+     },
+     {
+      "id": 4,
+      "type": "xor",
+      "x": 12,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G1"
+     },
+     {
+      "id": 5,
+      "type": "and",
+      "x": 12,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G2"
+     },
+     {
+      "id": 6,
+      "type": "led",
+      "x": 18,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "S"
+     },
+     {
+      "id": 7,
+      "type": "led",
+      "x": 18,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "C"
+     }
+    ],
+    "wires": [
+     {
+      "id": 8,
+      "x1": 5,
+      "y1": 5,
+      "x2": 7,
+      "y2": 5
+     },
+     {
+      "id": 9,
+      "x1": 7,
+      "y1": 5,
+      "x2": 10,
+      "y2": 5
+     },
+     {
+      "id": 10,
+      "x1": 7,
+      "y1": 5,
+      "x2": 7,
+      "y2": 11
+     },
+     {
+      "id": 11,
+      "x1": 7,
+      "y1": 11,
+      "x2": 10,
+      "y2": 11
+     },
+     {
+      "id": 12,
+      "x1": 5,
+      "y1": 11,
+      "x2": 6,
+      "y2": 11
+     },
+     {
+      "id": 13,
+      "x1": 6,
+      "y1": 11,
+      "x2": 6,
+      "y2": 7
+     },
+     {
+      "id": 14,
+      "x1": 6,
+      "y1": 7,
+      "x2": 10,
+      "y2": 7
+     },
+     {
+      "id": 15,
+      "x1": 6,
+      "y1": 11,
+      "x2": 6,
+      "y2": 13
+     },
+     {
+      "id": 16,
+      "x1": 6,
+      "y1": 13,
+      "x2": 10,
+      "y2": 13
+     },
+     {
+      "id": 17,
+      "x1": 14,
+      "y1": 6,
+      "x2": 16,
+      "y2": 6
+     },
+     {
+      "id": 18,
+      "x1": 14,
+      "y1": 12,
+      "x2": 16,
+      "y2": 12
+     }
+    ]
+   }
+  },
+  {
+   "name": "Volladdierer",
+   "desc": "Zwei Halbaddierer und ein ODER-Gatter addieren A, B und den Übertrag Cin.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 19,
+      "type": "text",
+      "x": 3,
+      "y": 1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Volladdierer: A + B + Cin = Cout S",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 20,
+      "type": "switch",
+      "x": 3,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "A"
+     },
+     {
+      "id": 21,
+      "type": "switch",
+      "x": 3,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "B"
+     },
+     {
+      "id": 22,
+      "type": "switch",
+      "x": 3,
+      "y": 14,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "Cin"
+     },
+     {
+      "id": 23,
+      "type": "xor",
+      "x": 11,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G1"
+     },
+     {
+      "id": 24,
+      "type": "and",
+      "x": 11,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G2"
+     },
+     {
+      "id": 25,
+      "type": "xor",
+      "x": 19,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G3"
+     },
+     {
+      "id": 26,
+      "type": "and",
+      "x": 19,
+      "y": 13,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G4"
+     },
+     {
+      "id": 27,
+      "type": "or",
+      "x": 26,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G5"
+     },
+     {
+      "id": 28,
+      "type": "led",
+      "x": 32,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "S"
+     },
+     {
+      "id": 29,
+      "type": "led",
+      "x": 32,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Cout"
+     }
+    ],
+    "wires": [
+     {
+      "id": 30,
+      "x1": 5,
+      "y1": 4,
+      "x2": 7,
+      "y2": 4
+     },
+     {
+      "id": 31,
+      "x1": 7,
+      "y1": 4,
+      "x2": 9,
+      "y2": 4
+     },
+     {
+      "id": 32,
+      "x1": 7,
+      "y1": 4,
+      "x2": 7,
+      "y2": 9
+     },
+     {
+      "id": 33,
+      "x1": 7,
+      "y1": 9,
+      "x2": 9,
+      "y2": 9
+     },
+     {
+      "id": 34,
+      "x1": 5,
+      "y1": 8,
+      "x2": 6,
+      "y2": 8
+     },
+     {
+      "id": 35,
+      "x1": 6,
+      "y1": 8,
+      "x2": 6,
+      "y2": 6
+     },
+     {
+      "id": 36,
+      "x1": 6,
+      "y1": 6,
+      "x2": 9,
+      "y2": 6
+     },
+     {
+      "id": 37,
+      "x1": 6,
+      "y1": 8,
+      "x2": 6,
+      "y2": 11
+     },
+     {
+      "id": 38,
+      "x1": 6,
+      "y1": 11,
+      "x2": 9,
+      "y2": 11
+     },
+     {
+      "id": 39,
+      "x1": 13,
+      "y1": 5,
+      "x2": 15,
+      "y2": 5
+     },
+     {
+      "id": 40,
+      "x1": 15,
+      "y1": 5,
+      "x2": 17,
+      "y2": 5
+     },
+     {
+      "id": 41,
+      "x1": 15,
+      "y1": 5,
+      "x2": 15,
+      "y2": 12
+     },
+     {
+      "id": 42,
+      "x1": 15,
+      "y1": 12,
+      "x2": 17,
+      "y2": 12
+     },
+     {
+      "id": 43,
+      "x1": 5,
+      "y1": 14,
+      "x2": 16,
+      "y2": 14
+     },
+     {
+      "id": 44,
+      "x1": 16,
+      "y1": 14,
+      "x2": 17,
+      "y2": 14
+     },
+     {
+      "id": 45,
+      "x1": 16,
+      "y1": 14,
+      "x2": 16,
+      "y2": 7
+     },
+     {
+      "id": 46,
+      "x1": 16,
+      "y1": 7,
+      "x2": 17,
+      "y2": 7
+     },
+     {
+      "id": 47,
+      "x1": 13,
+      "y1": 10,
+      "x2": 24,
+      "y2": 10
+     },
+     {
+      "id": 48,
+      "x1": 21,
+      "y1": 13,
+      "x2": 22,
+      "y2": 13
+     },
+     {
+      "id": 49,
+      "x1": 22,
+      "y1": 13,
+      "x2": 22,
+      "y2": 12
+     },
+     {
+      "id": 50,
+      "x1": 22,
+      "y1": 12,
+      "x2": 24,
+      "y2": 12
+     },
+     {
+      "id": 51,
+      "x1": 21,
+      "y1": 6,
+      "x2": 30,
+      "y2": 6
+     },
+     {
+      "id": 52,
+      "x1": 28,
+      "y1": 11,
+      "x2": 30,
+      "y2": 11
+     }
+    ]
+   }
+  },
+  {
+   "name": "Alle Grundgatter",
+   "desc": "Zwei Schalter steuern UND, ODER, NAND, NOR, XOR, XNOR und NICHT gleichzeitig.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 53,
+      "type": "switch",
+      "x": 3,
+      "y": 3,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "A"
+     },
+     {
+      "id": 54,
+      "type": "switch",
+      "x": 3,
+      "y": 9,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "B"
+     },
+     {
+      "id": 60,
+      "type": "and",
+      "x": 14,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G1"
+     },
+     {
+      "id": 61,
+      "type": "led",
+      "x": 20,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "UND"
+     },
+     {
+      "id": 66,
+      "type": "or",
+      "x": 14,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G2"
+     },
+     {
+      "id": 67,
+      "type": "led",
+      "x": 20,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "ODER"
+     },
+     {
+      "id": 73,
+      "type": "nand",
+      "x": 14,
+      "y": 18,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G3"
+     },
+     {
+      "id": 74,
+      "type": "led",
+      "x": 20,
+      "y": 18,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "NAND"
+     },
+     {
+      "id": 80,
+      "type": "nor",
+      "x": 14,
+      "y": 24,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G4"
+     },
+     {
+      "id": 81,
+      "type": "led",
+      "x": 20,
+      "y": 24,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "NOR"
+     },
+     {
+      "id": 87,
+      "type": "xor",
+      "x": 14,
+      "y": 30,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G5"
+     },
+     {
+      "id": 88,
+      "type": "led",
+      "x": 20,
+      "y": 30,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "XOR"
+     },
+     {
+      "id": 94,
+      "type": "xnor",
+      "x": 14,
+      "y": 36,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G6"
+     },
+     {
+      "id": 95,
+      "type": "led",
+      "x": 20,
+      "y": 36,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "XNOR"
+     },
+     {
+      "id": 100,
+      "type": "not",
+      "x": 14,
+      "y": 42,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "G7"
+     },
+     {
+      "id": 101,
+      "type": "led",
+      "x": 20,
+      "y": 42,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "NICHT A"
+     }
+    ],
+    "wires": [
+     {
+      "id": 55,
+      "x1": 5,
+      "y1": 3,
+      "x2": 7,
+      "y2": 3
+     },
+     {
+      "id": 56,
+      "x1": 7,
+      "y1": 3,
+      "x2": 7,
+      "y2": 5
+     },
+     {
+      "id": 57,
+      "x1": 5,
+      "y1": 9,
+      "x2": 8,
+      "y2": 9
+     },
+     {
+      "id": 58,
+      "x1": 8,
+      "y1": 7,
+      "x2": 8,
+      "y2": 9
+     },
+     {
+      "id": 59,
+      "x1": 8,
+      "y1": 9,
+      "x2": 8,
+      "y2": 13
+     },
+     {
+      "id": 62,
+      "x1": 7,
+      "y1": 5,
+      "x2": 7,
+      "y2": 11
+     },
+     {
+      "id": 63,
+      "x1": 7,
+      "y1": 5,
+      "x2": 12,
+      "y2": 5
+     },
+     {
+      "id": 64,
+      "x1": 8,
+      "y1": 7,
+      "x2": 12,
+      "y2": 7
+     },
+     {
+      "id": 65,
+      "x1": 16,
+      "y1": 6,
+      "x2": 18,
+      "y2": 6
+     },
+     {
+      "id": 68,
+      "x1": 7,
+      "y1": 11,
+      "x2": 7,
+      "y2": 17
+     },
+     {
+      "id": 69,
+      "x1": 7,
+      "y1": 11,
+      "x2": 12,
+      "y2": 11
+     },
+     {
+      "id": 70,
+      "x1": 8,
+      "y1": 13,
+      "x2": 8,
+      "y2": 19
+     },
+     {
+      "id": 71,
+      "x1": 8,
+      "y1": 13,
+      "x2": 12,
+      "y2": 13
+     },
+     {
+      "id": 72,
+      "x1": 16,
+      "y1": 12,
+      "x2": 18,
+      "y2": 12
+     },
+     {
+      "id": 75,
+      "x1": 7,
+      "y1": 17,
+      "x2": 7,
+      "y2": 23
+     },
+     {
+      "id": 76,
+      "x1": 7,
+      "y1": 17,
+      "x2": 12,
+      "y2": 17
+     },
+     {
+      "id": 77,
+      "x1": 8,
+      "y1": 19,
+      "x2": 8,
+      "y2": 25
+     },
+     {
+      "id": 78,
+      "x1": 8,
+      "y1": 19,
+      "x2": 12,
+      "y2": 19
+     },
+     {
+      "id": 79,
+      "x1": 16,
+      "y1": 18,
+      "x2": 18,
+      "y2": 18
+     },
+     {
+      "id": 82,
+      "x1": 7,
+      "y1": 23,
+      "x2": 7,
+      "y2": 29
+     },
+     {
+      "id": 83,
+      "x1": 7,
+      "y1": 23,
+      "x2": 12,
+      "y2": 23
+     },
+     {
+      "id": 84,
+      "x1": 8,
+      "y1": 25,
+      "x2": 8,
+      "y2": 31
+     },
+     {
+      "id": 85,
+      "x1": 8,
+      "y1": 25,
+      "x2": 12,
+      "y2": 25
+     },
+     {
+      "id": 86,
+      "x1": 16,
+      "y1": 24,
+      "x2": 18,
+      "y2": 24
+     },
+     {
+      "id": 89,
+      "x1": 7,
+      "y1": 29,
+      "x2": 7,
+      "y2": 35
+     },
+     {
+      "id": 90,
+      "x1": 7,
+      "y1": 29,
+      "x2": 12,
+      "y2": 29
+     },
+     {
+      "id": 91,
+      "x1": 8,
+      "y1": 31,
+      "x2": 8,
+      "y2": 37
+     },
+     {
+      "id": 92,
+      "x1": 8,
+      "y1": 31,
+      "x2": 12,
+      "y2": 31
+     },
+     {
+      "id": 93,
+      "x1": 16,
+      "y1": 30,
+      "x2": 18,
+      "y2": 30
+     },
+     {
+      "id": 96,
+      "x1": 7,
+      "y1": 35,
+      "x2": 7,
+      "y2": 42
+     },
+     {
+      "id": 97,
+      "x1": 7,
+      "y1": 35,
+      "x2": 12,
+      "y2": 35
+     },
+     {
+      "id": 98,
+      "x1": 8,
+      "y1": 37,
+      "x2": 12,
+      "y2": 37
+     },
+     {
+      "id": 99,
+      "x1": 16,
+      "y1": 36,
+      "x2": 18,
+      "y2": 36
+     },
+     {
+      "id": 102,
+      "x1": 7,
+      "y1": 42,
+      "x2": 12,
+      "y2": 42
+     },
+     {
+      "id": 103,
+      "x1": 16,
+      "y1": 42,
+      "x2": 18,
+      "y2": 42
+     }
+    ]
+   }
+  },
+  {
+   "name": "RS-Flipflop aus NOR",
+   "desc": "Zwei rückgekoppelte NOR-Gatter speichern ein Bit. S (unten) setzt, R (oben) setzt zurück.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 104,
+      "type": "text",
+      "x": 3,
+      "y": 1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "RS-Flipflop: kurz S oder R einschalten",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 105,
+      "type": "switch",
+      "x": 3,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "R"
+     },
+     {
+      "id": 106,
+      "type": "switch",
+      "x": 3,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "S"
+     },
+     {
+      "id": 107,
+      "type": "nor",
+      "x": 11,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G1"
+     },
+     {
+      "id": 108,
+      "type": "nor",
+      "x": 11,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G2"
+     },
+     {
+      "id": 109,
+      "type": "led",
+      "x": 19,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Q"
+     },
+     {
+      "id": 110,
+      "type": "led",
+      "x": 19,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Q̄"
+     }
+    ],
+    "wires": [
+     {
+      "id": 111,
+      "x1": 5,
+      "y1": 4,
+      "x2": 9,
+      "y2": 4
+     },
+     {
+      "id": 112,
+      "x1": 5,
+      "y1": 12,
+      "x2": 9,
+      "y2": 12
+     },
+     {
+      "id": 113,
+      "x1": 13,
+      "y1": 5,
+      "x2": 14,
+      "y2": 5
+     },
+     {
+      "id": 114,
+      "x1": 14,
+      "y1": 5,
+      "x2": 17,
+      "y2": 5
+     },
+     {
+      "id": 115,
+      "x1": 14,
+      "y1": 5,
+      "x2": 14,
+      "y2": 8
+     },
+     {
+      "id": 116,
+      "x1": 14,
+      "y1": 8,
+      "x2": 8,
+      "y2": 8
+     },
+     {
+      "id": 117,
+      "x1": 8,
+      "y1": 8,
+      "x2": 8,
+      "y2": 10
+     },
+     {
+      "id": 118,
+      "x1": 8,
+      "y1": 10,
+      "x2": 9,
+      "y2": 10
+     },
+     {
+      "id": 119,
+      "x1": 13,
+      "y1": 11,
+      "x2": 15,
+      "y2": 11
+     },
+     {
+      "id": 120,
+      "x1": 15,
+      "y1": 11,
+      "x2": 17,
+      "y2": 11
+     },
+     {
+      "id": 121,
+      "x1": 15,
+      "y1": 11,
+      "x2": 15,
+      "y2": 7
+     },
+     {
+      "id": 122,
+      "x1": 15,
+      "y1": 7,
+      "x2": 7,
+      "y2": 7
+     },
+     {
+      "id": 123,
+      "x1": 7,
+      "y1": 7,
+      "x2": 7,
+      "y2": 6
+     },
+     {
+      "id": 124,
+      "x1": 7,
+      "y1": 6,
+      "x2": 9,
+      "y2": 6
+     }
+    ]
+   }
+  },
+  {
+   "name": "Volladdierer aus Bausteinen",
+   "desc": "Modular: Zwei selbst definierte Halbaddierer-Bausteine (HA) und ein ODER-Gatter bilden einen Volladdierer.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 142,
+      "type": "text",
+      "x": 3,
+      "y": 0,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Volladdierer aus zwei Halbaddierer-Bausteinen",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 143,
+      "type": "text",
+      "x": 3,
+      "y": 16,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Tippe einen HA-Baustein an → „Innenschaltung bearbeiten“",
+       "size": 11
+      },
+      "label": ""
+     },
+     {
+      "id": 144,
+      "type": "switch",
+      "x": 3,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "A"
+     },
+     {
+      "id": 145,
+      "type": "switch",
+      "x": 3,
+      "y": 7,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "B"
+     },
+     {
+      "id": 146,
+      "type": "switch",
+      "x": 3,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "Cin"
+     },
+     {
+      "id": 147,
+      "type": "mod",
+      "x": 11,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "mid": "mmw6szqh1h3jp"
+      },
+      "label": ""
+     },
+     {
+      "id": 148,
+      "type": "mod",
+      "x": 21,
+      "y": 7,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "mid": "mmw6szqh1h3jp"
+      },
+      "label": ""
+     },
+     {
+      "id": 149,
+      "type": "or",
+      "x": 30,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G1"
+     },
+     {
+      "id": 150,
+      "type": "led",
+      "x": 36,
+      "y": 7,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "S"
+     },
+     {
+      "id": 151,
+      "type": "led",
+      "x": 36,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Cout"
+     }
+    ],
+    "wires": [
+     {
+      "id": 152,
+      "x1": 5,
+      "y1": 4,
+      "x2": 6,
+      "y2": 4
+     },
+     {
+      "id": 153,
+      "x1": 6,
+      "y1": 4,
+      "x2": 6,
+      "y2": 5
+     },
+     {
+      "id": 154,
+      "x1": 6,
+      "y1": 5,
+      "x2": 8,
+      "y2": 5
+     },
+     {
+      "id": 155,
+      "x1": 5,
+      "y1": 7,
+      "x2": 7,
+      "y2": 7
+     },
+     {
+      "id": 156,
+      "x1": 7,
+      "y1": 7,
+      "x2": 7,
+      "y2": 6
+     },
+     {
+      "id": 157,
+      "x1": 7,
+      "y1": 6,
+      "x2": 8,
+      "y2": 6
+     },
+     {
+      "id": 158,
+      "x1": 14,
+      "y1": 5,
+      "x2": 16,
+      "y2": 5
+     },
+     {
+      "id": 159,
+      "x1": 16,
+      "y1": 5,
+      "x2": 16,
+      "y2": 7
+     },
+     {
+      "id": 160,
+      "x1": 16,
+      "y1": 7,
+      "x2": 18,
+      "y2": 7
+     },
+     {
+      "id": 161,
+      "x1": 5,
+      "y1": 12,
+      "x2": 17,
+      "y2": 12
+     },
+     {
+      "id": 162,
+      "x1": 17,
+      "y1": 12,
+      "x2": 17,
+      "y2": 8
+     },
+     {
+      "id": 163,
+      "x1": 17,
+      "y1": 8,
+      "x2": 18,
+      "y2": 8
+     },
+     {
+      "id": 164,
+      "x1": 14,
+      "y1": 6,
+      "x2": 15,
+      "y2": 6
+     },
+     {
+      "id": 165,
+      "x1": 15,
+      "y1": 6,
+      "x2": 15,
+      "y2": 9
+     },
+     {
+      "id": 166,
+      "x1": 15,
+      "y1": 9,
+      "x2": 28,
+      "y2": 9
+     },
+     {
+      "id": 167,
+      "x1": 24,
+      "y1": 8,
+      "x2": 26,
+      "y2": 8
+     },
+     {
+      "id": 168,
+      "x1": 26,
+      "y1": 8,
+      "x2": 26,
+      "y2": 11
+     },
+     {
+      "id": 169,
+      "x1": 26,
+      "y1": 11,
+      "x2": 28,
+      "y2": 11
+     },
+     {
+      "id": 170,
+      "x1": 24,
+      "y1": 7,
+      "x2": 34,
+      "y2": 7
+     },
+     {
+      "id": 171,
+      "x1": 32,
+      "y1": 10,
+      "x2": 34,
+      "y2": 10
+     }
+    ]
+   }
+  },
+  {
+   "name": "RS-Flipflops: ohne und mit Takt",
+   "desc": "Basis-Flipflop (S, R) und taktzustandsgesteuertes RS-Flipflop (S und R wirken nur bei C = 1).",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 172,
+      "type": "text",
+      "x": 3,
+      "y": 1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "RS-Flipflop ohne Takt",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 173,
+      "type": "switch",
+      "x": 3,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "S1"
+     },
+     {
+      "id": 174,
+      "type": "switch",
+      "x": 3,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "R1"
+     },
+     {
+      "id": 175,
+      "type": "rsff",
+      "x": 10,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "FF1"
+     },
+     {
+      "id": 176,
+      "type": "led",
+      "x": 16,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Q1"
+     },
+     {
+      "id": 177,
+      "type": "led",
+      "x": 16,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Q̄1"
+     },
+     {
+      "id": 188,
+      "type": "text",
+      "x": 3,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "RS-Flipflop getaktet: Taster C gedrückt halten",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 189,
+      "type": "switch",
+      "x": 3,
+      "y": 15,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "S2"
+     },
+     {
+      "id": 190,
+      "type": "button",
+      "x": 3,
+      "y": 18,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "C"
+     },
+     {
+      "id": 191,
+      "type": "switch",
+      "x": 3,
+      "y": 21,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "R2"
+     },
+     {
+      "id": 192,
+      "type": "rsffc",
+      "x": 10,
+      "y": 18,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "FF2"
+     },
+     {
+      "id": 193,
+      "type": "led",
+      "x": 16,
+      "y": 17,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Q2"
+     },
+     {
+      "id": 194,
+      "type": "led",
+      "x": 16,
+      "y": 20,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Q̄2"
+     }
+    ],
+    "wires": [
+     {
+      "id": 178,
+      "x1": 5,
+      "y1": 4,
+      "x2": 6,
+      "y2": 4
+     },
+     {
+      "id": 179,
+      "x1": 6,
+      "y1": 4,
+      "x2": 6,
+      "y2": 5
+     },
+     {
+      "id": 180,
+      "x1": 6,
+      "y1": 5,
+      "x2": 8,
+      "y2": 5
+     },
+     {
+      "id": 181,
+      "x1": 5,
+      "y1": 8,
+      "x2": 6,
+      "y2": 8
+     },
+     {
+      "id": 182,
+      "x1": 6,
+      "y1": 8,
+      "x2": 6,
+      "y2": 7
+     },
+     {
+      "id": 183,
+      "x1": 6,
+      "y1": 7,
+      "x2": 8,
+      "y2": 7
+     },
+     {
+      "id": 184,
+      "x1": 12,
+      "y1": 5,
+      "x2": 14,
+      "y2": 5
+     },
+     {
+      "id": 185,
+      "x1": 12,
+      "y1": 7,
+      "x2": 13,
+      "y2": 7
+     },
+     {
+      "id": 186,
+      "x1": 13,
+      "y1": 7,
+      "x2": 13,
+      "y2": 8
+     },
+     {
+      "id": 187,
+      "x1": 13,
+      "y1": 8,
+      "x2": 14,
+      "y2": 8
+     },
+     {
+      "id": 195,
+      "x1": 5,
+      "y1": 15,
+      "x2": 6,
+      "y2": 15
+     },
+     {
+      "id": 196,
+      "x1": 6,
+      "y1": 15,
+      "x2": 6,
+      "y2": 17
+     },
+     {
+      "id": 197,
+      "x1": 6,
+      "y1": 17,
+      "x2": 8,
+      "y2": 17
+     },
+     {
+      "id": 198,
+      "x1": 5,
+      "y1": 18,
+      "x2": 8,
+      "y2": 18
+     },
+     {
+      "id": 199,
+      "x1": 5,
+      "y1": 21,
+      "x2": 6,
+      "y2": 21
+     },
+     {
+      "id": 200,
+      "x1": 6,
+      "y1": 21,
+      "x2": 6,
+      "y2": 19
+     },
+     {
+      "id": 201,
+      "x1": 6,
+      "y1": 19,
+      "x2": 8,
+      "y2": 19
+     },
+     {
+      "id": 202,
+      "x1": 12,
+      "y1": 17,
+      "x2": 14,
+      "y2": 17
+     },
+     {
+      "id": 203,
+      "x1": 12,
+      "y1": 19,
+      "x2": 13,
+      "y2": 19
+     },
+     {
+      "id": 204,
+      "x1": 13,
+      "y1": 19,
+      "x2": 13,
+      "y2": 20
+     },
+     {
+      "id": 205,
+      "x1": 13,
+      "y1": 20,
+      "x2": 14,
+      "y2": 20
+     }
+    ]
+   }
+  },
+  {
+   "name": "4-Bit-Binärzähler",
+   "desc": "Vier T-Flipflops zählen die Takte; die 7-Segment-Anzeige zeigt den Zählerstand hexadezimal.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 206,
+      "type": "text",
+      "x": 3,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "4-Bit-Asynchronzähler (Frequenzteiler)",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 207,
+      "type": "const",
+      "x": 3,
+      "y": 2,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "v": 1
+      },
+      "label": ""
+     },
+     {
+      "id": 208,
+      "type": "clock",
+      "x": 3,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "f": 2
+      },
+      "label": "CLK1"
+     },
+     {
+      "id": 209,
+      "type": "tff",
+      "x": 10,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "FF1"
+     },
+     {
+      "id": 210,
+      "type": "tff",
+      "x": 18,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "FF2"
+     },
+     {
+      "id": 211,
+      "type": "tff",
+      "x": 26,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "FF3"
+     },
+     {
+      "id": 212,
+      "type": "tff",
+      "x": 34,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "FF4"
+     },
+     {
+      "id": 213,
+      "type": "led",
+      "x": 15,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "green"
+      },
+      "label": "Q0"
+     },
+     {
+      "id": 214,
+      "type": "led",
+      "x": 23,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "green"
+      },
+      "label": "Q1"
+     },
+     {
+      "id": 215,
+      "type": "led",
+      "x": 31,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "green"
+      },
+      "label": "Q2"
+     },
+     {
+      "id": 216,
+      "type": "led",
+      "x": 39,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "green"
+      },
+      "label": "Q3"
+     },
+     {
+      "id": 217,
+      "type": "seg7",
+      "x": 40,
+      "y": 14,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "ANZ1"
+     }
+    ],
+    "wires": [
+     {
+      "id": 218,
+      "x1": 5,
+      "y1": 2,
+      "x2": 8,
+      "y2": 2
+     },
+     {
+      "id": 219,
+      "x1": 8,
+      "y1": 2,
+      "x2": 16,
+      "y2": 2
+     },
+     {
+      "id": 220,
+      "x1": 8,
+      "y1": 2,
+      "x2": 8,
+      "y2": 5
+     },
+     {
+      "id": 221,
+      "x1": 16,
+      "y1": 2,
+      "x2": 24,
+      "y2": 2
+     },
+     {
+      "id": 222,
+      "x1": 16,
+      "y1": 2,
+      "x2": 16,
+      "y2": 5
+     },
+     {
+      "id": 223,
+      "x1": 24,
+      "y1": 2,
+      "x2": 32,
+      "y2": 2
+     },
+     {
+      "id": 224,
+      "x1": 24,
+      "y1": 2,
+      "x2": 24,
+      "y2": 5
+     },
+     {
+      "id": 225,
+      "x1": 32,
+      "y1": 2,
+      "x2": 32,
+      "y2": 5
+     },
+     {
+      "id": 226,
+      "x1": 5,
+      "y1": 6,
+      "x2": 6,
+      "y2": 6
+     },
+     {
+      "id": 227,
+      "x1": 6,
+      "y1": 6,
+      "x2": 6,
+      "y2": 7
+     },
+     {
+      "id": 228,
+      "x1": 6,
+      "y1": 7,
+      "x2": 8,
+      "y2": 7
+     },
+     {
+      "id": 229,
+      "x1": 12,
+      "y1": 7,
+      "x2": 16,
+      "y2": 7
+     },
+     {
+      "id": 230,
+      "x1": 20,
+      "y1": 7,
+      "x2": 24,
+      "y2": 7
+     },
+     {
+      "id": 231,
+      "x1": 28,
+      "y1": 7,
+      "x2": 32,
+      "y2": 7
+     },
+     {
+      "id": 232,
+      "x1": 12,
+      "y1": 5,
+      "x2": 13,
+      "y2": 5
+     },
+     {
+      "id": 233,
+      "x1": 13,
+      "y1": 5,
+      "x2": 13,
+      "y2": 10
+     },
+     {
+      "id": 234,
+      "x1": 13,
+      "y1": 10,
+      "x2": 13,
+      "y2": 12
+     },
+     {
+      "id": 235,
+      "x1": 13,
+      "y1": 12,
+      "x2": 38,
+      "y2": 12
+     },
+     {
+      "id": 236,
+      "x1": 20,
+      "y1": 5,
+      "x2": 21,
+      "y2": 5
+     },
+     {
+      "id": 237,
+      "x1": 21,
+      "y1": 5,
+      "x2": 21,
+      "y2": 10
+     },
+     {
+      "id": 238,
+      "x1": 21,
+      "y1": 10,
+      "x2": 21,
+      "y2": 13
+     },
+     {
+      "id": 239,
+      "x1": 21,
+      "y1": 13,
+      "x2": 38,
+      "y2": 13
+     },
+     {
+      "id": 240,
+      "x1": 28,
+      "y1": 5,
+      "x2": 29,
+      "y2": 5
+     },
+     {
+      "id": 241,
+      "x1": 29,
+      "y1": 5,
+      "x2": 29,
+      "y2": 10
+     },
+     {
+      "id": 242,
+      "x1": 29,
+      "y1": 10,
+      "x2": 29,
+      "y2": 14
+     },
+     {
+      "id": 243,
+      "x1": 29,
+      "y1": 14,
+      "x2": 38,
+      "y2": 14
+     },
+     {
+      "id": 244,
+      "x1": 36,
+      "y1": 5,
+      "x2": 37,
+      "y2": 5
+     },
+     {
+      "id": 245,
+      "x1": 37,
+      "y1": 5,
+      "x2": 37,
+      "y2": 10
+     },
+     {
+      "id": 246,
+      "x1": 37,
+      "y1": 10,
+      "x2": 37,
+      "y2": 15
+     },
+     {
+      "id": 247,
+      "x1": 37,
+      "y1": 15,
+      "x2": 38,
+      "y2": 15
+     }
+    ]
+   }
+  },
+  {
+   "name": "D-Flipflop als 1-Bit-Speicher",
+   "desc": "Mit dem Taster wird der Wert von D in den Speicher übernommen.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 248,
+      "type": "text",
+      "x": 3,
+      "y": 1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Taster C drücken: Q übernimmt den Wert von D",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 249,
+      "type": "switch",
+      "x": 3,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "D"
+     },
+     {
+      "id": 250,
+      "type": "button",
+      "x": 3,
+      "y": 9,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "C"
+     },
+     {
+      "id": 251,
+      "type": "dff",
+      "x": 11,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "FF1"
+     },
+     {
+      "id": 252,
+      "type": "led",
+      "x": 18,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "Q"
+     }
+    ],
+    "wires": [
+     {
+      "id": 253,
+      "x1": 5,
+      "y1": 5,
+      "x2": 9,
+      "y2": 5
+     },
+     {
+      "id": 254,
+      "x1": 5,
+      "y1": 9,
+      "x2": 7,
+      "y2": 9
+     },
+     {
+      "id": 255,
+      "x1": 7,
+      "y1": 9,
+      "x2": 7,
+      "y2": 7
+     },
+     {
+      "id": 256,
+      "x1": 7,
+      "y1": 7,
+      "x2": 9,
+      "y2": 7
+     },
+     {
+      "id": 257,
+      "x1": 13,
+      "y1": 5,
+      "x2": 16,
+      "y2": 5
+     }
+    ]
+   }
+  },
+  {
+   "name": "LED mit Vorwiderstand",
+   "desc": "Grundschaltung: Schalter, Vorwiderstand, LED, Strom- und Spannungsmesser.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 258,
+      "type": "text",
+      "x": 4,
+      "y": 0,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Ändere R1 – was passiert mit der LED?",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 259,
+      "type": "battery",
+      "x": 4,
+      "y": 8,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 9
+      },
+      "label": "U1"
+     },
+     {
+      "id": 260,
+      "type": "aswitch",
+      "x": 8,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 1
+      },
+      "label": "S1"
+     },
+     {
+      "id": 261,
+      "type": "resistor",
+      "x": 14,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "R1"
+     },
+     {
+      "id": 262,
+      "type": "aled",
+      "x": 20,
+      "y": 8,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "LED1"
+     },
+     {
+      "id": 263,
+      "type": "ammeter",
+      "x": 12,
+      "y": 12,
+      "rot": 2,
+      "mir": false,
+      "props": {},
+      "label": "A1"
+     },
+     {
+      "id": 264,
+      "type": "voltmeter",
+      "x": 24,
+      "y": 8,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "V1"
+     }
+    ],
+    "wires": [
+     {
+      "id": 265,
+      "x1": 4,
+      "y1": 6,
+      "x2": 4,
+      "y2": 4
+     },
+     {
+      "id": 266,
+      "x1": 4,
+      "y1": 4,
+      "x2": 6,
+      "y2": 4
+     },
+     {
+      "id": 267,
+      "x1": 10,
+      "y1": 4,
+      "x2": 12,
+      "y2": 4
+     },
+     {
+      "id": 268,
+      "x1": 16,
+      "y1": 4,
+      "x2": 20,
+      "y2": 4
+     },
+     {
+      "id": 269,
+      "x1": 20,
+      "y1": 4,
+      "x2": 20,
+      "y2": 5
+     },
+     {
+      "id": 270,
+      "x1": 20,
+      "y1": 10,
+      "x2": 20,
+      "y2": 11
+     },
+     {
+      "id": 271,
+      "x1": 20,
+      "y1": 12,
+      "x2": 14,
+      "y2": 12
+     },
+     {
+      "id": 272,
+      "x1": 10,
+      "y1": 12,
+      "x2": 4,
+      "y2": 12
+     },
+     {
+      "id": 273,
+      "x1": 4,
+      "y1": 12,
+      "x2": 4,
+      "y2": 10
+     },
+     {
+      "id": 274,
+      "x1": 20,
+      "y1": 5,
+      "x2": 20,
+      "y2": 6
+     },
+     {
+      "id": 275,
+      "x1": 20,
+      "y1": 5,
+      "x2": 24,
+      "y2": 5
+     },
+     {
+      "id": 276,
+      "x1": 24,
+      "y1": 5,
+      "x2": 24,
+      "y2": 6
+     },
+     {
+      "id": 277,
+      "x1": 24,
+      "y1": 10,
+      "x2": 24,
+      "y2": 11
+     },
+     {
+      "id": 278,
+      "x1": 20,
+      "y1": 11,
+      "x2": 20,
+      "y2": 12
+     },
+     {
+      "id": 279,
+      "x1": 24,
+      "y1": 11,
+      "x2": 20,
+      "y2": 11
+     }
+    ]
+   }
+  },
+  {
+   "name": "Transistor als Schalter",
+   "desc": "Ein kleiner Basisstrom (Taster) schaltet den großen Kollektorstrom durch die LED.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 280,
+      "type": "text",
+      "x": 4,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Taster gedrückt halten → Basisstrom fließt",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 281,
+      "type": "battery",
+      "x": 4,
+      "y": 10,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 9
+      },
+      "label": "U1"
+     },
+     {
+      "id": 282,
+      "type": "resistor",
+      "x": 16,
+      "y": 6,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "RC"
+     },
+     {
+      "id": 283,
+      "type": "aled",
+      "x": 16,
+      "y": 11,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "LED1"
+     },
+     {
+      "id": 284,
+      "type": "npn",
+      "x": 15,
+      "y": 17,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "beta": 200
+      },
+      "label": "T1"
+     },
+     {
+      "id": 285,
+      "type": "abutton",
+      "x": 7,
+      "y": 11,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "S1"
+     },
+     {
+      "id": 286,
+      "type": "resistor",
+      "x": 9,
+      "y": 17,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 10000
+      },
+      "label": "RB"
+     },
+     {
+      "id": 287,
+      "type": "ground",
+      "x": 4,
+      "y": 21,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": ""
+     }
+    ],
+    "wires": [
+     {
+      "id": 288,
+      "x1": 4,
+      "y1": 8,
+      "x2": 4,
+      "y2": 2
+     },
+     {
+      "id": 289,
+      "x1": 4,
+      "y1": 2,
+      "x2": 7,
+      "y2": 2
+     },
+     {
+      "id": 290,
+      "x1": 16,
+      "y1": 2,
+      "x2": 16,
+      "y2": 4
+     },
+     {
+      "id": 291,
+      "x1": 16,
+      "y1": 8,
+      "x2": 16,
+      "y2": 9
+     },
+     {
+      "id": 292,
+      "x1": 16,
+      "y1": 13,
+      "x2": 16,
+      "y2": 15
+     },
+     {
+      "id": 293,
+      "x1": 7,
+      "y1": 2,
+      "x2": 16,
+      "y2": 2
+     },
+     {
+      "id": 294,
+      "x1": 7,
+      "y1": 2,
+      "x2": 7,
+      "y2": 9
+     },
+     {
+      "id": 295,
+      "x1": 7,
+      "y1": 13,
+      "x2": 7,
+      "y2": 17
+     },
+     {
+      "id": 296,
+      "x1": 11,
+      "y1": 17,
+      "x2": 13,
+      "y2": 17
+     },
+     {
+      "id": 297,
+      "x1": 16,
+      "y1": 19,
+      "x2": 16,
+      "y2": 21
+     },
+     {
+      "id": 298,
+      "x1": 16,
+      "y1": 21,
+      "x2": 4,
+      "y2": 21
+     },
+     {
+      "id": 299,
+      "x1": 4,
+      "y1": 21,
+      "x2": 4,
+      "y2": 12
+     }
+    ]
+   }
+  },
+  {
+   "name": "Dämmerungsschalter",
+   "desc": "Spannungsteiler mit Fotowiderstand: Wird es dunkel, schaltet der Transistor die LED ein.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 300,
+      "type": "text",
+      "x": 4,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Tippe den LDR an und verändere die Helligkeit",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 301,
+      "type": "battery",
+      "x": 4,
+      "y": 12,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 9
+      },
+      "label": "U1"
+     },
+     {
+      "id": 302,
+      "type": "resistor",
+      "x": 10,
+      "y": 6,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 10000
+      },
+      "label": "R1"
+     },
+     {
+      "id": 303,
+      "type": "ldr",
+      "x": 10,
+      "y": 14,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "light": 80
+      },
+      "label": "LDR1"
+     },
+     {
+      "id": 304,
+      "type": "resistor",
+      "x": 15,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 4700
+      },
+      "label": "RB"
+     },
+     {
+      "id": 305,
+      "type": "npn",
+      "x": 19,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "beta": 200
+      },
+      "label": "T1"
+     },
+     {
+      "id": 306,
+      "type": "aled",
+      "x": 20,
+      "y": 8,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "yellow"
+      },
+      "label": "LED1"
+     },
+     {
+      "id": 307,
+      "type": "resistor",
+      "x": 20,
+      "y": 4,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "RC"
+     }
+    ],
+    "wires": [
+     {
+      "id": 308,
+      "x1": 4,
+      "y1": 10,
+      "x2": 4,
+      "y2": 2
+     },
+     {
+      "id": 309,
+      "x1": 4,
+      "y1": 2,
+      "x2": 10,
+      "y2": 2
+     },
+     {
+      "id": 310,
+      "x1": 10,
+      "y1": 2,
+      "x2": 20,
+      "y2": 2
+     },
+     {
+      "id": 311,
+      "x1": 10,
+      "y1": 2,
+      "x2": 10,
+      "y2": 4
+     },
+     {
+      "id": 312,
+      "x1": 10,
+      "y1": 8,
+      "x2": 10,
+      "y2": 12
+     },
+     {
+      "id": 313,
+      "x1": 10,
+      "y1": 12,
+      "x2": 13,
+      "y2": 12
+     },
+     {
+      "id": 314,
+      "x1": 10,
+      "y1": 16,
+      "x2": 10,
+      "y2": 24
+     },
+     {
+      "id": 315,
+      "x1": 4,
+      "y1": 14,
+      "x2": 4,
+      "y2": 24
+     },
+     {
+      "id": 316,
+      "x1": 4,
+      "y1": 24,
+      "x2": 10,
+      "y2": 24
+     },
+     {
+      "id": 317,
+      "x1": 10,
+      "y1": 24,
+      "x2": 20,
+      "y2": 24
+     },
+     {
+      "id": 318,
+      "x1": 20,
+      "y1": 24,
+      "x2": 20,
+      "y2": 14
+     }
+    ]
+   }
+  },
+  {
+   "name": "NICHT-Gatter aus Transistor",
+   "desc": "So entsteht ein Logikgatter aus Halbleitern: Eingang 1 → Ausgang 0 (RTL-Technik).",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 319,
+      "type": "text",
+      "x": 4,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Eingang E (Schalter)  →  Ausgang A (LED)",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 320,
+      "type": "battery",
+      "x": 4,
+      "y": 12,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 5
+      },
+      "label": "U1"
+     },
+     {
+      "id": 321,
+      "type": "aswitch",
+      "x": 9,
+      "y": 7,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "E"
+     },
+     {
+      "id": 322,
+      "type": "resistor",
+      "x": 13,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 10000
+      },
+      "label": "RB"
+     },
+     {
+      "id": 323,
+      "type": "resistor",
+      "x": 9,
+      "y": 16,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 47000
+      },
+      "label": "Rpd"
+     },
+     {
+      "id": 324,
+      "type": "npn",
+      "x": 17,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "beta": 200
+      },
+      "label": "T1"
+     },
+     {
+      "id": 325,
+      "type": "resistor",
+      "x": 18,
+      "y": 5,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 1000
+      },
+      "label": "RC"
+     },
+     {
+      "id": 326,
+      "type": "resistor",
+      "x": 22,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "R1"
+     },
+     {
+      "id": 327,
+      "type": "aled",
+      "x": 24,
+      "y": 12,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "green"
+      },
+      "label": "A"
+     },
+     {
+      "id": 328,
+      "type": "voltmeter",
+      "x": 28,
+      "y": 14,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "UA"
+     }
+    ],
+    "wires": [
+     {
+      "id": 329,
+      "x1": 4,
+      "y1": 10,
+      "x2": 4,
+      "y2": 2
+     },
+     {
+      "id": 330,
+      "x1": 4,
+      "y1": 2,
+      "x2": 9,
+      "y2": 2
+     },
+     {
+      "id": 331,
+      "x1": 18,
+      "y1": 2,
+      "x2": 18,
+      "y2": 3
+     },
+     {
+      "id": 332,
+      "x1": 9,
+      "y1": 2,
+      "x2": 18,
+      "y2": 2
+     },
+     {
+      "id": 333,
+      "x1": 9,
+      "y1": 2,
+      "x2": 9,
+      "y2": 5
+     },
+     {
+      "id": 334,
+      "x1": 18,
+      "y1": 7,
+      "x2": 18,
+      "y2": 8
+     },
+     {
+      "id": 335,
+      "x1": 9,
+      "y1": 9,
+      "x2": 9,
+      "y2": 11
+     },
+     {
+      "id": 336,
+      "x1": 9,
+      "y1": 11,
+      "x2": 11,
+      "y2": 11
+     },
+     {
+      "id": 337,
+      "x1": 9,
+      "y1": 11,
+      "x2": 9,
+      "y2": 14
+     },
+     {
+      "id": 338,
+      "x1": 9,
+      "y1": 18,
+      "x2": 9,
+      "y2": 22
+     },
+     {
+      "id": 339,
+      "x1": 4,
+      "y1": 14,
+      "x2": 4,
+      "y2": 22
+     },
+     {
+      "id": 340,
+      "x1": 4,
+      "y1": 22,
+      "x2": 9,
+      "y2": 22
+     },
+     {
+      "id": 341,
+      "x1": 9,
+      "y1": 22,
+      "x2": 18,
+      "y2": 22
+     },
+     {
+      "id": 342,
+      "x1": 18,
+      "y1": 22,
+      "x2": 24,
+      "y2": 22
+     },
+     {
+      "id": 343,
+      "x1": 18,
+      "y1": 13,
+      "x2": 18,
+      "y2": 22
+     },
+     {
+      "id": 344,
+      "x1": 18,
+      "y1": 8,
+      "x2": 18,
+      "y2": 9
+     },
+     {
+      "id": 345,
+      "x1": 18,
+      "y1": 8,
+      "x2": 19,
+      "y2": 8
+     },
+     {
+      "id": 346,
+      "x1": 24,
+      "y1": 8,
+      "x2": 24,
+      "y2": 10
+     },
+     {
+      "id": 347,
+      "x1": 24,
+      "y1": 22,
+      "x2": 28,
+      "y2": 22
+     },
+     {
+      "id": 348,
+      "x1": 24,
+      "y1": 14,
+      "x2": 24,
+      "y2": 22
+     },
+     {
+      "id": 349,
+      "x1": 19,
+      "y1": 8,
+      "x2": 20,
+      "y2": 8
+     },
+     {
+      "id": 350,
+      "x1": 19,
+      "y1": 8,
+      "x2": 19,
+      "y2": 6
+     },
+     {
+      "id": 351,
+      "x1": 19,
+      "y1": 6,
+      "x2": 28,
+      "y2": 6
+     },
+     {
+      "id": 352,
+      "x1": 28,
+      "y1": 6,
+      "x2": 28,
+      "y2": 12
+     },
+     {
+      "id": 353,
+      "x1": 28,
+      "y1": 16,
+      "x2": 28,
+      "y2": 22
+     }
+    ]
+   }
+  },
+  {
+   "name": "Blinker (astabile Kippstufe)",
+   "desc": "Zwei Transistoren und zwei Kondensatoren schalten sich abwechselnd – die LEDs blinken.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 354,
+      "type": "text",
+      "x": 4,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Astabiler Multivibrator: T ≈ 0,7 · RB · C",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 355,
+      "type": "battery",
+      "x": 4,
+      "y": 14,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 9
+      },
+      "label": "U1"
+     },
+     {
+      "id": 356,
+      "type": "npn",
+      "x": 11,
+      "y": 18,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "beta": 200
+      },
+      "label": "T1"
+     },
+     {
+      "id": 357,
+      "type": "npn",
+      "x": 23,
+      "y": 18,
+      "rot": 2,
+      "mir": true,
+      "props": {
+       "beta": 200
+      },
+      "label": "T2"
+     },
+     {
+      "id": 358,
+      "type": "resistor",
+      "x": 12,
+      "y": 5,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "RC1"
+     },
+     {
+      "id": 359,
+      "type": "aled",
+      "x": 12,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "LED1"
+     },
+     {
+      "id": 360,
+      "type": "resistor",
+      "x": 22,
+      "y": 5,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "RC2"
+     },
+     {
+      "id": 361,
+      "type": "aled",
+      "x": 22,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "green"
+      },
+      "label": "LED2"
+     },
+     {
+      "id": 362,
+      "type": "resistor",
+      "x": 9,
+      "y": 7,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 47000
+      },
+      "label": "RB1"
+     },
+     {
+      "id": 363,
+      "type": "resistor",
+      "x": 25,
+      "y": 7,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 47000
+      },
+      "label": "RB2"
+     },
+     {
+      "id": 364,
+      "type": "capacitor",
+      "x": 17,
+      "y": 13,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "C": 2.2e-05
+      },
+      "label": "C1"
+     },
+     {
+      "id": 365,
+      "type": "capacitor",
+      "x": 17,
+      "y": 15,
+      "rot": 0,
+      "mir": true,
+      "props": {
+       "C": 2.2e-05
+      },
+      "label": "C2"
+     }
+    ],
+    "wires": [
+     {
+      "id": 366,
+      "x1": 4,
+      "y1": 12,
+      "x2": 4,
+      "y2": 2
+     },
+     {
+      "id": 367,
+      "x1": 4,
+      "y1": 2,
+      "x2": 9,
+      "y2": 2
+     },
+     {
+      "id": 368,
+      "x1": 25,
+      "y1": 2,
+      "x2": 25,
+      "y2": 5
+     },
+     {
+      "id": 369,
+      "x1": 12,
+      "y1": 2,
+      "x2": 22,
+      "y2": 2
+     },
+     {
+      "id": 370,
+      "x1": 12,
+      "y1": 2,
+      "x2": 12,
+      "y2": 3
+     },
+     {
+      "id": 371,
+      "x1": 22,
+      "y1": 2,
+      "x2": 25,
+      "y2": 2
+     },
+     {
+      "id": 372,
+      "x1": 22,
+      "y1": 2,
+      "x2": 22,
+      "y2": 3
+     },
+     {
+      "id": 373,
+      "x1": 9,
+      "y1": 2,
+      "x2": 12,
+      "y2": 2
+     },
+     {
+      "id": 374,
+      "x1": 9,
+      "y1": 2,
+      "x2": 9,
+      "y2": 5
+     },
+     {
+      "id": 375,
+      "x1": 12,
+      "y1": 11,
+      "x2": 12,
+      "y2": 13
+     },
+     {
+      "id": 376,
+      "x1": 22,
+      "y1": 11,
+      "x2": 22,
+      "y2": 15
+     },
+     {
+      "id": 377,
+      "x1": 9,
+      "y1": 9,
+      "x2": 9,
+      "y2": 15
+     },
+     {
+      "id": 378,
+      "x1": 25,
+      "y1": 9,
+      "x2": 25,
+      "y2": 13
+     },
+     {
+      "id": 379,
+      "x1": 12,
+      "y1": 13,
+      "x2": 12,
+      "y2": 16
+     },
+     {
+      "id": 380,
+      "x1": 12,
+      "y1": 13,
+      "x2": 15,
+      "y2": 13
+     },
+     {
+      "id": 381,
+      "x1": 25,
+      "y1": 13,
+      "x2": 25,
+      "y2": 18
+     },
+     {
+      "id": 382,
+      "x1": 19,
+      "y1": 13,
+      "x2": 25,
+      "y2": 13
+     },
+     {
+      "id": 383,
+      "x1": 22,
+      "y1": 15,
+      "x2": 22,
+      "y2": 16
+     },
+     {
+      "id": 384,
+      "x1": 22,
+      "y1": 15,
+      "x2": 19,
+      "y2": 15
+     },
+     {
+      "id": 385,
+      "x1": 9,
+      "y1": 15,
+      "x2": 9,
+      "y2": 18
+     },
+     {
+      "id": 386,
+      "x1": 15,
+      "y1": 15,
+      "x2": 9,
+      "y2": 15
+     },
+     {
+      "id": 387,
+      "x1": 4,
+      "y1": 16,
+      "x2": 4,
+      "y2": 26
+     },
+     {
+      "id": 388,
+      "x1": 4,
+      "y1": 26,
+      "x2": 12,
+      "y2": 26
+     },
+     {
+      "id": 389,
+      "x1": 12,
+      "y1": 26,
+      "x2": 22,
+      "y2": 26
+     },
+     {
+      "id": 390,
+      "x1": 12,
+      "y1": 20,
+      "x2": 12,
+      "y2": 26
+     },
+     {
+      "id": 391,
+      "x1": 22,
+      "y1": 20,
+      "x2": 22,
+      "y2": 26
+     }
+    ]
+   }
+  },
+  {
+   "name": "Z-Diode stabilisiert",
+   "desc": "Verändere die Eingangsspannung: Die Spannung am Lastwiderstand bleibt nahezu konstant.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 392,
+      "type": "text",
+      "x": 4,
+      "y": 0,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Spannungsquelle antippen und U verändern",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 393,
+      "type": "battery",
+      "x": 4,
+      "y": 10,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 12
+      },
+      "label": "U1"
+     },
+     {
+      "id": 394,
+      "type": "resistor",
+      "x": 8,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 220
+      },
+      "label": "RV"
+     },
+     {
+      "id": 395,
+      "type": "zener",
+      "x": 14,
+      "y": 8,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "Vz": 5.1
+      },
+      "label": "D1"
+     },
+     {
+      "id": 396,
+      "type": "resistor",
+      "x": 18,
+      "y": 8,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 1000
+      },
+      "label": "RL"
+     },
+     {
+      "id": 397,
+      "type": "voltmeter",
+      "x": 22,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "V1"
+     }
+    ],
+    "wires": [
+     {
+      "id": 398,
+      "x1": 4,
+      "y1": 8,
+      "x2": 4,
+      "y2": 4
+     },
+     {
+      "id": 399,
+      "x1": 4,
+      "y1": 4,
+      "x2": 6,
+      "y2": 4
+     },
+     {
+      "id": 400,
+      "x1": 10,
+      "y1": 4,
+      "x2": 14,
+      "y2": 4
+     },
+     {
+      "id": 401,
+      "x1": 14,
+      "y1": 4,
+      "x2": 18,
+      "y2": 4
+     },
+     {
+      "id": 402,
+      "x1": 14,
+      "y1": 4,
+      "x2": 14,
+      "y2": 6
+     },
+     {
+      "id": 403,
+      "x1": 18,
+      "y1": 4,
+      "x2": 22,
+      "y2": 4
+     },
+     {
+      "id": 404,
+      "x1": 18,
+      "y1": 4,
+      "x2": 18,
+      "y2": 6
+     },
+     {
+      "id": 405,
+      "x1": 22,
+      "y1": 4,
+      "x2": 22,
+      "y2": 7
+     },
+     {
+      "id": 406,
+      "x1": 4,
+      "y1": 12,
+      "x2": 4,
+      "y2": 14
+     },
+     {
+      "id": 407,
+      "x1": 4,
+      "y1": 14,
+      "x2": 14,
+      "y2": 14
+     },
+     {
+      "id": 408,
+      "x1": 14,
+      "y1": 14,
+      "x2": 18,
+      "y2": 14
+     },
+     {
+      "id": 409,
+      "x1": 14,
+      "y1": 10,
+      "x2": 14,
+      "y2": 14
+     },
+     {
+      "id": 410,
+      "x1": 18,
+      "y1": 14,
+      "x2": 22,
+      "y2": 14
+     },
+     {
+      "id": 411,
+      "x1": 18,
+      "y1": 10,
+      "x2": 18,
+      "y2": 14
+     },
+     {
+      "id": 412,
+      "x1": 22,
+      "y1": 11,
+      "x2": 22,
+      "y2": 14
+     }
+    ]
+   }
+  },
+  {
+   "name": "Kondensator laden und entladen",
+   "desc": "Schalter schließen: C lädt sich über R1 auf (τ = R·C). Taster: Entladen über R2.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 413,
+      "type": "text",
+      "x": 4,
+      "y": 0,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "τ = R1 · C = 4,7 s",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 414,
+      "type": "battery",
+      "x": 4,
+      "y": 10,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 9
+      },
+      "label": "U1"
+     },
+     {
+      "id": 415,
+      "type": "aswitch",
+      "x": 8,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "S1"
+     },
+     {
+      "id": 416,
+      "type": "resistor",
+      "x": 14,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 10000
+      },
+      "label": "R1"
+     },
+     {
+      "id": 417,
+      "type": "capacitor",
+      "x": 20,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "C": 0.00047
+      },
+      "label": "C1"
+     },
+     {
+      "id": 418,
+      "type": "voltmeter",
+      "x": 23,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "UC"
+     },
+     {
+      "id": 419,
+      "type": "abutton",
+      "x": 27,
+      "y": 7,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "Entladen"
+     },
+     {
+      "id": 420,
+      "type": "resistor",
+      "x": 27,
+      "y": 11,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 1000
+      },
+      "label": "R2"
+     }
+    ],
+    "wires": [
+     {
+      "id": 421,
+      "x1": 4,
+      "y1": 8,
+      "x2": 4,
+      "y2": 4
+     },
+     {
+      "id": 422,
+      "x1": 4,
+      "y1": 4,
+      "x2": 6,
+      "y2": 4
+     },
+     {
+      "id": 423,
+      "x1": 10,
+      "y1": 4,
+      "x2": 12,
+      "y2": 4
+     },
+     {
+      "id": 424,
+      "x1": 16,
+      "y1": 4,
+      "x2": 20,
+      "y2": 4
+     },
+     {
+      "id": 425,
+      "x1": 20,
+      "y1": 4,
+      "x2": 20,
+      "y2": 6
+     },
+     {
+      "id": 426,
+      "x1": 20,
+      "y1": 4,
+      "x2": 27,
+      "y2": 4
+     },
+     {
+      "id": 427,
+      "x1": 27,
+      "y1": 4,
+      "x2": 27,
+      "y2": 5
+     },
+     {
+      "id": 428,
+      "x1": 20,
+      "y1": 6,
+      "x2": 20,
+      "y2": 7
+     },
+     {
+      "id": 429,
+      "x1": 20,
+      "y1": 6,
+      "x2": 23,
+      "y2": 6
+     },
+     {
+      "id": 430,
+      "x1": 23,
+      "y1": 6,
+      "x2": 23,
+      "y2": 7
+     },
+     {
+      "id": 431,
+      "x1": 20,
+      "y1": 11,
+      "x2": 20,
+      "y2": 12
+     },
+     {
+      "id": 432,
+      "x1": 20,
+      "y1": 12,
+      "x2": 20,
+      "y2": 14
+     },
+     {
+      "id": 433,
+      "x1": 20,
+      "y1": 12,
+      "x2": 23,
+      "y2": 12
+     },
+     {
+      "id": 434,
+      "x1": 23,
+      "y1": 12,
+      "x2": 23,
+      "y2": 11
+     },
+     {
+      "id": 435,
+      "x1": 4,
+      "y1": 12,
+      "x2": 4,
+      "y2": 14
+     },
+     {
+      "id": 436,
+      "x1": 4,
+      "y1": 14,
+      "x2": 20,
+      "y2": 14
+     },
+     {
+      "id": 437,
+      "x1": 20,
+      "y1": 14,
+      "x2": 27,
+      "y2": 14
+     },
+     {
+      "id": 438,
+      "x1": 27,
+      "y1": 14,
+      "x2": 27,
+      "y2": 13
+     }
+    ]
+   }
+  },
+  {
+   "name": "4-Bit-ALU",
+   "desc": "Rechenwerk: Zwei Zahleneingaben, die Steuereingänge M1 M0 wählen +, −, ∧ oder ∨. Ergebnis auf der 7-Segment-Anzeige, Flags C und Z.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 439,
+      "type": "text",
+      "x": 3,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "4-Bit-ALU – M1 M0: 00 = A+B, 01 = A−B, 10 = A∧B, 11 = A∨B",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 440,
+      "type": "numin",
+      "x": 3,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "v": 5
+      },
+      "label": "A"
+     },
+     {
+      "id": 441,
+      "type": "numin",
+      "x": 3,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "v": 3
+      },
+      "label": "B"
+     },
+     {
+      "id": 442,
+      "type": "switch",
+      "x": 3,
+      "y": 14,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "M0"
+     },
+     {
+      "id": 443,
+      "type": "switch",
+      "x": 3,
+      "y": 17,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "M1"
+     },
+     {
+      "id": 444,
+      "type": "alu4",
+      "x": 14,
+      "y": 7,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "ALU"
+     },
+     {
+      "id": 445,
+      "type": "seg7",
+      "x": 23,
+      "y": 7,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "Y"
+     },
+     {
+      "id": 446,
+      "type": "led",
+      "x": 22,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "yellow"
+      },
+      "label": "C"
+     },
+     {
+      "id": 447,
+      "type": "led",
+      "x": 22,
+      "y": 14,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "green"
+      },
+      "label": "Z"
+     }
+    ],
+    "wires": [
+     {
+      "id": 448,
+      "x1": 5,
+      "y1": 2,
+      "x2": 9,
+      "y2": 2
+     },
+     {
+      "id": 449,
+      "x1": 9,
+      "y1": 2,
+      "x2": 9,
+      "y2": 3
+     },
+     {
+      "id": 450,
+      "x1": 9,
+      "y1": 3,
+      "x2": 11,
+      "y2": 3
+     },
+     {
+      "id": 451,
+      "x1": 5,
+      "y1": 8,
+      "x2": 6,
+      "y2": 8
+     },
+     {
+      "id": 452,
+      "x1": 6,
+      "y1": 8,
+      "x2": 6,
+      "y2": 7
+     },
+     {
+      "id": 453,
+      "x1": 6,
+      "y1": 7,
+      "x2": 11,
+      "y2": 7
+     },
+     {
+      "id": 454,
+      "x1": 17,
+      "y1": 5,
+      "x2": 21,
+      "y2": 5
+     },
+     {
+      "id": 455,
+      "x1": 5,
+      "y1": 3,
+      "x2": 8,
+      "y2": 3
+     },
+     {
+      "id": 456,
+      "x1": 8,
+      "y1": 3,
+      "x2": 8,
+      "y2": 4
+     },
+     {
+      "id": 457,
+      "x1": 8,
+      "y1": 4,
+      "x2": 11,
+      "y2": 4
+     },
+     {
+      "id": 458,
+      "x1": 5,
+      "y1": 9,
+      "x2": 7,
+      "y2": 9
+     },
+     {
+      "id": 459,
+      "x1": 7,
+      "y1": 9,
+      "x2": 7,
+      "y2": 8
+     },
+     {
+      "id": 460,
+      "x1": 7,
+      "y1": 8,
+      "x2": 11,
+      "y2": 8
+     },
+     {
+      "id": 461,
+      "x1": 17,
+      "y1": 6,
+      "x2": 21,
+      "y2": 6
+     },
+     {
+      "id": 462,
+      "x1": 5,
+      "y1": 4,
+      "x2": 7,
+      "y2": 4
+     },
+     {
+      "id": 463,
+      "x1": 7,
+      "y1": 4,
+      "x2": 7,
+      "y2": 5
+     },
+     {
+      "id": 464,
+      "x1": 7,
+      "y1": 5,
+      "x2": 11,
+      "y2": 5
+     },
+     {
+      "id": 465,
+      "x1": 5,
+      "y1": 10,
+      "x2": 8,
+      "y2": 10
+     },
+     {
+      "id": 466,
+      "x1": 8,
+      "y1": 10,
+      "x2": 8,
+      "y2": 9
+     },
+     {
+      "id": 467,
+      "x1": 8,
+      "y1": 9,
+      "x2": 11,
+      "y2": 9
+     },
+     {
+      "id": 468,
+      "x1": 17,
+      "y1": 7,
+      "x2": 21,
+      "y2": 7
+     },
+     {
+      "id": 469,
+      "x1": 5,
+      "y1": 5,
+      "x2": 6,
+      "y2": 5
+     },
+     {
+      "id": 470,
+      "x1": 6,
+      "y1": 5,
+      "x2": 6,
+      "y2": 6
+     },
+     {
+      "id": 471,
+      "x1": 6,
+      "y1": 6,
+      "x2": 11,
+      "y2": 6
+     },
+     {
+      "id": 472,
+      "x1": 5,
+      "y1": 11,
+      "x2": 9,
+      "y2": 11
+     },
+     {
+      "id": 473,
+      "x1": 9,
+      "y1": 11,
+      "x2": 9,
+      "y2": 10
+     },
+     {
+      "id": 474,
+      "x1": 9,
+      "y1": 10,
+      "x2": 11,
+      "y2": 10
+     },
+     {
+      "id": 475,
+      "x1": 17,
+      "y1": 8,
+      "x2": 21,
+      "y2": 8
+     },
+     {
+      "id": 476,
+      "x1": 5,
+      "y1": 14,
+      "x2": 10,
+      "y2": 14
+     },
+     {
+      "id": 477,
+      "x1": 10,
+      "y1": 14,
+      "x2": 10,
+      "y2": 11
+     },
+     {
+      "id": 478,
+      "x1": 10,
+      "y1": 11,
+      "x2": 11,
+      "y2": 11
+     },
+     {
+      "id": 479,
+      "x1": 5,
+      "y1": 17,
+      "x2": 9,
+      "y2": 17
+     },
+     {
+      "id": 480,
+      "x1": 9,
+      "y1": 17,
+      "x2": 9,
+      "y2": 12
+     },
+     {
+      "id": 481,
+      "x1": 9,
+      "y1": 12,
+      "x2": 11,
+      "y2": 12
+     },
+     {
+      "id": 482,
+      "x1": 17,
+      "y1": 9,
+      "x2": 18,
+      "y2": 9
+     },
+     {
+      "id": 483,
+      "x1": 18,
+      "y1": 9,
+      "x2": 18,
+      "y2": 11
+     },
+     {
+      "id": 484,
+      "x1": 18,
+      "y1": 11,
+      "x2": 20,
+      "y2": 11
+     },
+     {
+      "id": 485,
+      "x1": 17,
+      "y1": 10,
+      "x2": 19,
+      "y2": 10
+     },
+     {
+      "id": 486,
+      "x1": 19,
+      "y1": 10,
+      "x2": 19,
+      "y2": 14
+     },
+     {
+      "id": 487,
+      "x1": 19,
+      "y1": 14,
+      "x2": 20,
+      "y2": 14
+     }
+    ]
+   }
+  },
+  {
+   "name": "Akkumulator (Mini-Rechenwerk)",
+   "desc": "Addierer und Register mit Rückkopplung: Jeder Takt addiert B zum gespeicherten Wert – das Herzstück eines Prozessors.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 488,
+      "type": "text",
+      "x": 3,
+      "y": -3,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Akkumulator: Taster T drücken → Akku := Akku + B",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 489,
+      "type": "numin",
+      "x": 3,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "v": 1
+      },
+      "label": "B"
+     },
+     {
+      "id": 490,
+      "type": "const",
+      "x": 8,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "v": 0
+      },
+      "label": ""
+     },
+     {
+      "id": 491,
+      "type": "add4",
+      "x": 14,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "ADD"
+     },
+     {
+      "id": 492,
+      "type": "reg4",
+      "x": 24,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "AKKU"
+     },
+     {
+      "id": 493,
+      "type": "button",
+      "x": 16,
+      "y": 14,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "T"
+     },
+     {
+      "id": 494,
+      "type": "seg7",
+      "x": 35,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "Anzeige"
+     }
+    ],
+    "wires": [
+     {
+      "id": 495,
+      "x1": 5,
+      "y1": 8,
+      "x2": 11,
+      "y2": 8
+     },
+     {
+      "id": 496,
+      "x1": 17,
+      "y1": 6,
+      "x2": 21,
+      "y2": 6
+     },
+     {
+      "id": 497,
+      "x1": 27,
+      "y1": 6,
+      "x2": 28,
+      "y2": 6
+     },
+     {
+      "id": 498,
+      "x1": 28,
+      "y1": 6,
+      "x2": 33,
+      "y2": 6
+     },
+     {
+      "id": 499,
+      "x1": 28,
+      "y1": 6,
+      "x2": 28,
+      "y2": 2
+     },
+     {
+      "id": 500,
+      "x1": 28,
+      "y1": 2,
+      "x2": 9,
+      "y2": 2
+     },
+     {
+      "id": 501,
+      "x1": 9,
+      "y1": 2,
+      "x2": 9,
+      "y2": 4
+     },
+     {
+      "id": 502,
+      "x1": 9,
+      "y1": 4,
+      "x2": 11,
+      "y2": 4
+     },
+     {
+      "id": 503,
+      "x1": 5,
+      "y1": 9,
+      "x2": 11,
+      "y2": 9
+     },
+     {
+      "id": 504,
+      "x1": 17,
+      "y1": 7,
+      "x2": 21,
+      "y2": 7
+     },
+     {
+      "id": 505,
+      "x1": 27,
+      "y1": 7,
+      "x2": 29,
+      "y2": 7
+     },
+     {
+      "id": 506,
+      "x1": 29,
+      "y1": 7,
+      "x2": 33,
+      "y2": 7
+     },
+     {
+      "id": 507,
+      "x1": 29,
+      "y1": 7,
+      "x2": 29,
+      "y2": 1
+     },
+     {
+      "id": 508,
+      "x1": 29,
+      "y1": 1,
+      "x2": 8,
+      "y2": 1
+     },
+     {
+      "id": 509,
+      "x1": 8,
+      "y1": 1,
+      "x2": 8,
+      "y2": 5
+     },
+     {
+      "id": 510,
+      "x1": 8,
+      "y1": 5,
+      "x2": 11,
+      "y2": 5
+     },
+     {
+      "id": 511,
+      "x1": 5,
+      "y1": 10,
+      "x2": 11,
+      "y2": 10
+     },
+     {
+      "id": 512,
+      "x1": 17,
+      "y1": 8,
+      "x2": 21,
+      "y2": 8
+     },
+     {
+      "id": 513,
+      "x1": 27,
+      "y1": 8,
+      "x2": 30,
+      "y2": 8
+     },
+     {
+      "id": 514,
+      "x1": 30,
+      "y1": 8,
+      "x2": 33,
+      "y2": 8
+     },
+     {
+      "id": 515,
+      "x1": 30,
+      "y1": 8,
+      "x2": 30,
+      "y2": 0
+     },
+     {
+      "id": 516,
+      "x1": 30,
+      "y1": 0,
+      "x2": 7,
+      "y2": 0
+     },
+     {
+      "id": 517,
+      "x1": 7,
+      "y1": 0,
+      "x2": 7,
+      "y2": 6
+     },
+     {
+      "id": 518,
+      "x1": 7,
+      "y1": 6,
+      "x2": 11,
+      "y2": 6
+     },
+     {
+      "id": 519,
+      "x1": 5,
+      "y1": 11,
+      "x2": 11,
+      "y2": 11
+     },
+     {
+      "id": 520,
+      "x1": 17,
+      "y1": 9,
+      "x2": 21,
+      "y2": 9
+     },
+     {
+      "id": 521,
+      "x1": 27,
+      "y1": 9,
+      "x2": 31,
+      "y2": 9
+     },
+     {
+      "id": 522,
+      "x1": 31,
+      "y1": 9,
+      "x2": 33,
+      "y2": 9
+     },
+     {
+      "id": 523,
+      "x1": 31,
+      "y1": 9,
+      "x2": 31,
+      "y2": -1
+     },
+     {
+      "id": 524,
+      "x1": 31,
+      "y1": -1,
+      "x2": 6,
+      "y2": -1
+     },
+     {
+      "id": 525,
+      "x1": 6,
+      "y1": -1,
+      "x2": 6,
+      "y2": 7
+     },
+     {
+      "id": 526,
+      "x1": 6,
+      "y1": 7,
+      "x2": 11,
+      "y2": 7
+     },
+     {
+      "id": 527,
+      "x1": 10,
+      "y1": 12,
+      "x2": 11,
+      "y2": 12
+     },
+     {
+      "id": 528,
+      "x1": 18,
+      "y1": 14,
+      "x2": 20,
+      "y2": 14
+     },
+     {
+      "id": 529,
+      "x1": 20,
+      "y1": 14,
+      "x2": 20,
+      "y2": 10
+     },
+     {
+      "id": 530,
+      "x1": 20,
+      "y1": 10,
+      "x2": 21,
+      "y2": 10
+     }
+    ]
+   }
+  },
+  {
+   "name": "Lauflicht (Johnson-Zähler)",
+   "desc": "Ein Schieberegister, dessen invertierter letzter Ausgang zurückgeführt wird, erzeugt ein Lauflicht.",
+   "mode": "digital",
+   "circuit": {
+    "comps": [
+     {
+      "id": 531,
+      "type": "text",
+      "x": 3,
+      "y": 1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Lauflicht mit Schieberegister und Rückkopplung",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 532,
+      "type": "clock",
+      "x": 3,
+      "y": 7,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "f": 2
+      },
+      "label": "CLK1"
+     },
+     {
+      "id": 533,
+      "type": "shift4",
+      "x": 12,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "IC1"
+     },
+     {
+      "id": 534,
+      "type": "not",
+      "x": 12,
+      "y": 11,
+      "rot": 2,
+      "mir": false,
+      "props": {},
+      "label": "G1"
+     },
+     {
+      "id": 541,
+      "type": "led",
+      "x": 19,
+      "y": 12,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "yellow"
+      },
+      "label": "L0"
+     },
+     {
+      "id": 544,
+      "type": "led",
+      "x": 22,
+      "y": 12,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "yellow"
+      },
+      "label": "L1"
+     },
+     {
+      "id": 547,
+      "type": "led",
+      "x": 25,
+      "y": 12,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "yellow"
+      },
+      "label": "L2"
+     },
+     {
+      "id": 550,
+      "type": "led",
+      "x": 28,
+      "y": 12,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "yellow"
+      },
+      "label": "L3"
+     }
+    ],
+    "wires": [
+     {
+      "id": 535,
+      "x1": 5,
+      "y1": 7,
+      "x2": 9,
+      "y2": 7
+     },
+     {
+      "id": 536,
+      "x1": 16,
+      "y1": 8,
+      "x2": 16,
+      "y2": 11
+     },
+     {
+      "id": 537,
+      "x1": 16,
+      "y1": 11,
+      "x2": 14,
+      "y2": 11
+     },
+     {
+      "id": 538,
+      "x1": 10,
+      "y1": 11,
+      "x2": 8,
+      "y2": 11
+     },
+     {
+      "id": 539,
+      "x1": 8,
+      "y1": 11,
+      "x2": 8,
+      "y2": 6
+     },
+     {
+      "id": 540,
+      "x1": 8,
+      "y1": 6,
+      "x2": 9,
+      "y2": 6
+     },
+     {
+      "id": 542,
+      "x1": 15,
+      "y1": 5,
+      "x2": 19,
+      "y2": 5
+     },
+     {
+      "id": 543,
+      "x1": 19,
+      "y1": 5,
+      "x2": 19,
+      "y2": 10
+     },
+     {
+      "id": 545,
+      "x1": 15,
+      "y1": 6,
+      "x2": 22,
+      "y2": 6
+     },
+     {
+      "id": 546,
+      "x1": 22,
+      "y1": 6,
+      "x2": 22,
+      "y2": 10
+     },
+     {
+      "id": 548,
+      "x1": 15,
+      "y1": 7,
+      "x2": 25,
+      "y2": 7
+     },
+     {
+      "id": 549,
+      "x1": 25,
+      "y1": 7,
+      "x2": 25,
+      "y2": 10
+     },
+     {
+      "id": 551,
+      "x1": 15,
+      "y1": 8,
+      "x2": 16,
+      "y2": 8
+     },
+     {
+      "id": 552,
+      "x1": 16,
+      "y1": 8,
+      "x2": 28,
+      "y2": 8
+     },
+     {
+      "id": 553,
+      "x1": 28,
+      "y1": 8,
+      "x2": 28,
+      "y2": 10
+     }
+    ]
+   }
+  },
+  {
+   "name": "Transistorverstärker (Emitterschaltung)",
+   "desc": "Eine kleine Wechselspannung an der Basis erzeugt eine große, umgekehrte Wechselspannung am Kollektor. Mit dem Messschreiber G1 und UC aufzeichnen.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 554,
+      "type": "text",
+      "x": 2,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Verstärker: G1 und UC antippen → „aufzeichnen“",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 555,
+      "type": "battery",
+      "x": 2,
+      "y": 12,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 12
+      },
+      "label": "U1"
+     },
+     {
+      "id": 556,
+      "type": "resistor",
+      "x": 12,
+      "y": 5,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 47000
+      },
+      "label": "R1"
+     },
+     {
+      "id": 557,
+      "type": "resistor",
+      "x": 12,
+      "y": 17,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 10000
+      },
+      "label": "R2"
+     },
+     {
+      "id": 558,
+      "type": "npn",
+      "x": 16,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "beta": 200
+      },
+      "label": "T1"
+     },
+     {
+      "id": 559,
+      "type": "resistor",
+      "x": 17,
+      "y": 5,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 2200
+      },
+      "label": "RC"
+     },
+     {
+      "id": 560,
+      "type": "resistor",
+      "x": 17,
+      "y": 17,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "RE"
+     },
+     {
+      "id": 561,
+      "type": "acsrc",
+      "x": 6,
+      "y": 17,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "shape": "sin",
+       "amp": 0.2,
+       "f": 5,
+       "off": 0
+      },
+      "label": "G1"
+     },
+     {
+      "id": 562,
+      "type": "capacitor",
+      "x": 9,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "C": 0.00022
+      },
+      "label": "CK"
+     },
+     {
+      "id": 563,
+      "type": "voltmeter",
+      "x": 21,
+      "y": 12,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "UC"
+     },
+     {
+      "id": 564,
+      "type": "ground",
+      "x": 8,
+      "y": 22,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": ""
+     }
+    ],
+    "wires": [
+     {
+      "id": 565,
+      "x1": 2,
+      "y1": 10,
+      "x2": 2,
+      "y2": 2
+     },
+     {
+      "id": 566,
+      "x1": 2,
+      "y1": 2,
+      "x2": 12,
+      "y2": 2
+     },
+     {
+      "id": 567,
+      "x1": 12,
+      "y1": 2,
+      "x2": 17,
+      "y2": 2
+     },
+     {
+      "id": 568,
+      "x1": 12,
+      "y1": 2,
+      "x2": 12,
+      "y2": 3
+     },
+     {
+      "id": 569,
+      "x1": 17,
+      "y1": 2,
+      "x2": 17,
+      "y2": 3
+     },
+     {
+      "id": 570,
+      "x1": 2,
+      "y1": 14,
+      "x2": 2,
+      "y2": 22
+     },
+     {
+      "id": 571,
+      "x1": 2,
+      "y1": 22,
+      "x2": 6,
+      "y2": 22
+     },
+     {
+      "id": 572,
+      "x1": 8,
+      "y1": 22,
+      "x2": 12,
+      "y2": 22
+     },
+     {
+      "id": 573,
+      "x1": 12,
+      "y1": 22,
+      "x2": 17,
+      "y2": 22
+     },
+     {
+      "id": 574,
+      "x1": 12,
+      "y1": 19,
+      "x2": 12,
+      "y2": 22
+     },
+     {
+      "id": 575,
+      "x1": 17,
+      "y1": 22,
+      "x2": 21,
+      "y2": 22
+     },
+     {
+      "id": 576,
+      "x1": 17,
+      "y1": 19,
+      "x2": 17,
+      "y2": 22
+     },
+     {
+      "id": 577,
+      "x1": 12,
+      "y1": 7,
+      "x2": 12,
+      "y2": 11
+     },
+     {
+      "id": 578,
+      "x1": 12,
+      "y1": 11,
+      "x2": 12,
+      "y2": 15
+     },
+     {
+      "id": 579,
+      "x1": 12,
+      "y1": 11,
+      "x2": 14,
+      "y2": 11
+     },
+     {
+      "id": 580,
+      "x1": 17,
+      "y1": 7,
+      "x2": 17,
+      "y2": 8
+     },
+     {
+      "id": 581,
+      "x1": 17,
+      "y1": 13,
+      "x2": 17,
+      "y2": 15
+     },
+     {
+      "id": 582,
+      "x1": 6,
+      "y1": 15,
+      "x2": 6,
+      "y2": 11
+     },
+     {
+      "id": 583,
+      "x1": 6,
+      "y1": 11,
+      "x2": 7,
+      "y2": 11
+     },
+     {
+      "id": 584,
+      "x1": 11,
+      "y1": 11,
+      "x2": 12,
+      "y2": 11
+     },
+     {
+      "id": 585,
+      "x1": 6,
+      "y1": 22,
+      "x2": 8,
+      "y2": 22
+     },
+     {
+      "id": 586,
+      "x1": 6,
+      "y1": 19,
+      "x2": 6,
+      "y2": 22
+     },
+     {
+      "id": 587,
+      "x1": 17,
+      "y1": 8,
+      "x2": 17,
+      "y2": 9
+     },
+     {
+      "id": 588,
+      "x1": 17,
+      "y1": 8,
+      "x2": 21,
+      "y2": 8
+     },
+     {
+      "id": 589,
+      "x1": 21,
+      "y1": 8,
+      "x2": 21,
+      "y2": 10
+     },
+     {
+      "id": 590,
+      "x1": 21,
+      "y1": 14,
+      "x2": 21,
+      "y2": 22
+     }
+    ]
+   }
+  },
+  {
+   "name": "Brückengleichrichter",
+   "desc": "Vier Dioden machen aus Wechselspannung eine pulsierende Gleichspannung, der Kondensator glättet sie.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 591,
+      "type": "text",
+      "x": 2,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Brückengleichrichter mit Glättungskondensator",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 592,
+      "type": "acsrc",
+      "x": 4,
+      "y": 9,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "shape": "sin",
+       "amp": 9,
+       "f": 2,
+       "off": 0
+      },
+      "label": "G1"
+     },
+     {
+      "id": 593,
+      "type": "diode",
+      "x": 10,
+      "y": 5,
+      "rot": 3,
+      "mir": false,
+      "props": {},
+      "label": "D1"
+     },
+     {
+      "id": 594,
+      "type": "diode",
+      "x": 10,
+      "y": 13,
+      "rot": 3,
+      "mir": false,
+      "props": {},
+      "label": "D3"
+     },
+     {
+      "id": 595,
+      "type": "diode",
+      "x": 14,
+      "y": 5,
+      "rot": 3,
+      "mir": false,
+      "props": {},
+      "label": "D2"
+     },
+     {
+      "id": 596,
+      "type": "diode",
+      "x": 14,
+      "y": 13,
+      "rot": 3,
+      "mir": false,
+      "props": {},
+      "label": "D4"
+     },
+     {
+      "id": 597,
+      "type": "capacitor",
+      "x": 20,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "C": 0.00047
+      },
+      "label": "C1"
+     },
+     {
+      "id": 598,
+      "type": "resistor",
+      "x": 24,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 1000
+      },
+      "label": "RL"
+     },
+     {
+      "id": 599,
+      "type": "voltmeter",
+      "x": 28,
+      "y": 9,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "UL"
+     },
+     {
+      "id": 600,
+      "type": "ground",
+      "x": 12,
+      "y": 17,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": ""
+     }
+    ],
+    "wires": [
+     {
+      "id": 601,
+      "x1": 10,
+      "y1": 7,
+      "x2": 10,
+      "y2": 9
+     },
+     {
+      "id": 602,
+      "x1": 14,
+      "y1": 7,
+      "x2": 14,
+      "y2": 9
+     },
+     {
+      "id": 603,
+      "x1": 10,
+      "y1": 3,
+      "x2": 10,
+      "y2": 2
+     },
+     {
+      "id": 604,
+      "x1": 10,
+      "y1": 2,
+      "x2": 14,
+      "y2": 2
+     },
+     {
+      "id": 605,
+      "x1": 28,
+      "y1": 2,
+      "x2": 28,
+      "y2": 7
+     },
+     {
+      "id": 606,
+      "x1": 14,
+      "y1": 2,
+      "x2": 20,
+      "y2": 2
+     },
+     {
+      "id": 607,
+      "x1": 14,
+      "y1": 3,
+      "x2": 14,
+      "y2": 2
+     },
+     {
+      "id": 608,
+      "x1": 10,
+      "y1": 15,
+      "x2": 10,
+      "y2": 17
+     },
+     {
+      "id": 609,
+      "x1": 10,
+      "y1": 17,
+      "x2": 12,
+      "y2": 17
+     },
+     {
+      "id": 610,
+      "x1": 12,
+      "y1": 17,
+      "x2": 14,
+      "y2": 17
+     },
+     {
+      "id": 611,
+      "x1": 28,
+      "y1": 17,
+      "x2": 28,
+      "y2": 11
+     },
+     {
+      "id": 612,
+      "x1": 14,
+      "y1": 17,
+      "x2": 20,
+      "y2": 17
+     },
+     {
+      "id": 613,
+      "x1": 14,
+      "y1": 15,
+      "x2": 14,
+      "y2": 17
+     },
+     {
+      "id": 614,
+      "x1": 20,
+      "y1": 2,
+      "x2": 24,
+      "y2": 2
+     },
+     {
+      "id": 615,
+      "x1": 20,
+      "y1": 2,
+      "x2": 20,
+      "y2": 7
+     },
+     {
+      "id": 616,
+      "x1": 20,
+      "y1": 17,
+      "x2": 24,
+      "y2": 17
+     },
+     {
+      "id": 617,
+      "x1": 20,
+      "y1": 11,
+      "x2": 20,
+      "y2": 17
+     },
+     {
+      "id": 618,
+      "x1": 24,
+      "y1": 2,
+      "x2": 28,
+      "y2": 2
+     },
+     {
+      "id": 619,
+      "x1": 24,
+      "y1": 2,
+      "x2": 24,
+      "y2": 7
+     },
+     {
+      "id": 620,
+      "x1": 24,
+      "y1": 17,
+      "x2": 28,
+      "y2": 17
+     },
+     {
+      "id": 621,
+      "x1": 24,
+      "y1": 11,
+      "x2": 24,
+      "y2": 17
+     },
+     {
+      "id": 622,
+      "x1": 4,
+      "y1": 7,
+      "x2": 7,
+      "y2": 7
+     },
+     {
+      "id": 623,
+      "x1": 7,
+      "y1": 7,
+      "x2": 7,
+      "y2": 9
+     },
+     {
+      "id": 624,
+      "x1": 10,
+      "y1": 9,
+      "x2": 10,
+      "y2": 11
+     },
+     {
+      "id": 625,
+      "x1": 7,
+      "y1": 9,
+      "x2": 10,
+      "y2": 9
+     },
+     {
+      "id": 626,
+      "x1": 4,
+      "y1": 11,
+      "x2": 4,
+      "y2": 20
+     },
+     {
+      "id": 627,
+      "x1": 4,
+      "y1": 20,
+      "x2": 16,
+      "y2": 20
+     },
+     {
+      "id": 628,
+      "x1": 16,
+      "y1": 20,
+      "x2": 16,
+      "y2": 9
+     },
+     {
+      "id": 629,
+      "x1": 14,
+      "y1": 9,
+      "x2": 14,
+      "y2": 11
+     },
+     {
+      "id": 630,
+      "x1": 16,
+      "y1": 9,
+      "x2": 14,
+      "y2": 9
+     }
+    ]
+   }
+  },
+  {
+   "name": "Operationsverstärker: invertierender Verstärker",
+   "desc": "Gegenkopplung über R2: Die Verstärkung beträgt V = −R2 / R1 = −10.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 631,
+      "type": "text",
+      "x": 2,
+      "y": -2,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Invertierender Verstärker: V = −R2 / R1",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 632,
+      "type": "acsrc",
+      "x": 2,
+      "y": 8,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "shape": "sin",
+       "amp": 1,
+       "f": 1,
+       "off": 0
+      },
+      "label": "G1"
+     },
+     {
+      "id": 633,
+      "type": "resistor",
+      "x": 6,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 1000
+      },
+      "label": "R1"
+     },
+     {
+      "id": 634,
+      "type": "opamp",
+      "x": 12,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "vs": 12
+      },
+      "label": "OP1"
+     },
+     {
+      "id": 635,
+      "type": "resistor",
+      "x": 12,
+      "y": 1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "R": 10000
+      },
+      "label": "R2"
+     },
+     {
+      "id": 636,
+      "type": "voltmeter",
+      "x": 18,
+      "y": 8,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "UA"
+     },
+     {
+      "id": 637,
+      "type": "ground",
+      "x": 6,
+      "y": 10,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": ""
+     }
+    ],
+    "wires": [
+     {
+      "id": 638,
+      "x1": 2,
+      "y1": 6,
+      "x2": 2,
+      "y2": 4
+     },
+     {
+      "id": 639,
+      "x1": 2,
+      "y1": 4,
+      "x2": 4,
+      "y2": 4
+     },
+     {
+      "id": 640,
+      "x1": 8,
+      "y1": 4,
+      "x2": 9,
+      "y2": 4
+     },
+     {
+      "id": 641,
+      "x1": 9,
+      "y1": 4,
+      "x2": 10,
+      "y2": 4
+     },
+     {
+      "id": 642,
+      "x1": 9,
+      "y1": 4,
+      "x2": 9,
+      "y2": 1
+     },
+     {
+      "id": 643,
+      "x1": 9,
+      "y1": 1,
+      "x2": 10,
+      "y2": 1
+     },
+     {
+      "id": 644,
+      "x1": 14,
+      "y1": 1,
+      "x2": 15,
+      "y2": 1
+     },
+     {
+      "id": 645,
+      "x1": 15,
+      "y1": 1,
+      "x2": 15,
+      "y2": 5
+     },
+     {
+      "id": 646,
+      "x1": 14,
+      "y1": 5,
+      "x2": 15,
+      "y2": 5
+     },
+     {
+      "id": 647,
+      "x1": 15,
+      "y1": 5,
+      "x2": 18,
+      "y2": 5
+     },
+     {
+      "id": 648,
+      "x1": 18,
+      "y1": 5,
+      "x2": 18,
+      "y2": 6
+     },
+     {
+      "id": 649,
+      "x1": 10,
+      "y1": 6,
+      "x2": 10,
+      "y2": 10
+     },
+     {
+      "id": 650,
+      "x1": 2,
+      "y1": 10,
+      "x2": 6,
+      "y2": 10
+     },
+     {
+      "id": 651,
+      "x1": 6,
+      "y1": 10,
+      "x2": 10,
+      "y2": 10
+     },
+     {
+      "id": 652,
+      "x1": 10,
+      "y1": 10,
+      "x2": 18,
+      "y2": 10
+     }
+    ]
+   }
+  },
+  {
+   "name": "Taktgeber mit Timer 555",
+   "desc": "Astabile Kippstufe: Der Kondensator wird über R1 + R2 geladen und über R2 entladen. f ≈ 1,44 / ((R1 + 2·R2)·C) ≈ 1,5 Hz.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 653,
+      "type": "text",
+      "x": 0,
+      "y": -1,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Timer 555 als Blinker",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 654,
+      "type": "battery",
+      "x": 0,
+      "y": 14,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 9
+      },
+      "label": "U1"
+     },
+     {
+      "id": 655,
+      "type": "timer555",
+      "x": 14,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "IC1"
+     },
+     {
+      "id": 656,
+      "type": "resistor",
+      "x": 8,
+      "y": 5,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 1000
+      },
+      "label": "R1"
+     },
+     {
+      "id": 657,
+      "type": "resistor",
+      "x": 8,
+      "y": 11,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 10000
+      },
+      "label": "R2"
+     },
+     {
+      "id": 658,
+      "type": "capacitor",
+      "x": 8,
+      "y": 17,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "C": 4.7e-05
+      },
+      "label": "C1"
+     },
+     {
+      "id": 659,
+      "type": "aled",
+      "x": 20,
+      "y": 15,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "LED1"
+     },
+     {
+      "id": 660,
+      "type": "resistor",
+      "x": 20,
+      "y": 20,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 470
+      },
+      "label": "R3"
+     }
+    ],
+    "wires": [
+     {
+      "id": 661,
+      "x1": 0,
+      "y1": 12,
+      "x2": 0,
+      "y2": 2
+     },
+     {
+      "id": 662,
+      "x1": 0,
+      "y1": 2,
+      "x2": 8,
+      "y2": 2
+     },
+     {
+      "id": 663,
+      "x1": 14,
+      "y1": 2,
+      "x2": 14,
+      "y2": 8
+     },
+     {
+      "id": 664,
+      "x1": 8,
+      "y1": 2,
+      "x2": 14,
+      "y2": 2
+     },
+     {
+      "id": 665,
+      "x1": 8,
+      "y1": 2,
+      "x2": 8,
+      "y2": 3
+     },
+     {
+      "id": 666,
+      "x1": 8,
+      "y1": 7,
+      "x2": 8,
+      "y2": 8
+     },
+     {
+      "id": 667,
+      "x1": 8,
+      "y1": 8,
+      "x2": 8,
+      "y2": 9
+     },
+     {
+      "id": 668,
+      "x1": 8,
+      "y1": 8,
+      "x2": 11,
+      "y2": 8
+     },
+     {
+      "id": 669,
+      "x1": 11,
+      "y1": 8,
+      "x2": 11,
+      "y2": 10
+     },
+     {
+      "id": 670,
+      "x1": 8,
+      "y1": 13,
+      "x2": 8,
+      "y2": 14
+     },
+     {
+      "id": 671,
+      "x1": 8,
+      "y1": 14,
+      "x2": 8,
+      "y2": 15
+     },
+     {
+      "id": 672,
+      "x1": 8,
+      "y1": 14,
+      "x2": 10,
+      "y2": 14
+     },
+     {
+      "id": 673,
+      "x1": 11,
+      "y1": 12,
+      "x2": 10,
+      "y2": 12
+     },
+     {
+      "id": 674,
+      "x1": 10,
+      "y1": 14,
+      "x2": 11,
+      "y2": 14
+     },
+     {
+      "id": 675,
+      "x1": 10,
+      "y1": 12,
+      "x2": 10,
+      "y2": 14
+     },
+     {
+      "id": 676,
+      "x1": 0,
+      "y1": 16,
+      "x2": 0,
+      "y2": 24
+     },
+     {
+      "id": 677,
+      "x1": 0,
+      "y1": 24,
+      "x2": 8,
+      "y2": 24
+     },
+     {
+      "id": 678,
+      "x1": 8,
+      "y1": 24,
+      "x2": 14,
+      "y2": 24
+     },
+     {
+      "id": 679,
+      "x1": 8,
+      "y1": 19,
+      "x2": 8,
+      "y2": 24
+     },
+     {
+      "id": 680,
+      "x1": 14,
+      "y1": 24,
+      "x2": 20,
+      "y2": 24
+     },
+     {
+      "id": 681,
+      "x1": 14,
+      "y1": 16,
+      "x2": 14,
+      "y2": 24
+     },
+     {
+      "id": 682,
+      "x1": 17,
+      "y1": 12,
+      "x2": 20,
+      "y2": 12
+     },
+     {
+      "id": 683,
+      "x1": 20,
+      "y1": 12,
+      "x2": 20,
+      "y2": 13
+     },
+     {
+      "id": 684,
+      "x1": 20,
+      "y1": 17,
+      "x2": 20,
+      "y2": 18
+     },
+     {
+      "id": 685,
+      "x1": 20,
+      "y1": 22,
+      "x2": 20,
+      "y2": 24
+     }
+    ]
+   }
+  },
+  {
+   "name": "Selbstinduktion: verzögertes Aufleuchten",
+   "desc": "Klassischer Versuch: Die Lampe in Reihe mit der Spule leuchtet beim Einschalten später auf als die Lampe mit dem Widerstand.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 686,
+      "type": "text",
+      "x": 2,
+      "y": 0,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Schalter schließen und beide Lampen beobachten",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 687,
+      "type": "battery",
+      "x": 2,
+      "y": 10,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 6
+      },
+      "label": "U1"
+     },
+     {
+      "id": 688,
+      "type": "aswitch",
+      "x": 6,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "S1"
+     },
+     {
+      "id": 689,
+      "type": "inductor",
+      "x": 12,
+      "y": 8,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "L": 20,
+       "R": 10
+      },
+      "label": "L1"
+     },
+     {
+      "id": 690,
+      "type": "lamp",
+      "x": 12,
+      "y": 14,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "Un": 6,
+       "Pn": 0.5
+      },
+      "label": "La1"
+     },
+     {
+      "id": 691,
+      "type": "resistor",
+      "x": 20,
+      "y": 8,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "R": 10
+      },
+      "label": "R1"
+     },
+     {
+      "id": 692,
+      "type": "lamp",
+      "x": 20,
+      "y": 14,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "Un": 6,
+       "Pn": 0.5
+      },
+      "label": "La2"
+     }
+    ],
+    "wires": [
+     {
+      "id": 693,
+      "x1": 2,
+      "y1": 8,
+      "x2": 2,
+      "y2": 4
+     },
+     {
+      "id": 694,
+      "x1": 2,
+      "y1": 4,
+      "x2": 4,
+      "y2": 4
+     },
+     {
+      "id": 695,
+      "x1": 8,
+      "y1": 4,
+      "x2": 12,
+      "y2": 4
+     },
+     {
+      "id": 696,
+      "x1": 20,
+      "y1": 4,
+      "x2": 20,
+      "y2": 6
+     },
+     {
+      "id": 697,
+      "x1": 12,
+      "y1": 4,
+      "x2": 20,
+      "y2": 4
+     },
+     {
+      "id": 698,
+      "x1": 12,
+      "y1": 4,
+      "x2": 12,
+      "y2": 6
+     },
+     {
+      "id": 699,
+      "x1": 12,
+      "y1": 10,
+      "x2": 12,
+      "y2": 12
+     },
+     {
+      "id": 700,
+      "x1": 20,
+      "y1": 10,
+      "x2": 20,
+      "y2": 12
+     },
+     {
+      "id": 701,
+      "x1": 2,
+      "y1": 12,
+      "x2": 2,
+      "y2": 18
+     },
+     {
+      "id": 702,
+      "x1": 2,
+      "y1": 18,
+      "x2": 12,
+      "y2": 18
+     },
+     {
+      "id": 703,
+      "x1": 20,
+      "y1": 18,
+      "x2": 20,
+      "y2": 16
+     },
+     {
+      "id": 704,
+      "x1": 12,
+      "y1": 18,
+      "x2": 20,
+      "y2": 18
+     },
+     {
+      "id": 705,
+      "x1": 12,
+      "y1": 16,
+      "x2": 12,
+      "y2": 18
+     }
+    ]
+   }
+  },
+  {
+   "name": "Relais schaltet einen Motor",
+   "desc": "Ein kleiner Steuerstromkreis (5 V) schaltet über das Relais einen getrennten Laststromkreis (12 V) mit Motor.",
+   "mode": "analog",
+   "circuit": {
+    "comps": [
+     {
+      "id": 706,
+      "type": "text",
+      "x": 2,
+      "y": 0,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "text": "Steuerstromkreis links, Laststromkreis rechts",
+       "size": 14
+      },
+      "label": ""
+     },
+     {
+      "id": 707,
+      "type": "battery",
+      "x": 2,
+      "y": 10,
+      "rot": 3,
+      "mir": false,
+      "props": {
+       "U": 5
+      },
+      "label": "U1"
+     },
+     {
+      "id": 708,
+      "type": "aswitch",
+      "x": 6,
+      "y": 4,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "S1"
+     },
+     {
+      "id": 709,
+      "type": "relay",
+      "x": 14,
+      "y": 8,
+      "rot": 0,
+      "mir": false,
+      "props": {},
+      "label": "K1"
+     },
+     {
+      "id": 710,
+      "type": "battery",
+      "x": 28,
+      "y": 10,
+      "rot": 1,
+      "mir": false,
+      "props": {
+       "U": 12
+      },
+      "label": "U2"
+     },
+     {
+      "id": 711,
+      "type": "motor",
+      "x": 22,
+      "y": 10,
+      "rot": 1,
+      "mir": false,
+      "props": {},
+      "label": "M1"
+     }
+    ],
+    "wires": [
+     {
+      "id": 712,
+      "x1": 2,
+      "y1": 8,
+      "x2": 2,
+      "y2": 4
+     },
+     {
+      "id": 713,
+      "x1": 2,
+      "y1": 4,
+      "x2": 4,
+      "y2": 4
+     },
+     {
+      "id": 714,
+      "x1": 8,
+      "y1": 4,
+      "x2": 12,
+      "y2": 4
+     },
+     {
+      "id": 715,
+      "x1": 12,
+      "y1": 4,
+      "x2": 12,
+      "y2": 7
+     },
+     {
+      "id": 716,
+      "x1": 12,
+      "y1": 9,
+      "x2": 12,
+      "y2": 14
+     },
+     {
+      "id": 717,
+      "x1": 12,
+      "y1": 14,
+      "x2": 2,
+      "y2": 14
+     },
+     {
+      "id": 718,
+      "x1": 2,
+      "y1": 14,
+      "x2": 2,
+      "y2": 12
+     },
+     {
+      "id": 719,
+      "x1": 16,
+      "y1": 7,
+      "x2": 22,
+      "y2": 7
+     },
+     {
+      "id": 720,
+      "x1": 22,
+      "y1": 7,
+      "x2": 22,
+      "y2": 8
+     },
+     {
+      "id": 721,
+      "x1": 22,
+      "y1": 12,
+      "x2": 24,
+      "y2": 12
+     },
+     {
+      "id": 722,
+      "x1": 24,
+      "y1": 12,
+      "x2": 24,
+      "y2": 6
+     },
+     {
+      "id": 723,
+      "x1": 24,
+      "y1": 6,
+      "x2": 28,
+      "y2": 6
+     },
+     {
+      "id": 724,
+      "x1": 28,
+      "y1": 6,
+      "x2": 28,
+      "y2": 8
+     },
+     {
+      "id": 725,
+      "x1": 16,
+      "y1": 9,
+      "x2": 17,
+      "y2": 9
+     },
+     {
+      "id": 726,
+      "x1": 17,
+      "y1": 9,
+      "x2": 17,
+      "y2": 15
+     },
+     {
+      "id": 727,
+      "x1": 17,
+      "y1": 15,
+      "x2": 28,
+      "y2": 15
+     },
+     {
+      "id": 728,
+      "x1": 28,
+      "y1": 15,
+      "x2": 28,
+      "y2": 12
+     }
+    ]
+   }
+  },
+  {
+   "name": "Addition zweier Zahlen",
+   "desc": "Lädt zwei Zahlen aus dem Speicher, addiert sie und legt das Ergebnis wieder im Speicher ab.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Addition zweier Zahlen aus dem Speicher\n\tLDA zahl1\t; A := RAM[zahl1]\n\tADD zahl2\t; A := A + RAM[zahl2]\n\tSTA summe\t; RAM[summe] := A\n\tOUT\t\t; Ergebnis ausgeben\n\tHLT\n\nzahl1:\tDB 23\nzahl2:\tDB 19\nsumme:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Countdown mit Schleife",
+   "desc": "Zählt von 10 bis 0 herunter und gibt jeden Wert aus. Zeigt bedingte Sprünge und das Zero-Flag.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Countdown von 10 bis 0\n\tLDA #10\nloop:\tOUT\t\t; Wert ausgeben\n\tDEC\t\t; A := A - 1, setzt Z\n\tJNZ loop\t; solange A ≠ 0\n\tOUT\n\tHLT\n"
+   }
+  },
+  {
+   "name": "Multiplikation durch Addition",
+   "desc": "Berechnet 6 · 7 durch wiederholte Addition – so multiplizieren einfache Prozessoren ohne Multiplizierwerk.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Multiplikation faktor * zaehler durch wiederholte Addition\n\tLDA #0\n\tSTA erg\nschleife:\n\tLDA zaehler\t; setzt Z, wenn zaehler = 0\n\tJZ fertig\n\tDEC\n\tSTA zaehler\n\tLDA erg\n\tADD faktor\n\tSTA erg\n\tJMP schleife\nfertig:\tLDA erg\n\tOUT\n\tHLT\n\nfaktor:\tDB 6\nzaehler: DB 7\nerg:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Unterprogramm mit CALL und RET",
+   "desc": "Ein Unterprogramm verdoppelt den Akku. Die Rücksprungadresse liegt auf dem Stapel (beobachte SP und das Ende des RAM).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Unterprogramm-Aufruf mit Stapel\n\tLDA #5\n\tCALL verdoppeln\n\tOUT\t\t; 10\n\tCALL verdoppeln\n\tOUT\t\t; 20\n\tHLT\n\nverdoppeln:\n\tSTA tmp\n\tADD tmp\n\tRET\n\ntmp:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Eingabe verarbeiten",
+   "desc": "Liest die Eingabeschalter, addiert 1 und gibt das Ergebnis aus – in einer Endlosschleife. Schalter unter „Eingabe“ antippen.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Echo: Ausgabe = Eingabe + 1\nloop:\tIN\n\tADD #1\n\tOUT\n\tJMP loop\n"
+   }
+  },
+  {
+   "name": "Größere von zwei Zahlen",
+   "desc": "Vergleicht zwei Zahlen mit CMP und dem Carry-Flag und gibt die größere aus.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Maximum von a und b\n\tLDA a\n\tCMP b\t\t; A - b: C = 1, wenn a < b\n\tJC nimm_b\n\tOUT\n\tHLT\nnimm_b:\tLDA b\n\tOUT\n\tHLT\n\na:\tDB 37\nb:\tDB 58\n"
+   }
+  },
+  {
+   "name": "Lauflicht",
+   "desc": "Ein einzelnes Licht wandert mit SHL über die Ausgabe-LEDs. Nach 8 Schritten ist A = 0 – dann beginnt es von vorn. Gut mit „Start“ und mittlerer Geschwindigkeit.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Lauflicht mit Linksschieben\nstart:\tLDA #1\nloop:\tOUT\n\tSHL\t\t; A := A · 2, setzt Z bei 0\n\tJNZ loop\t; nach dem 8. Schieben ist A = 0\n\tJMP start\n"
+   }
+  },
+  {
+   "name": "Lauflicht hin und zurück (eigener Befehl SHR)",
+   "desc": "Nutzt den selbst gebauten Befehl SHR (Opcode $16, im Reiter „Befehlssatz“ zu sehen). Daran lässt sich zeigen, wie man mit Torsteuerung einen neuen Befehl ergänzt.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Lauflicht hin und zurück\n; SHR ist ein selbst gebauter Befehl (siehe Befehlssatz, Opcode $16)\n\tLDA #1\nlinks:\tOUT\n\tSHL\n\tCMP #$80\n\tJNZ links\nrechts:\tOUT\n\tSHR\n\tCMP #1\n\tJNZ rechts\n\tJMP links\n",
+    "isa": [
+     {
+      "op": 0,
+      "mn": "NOP",
+      "mode": "none",
+      "desc": "keine Operation",
+      "steps": [],
+      "lock": true
+     },
+     {
+      "op": 1,
+      "mn": "LDA",
+      "mode": "imm",
+      "desc": "A := n (Konstante laden, setzt Z und N)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "B",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 2,
+      "mn": "LDA",
+      "mode": "adr",
+      "desc": "A := RAM[adr] (aus Speicher laden, setzt Z und N)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "B",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 3,
+      "mn": "STA",
+      "mode": "adr",
+      "desc": "RAM[adr] := A (in Speicher schreiben)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "A",
+        "dst": [
+         "DR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 1,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 4,
+      "mn": "ADD",
+      "mode": "imm",
+      "desc": "A := A + n",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "ADD",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 5,
+      "mn": "ADD",
+      "mode": "adr",
+      "desc": "A := A + RAM[adr]",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "ADD",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 6,
+      "mn": "SUB",
+      "mode": "imm",
+      "desc": "A := A − n",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 7,
+      "mn": "SUB",
+      "mode": "adr",
+      "desc": "A := A − RAM[adr]",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 8,
+      "mn": "AND",
+      "mode": "imm",
+      "desc": "A := A ∧ n (bitweise)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "AND",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 9,
+      "mn": "OR",
+      "mode": "imm",
+      "desc": "A := A ∨ n (bitweise)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "OR",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 10,
+      "mn": "XOR",
+      "mode": "imm",
+      "desc": "A := A ⊕ n (bitweise)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "XOR",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 11,
+      "mn": "INC",
+      "mode": "none",
+      "desc": "A := A + 1",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "INC",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 12,
+      "mn": "DEC",
+      "mode": "none",
+      "desc": "A := A − 1",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "DEC",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 13,
+      "mn": "CMP",
+      "mode": "imm",
+      "desc": "Flags setzen nach A − n (A bleibt)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 14,
+      "mn": "CMP",
+      "mode": "adr",
+      "desc": "Flags setzen nach A − RAM[adr]",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SUB",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 15,
+      "mn": "SHL",
+      "mode": "none",
+      "desc": "A um ein Bit nach links schieben (·2)",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SHL",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 16,
+      "mn": "JMP",
+      "mode": "adr",
+      "desc": "Sprung nach adr",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 17,
+      "mn": "JZ",
+      "mode": "adr",
+      "desc": "Sprung, wenn Z = 1 (Ergebnis war 0)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "Z",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 18,
+      "mn": "JNZ",
+      "mode": "adr",
+      "desc": "Sprung, wenn Z = 0",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "NZ",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 19,
+      "mn": "JC",
+      "mode": "adr",
+      "desc": "Sprung, wenn C = 1 (Übertrag)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "C",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 20,
+      "mn": "JNC",
+      "mode": "adr",
+      "desc": "Sprung, wenn C = 0",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "NC",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 21,
+      "mn": "JN",
+      "mode": "adr",
+      "desc": "Sprung, wenn N = 1 (Ergebnis negativ)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "N",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 22,
+      "mn": "SHR",
+      "mode": "none",
+      "desc": "A um ein Bit nach rechts schieben (:2) – selbst gebauter Befehl",
+      "steps": [
+       {
+        "src": "ALU",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "SHR",
+        "flags": 1,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": false
+     },
+     {
+      "op": 24,
+      "mn": "OUT",
+      "mode": "none",
+      "desc": "Ausgabe := A",
+      "steps": [
+       {
+        "src": "A",
+        "dst": [
+         "OUT"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 25,
+      "mn": "IN",
+      "mode": "none",
+      "desc": "A := Eingabe",
+      "steps": [
+       {
+        "src": "IN",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 26,
+      "mn": "PUSH",
+      "mode": "none",
+      "desc": "A auf den Stapel legen",
+      "steps": [
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [
+         "SP-"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "A",
+        "dst": [
+         "DR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 1,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 27,
+      "mn": "POP",
+      "mode": "none",
+      "desc": "A vom Stapel holen",
+      "steps": [
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "SP+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "A"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 28,
+      "mn": "CALL",
+      "mode": "adr",
+      "desc": "Unterprogramm aufrufen (Rücksprungadresse auf den Stapel)",
+      "steps": [
+       {
+        "src": "PC",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "PC+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "B"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [
+         "SP-"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "PC",
+        "dst": [
+         "DR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 1,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "B",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 29,
+      "mn": "RET",
+      "mode": "none",
+      "desc": "Rücksprung aus dem Unterprogramm",
+      "steps": [
+       {
+        "src": "SP",
+        "dst": [
+         "MAR"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "",
+        "dst": [],
+        "rd": 1,
+        "wr": 0,
+        "inc": [
+         "SP+"
+        ],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       },
+       {
+        "src": "DR",
+        "dst": [
+         "PC"
+        ],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 0
+       }
+      ],
+      "lock": true
+     },
+     {
+      "op": 255,
+      "mn": "HLT",
+      "mode": "none",
+      "desc": "Programm anhalten",
+      "steps": [
+       {
+        "src": "",
+        "dst": [],
+        "rd": 0,
+        "wr": 0,
+        "inc": [],
+        "alu": "",
+        "flags": 0,
+        "cond": "",
+        "halt": 1
+       }
+      ],
+      "lock": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "Fibonacci-Zahlen",
+   "desc": "Gibt 1, 1, 2, 3, 5, 8, … aus, bis die nächste Zahl nicht mehr in 8 Bit passt. Das Carry-Flag erkennt den Überlauf (letzte Ausgabe: 144).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Fibonacci-Folge bis zum 8-Bit-Überlauf\n\tLDA #1\n\tSTA a\n\tSTA b\nloop:\tLDA a\n\tOUT\n\tADD b\t\t; nächste Zahl = a + b\n\tJC ende\t\t; Übertrag: passt nicht mehr in 8 Bit\n\tSTA t\n\tLDA b\n\tSTA a\t\t; a := b\n\tLDA t\n\tSTA b\t\t; b := a + b\n\tJMP loop\nende:\tHLT\n\na:\tDB 0\nb:\tDB 0\nt:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Summe 1 + 2 + … + n",
+   "desc": "Addiert alle Zahlen von 1 bis n (hier n = 10, Ergebnis 55) mit einer Zählschleife. Vergleich mit der Gauß-Formel n(n+1)/2 bietet sich an.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Summe der Zahlen von 1 bis n\n\tLDA n\n\tSTA i\nloop:\tLDA summe\n\tADD i\n\tSTA summe\t; summe := summe + i\n\tLDA i\n\tDEC\n\tSTA i\t\t; i := i - 1\n\tJNZ loop\t; Flags stammen noch von DEC\n\tLDA summe\n\tOUT\t\t; 55\n\tHLT\n\nn:\tDB 10\ni:\tDB 0\nsumme:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Quadratzahlen",
+   "desc": "Gibt 1, 4, 9, 16, … , 225 aus – ohne Multiplikation: Jede Quadratzahl entsteht durch Addition der nächsten ungeraden Zahl (n² = 1 + 3 + 5 + … ).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Quadratzahlen als Summe ungerader Zahlen\n\tLDA #1\n\tSTA ung\n\tLDA #0\nloop:\tADD ung\t\t; nächste Quadratzahl\n\tJC ende\t\t; > 255: fertig\n\tOUT\n\tSTA q\n\tLDA ung\n\tADD #2\n\tSTA ung\t\t; nächste ungerade Zahl\n\tLDA q\n\tJMP loop\nende:\tHLT\n\nung:\tDB 0\nq:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Division mit Rest",
+   "desc": "Berechnet 47 : 5 = 9 Rest 2 durch wiederholte Subtraktion. Der Quotient wird ausgegeben, der Rest steht im Speicher (Marke „rest“).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Ganzzahlige Division durch wiederholte Subtraktion\n\tLDA dividend\nloop:\tCMP divisor\t; C = 1, wenn A < divisor\n\tJC fertig\n\tSUB divisor\n\tSTA rest\n\tLDA quot\n\tINC\n\tSTA quot\t; quot := quot + 1\n\tLDA rest\n\tJMP loop\nfertig:\tSTA rest\n\tLDA quot\n\tOUT\t\t; Quotient 9\n\tHLT\n\ndividend: DB 47\ndivisor: DB 5\nquot:\tDB 0\nrest:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Gerade oder ungerade?",
+   "desc": "Prüft mit der Bitmaske AND #1 das niedrigste Bit der Eingabe. Ungerade → alle LEDs an, gerade → alle aus. Endlosschleife: Eingabe während des Laufs ändern.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Gerade/ungerade über Bitmaske\nloop:\tIN\n\tAND #1\t\t; nur Bit 0 bleibt übrig\n\tJZ gerade\n\tLDA #$FF\t; ungerade: alle LEDs an\n\tOUT\n\tJMP loop\ngerade:\tLDA #0\n\tOUT\n\tJMP loop\n"
+   }
+  },
+  {
+   "name": "Einsen zählen",
+   "desc": "Zählt, wie viele Bits der Eingabe 1 sind. SHL schiebt das höchste Bit ins Carry-Flag, JNC wertet es aus.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Anzahl der gesetzten Bits der Eingabe\nloop:\tIN\n\tSTA x\n\tLDA #0\n\tSTA anz\n\tLDA #8\n\tSTA k\t\t; 8 Bits prüfen\nbit:\tLDA x\n\tSHL\t\t; höchstes Bit → Carry\n\tSTA x\n\tJNC null\n\tLDA anz\n\tINC\n\tSTA anz\nnull:\tLDA k\n\tDEC\n\tSTA k\n\tJNZ bit\n\tLDA anz\n\tOUT\n\tJMP loop\n\nx:\tDB 0\nanz:\tDB 0\nk:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Zahlenraten",
+   "desc": "Die Schüler stellen an der Eingabe eine Zahl ein. Ausgabe: rechte LEDs = zu klein, linke LEDs = zu groß, alle = richtig (geheime Zahl im Speicher: 42).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Zahlenraten mit CMP\n; %00001111 = zu klein, %11110000 = zu groß, %11111111 = richtig\nloop:\tIN\n\tCMP geheim\n\tJZ richtig\n\tJC klein\t; Eingabe < geheim\n\tLDA #%11110000\n\tOUT\n\tJMP loop\nklein:\tLDA #%00001111\n\tOUT\n\tJMP loop\nrichtig: LDA #$FF\n\tOUT\n\tJMP loop\n\ngeheim:\tDB 42\n"
+   }
+  },
+  {
+   "name": "Stapel: Reihenfolge umkehren",
+   "desc": "Legt drei Zahlen mit PUSH auf den Stapel und holt sie mit POP zurück – in umgekehrter Reihenfolge (LIFO). Beobachte SP und das Ende des RAM ($FD–$FF).",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Last In – First Out\n\tLDA w1\n\tPUSH\n\tLDA w2\n\tPUSH\n\tLDA w3\n\tPUSH\n\tPOP\n\tSTA r1\t\t; bekommt w3\n\tPOP\n\tSTA r2\n\tPOP\n\tSTA r3\t\t; bekommt w1\n\tHLT\n\nw1:\tDB 1\nw2:\tDB 2\nw3:\tDB 3\nr1:\tDB 0\nr2:\tDB 0\nr3:\tDB 0\n"
+   }
+  },
+  {
+   "name": "Programm verändert sich selbst",
+   "desc": "Addiert eine Liste von 5 Zahlen (Ergebnis 100). Weil Befehle und Daten im selben Speicher liegen (Von-Neumann), kann das Programm die Adresse im eigenen ADD-Befehl erhöhen – beobachte die Zelle hinter „lese“.",
+   "mode": "cpu",
+   "cpu": {
+    "src": "; Summe einer Liste – das Programm verändert sich selbst!\nloop:\tLDA summe\nlese:\tADD liste\t; dieser Operand wird jedes Mal erhöht\n\tSTA summe\n\tLDA lese+1\t; Adresse aus dem Befehl lesen ...\n\tINC\t\t; ... um 1 erhöhen ...\n\tSTA lese+1\t; ... und zurückschreiben\n\tLDA zaehler\n\tDEC\n\tSTA zaehler\n\tJNZ loop\n\tLDA summe\n\tOUT\t\t; 100\n\tHLT\n\nzaehler: DB 5\nsumme:\tDB 0\nliste:\tDB 12, 7, 30, 1, 50\n"
+   }
+  },
+  {
+   "name": "Pseudocode: Summe 1 bis 10",
+   "desc": "WHILE-Schleife mit Zähler. Vergleiche die Übersetzung mit und ohne Optimierung: Die Schleife wird umgedreht und spart pro Durchlauf einen Sprung.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Summe der Zahlen von 1 bis 10\nsumme := 0\ni := 10\nWHILE i <> 0 DO\n  summe := summe + i\n  i := i - 1\nEND WHILE\nOUTPUT summe      // 55\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Countdown",
+   "desc": "FOR … DOWNTO: Zählschleife rückwärts. Im Assembler wird daraus SUB/DEC, ein Vergleich und ein bedingter Sprung.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Countdown mit einer Zählschleife\nFOR i := 10 DOWNTO 0\n  OUTPUT i\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Einmaleins der 7",
+   "desc": "Der Operator * wird zu einem Aufruf des Unterprogramms _mul (wiederholte Addition) – ein einziges Zeichen in der Hochsprache, viele Befehle im Rechner.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Kleines Einmaleins der 7\nFOR i := 1 TO 10\n  OUTPUT 7 * i\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Division mit Rest",
+   "desc": "DIV und MOD nutzen das Unterprogramm _div (wiederholte Subtraktion). 47 DIV 5 = 9, 47 MOD 5 = 2.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Ganzzahlige Division\na := 47\nb := 5\nOUTPUT a DIV b    // 9\nOUTPUT a MOD b    // 2\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: ggT nach Euklid",
+   "desc": "WHILE mit IF … ELSE: der klassische Algorithmus von Euklid mit Subtraktion. Ergebnis für 84 und 36: 12.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Größter gemeinsamer Teiler (Euklid)\na := 84\nb := 36\nWHILE a <> b DO\n  IF a > b THEN\n    a := a - b\n  ELSE\n    b := b - a\n  END IF\nEND WHILE\nOUTPUT a          // 12\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Primzahlen",
+   "desc": "Verschachtelte Schleifen, MOD und eine logische Verknüpfung mit AND. Gibt alle Primzahlen bis 60 aus. Mit hoher Geschwindigkeit laufen lassen!",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Primzahlen bis 60\nFOR n := 2 TO 60\n  prim := TRUE\n  t := 2\n  WHILE t * t <= n AND prim DO\n    IF n MOD t = 0 THEN\n      prim := FALSE\n    END IF\n    t := t + 1\n  END WHILE\n  IF prim THEN\n    OUTPUT n\n  END IF\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Fibonacci",
+   "desc": "REPEAT … UNTIL: Die Schleife endet, wenn die nächste Zahl wegen des 8-Bit-Überlaufs kleiner wird (nach 233).",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Fibonacci-Zahlen bis zum Überlauf\na := 0\nb := 1\nREPEAT\n  OUTPUT b\n  c := a + b\n  a := b\n  b := c\nUNTIL b < a       // Überlauf: die neue Zahl ist kleiner\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Bubblesort",
+   "desc": "Sortiert ein Feld (ARRAY). Weil der Rechner keine indirekte Adressierung kennt, schreibt das Programm die Adresse von z[j] zur Laufzeit in seine eigenen Befehle – Von-Neumann in Reinform.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Bubblesort: sortiert fünf Zahlen\nARRAY z := [42, 7, 99, 13, 58]\nFOR i := 0 TO 3\n  FOR j := 0 TO 3 - i\n    IF z[j] > z[j + 1] THEN\n      tmp := z[j]\n      z[j] := z[j + 1]\n      z[j + 1] := tmp\n    END IF\n  END FOR\nEND FOR\nFOR i := 0 TO 4\n  OUTPUT z[i]\nEND FOR\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Lauflicht mit Prozedur",
+   "desc": "PROCEDURE und CALL werden zu CALL und RET mit Rücksprungadresse auf dem Stapel. << 1 wird zu SHL.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Lauflicht mit einer Warte-Prozedur\nPROCEDURE warten\n  FOR w := 1 TO 3\n  END FOR\nEND PROCEDURE\n\nx := 1\nREPEAT\n  OUTPUT x\n  CALL warten\n  x := x << 1\nUNTIL x = 0\n",
+     "opt": true
+    }
+   }
+  },
+  {
+   "name": "Pseudocode: Zahlenraten",
+   "desc": "Endlosschleife mit INPUT und IF … ELSE IF … ELSE. Während des Laufs die Eingabe ändern: rechts = zu klein, links = zu groß, alle = richtig.",
+   "mode": "cpu",
+   "cpu": {
+    "hl": {
+     "src": "// Zahlenraten: Eingabe einstellen!\ngeheim := 42\nWHILE TRUE DO\n  rate := INPUT\n  IF rate < geheim THEN\n    OUTPUT %00001111\n  ELSE IF rate > geheim THEN\n    OUTPUT %11110000\n  ELSE\n    OUTPUT 255\n  END IF\nEND WHILE\n",
+     "opt": true
+    }
+   }
+  }
+ ],
+ "modules": [
+  {
+   "id": "mmw6szqh1h3jp",
+   "exKey": "ex-ha",
+   "name": "Halbaddierer",
+   "sym": "HA",
+   "circuit": {
+    "comps": [
+     {
+      "id": 125,
+      "type": "switch",
+      "x": 3,
+      "y": 5,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "A"
+     },
+     {
+      "id": 126,
+      "type": "switch",
+      "x": 3,
+      "y": 11,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "on": 0
+      },
+      "label": "B"
+     },
+     {
+      "id": 127,
+      "type": "xor",
+      "x": 12,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G1"
+     },
+     {
+      "id": 128,
+      "type": "and",
+      "x": 12,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "n": 2
+      },
+      "label": "G2"
+     },
+     {
+      "id": 129,
+      "type": "led",
+      "x": 18,
+      "y": 6,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "S"
+     },
+     {
+      "id": 130,
+      "type": "led",
+      "x": 18,
+      "y": 12,
+      "rot": 0,
+      "mir": false,
+      "props": {
+       "color": "red"
+      },
+      "label": "C"
+     }
+    ],
+    "wires": [
+     {
+      "id": 131,
+      "x1": 5,
+      "y1": 5,
+      "x2": 7,
+      "y2": 5
+     },
+     {
+      "id": 132,
+      "x1": 7,
+      "y1": 5,
+      "x2": 10,
+      "y2": 5
+     },
+     {
+      "id": 133,
+      "x1": 7,
+      "y1": 5,
+      "x2": 7,
+      "y2": 11
+     },
+     {
+      "id": 134,
+      "x1": 7,
+      "y1": 11,
+      "x2": 10,
+      "y2": 11
+     },
+     {
+      "id": 135,
+      "x1": 5,
+      "y1": 11,
+      "x2": 6,
+      "y2": 11
+     },
+     {
+      "id": 136,
+      "x1": 6,
+      "y1": 11,
+      "x2": 6,
+      "y2": 7
+     },
+     {
+      "id": 137,
+      "x1": 6,
+      "y1": 7,
+      "x2": 10,
+      "y2": 7
+     },
+     {
+      "id": 138,
+      "x1": 6,
+      "y1": 11,
+      "x2": 6,
+      "y2": 13
+     },
+     {
+      "id": 139,
+      "x1": 6,
+      "y1": 13,
+      "x2": 10,
+      "y2": 13
+     },
+     {
+      "id": 140,
+      "x1": 14,
+      "y1": 6,
+      "x2": 16,
+      "y2": 6
+     },
+     {
+      "id": 141,
+      "x1": 14,
+      "y1": 12,
+      "x2": 16,
+      "y2": 12
+     }
+    ]
+   },
+   "ins": [
+    "A",
+    "B"
+   ],
+   "outs": [
+    "S",
+    "C"
+   ],
+   "ver": 1
+  }
+ ]
+}
