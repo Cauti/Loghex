@@ -1579,7 +1579,7 @@ def('buzzer', {
     R.lead(-2, 0, -0.9, 0, 0); R.lead(0.9, 0, 2, 0, 1);
     const on = R.live && Math.abs(c.st.pinI ? c.st.pinI[0] : 0) > 0.005;
     ctx.beginPath(); ctx.arc(0, 0.2, 0.9, Math.PI, 0); ctx.closePath(); body(ctx, on ? '#ffe8a8' : COL.body);
-    if (on) { ctx.strokeStyle = '#e67700'; ctx.lineWidth = 0.08; const k = (performance.now() / 300) % 1; for (const r of [0.4, 0.8]) { ctx.globalAlpha = 1 - ((r / 1.2 + k) % 1); ctx.beginPath(); ctx.arc(0, 0.2, 1.1 + r, -2.4, -0.74); ctx.stroke(); } ctx.globalAlpha = 1; }
+    if (on) { ctx.strokeStyle = '#e67700'; ctx.lineWidth = 0.08; const k = (AT / 300) % 1; for (const r of [0.4, 0.8]) { ctx.globalAlpha = 1 - ((r / 1.2 + k) % 1); ctx.beginPath(); ctx.arc(0, 0.2, 1.1 + r, -2.4, -0.74); ctx.stroke(); } ctx.globalAlpha = 1; }
   },
   meas(c) { const m = meas2(c); m.st = Math.abs(c.st.pinI ? c.st.pinI[0] : 0) > 0.005 ? 'summt' : 'still'; return m; },
   info: '<b>Summer</b>: gibt einen Ton aus, sobald ein Strom von mehr als 5 mA fließt (Innenwiderstand 200 Ω). Der Ton lässt sich in den Einstellungen ein- und ausschalten.',
@@ -1591,7 +1591,7 @@ def('motor', {
   draw(ctx, c, R) {
     R.lead(-2, 0, -0.9, 0, 0); R.lead(0.9, 0, 2, 0, 1);
     circ0(ctx, 0, 0, 0.9); body(ctx);
-    const I = R.live && c.st.pinI ? c.st.pinI[0] : 0, now = performance.now();
+    const I = R.live && c.st.pinI ? c.st.pinI[0] : 0, now = AT;
     c.st.ang = (c.st.ang || 0) + I * 60 * ((now - (c.st.lt || now)) / 1000); c.st.lt = now;
     ctx.save(); ctx.rotate(c.st.ang); ctx.strokeStyle = '#c3cad6'; ctx.lineWidth = 0.1;
     for (let i = 0; i < 3; i++) { ctx.rotate(Math.PI * 2 / 3); ln(ctx, 0, 0, 0.7, 0); }
@@ -1879,13 +1879,14 @@ function dStepSync() {
 }
 function dFrame(dt) {
   getNet();
-  if (App.running) D.time += dt;
+  if (!App.running) return; // angehalten: Simulation komplett eingefroren (auch auf Eingaben)
+  D.time += dt;
   if (App.settings.slow) {
     D.acc += dt;
     let k = 0; while (D.acc > 0.3 && k++ < 3) { D.acc -= 0.3; dStepSync(); }
     if (D.acc > 1) D.acc = 0;
   } else D.stable = dSettle();
-  if (App.running) recSample(D.time);
+  recSample(D.time);
   let cf = false; for (let i = 0; i < D.nv.length; i++) if (D.nv[i] === 2) { cf = true; break; }
   D.conflict = cf;
 }
@@ -1971,7 +1972,7 @@ function aSolve(h) {
 function aFrame(dt) {
   const net = getNet(), cc = circ();
   const dyn = cc.comps.some(c => DEFS[c.type].dynamic);
-  if (App.running || App.aDirty) {
+  if (App.running) { // angehalten: auch nach Eingaben wird erst bei Fortsetzung gerechnet
     const simT = App.running ? Math.min(dt, 0.05) * App.settings.speed : 0;
     let hmax = 1e-3;
     for (const c of cc.comps) { const d = DEFS[c.type]; if (d.dtMax) hmax = Math.min(hmax, d.dtMax(c)); }
@@ -2572,14 +2573,16 @@ function updateStatus() {
 
 /* ================= Hauptschleife ================= */
 let lastT = performance.now();
+let AT = 0; // Animations-Uhr (ms): laeuft nur, solange die Simulation laeuft – Strom-, Summer- und Motor-Animation bleiben bei Pause stehen
 function frame(t) {
   const dt = Math.min(0.1, (t - lastT) / 1000); lastT = t;
+  if (App.running && (App.mode === 'digital' || App.mode === 'analog')) AT += dt * 1000;
   try {
     if (App.mode === 'pn') { soundUpdate(false); pnFrame(dt); }
     else if (App.mode === 'cpu') { soundUpdate(false); cpuFrame(dt); }
     else {
       if (App.mode === 'digital') dFrame(dt); else aFrame(dt);
-      if (App.mode === 'analog') {
+      if (App.mode === 'analog' && App.running) {
         const sgn = App.settings.flow === 'conv' ? 1 : -1;
         for (const w of circ().wires) if (w.cur) { const a = Math.abs(w.cur); const sp = 14 * clamp(Math.log10(a / 1e-6), 0, 6.5); w.ph = (w.ph || 0) + Math.sign(w.cur) * sgn * sp * dt; }
       }
