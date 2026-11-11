@@ -85,6 +85,10 @@ body.task #status{top:auto;bottom:80px}
 body.task #hint{top:auto;bottom:80px}
 #cpuView{flex:1;display:flex;min-height:0}
 #cpuView[hidden]{display:none}
+.lvl{display:inline-flex;align-items:center;gap:2px;background:#eef1f6;border:1px solid var(--line);border-radius:10px;padding:3px}
+.lvl span{font-size:11.5px;color:#667085;font-weight:600;padding:0 6px 0 4px}
+.lvl button{border:0;background:transparent;font:600 13px var(--font,inherit);padding:6px 11px;border-radius:7px;color:#475467;cursor:pointer}
+.lvl button.on{background:#fff;color:#1f3f8a;box-shadow:0 1px 3px rgba(16,24,40,.15)}
 #cpuStage{flex:1;position:relative;min-width:0;background:#fbfcfe}
 #cpuCv{position:absolute;left:0;right:0;top:0;bottom:64px;width:100%;height:calc(100% - 64px)}
 .about{margin-top:18px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#f6faf8;text-align:center}
@@ -252,6 +256,34 @@ kbd{background:var(--chip);border:1px solid var(--line);border-bottom-width:2px;
 .excard:hover{border-color:var(--accent);background:#f4f8ff}
 .excard b{display:block;font-size:14.5px;margin-bottom:3px}
 .excard span{font-size:12.5px;color:var(--muted);line-height:1.4}
+.mbox.wide{max-width:980px}
+.kvtop{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:13.5px;margin-bottom:10px}
+.kvtop select{margin-left:4px;padding:5px;border:1px solid var(--line);border-radius:7px;font-size:13.5px}
+.kvvars{display:inline-flex;gap:4px;align-items:center}
+.kvv{width:46px;padding:5px;border:1px solid var(--line);border-radius:7px;font-size:13.5px;text-align:center}
+.kvseg{max-width:420px;margin-bottom:6px}
+.kvhint{font-size:12.5px;color:#667085;margin:4px 0 8px;line-height:1.45}
+.kvtouch{display:inline-block;touch-action:none;-webkit-user-select:none;user-select:none}
+.kvwrap{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+.kvttw{max-height:420px;overflow:auto}
+.kvtt th,.kvtt td{padding:2px 9px;font-size:13px}
+.kvsel{font-size:13px;min-height:20px;margin-top:4px;max-width:420px;color:#475467}
+.kvsel.bad{color:#c92a2a}.kvsel.good{color:#2b8a3e;font-weight:600}
+.btn[disabled]{opacity:.45}
+.kvgl{display:flex;flex-direction:column;gap:4px}
+.kvg{display:flex;align-items:center;gap:8px;font-size:14px}
+.kvn{display:inline-flex;width:22px;height:22px;border-radius:50%;color:#fff;font-weight:700;font-size:12px;align-items:center;justify-content:center}
+.kvz{color:#98a2b3;font-size:12px}
+.kvdel{padding:2px 9px}
+.kvgt{flex:0 1 260px;min-width:140px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:14px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.kvterm{display:flex;align-items:center;gap:8px;font-size:15px;font-family:ui-monospace,Menlo,Consolas,monospace}
+#kvTerm{flex:1;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;min-width:0}
+.kvgt.ok,#kvTerm.ok{border-color:#2b8a3e;background:#f4fcf5}.kvgt.bad,#kvTerm.bad{border-color:#e5383b;background:#fff8f8}.kvgt.warn,#kvTerm.warn{border-color:#f59f00;background:#fffcf0}
+.kvst{width:16px;font-weight:700;font-size:15px}.kvst.ok{color:#2b8a3e}.kvst.bad{color:#c92a2a}.kvst.warn{color:#e67700}
+.kvsym{align-items:center;margin:6px 0}.kvsym .btn{min-width:40px;justify-content:center;font-size:15px}
+.kvres{margin:6px 0}
+.kvm{font-size:13.5px;padding:6px 10px;border-radius:8px;margin:4px 0}
+.kvm.ok{background:#ebfbee;color:#2b8a3e}.kvm.bad{background:#fff5f5;color:#c92a2a}.kvm.warn{background:#fff9db;color:#8f5b00}
 .tt{border-collapse:collapse;font-variant-numeric:tabular-nums;margin:6px 0 12px}
 .tt th,.tt td{border:1px solid #cfd8e8;padding:4px 12px;text-align:center;font-size:14px}
 .tt th{background:#e8eefb}
@@ -318,6 +350,7 @@ textarea.share{width:100%;height:90px;font:12px ui-monospace,monospace;border:1p
 #gateBtns button{font:600 13px inherit;font-family:inherit;border:0;border-radius:6px;background:#eef3ff;color:#1f3f8a;padding:6px 10px;min-height:30px;cursor:pointer}
 #gateBtns button:hover{background:#dbe6ff}
 #gateBtns span{font-size:11.5px;color:#667085;padding:0 6px 0 2px}
+.msinfo{background:#eef8f3;border:1px solid #b9e3cf;border-radius:8px;padding:8px 10px;font-size:12.5px;margin:0 0 10px}
 #printArea{display:none}
 @media print{body>*:not(#printArea){display:none!important} #printArea{display:block!important;position:static} #printArea svg{width:100%;height:auto} html,body{overflow:visible;height:auto;background:#fff}}
 </style>
@@ -361,6 +394,7 @@ textarea.share{width:100%;height:90px;font:12px ui-monospace,monospace;border:1p
       <button class="tb" id="tRun" title="Simulation anhalten/fortsetzen"></button>
       <button class="tb" id="tRec" title="Messschreiber / Impulsdiagramm ein- und ausblenden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M5 15h3l2-6 3 9 2-5h4"/></svg><span>Messschreiber</span></button>
       <button class="tb primary" id="tTT" title="Wahrheitstabelle erzeugen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16M15 4v16"/></svg><span>Wahrheitstabelle</span></button>
+      <button class="tb" id="tKV" title="KV-Diagramm selbst ausfüllen und Päckchen bilden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 12h18M12 3v18"/><rect x="5.5" y="5.5" width="13" height="4.5" rx="2.2" stroke-width="1.6"/></svg><span>KV-Diagramm</span></button>
       <div class="tsep"></div>
       <button class="tb" id="tZo" title="Verkleinern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16 16l5 5"/></svg></button>
       <button class="tb" id="tZi" title="Vergrößern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M11 8v6M16 16l5 5"/></svg></button>
@@ -385,20 +419,21 @@ textarea.share{width:100%;height:90px;font:12px ui-monospace,monospace;border:1p
       <span><i class="dot" style="background:#fff;border:2px solid #e03131"></i>Loch (Defektelektron)</span>
       <span><i class="dot" style="background:#dbe8ff;border:1px solid #6f8fd0"></i>Phosphor (Donator)</span>
       <span><i class="dot" style="background:#ffe0de;border:1px solid #d0857f"></i>Bor (Akzeptor)</span>
+      <span><i class="dot" style="background:#5b7bd5;width:7px;height:7px"></i>Bindungselektron rückt ins Loch nach</span>
     </div>
     <div id="pnText" class="info"></div>
   </aside>
 </section>
 <section id="cpuView" hidden>
   <div id="cpuStage"><canvas id="cpuCv"></canvas>
-    <div id="cpuBar"><button class="tb" id="cReset" title="Register zurücksetzen, PC = 0">⟲ Reset</button><button class="tb" id="cStep" title="Genau einen Takt ausführen und warten (Leertaste)">⏭ Schritt</button><button class="tb" id="cInstr" title="Bis zum Ende des aktuellen Befehls">Befehl</button><button class="tb primary" id="cRun">▶ Start</button><div class="tsep"></div><input type="range" id="cSpeed" min="0" max="8" step="1" style="width:110px;accent-color:var(--accent)"><span id="cSpeedV" style="font-size:13px;min-width:86px"></span></div>
+    <div id="cpuBar"><div class="lvl" id="cLvl" role="group" aria-label="Ansicht"><span>Ansicht</span><button data-l="basic" title="Vereinfachte Darstellung: ein Bus, Rechenwerk als Block, Schritte = Befehl holen / ausführen">Anfänger</button><button data-l="pro" title="Vollständige Darstellung mit allen Registern, Busleitungen, Toren, Mikroschritten und allen Werkzeugen">Profi</button></div><div class="tsep"></div><button class="tb" id="cReset" title="Register zurücksetzen, PC = 0">⟲ Reset</button><button class="tb" id="cStep" title="Genau einen Takt ausführen und warten (Leertaste)">⏭ Schritt</button><button class="tb" id="cInstr" title="Bis zum Ende des aktuellen Befehls">Befehl</button><button class="tb primary" id="cRun">▶ Start</button><div class="tsep"></div><input type="range" id="cSpeed" min="0" max="8" step="1" style="width:110px;accent-color:var(--accent)"><span id="cSpeedV" style="font-size:13px;min-width:86px"></span></div>
     <div id="cpuStat"></div>
   </div>
   <div id="cpuSplit" title="Ziehen, um die Seitenleiste zu verbreitern (Doppelklick: Standardbreite)"></div>
   <aside id="cpuSide"><div class="seg" id="cpuTabs" style="grid-template-columns:repeat(5,auto)"><button data-t="ram">Speicher</button><button data-t="asm">Assembler</button><button data-t="hl">Pseudocode</button><button data-t="isa">Befehlssatz</button><button data-t="help">Hilfe</button></div><div id="cpuPanel"></div></aside>
 </section>
 <div id="modal" hidden><div class="mbox"><div class="mhead"><h2 id="mTitle"></h2><button class="x" id="mClose" aria-label="Schließen">×</button></div><div class="mbody" id="mBody"></div></div></div>
-<input type="file" id="fileIn" accept=".json,.yka,application/json,application/zip,application/octet-stream" hidden>
+<input type="file" id="fileIn" accept=".json,.yka,.ras,.rad,.mpd,application/json,application/zip,application/octet-stream,text/plain" hidden>
 <script>
 'use strict';
 /* ================= Kern: Zustand, Geometrie, Leitungen, Rückgängig ================= */
@@ -613,7 +648,7 @@ function cleanTask(t) {
     maxParts: t.maxParts ? cleanInt(t.maxParts, 1, 999, 0) : 0, lockTools: !!t.lockTools,
   };
 }
-const ALUSET = ['', 'ADD', 'SUB', 'AND', 'OR', 'XOR', 'NOT', 'INC', 'DEC', 'SHL', 'SHR', 'B'], CONDSET = ['', 'Z', 'NZ', 'C', 'NC', 'N'], INCSET = ['PC+', 'SP+', 'SP-'];
+const ALUSET = ['', 'ADD', 'SUB', 'AND', 'OR', 'XOR', 'NOT', 'INC', 'DEC', 'SHL', 'SHR', 'B', 'A'], CONDSET = ['', 'Z', 'NZ', 'C', 'NC', 'N', 'NN'], INCSET = ['PC+', 'SP+', 'SP-'];
 function cleanStep(s) {
   if (!isObj(s)) return null;
   return {
@@ -627,7 +662,8 @@ function cleanIsa(list) {
   for (const i of list.slice(0, 256)) {
     if (!isObj(i) || !/^[A-Za-z][A-Za-z0-9]{0,5}$/.test(i.mn || '') || !['none', 'imm', 'adr'].includes(i.mode) || !Array.isArray(i.steps)) return null;
     const op = cleanInt(i.op, 0, 255, -1); if (op < 0 || out.some(x => x.op === op)) return null;
-    out.push({ op, mn: i.mn.toUpperCase(), mode: i.mode, desc: cleanStr(i.desc, 200), steps: i.steps.slice(0, 16).map(cleanStep).filter(Boolean).map(ms), lock: !!i.lock });
+    const syn = typeof i.syn === 'string' && /^[A-Za-z][A-Za-z0-9 ,+\[\]]{0,23}$/.test(i.syn) ? i.syn : undefined;
+    out.push({ op, mn: i.mn.toUpperCase(), mode: i.mode, desc: cleanStr(i.desc, 200), steps: i.steps.slice(0, 16).map(cleanStep).filter(Boolean).map(ms), lock: !!i.lock, ...(syn ? { syn } : {}) });
   }
   return out;
 }
@@ -2315,6 +2351,7 @@ function updateToolbar() {
   const h = App.hist[App.mode] || { u: [], r: [] };
   $('#tUndo').disabled = !h.u.length; $('#tRedo').disabled = !h.r.length;
   $('#tTT').style.display = App.mode === 'digital' ? '' : 'none';
+  $('#tKV').style.display = App.mode === 'digital' ? '' : 'none';
   $('#tRun').innerHTML = App.running
     ? '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><span>Pause</span>'
     : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg><span>Start</span>';
@@ -3310,7 +3347,7 @@ Object.assign(INNER, {
   },
 });
 const CPUINNER = { ALU: 'cpu_alu', RW: 'cpu_alu', A: 'cpu_reg', B: 'cpu_reg', IR: 'cpu_reg', MAR: 'cpu_reg', DR: 'cpu_reg', OUT: 'cpu_reg', PC: 'cpu_cnt', SP: 'cpu_cnt', Z: 'cpu_flags', C: 'cpu_flags', N: 'cpu_flags', RAM: 'cpu_ram', ABUS: 'cpu_ram', DBUS: 'cpu_ram', CBUS: 'cpu_ram', IBUS: 'cpu_bus', GATE: 'cpu_bus', IN: 'cpu_bus', SW: 'cpu_ctrl', MP: 'cpu_ctrl' };
-const ALUCODE = { ADD: 0, SUB: 1, AND: 2, OR: 3, XOR: 4, NOT: 5, SHL: 6, SHR: 7, INC: 0, DEC: 1, B: 3 };
+const ALUCODE = { ADD: 0, SUB: 1, AND: 2, OR: 3, XOR: 4, NOT: 5, SHL: 6, SHR: 7, INC: 0, DEC: 1, B: 3, A: 3 };
 function openCpuInner(k) {
   const key = CPUINNER[k]; if (!key) { flashHint('Doppelklicke auf ein einzelnes Bauteil (z. B. ALU, Register, RAM).'); return; }
   if (App.editMod) finishEdit(false);
@@ -3320,7 +3357,7 @@ function openCpuInner(k) {
   if (key === 'cpu_alu') {
     const al = L && L.ms && L.ms.alu;
     o = { a: al ? L.ina : r.A, b: al ? L.inb : r.B, op: al ? ALUCODE[al] : 0 };
-    if (al === 'INC' || al === 'DEC') o.b = 1; if (al === 'B') o.a = 0;
+    if (al === 'INC' || al === 'DEC') o.b = 1; if (al === 'B') o.a = 0; if (al === 'A') o.b = 0;
     if (al) text += ` <b>Übernommen aus dem Rechner:</b> ${esc(ALUOPS2[al])} mit A = ${o.a}, B = ${o.b}.`;
   } else if (key === 'cpu_reg') {
     const nm = { A: 'Akkumulator A', B: 'Register B', IR: 'Befehlsregister IR', MAR: 'Adressregister MAR', DR: 'Datenregister DR', OUT: 'Ausgaberegister OUT' }[k];
@@ -3656,12 +3693,13 @@ function truthTable() {
   outs.forEach((c, k) => {
     const mt = []; rows.forEach((o, r) => { if (o[k]) mt.push(r); });
     h += `<h4 style="margin:4px 0">${esc(name(c))}</h4><div class="formula">${esc(name(c))} = ${minimize(mt, n, vars)}</div>`;
-    if (n >= 2 && n <= 4) h += kvSVG(mt, n, vars);
+    if (n >= 2 && n <= 4) h += kvSVG(mt, n, vars) + `<div><button class="btn kvopen" data-k="${k}">Im KV-Editor selbst Päckchen bilden</button></div>`;
   });
   h += '</div></div><p style="font-size:12.5px;color:#667085">Schreibweise: ∧ = UND, ∨ = ODER, ¬ = NICHT. Die Formeln sind die disjunktive Minimalform; die farbigen Blöcke im KV-Diagramm zeigen die zusammengefassten Terme. Eingänge sind die Schalter von oben nach unten, Ausgänge die Lampen.</p><div class="pbtns"><button class="btn" id="ttCsv">Als CSV herunterladen</button>';
   if (!taskLocked()) h += '<button class="btn" id="ttSyn">Schaltung daraus neu aufbauen …</button>';
   h += '</div>';
   openModal('Wahrheitstabelle', h);
+  document.querySelectorAll('#mBody .kvopen').forEach(b => b.onclick = () => { const k = +b.dataset.k, mt = []; rows.forEach((o, r) => { if (o[k]) mt.push(r); }); kvEditor({ n, vars, out: name(outs[k]), mts: mt }); });
   $('#ttCsv').onclick = () => {
     const csv = [vars.concat(outs.map(name)).join(';')].concat(rows.map((o, r) => ins.map((c, i) => (r >> (n - 1 - i)) & 1).concat(o).join(';'))).join('\n');
     download('wahrheitstabelle.csv', new Blob([csv], { type: 'text/csv' }), csv);
@@ -3939,6 +3977,355 @@ function checkTask() {
   }
   openModal('Prüfung: ' + T.title, h);
 }
+/* ================= KV-Editor: KV-Diagramme selbst ausfüllen und Päckchen selbst bilden =================
+   Größen 2×2 (2 Variablen), 2×4 (3 Variablen) und 4×4 (4 Variablen). Felder: 0, 1 oder x (beliebig, „don't care“).
+   Ein Päckchen ist ein Würfel {m : (m & ~d) === v} im Minterm-Raum – damit sind die Nachbarschaften über
+   die Ränder (Gray-Code) automatisch richtig. Die Päckchen bilden ausschließlich die Schüler; „Prüfen“
+   vergleicht nur mit der kleinstmöglichen Lösung und gibt Hinweise, verrät sie aber nicht. */
+const KV_DEF = () => ({ n: 3, vars: ['A', 'B', 'C', 'D'], out: 'Y', cells: new Array(16).fill(0), groups: [], form: 'dnf', mode: 'val', term: '' });
+const kvStr = (x, L) => typeof x === 'string' ? x.slice(0, L) : '';
+let KV = null;
+const kvName = (s, d) => { s = String(s == null ? '' : s).replace(/[^A-Za-zÄÖÜäöüß0-9_]/g, '').slice(0, 8); return /^[A-Za-zÄÖÜäöüß]/.test(s) ? s : d; };
+function kvLoad() {
+  if (KV) return KV;
+  KV = KV_DEF();
+  try {
+    const o = JSON.parse(localStorage.getItem('loghex.kv') || 'null');
+    if (o && typeof o === 'object') {
+      if ([2, 3, 4].includes(o.n)) KV.n = o.n;
+      if (Array.isArray(o.vars)) KV.vars = KV.vars.map((d, i) => kvName(o.vars[i], d));
+      KV.out = kvName(o.out, 'Y');
+      if (Array.isArray(o.cells)) KV.cells = KV.cells.map((_, i) => [0, 1, 2].includes(o.cells[i]) ? o.cells[i] : 0);
+      if (o.form === 'knf') KV.form = 'knf';
+      if (o.mode === 'grp') KV.mode = 'grp';
+      const N = (1 << KV.n) - 1;
+      if (Array.isArray(o.groups)) KV.groups = o.groups.slice(0, 16).filter(g => g && Number.isInteger(g.v) && Number.isInteger(g.d) && g.v >= 0 && g.d >= 0 && g.v <= N && g.d <= N && !(g.v & g.d)).map(g => ({ v: g.v, d: g.d, t: kvStr(g.t, 120) }));
+      KV.term = kvStr(o.term, 300);
+    }
+  } catch (e) { }
+  return KV;
+}
+function kvSave() { try { localStorage.setItem('loghex.kv', JSON.stringify({ n: KV.n, vars: KV.vars, out: KV.out, cells: KV.cells, groups: KV.groups, form: KV.form, mode: KV.mode, term: KV.term })); } catch (e) { } }
+
+/* --- Logik --- */
+const kvGeo = n => { const rb = n === 4 ? 2 : 1, cb = n - rb; return { rb, cb, rg: GRAY[rb], cg: GRAY[cb] }; };
+const kvCube = g => { const N = 1 << KV.n, r = []; for (let m = 0; m < N; m++) if ((m & ~g.d) === g.v) r.push(m); return r; };
+const kvTarget = () => KV.form === 'dnf' ? 1 : 0;             // Einsen (DNF) oder Nullen (KNF) zusammenfassen
+const kvOk = m => KV.cells[m] === kvTarget() || KV.cells[m] === 2; // darf in einem Päckchen liegen
+/* Prüft eine Auswahl von Feldern; liefert {g} oder {err} */
+function kvCheckSel(sel) {
+  const S = [...sel], k = S.length, N = 1 << KV.n, t = kvTarget();
+  if (!k) return { err: '' };
+  if (k & (k - 1)) return { err: `Ein Päckchen umfasst 1, 2, 4, 8${N >= 16 ? ' oder 16' : ''} Felder – markiert sind ${k}.` };
+  let a = N - 1, o = 0; S.forEach(m => { a &= m; o |= m; });
+  const d = a ^ o, v = a;
+  if ((1 << popc(d)) !== k || !S.every(m => (m & ~d) === v)) return { err: 'Die Felder bilden kein Rechteck aus Nachbarfeldern. Tipp: Der linke und der rechte Rand sind Nachbarn, ebenso der obere und der untere.' };
+  const bad = S.find(m => !kvOk(m));
+  if (bad !== undefined) return { err: `Das Päckchen enthält eine ${1 - t}. ${t ? 'Nur Einsen (und x) dürfen zusammengefasst werden.' : 'Für die KNF fasst du nur Nullen (und x) zusammen.'}` };
+  if (!S.some(m => KV.cells[m] === t)) return { err: `Das Päckchen enthält nur x-Felder – es muss mindestens eine ${t} abdecken.` };
+  if (KV.groups.some(g => g.v === v && g.d === d)) return { err: 'Dieses Päckchen gibt es schon.' };
+  return { g: { v, d } };
+}
+const kvLits = g => KV.n - popc(g.d);
+function kvTerm(g) {
+  const l = [];
+  for (let i = 0; i < KV.n; i++) { const bit = 1 << (KV.n - 1 - i); if (g.d & bit) continue; const one = !!(g.v & bit); l.push((KV.form === 'dnf' ? one : !one) ? KV.vars[i] : '¬' + KV.vars[i]); }
+  if (!l.length) return KV.form === 'dnf' ? '1' : '0';
+  return l.join(KV.form === 'dnf' ? ' ∧ ' : ' ∨ ');
+}
+function kvFormula(groups = KV.groups) {
+  if (!groups.length) return KV.form === 'dnf' ? '0' : '1';
+  const t = groups.map(g => { const s = kvTerm(g); return groups.length > 1 && kvLits(g) > 1 ? '(' + s + ')' : s; });
+  return t.join(KV.form === 'dnf' ? ' ∨ ' : ' ∧ ');
+}
+/* Schülerterm auswerten: liefert {f: Wertetabelle} oder {err} */
+function kvEval(a, m) {
+  switch (a.op) {
+    case 'const': return a.v;
+    case 'var': { const i = KV.vars.slice(0, KV.n).findIndex(v => v.toLowerCase() === a.name.toLowerCase()); if (i < 0) throw new Error(`Unbekannte Variable „${a.name}“ – erlaubt sind ${KV.vars.slice(0, KV.n).join(', ')}.`); return (m >> (KV.n - 1 - i)) & 1; }
+    case 'not': return 1 - kvEval(a.args[0], m);
+    case 'and': return a.args.every(x => kvEval(x, m)) ? 1 : 0;
+    case 'or': return a.args.some(x => kvEval(x, m)) ? 1 : 0;
+    case 'xor': return a.args.reduce((r, x) => r ^ kvEval(x, m), 0);
+  }
+  throw new Error('Ungültiger Ausdruck');
+}
+function kvParse(str) {
+  str = String(str || '').trim(); if (!str) return { empty: true };
+  str = str.replace(/^\s*[A-Za-zÄÖÜäöüß0-9_]*\s*=\s*/, '');   // „Y = …“ ist auch erlaubt
+  // „BD“ als B ∧ D lesen, wenn es keine Variable dieses Namens gibt
+  const vs = KV.vars.slice(0, KV.n).map(v => v.toLowerCase()), kw = ['und', 'oder', 'nicht', 'and', 'or', 'not', 'xor'];
+  const split = w => { const L = w.toLowerCase(), best = [null]; best[0] = []; for (let i = 1; i <= L.length; i++) { best[i] = null; for (const v of vs) if (i >= v.length && best[i - v.length] && L.slice(i - v.length, i) === v) { best[i] = best[i - v.length].concat(w.slice(i - v.length, i)); break; } } return best[L.length]; };
+  str = str.replace(/[A-Za-zÄÖÜäöüß_][A-Za-z0-9ÄÖÜäöüß_]*/g, w => { const l = w.toLowerCase(); if (vs.includes(l) || kw.includes(l)) return w; const p = split(w); return p ? p.join(' ') : w; });
+  try { const ast = parseTerm(str), f = []; for (let m = 0; m < 1 << KV.n; m++) f.push(kvEval(ast, m)); return { ast, f }; }
+  catch (e) { return { err: e.message }; }
+}
+/* Form prüfen: Literal, UND-Term (DNF) bzw. ODER-Klausel (KNF), Gesamtform */
+const kvLit = a => a.op === 'var' || (a.op === 'not' && a.args[0].op === 'var');
+const kvPart = (a, op) => a.op === 'const' || kvLit(a) || (a.op === op && a.args.every(kvLit));
+const kvShape = (a, form) => { const inner = form === 'dnf' ? 'and' : 'or', outer = form === 'dnf' ? 'or' : 'and'; return kvPart(a, inner) || (a.op === outer && a.args.every(x => kvPart(x, inner))); };
+/* kleinstmögliche Überdeckung: erst wenigste Päckchen, dann wenigste Variablen */
+function kvMinimum() {
+  const N = 1 << KV.n, T = []; for (let m = 0; m < N; m++) if (KV.cells[m] === kvTarget()) T.push(m);
+  if (!T.length) return { count: 0, lits: 0 };
+  const cubes = [];
+  for (let d = 0; d < N; d++) for (let v = 0; v < N; v++) if (!(v & d)) { const g = { v, d }, c = kvCube(g); if (c.every(kvOk) && c.some(m => KV.cells[m] === kvTarget())) cubes.push(g); }
+  const primes = cubes.filter(p => !cubes.some(q => q !== p && (q.d & p.d) === p.d && q.d !== p.d && (p.v & ~q.d) === q.v));
+  const cov = primes.map(p => T.reduce((s, m, i) => (m & ~p.d) === p.v ? s | (1 << i) : s, 0)), all = (1 << T.length) - 1;
+  for (let k = 1; k <= T.length; k++) {
+    let best = null;
+    const rec = (st, chosen, mask, lits) => {
+      if (chosen === k) { if (mask === all && (best === null || lits < best)) best = lits; return; }
+      for (let i = st; i < primes.length; i++) rec(i + 1, chosen + 1, mask | cov[i], lits + kvLits(primes[i]));
+    };
+    rec(0, 0, 0, 0);
+    if (best !== null) return { count: k, lits: best };
+  }
+  return { count: T.length, lits: T.length * KV.n };
+}
+/* Analyse der Schülerlösung */
+function kvAnalyse() {
+  const N = 1 << KV.n, t = kvTarget(), T = []; for (let m = 0; m < N; m++) if (KV.cells[m] === t) T.push(m);
+  const inv = [], grow = [], red = [];
+  KV.groups.forEach((g, i) => {
+    const c = kvCube(g);
+    if (!c.every(kvOk) || !c.some(m => KV.cells[m] === t)) { inv.push(i); return; }
+    for (let b = 0; b < KV.n; b++) { const bit = 1 << b; if (g.d & bit) continue; if (kvCube({ v: g.v & ~bit, d: g.d | bit }).every(kvOk)) { grow.push(i); break; } }
+  });
+  const okG = KV.groups.filter((_, i) => !inv.includes(i));
+  const covered = m => okG.some(g => (m & ~g.d) === g.v);
+  const unc = T.filter(m => !covered(m));
+  KV.groups.forEach((g, i) => {
+    if (inv.includes(i)) return;
+    const mine = kvCube(g).filter(m => KV.cells[m] === t);
+    if (mine.every(m => KV.groups.some((h, j) => j !== i && !inv.includes(j) && (m & ~h.d) === h.v))) red.push(i);
+  });
+  return { T, inv, grow, red, unc };
+}
+
+/* --- Darstellung --- */
+const KVS = { pend: new Set(), drag: null, msg: '', chk: null };
+function kvSVGed() {
+  const { rb, cb, rg, cg } = kvGeo(KV.n), cs = 54, ox = 74, oy = 52, W = ox + cs * cg.length + 14, H = oy + cs * rg.length + 14;
+  const gw = cs * cg.length, gh = cs * rg.length, lbl = (k, b) => b.toString(2).padStart(k, '0');
+  const hiU = KVS.chk ? new Set(KVS.chk.unc) : new Set();
+  let s = `<svg id="kvSvg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="font:13px ${FONT};max-width:100%;touch-action:none;user-select:none;-webkit-user-select:none">`;
+  s += `<defs><clipPath id="kvClip"><rect x="${ox}" y="${oy}" width="${gw}" height="${gh}"/></clipPath></defs>`;
+  s += `<line x1="${ox - 46}" y1="${oy - 40}" x2="${ox}" y2="${oy}" stroke="#98a2b3"/>`;
+  s += `<text x="${ox - 4}" y="${oy - 30}" text-anchor="end" fill="#2f6fec" font-weight="700" font-size="13">${esc(KV.vars.slice(rb, KV.n).join(''))}</text>`;
+  s += `<text x="${ox - 30}" y="${oy - 4}" text-anchor="end" fill="#2f6fec" font-weight="700" font-size="13">${esc(KV.vars.slice(0, rb).join(''))}</text>`;
+  cg.forEach((c, j) => s += `<text x="${ox + j * cs + cs / 2}" y="${oy - 10}" text-anchor="middle" fill="#475467">${lbl(cb, c)}</text>`);
+  rg.forEach((r, i) => s += `<text x="${ox - 10}" y="${oy + i * cs + cs / 2 + 5}" text-anchor="end" fill="#475467">${lbl(rb, r)}</text>`);
+  rg.forEach((r, i) => cg.forEach((c, j) => {
+    const m = (r << cb) | c, v = KV.cells[m], p = KVS.pend.has(m), u = hiU.has(m);
+    const fill = p ? '#fff3bf' : u ? '#ffe3e3' : v === 1 ? '#fff5f5' : '#fff';
+    s += `<rect data-m="${m}" x="${ox + j * cs}" y="${oy + i * cs}" width="${cs}" height="${cs}" fill="${fill}" stroke="${p ? '#f59f00' : u ? '#e5383b' : '#98a2b3'}" stroke-width="${p || u ? 2.5 : 1}"/>`;
+    s += `<text x="${ox + j * cs + cs / 2}" y="${oy + i * cs + cs / 2 + 7}" text-anchor="middle" font-size="20" font-weight="700" fill="${v === 1 ? '#c92a2a' : v === 2 ? '#7048e8' : '#98a2b3'}" pointer-events="none">${v === 2 ? 'x' : v}</text>`;
+    s += `<text x="${ox + j * cs + 4}" y="${oy + i * cs + 12}" font-size="9" fill="#b0b8c6" pointer-events="none">${m}</text>`;
+  }));
+  hiU.forEach(m => { const i = rg.indexOf(m >> cb), j = cg.indexOf(m & ((1 << cb) - 1)); s += `<rect x="${ox + j * cs + 1.5}" y="${oy + i * cs + 1.5}" width="${cs - 3}" height="${cs - 3}" fill="none" stroke="#e5383b" stroke-width="2.5" pointer-events="none"/>`; });
+  // Päckchen
+  const runs = (idx, L) => { const r = []; idx.sort((a, b) => a - b); let st = idx[0], pv = idx[0]; for (let k = 1; k <= idx.length; k++) { if (k < idx.length && idx[k] === pv + 1) { pv = idx[k]; continue; } r.push([st, pv]); if (k < idx.length) st = pv = idx[k]; } return r.map(([a, b]) => [a, b, a === 0 && idx.includes(L - 1) && !(b === L - 1), b === L - 1 && idx.includes(0) && a !== 0]); };
+  const inv = KVS.chk ? KVS.chk.inv : [];
+  KV.groups.forEach((g, gi) => {
+    const mr = (1 << rb) - 1, mc = (1 << cb) - 1, dR = (g.d >> cb) & mr, vR = (g.v >> cb) & mr, dC = g.d & mc, vC = g.v & mc;
+    const rows = [], cols = [];
+    rg.forEach((r, i) => { if ((r & ~dR) === vR) rows.push(i); });
+    cg.forEach((c, j) => { if ((c & ~dC) === vC) cols.push(j); });
+    const ins = 4 + (gi % 4) * 3.5, col = inv.includes(gi) ? '#98a2b3' : KVCOL[gi % KVCOL.length], ext = cs * 0.45;
+    let first = null;
+    s += `<g clip-path="url(#kvClip)" pointer-events="none">`;
+    for (const [a, b, wa, wb] of runs(rows, rg.length)) for (const [c0, c1, wc, wd] of runs(cols, cg.length)) {
+      const x0 = ox + c0 * cs + ins - (wc ? ext : 0), x1 = ox + (c1 + 1) * cs - ins + (wd ? ext : 0), y0 = oy + a * cs + ins - (wa ? ext : 0), y1 = oy + (b + 1) * cs - ins + (wb ? ext : 0);
+      s += `<rect x="${x0}" y="${y0}" width="${x1 - x0}" height="${y1 - y0}" rx="13" fill="${col}" fill-opacity=".1" stroke="${col}" stroke-width="2.6"${inv.includes(gi) ? ' stroke-dasharray="5 4"' : ''}/>`;
+      const fx = Math.max(x0, ox + 2), fy = Math.max(y0, oy + 2); if (!first || fy < first[1] || (fy === first[1] && fx < first[0])) first = [fx, fy];
+    }
+    s += `</g>`;
+    if (first) s += `<circle cx="${first[0] + 9}" cy="${first[1] + 9}" r="8" fill="${col}" pointer-events="none"/><text x="${first[0] + 9}" y="${first[1] + 13}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" pointer-events="none">${gi + 1}</text>`;
+  });
+  return s + '</svg>';
+}
+function kvTT() {
+  const N = 1 << KV.n;
+  let h = '<table class="tt kvtt"><tr><th>Nr.</th>' + KV.vars.slice(0, KV.n).map(v => `<th>${esc(v)}</th>`).join('') + `<th class="sep">${esc(KV.out)}</th></tr>`;
+  for (let m = 0; m < N; m++) {
+    const v = KV.cells[m];
+    h += `<tr><td style="color:#98a2b3">${m}</td>` + KV.vars.slice(0, KV.n).map((_, i) => `<td>${(m >> (KV.n - 1 - i)) & 1}</td>`).join('') + `<td class="o sep kvc ${v === 1 ? 'one' : ''}" data-tm="${m}" style="${KV.mode === 'val' ? 'cursor:pointer' : ''}${v === 2 ? ';color:#7048e8' : ''}">${v === 2 ? 'x' : v}</td></tr>`;
+  }
+  return h + '</table>';
+}
+function kvRender() {
+  const body = $('#kvBody'); if (!body) return;
+  const val = KV.mode === 'val', sel = KVS.pend.size ? kvCheckSel(KVS.pend) : null;
+  let h = `<div class="kvtop">
+    <label>Größe <select id="kvN"><option value="2"${KV.n === 2 ? ' selected' : ''}>2 × 2 (2 Variablen)</option><option value="3"${KV.n === 3 ? ' selected' : ''}>2 × 4 (3 Variablen)</option><option value="4"${KV.n === 4 ? ' selected' : ''}>4 × 4 (4 Variablen)</option></select></label>
+    <label>Päckchen aus <select id="kvF"><option value="dnf"${KV.form === 'dnf' ? ' selected' : ''}>Einsen → DNF</option><option value="knf"${KV.form === 'knf' ? ' selected' : ''}>Nullen → KNF</option></select></label>
+    <span class="kvvars">Variablen ${KV.vars.slice(0, KV.n).map((v, i) => `<input class="kvv" data-i="${i}" value="${esc(v)}" maxlength="8" aria-label="Variable ${i + 1}">`).join('')} → <input class="kvv" data-i="out" value="${esc(KV.out)}" maxlength="8" aria-label="Ausgang"></span>
+  </div>
+  <div class="seg kvseg"><button id="kvMv" class="${val ? 'on' : ''}">① Werte eintragen</button><button id="kvMg" class="${val ? '' : 'on'}">② Päckchen bilden</button></div>
+  <p class="kvhint">${val ? 'Tippe ein Feld an, um zwischen <b>0</b>, <b>1</b> und <b>x</b> (beliebig) zu wechseln. Ziehen überträgt den Wert auf weitere Felder. Auch die Wahrheitstabelle rechts lässt sich antippen.' : 'Ziehe über die Felder eines Päckchens oder tippe sie einzeln an (für Päckchen über den Rand oder die vier Ecken). Dann <b>Päckchen bilden</b>.'}</p>
+  <div class="kvwrap"><div><div class="kvtouch">${kvSVGed()}</div>`;
+  if (val) h += `<div class="pbtns"><button class="btn" id="kvClr">Alle auf 0</button><button class="btn" id="kvRnd">Zufällige Funktion</button><button class="btn" id="kvCirc">Aus der Schaltung übernehmen</button></div>`;
+  else h += `<div class="kvsel ${sel && sel.err ? 'bad' : sel && sel.g ? 'good' : ''}">${!sel ? 'Noch keine Felder markiert.' : sel.err ? esc(sel.err) : `${KVS.pend.size} ${KVS.pend.size === 1 ? 'Feld' : 'Felder'} – gültiges Päckchen.`}</div>
+    <div class="pbtns"><button class="btn pri" id="kvAdd"${sel && sel.g ? '' : ' disabled'}>Päckchen bilden</button><button class="btn" id="kvUnsel"${KVS.pend.size ? '' : ' disabled'}>Markierung aufheben</button></div>`;
+  h += `</div><div class="kvttw">${kvTT()}</div></div>`;
+  // Päckchenliste und Ergebnis
+  const chk = KVS.chk;
+  h += `<h4 style="margin:12px 0 4px">Päckchen</h4>`;
+  if (!KV.groups.length) h += `<p class="kvhint" style="margin:2px 0">Noch keine Päckchen. ${val ? 'Trage zuerst die Werte ein und wechsle dann zu <b>② Päckchen bilden</b>.' : ''}</p>`;
+  else h += '<div class="kvgl">' + KV.groups.map((g, i) => { const st = chk && chk.gt ? chk.gt[i] : ''; return `<div class="kvg"><span class="kvn" style="background:${KVCOL[i % KVCOL.length]}">${i + 1}</span><input class="kvgt ${st}" data-g="${i}" value="${esc(g.t || '')}" maxlength="120" placeholder="${KV.form === 'dnf' ? 'UND-Term' : 'ODER-Klausel'} für Päckchen ${i + 1}" autocomplete="off" autocapitalize="characters" spellcheck="false"><span class="kvst ${st}">${st === 'ok' ? '✓' : st === 'bad' ? '✗' : st === 'warn' ? '!' : ''}</span><span class="kvz">${kvCube(g).length} ${kvCube(g).length === 1 ? 'Feld' : 'Felder'}</span><button class="btn kvdel" data-g="${i}" aria-label="Päckchen ${i + 1} löschen">×</button></div>`; }).join('') + '</div>';
+  const tst = chk ? chk.tt : '';
+  h += `<h4 style="margin:12px 0 4px">${KV.form === 'dnf' ? 'Disjunktive Normalform (DNF)' : 'Konjunktive Normalform (KNF)'}</h4>
+  <div class="kvterm"><b>${esc(KV.out)} =</b><input id="kvTerm" class="${tst}" value="${esc(KV.term || '')}" maxlength="300" placeholder="${KV.form === 'dnf' ? 'Päckchen-Terme mit ∨ verbinden' : 'Klauseln mit ∧ verbinden'}" autocomplete="off" autocapitalize="characters" spellcheck="false"><span class="kvst ${tst}">${tst === 'ok' ? '✓' : tst === 'bad' ? '✗' : tst === 'warn' ? '!' : ''}</span></div>
+  <div class="pbtns kvsym">${['¬', '∧', '∨', '(', ')'].map(c => `<button class="btn" data-sym="${c}">${c}</button>`).join('')}<span class="kvhint" style="margin:0">Statt der Zeichen geht auch NICHT/UND/ODER, ! &amp; | oder A' für ¬A.</span></div>`;
+  h += `<div class="pbtns"><button class="btn pri" id="kvChk">Prüfen</button>${KV.groups.length ? '<button class="btn" id="kvDelAll">Alle Päckchen löschen</button>' : ''}${taskLocked() ? '' : '<button class="btn" id="kvSyn">Schaltung daraus aufbauen …</button>'}</div>`;
+  if (chk) h += `<div class="kvres">${chk.html}</div>`;
+  h += `<p class="kvhint">Die kleinen Zahlen in den Feldern sind die Zeilennummern der Wahrheitstabelle.</p>`;
+  body.innerHTML = h;
+  kvWire();
+}
+function kvCheck() {
+  const a = kvAnalyse(), t = kvTarget(), msgs = [], nm = i => `Päckchen ${i + 1}`, N = 1 << KV.n;
+  const L = list => list.map(nm).join(', '), E = t ? 'Einsen' : 'Nullen', NF = t ? 'DNF' : 'KNF';
+  const gt = KV.groups.map(() => ''); let tt = '';
+  // 1. Päckchen
+  if (a.inv.length) msgs.push(['bad', `${L(a.inv)} ${a.inv.length > 1 ? 'passen' : 'passt'} nicht mehr zu den Werten (${t ? 'enthält eine 0' : 'enthält eine 1'} oder nur x). Lösche ${a.inv.length > 1 ? 'sie' : 'es'}.`]);
+  if (a.unc.length) msgs.push(['bad', `${a.unc.length} ${t ? (a.unc.length > 1 ? 'Einsen sind' : 'Eins ist') : (a.unc.length > 1 ? 'Nullen sind' : 'Null ist')} noch nicht abgedeckt (rot umrandet).`]);
+  if (a.grow.length) msgs.push(['warn', `${L(a.grow)} ${a.grow.length > 1 ? 'lassen' : 'lässt'} sich noch vergrößern – größere Päckchen ergeben kürzere Terme.`]);
+  if (a.red.length) msgs.push(['warn', `${L(a.red)} ${a.red.length > 1 ? 'sind' : 'ist'} überflüssig: Alle ${E} darin sind schon durch andere Päckchen abgedeckt.`]);
+  let minimal = false;
+  if (a.T.length && !a.inv.length && !a.unc.length) {
+    const mn = kvMinimum(), cnt = KV.groups.length, lits = KV.groups.reduce((s, g) => s + kvLits(g), 0);
+    if (cnt === mn.count && lits === mn.lits) minimal = true;
+    else if (cnt > mn.count) msgs.push(['warn', `Es geht mit <b>${mn.count}</b> Päckchen – du hast ${cnt}.`]);
+    else if (lits > mn.lits) msgs.push(['warn', `Die Anzahl der Päckchen stimmt, aber es geht kürzer: insgesamt <b>${mn.lits}</b> statt ${lits} Variablen in den Termen.`]);
+  }
+  // 2. Terme der Päckchen
+  const shapeTxt = t ? 'als UND-Verknüpfung einzelner Variablen (z. B. ¬A ∧ B)' : 'als ODER-Verknüpfung einzelner Variablen (z. B. A ∨ ¬B)';
+  let termsOk = true;
+  KV.groups.forEach((g, i) => {
+    if (a.inv.includes(i)) { gt[i] = 'bad'; termsOk = false; return; }
+    const r = kvParse(g.t);
+    if (r.empty) { gt[i] = 'bad'; termsOk = false; msgs.push(['bad', `Für ${nm(i)} fehlt noch der ${t ? 'Term' : 'Klausel'}.`]); return; }
+    if (r.err) { gt[i] = 'bad'; termsOk = false; msgs.push(['bad', `${nm(i)}: ${esc(r.err)}`]); return; }
+    const want = m => (m & ~g.d) === g.v ? t : 1 - t;   // DNF: 1 genau im Päckchen; KNF: 0 genau im Päckchen
+    let wrong = 0; for (let m = 0; m < N; m++) if (r.f[m] !== want(m)) wrong++;
+    if (wrong) { gt[i] = 'bad'; termsOk = false; msgs.push(['bad', `Der ${t ? 'Term' : 'Klausel'} zu ${nm(i)} beschreibt nicht genau die Felder des Päckchens. ${t ? 'Tipp: Welche Variablen haben im ganzen Päckchen denselben Wert?' : 'Tipp: Welche Variablen haben im ganzen Päckchen denselben Wert? In der KNF wird eine Variable, die dort 1 ist, verneint.'}`]); return; }
+    if (!kvPart(r.ast, t ? 'and' : 'or')) { gt[i] = 'warn'; termsOk = false; msgs.push(['warn', `${nm(i)}: Der Ausdruck ist gleichwertig, aber schreibe ihn ${shapeTxt}.`]); return; }
+    gt[i] = 'ok';
+  });
+  // 3. Gesamtterm
+  const r = kvParse(KV.term); let totalOk = false;
+  if (r.empty) { tt = KV.groups.length || !a.T.length ? 'bad' : ''; if (tt) msgs.push(['bad', `Trage noch die ${NF} ein: ${esc(KV.out)} = …`]); }
+  else if (r.err) { tt = 'bad'; msgs.push(['bad', `${NF}: ${esc(r.err)}`]); }
+  else {
+    const rows = []; for (let m = 0; m < N; m++) if (KV.cells[m] !== 2 && r.f[m] !== KV.cells[m]) rows.push(m);
+    if (rows.length) { tt = 'bad'; msgs.push(['bad', `Die ${NF} liefert in ${rows.length > 1 ? rows.length + ' Zeilen' : 'Zeile ' + rows[0]} der Wahrheitstabelle einen falschen Wert${rows.length > 1 && rows.length <= 4 ? ' (Zeilen ' + rows.join(', ') + ')' : ''}.`]); }
+    else if (!kvShape(r.ast, KV.form)) { tt = 'warn'; msgs.push(['warn', `Der Term ist gleichwertig, aber keine ${NF}: ${t ? 'Verbinde die UND-Terme der Päckchen mit ∨.' : 'Verbinde die ODER-Klauseln der Päckchen mit ∧.'}`]); }
+    else {
+      const okG = KV.groups.filter((_, i) => !a.inv.includes(i));
+      let fits = true; for (let m = 0; m < N; m++) { const inG = okG.some(g => (m & ~g.d) === g.v) ? t : 1 - t; if (okG.length && r.f[m] !== inG) fits = false; }
+      if (okG.length ? !fits : a.T.length) { tt = 'warn'; msgs.push(['warn', `Die ${NF} ist richtig, passt aber nicht zu deinen Päckchen.`]); }
+      else { tt = 'ok'; totalOk = true; }
+    }
+  }
+  if (!a.T.length && (tt === 'ok' || (!r.f && !KV.groups.length))) msgs.unshift(['ok', `Es gibt keine ${E} – die Funktion ist immer ${1 - t}, also ${esc(KV.out)} = ${1 - t}.`]);
+  const allOk = minimal && termsOk && totalOk;
+  if (allOk) msgs.unshift(['ok', `Richtig! Alle ${E} sind abgedeckt, die Terme stimmen, und das ist eine <b>minimale ${NF}</b> (${KV.groups.length} Päckchen, ${KV.groups.reduce((s, g) => s + kvLits(g), 0)} Variablen).`]);
+  else if (totalOk && termsOk && a.T.length && !a.inv.length && !a.unc.length) msgs.unshift(['ok', `Die ${NF} ist <b>richtig</b> und passt zu deinen Päckchen.`]);
+  KVS.chk = { inv: a.inv, unc: a.unc, gt, tt, done: allOk, html: msgs.map(([k, s]) => `<div class="kvm ${k}">${k === 'ok' ? '✓' : k === 'bad' ? '✗' : '!'} ${s}</div>`).join('') };
+  kvRender();
+}
+function kvChanged(keepChk) { if (!keepChk) KVS.chk = null; kvSave(); kvRender(); }
+/* während des Ziehens nur Felder umfärben – ein Neuaufbau würde die Touch-Geste abreißen */
+function kvPatch() {
+  const svg = $('#kvSvg'); if (!svg) return;
+  svg.querySelectorAll('rect[data-m]').forEach(r => {
+    const m = +r.dataset.m, v = KV.cells[m], p = KVS.pend.has(m), t = r.nextElementSibling;
+    r.setAttribute('fill', p ? '#fff3bf' : v === 1 ? '#fff5f5' : '#fff'); r.setAttribute('stroke', p ? '#f59f00' : '#98a2b3'); r.setAttribute('stroke-width', p ? 2.5 : 1);
+    if (t) { t.textContent = v === 2 ? 'x' : v; t.setAttribute('fill', v === 1 ? '#c92a2a' : v === 2 ? '#7048e8' : '#98a2b3'); }
+  });
+  document.querySelectorAll('#kvBody [data-tm]').forEach(td => { const v = KV.cells[+td.dataset.tm]; td.textContent = v === 2 ? 'x' : v; td.classList.toggle('one', v === 1); td.style.color = v === 2 ? '#7048e8' : ''; });
+  const st = $('#kvBody .kvsel');
+  if (st && KV.mode === 'grp') { const sel = KVS.pend.size ? kvCheckSel(KVS.pend) : null; st.className = 'kvsel ' + (sel && sel.err ? 'bad' : sel && sel.g ? 'good' : ''); st.textContent = !sel ? 'Noch keine Felder markiert.' : sel.err || `${KVS.pend.size} ${KVS.pend.size === 1 ? 'Feld' : 'Felder'} – gültiges Päckchen.`; }
+}
+const kvCellAt = e => { const svg = $('#kvSvg'), el = document.elementFromPoint(e.clientX, e.clientY); return svg && el && el.dataset && el.dataset.m !== undefined && svg.contains(el) ? +el.dataset.m : null; };
+function kvDocEvents() {
+  if (KVS.docEv) return; KVS.docEv = true;
+  const cellAt = kvCellAt;
+  const pos = m => { const { cb, rg, cg } = kvGeo(KV.n), mc = (1 << cb) - 1; return [rg.indexOf(m >> cb), cg.indexOf(m & mc)]; };
+  const at = (i, j) => { const { cb, rg, cg } = kvGeo(KV.n); return (rg[i] << cb) | cg[j]; };
+  document.addEventListener('pointermove', e => {
+    const d = KVS.drag; if (!d) return; const m = cellAt(e); if (m === null || m === d.last) return; d.last = m;
+    if (KV.mode === 'val') { if (KV.cells[m] !== d.val) { KV.cells[m] = d.val; d.chg = true; kvPatch(); } return; }
+    d.moved = true; const [i0, j0] = pos(d.start), [i1, j1] = pos(m); KVS.pend = new Set();
+    for (let i = Math.min(i0, i1); i <= Math.max(i0, i1); i++) for (let j = Math.min(j0, j1); j <= Math.max(j0, j1); j++) KVS.pend.add(at(i, j));
+    kvPatch();
+  });
+  const end = () => { const d = KVS.drag; KVS.drag = null; if (!d) return; if (KV.mode === 'val') { kvChanged(); return; } if (!d.moved) { if (KVS.pend.has(d.start)) KVS.pend.delete(d.start); else KVS.pend.add(d.start); } kvRender(); };
+  document.addEventListener('pointerup', end); document.addEventListener('pointercancel', () => { if (KVS.drag) { KVS.drag = null; kvChanged(); } });
+}
+function kvWire() {
+  const svg = $('#kvSvg'), cellAt = kvCellAt;
+  svg.addEventListener('pointerdown', e => {
+    const m = cellAt(e); if (m === null) return; e.preventDefault();
+    try { e.target.releasePointerCapture && e.target.releasePointerCapture(e.pointerId); } catch (x) { }
+    if (KV.mode === 'val') { const nv = (KV.cells[m] + 1) % 3; KV.cells[m] = nv; KVS.drag = { val: nv, last: m }; kvPatch(); }
+    else { KVS.drag = { start: m, last: m, moved: false }; }
+  });
+  document.querySelectorAll('#kvBody [data-tm]').forEach(td => td.addEventListener('click', () => { if (KV.mode !== 'val') return; const m = +td.dataset.tm; KV.cells[m] = (KV.cells[m] + 1) % 3; kvChanged(); }));
+  $('#kvN').onchange = e => { KV.n = +e.target.value; KV.groups = []; KV.term = ''; KVS.pend.clear(); kvChanged(); };
+  $('#kvF').onchange = e => { KV.form = e.target.value; KV.groups = []; KV.term = ''; KVS.pend.clear(); kvChanged(); };
+  document.querySelectorAll('#kvBody .kvv').forEach(inp => inp.onchange = () => { const i = inp.dataset.i; if (i === 'out') KV.out = kvName(inp.value, 'Y'); else KV.vars[+i] = kvName(inp.value, 'ABCD'[+i]); kvChanged(true); });
+  $('#kvMv').onclick = () => { KV.mode = 'val'; KVS.pend.clear(); kvChanged(true); };
+  $('#kvMg').onclick = () => { KV.mode = 'grp'; kvChanged(true); };
+  if ($('#kvClr')) $('#kvClr').onclick = () => { KV.cells.fill(0); KV.groups = []; KV.term = ''; kvChanged(); };
+  if ($('#kvRnd')) $('#kvRnd').onclick = () => { const N = 1 << KV.n; KV.cells.fill(0); for (let m = 0; m < N; m++) KV.cells[m] = Math.random() < (KV.n === 4 ? 0.45 : 0.5) ? 1 : 0; if (KV.n >= 3 && Math.random() < 0.4) KV.cells[Math.floor(Math.random() * N)] = 2; KV.groups = []; KV.term = ''; kvChanged(); };
+  if ($('#kvCirc')) $('#kvCirc').onclick = kvFromCircuit;
+  if ($('#kvAdd')) $('#kvAdd').onclick = () => { const r = kvCheckSel(KVS.pend); if (!r.g) return; KV.groups.push({ v: r.g.v, d: r.g.d, t: '' }); KVS.pend.clear(); kvChanged(); };
+  if ($('#kvUnsel')) $('#kvUnsel').onclick = () => { KVS.pend.clear(); kvRender(); };
+  document.querySelectorAll('#kvBody .kvdel').forEach(b => b.onclick = () => { KV.groups.splice(+b.dataset.g, 1); kvChanged(); });
+  if ($('#kvDelAll')) $('#kvDelAll').onclick = () => { KV.groups = []; kvChanged(); };
+  $('#kvChk').onclick = kvCheck;
+  if ($('#kvSyn')) $('#kvSyn').onclick = () => { const r = kvParse(KV.term); if (!r.f) { KVS.chk = { inv: [], unc: [], html: `<div class="kvm bad">✗ ${r.empty ? 'Trage zuerst den Gesamtterm ein.' : 'Der Gesamtterm ist fehlerhaft: ' + esc(r.err)}</div>`, tt: 'bad' }; kvRender(); return; } synthDialog(`${KV.out} = ${KV.term.replace(/^\s*[A-Za-zÄÖÜäöüß0-9_]*\s*=\s*/, '')}`, KV.vars.slice(0, KV.n)); };
+  document.querySelectorAll('#kvBody .kvgt').forEach(inp => { inp.oninput = () => { KV.groups[+inp.dataset.g].t = inp.value.slice(0, 120); kvSave(); }; inp.onfocus = () => { KVS.focus = inp; }; });
+  const ti = $('#kvTerm'); ti.oninput = () => { KV.term = ti.value.slice(0, 300); kvSave(); }; ti.onfocus = () => { KVS.focus = ti; };
+  document.querySelectorAll('#kvBody [data-sym]').forEach(b => { b.onpointerdown = e => e.preventDefault(); b.onclick = () => {
+    let inp = KVS.focus; if (!inp || !document.body.contains(inp)) inp = ti;
+    const a = inp.selectionStart ?? inp.value.length, z = inp.selectionEnd ?? a, c = b.dataset.sym, ins = c === '∧' || c === '∨' ? ' ' + c + ' ' : c;
+    inp.value = inp.value.slice(0, a) + ins + inp.value.slice(z); inp.focus(); inp.setSelectionRange(a + ins.length, a + ins.length); inp.dispatchEvent(new Event('input'));
+  }; });
+}
+/* Werte aus der aktuellen Schaltung (2–4 Schalter) übernehmen */
+function kvFromCircuit(k) {
+  const msg = t => { const el = $('#kvBody .kvhint'); if (el) el.innerHTML = '<b style="color:#c92a2a">' + esc(t) + '</b>'; };
+  if (App.mode !== 'digital') return msg('Wechsle zuerst in den Reiter Logikgatter.');
+  const cc = circ(); getNet(); const { ins, outs } = circIO(cc);
+  if (ins.length < 2 || ins.length > 4 || !outs.length) return msg('Dafür braucht die Schaltung 2 bis 4 Schalter und mindestens eine Lampe.');
+  if (typeof k !== 'number' && outs.length > 1) {
+    const el = $('#kvBody .kvhint');
+    el.innerHTML = 'Welche Lampe? ' + outs.map((c, i) => `<button class="btn kvo" data-k="${i}">${esc(c.label || 'Lampe ' + (i + 1))}</button>`).join(' ');
+    el.querySelectorAll('.kvo').forEach(b => b.onclick = () => kvFromCircuit(+b.dataset.k));
+    return;
+  }
+  k = k || 0;
+  const rows = computeTT(ins, outs);
+  KV.n = ins.length; KV.vars = KV.vars.map((d, i) => i < ins.length ? kvName(ins[i].label, 'ABCD'[i]) : d); KV.out = kvName(outs[k].label, 'Y');
+  KV.cells.fill(0); rows.forEach((o, r) => { KV.cells[r] = o[k] ? 1 : 0; }); KV.groups = []; KV.term = ''; KVS.pend.clear();
+  kvChanged();
+}
+/* Aufruf: optional mit Vorgabe {n, vars, out, mts} (z. B. aus der Wahrheitstabelle) */
+function kvEditor(pre) {
+  kvLoad(); KVS.pend.clear(); KVS.chk = null; KVS.drag = null;
+  if (pre) {
+    KV.n = pre.n; KV.vars = KV.vars.map((d, i) => i < pre.n ? kvName(pre.vars[i], 'ABCD'[i]) : d); KV.out = kvName(pre.out, 'Y');
+    KV.cells.fill(0); pre.mts.forEach(m => { KV.cells[m] = 1; }); KV.groups = []; KV.term = ''; KV.mode = 'grp'; kvSave();
+  }
+  kvDocEvents();
+  openModal('KV-Diagramm – Päckchen selbst bilden', '<div id="kvBody"></div>');
+  $('#modal .mbox').classList.add('wide');
+  kvRender();
+}
 /* ================= Mehrfachauswahl, Kopieren, Leitungspunkte ================= */
 App.clip = { digital: null, analog: null };
 const isMulti = () => App.sel && App.sel.kind === 'multi';
@@ -4105,6 +4492,7 @@ function pnRange(t = DT[PN.type]) { return [t.vz ? -Math.round((t.vz + 0.12) * 1
 
 function pnShow() {
   $$('#pnSub button').forEach(b => b.classList.toggle('on', b.dataset.s === PN.sub));
+  gcv.style.display = PN.sub === 'pn' ? 'block' : 'none';   // vor dem Ausmessen einblenden, sonst bleibt die Kennlinie leer
   pnControls(); pnResize(); pnLayout();
 }
 $$('#pnSub button').forEach(b => b.onclick = () => { PN.sub = b.dataset.s; PN.parts = []; pnShow(); scheduleSave(); });
@@ -4150,7 +4538,16 @@ function pnLayout() {
     if (dop) { if (PN.sub === 'n') k = 'P'; else if (PN.sub === 'p') k = 'B'; else if (PN.sub === 'pn') k = i < cols / 2 ? 'B' : 'P'; }
     atoms.push({ i, j, x: x0 + (i + 0.5) * cell, y: y0 + (j + 0.5) * cell, k });
   }
-  PN.geo = { cols, rows, cell, x0, y0, x1: x0 + cols * cell, y1: y0 + rows * cell, xj: x0 + cols * cell / 2, atoms };
+  // Bindungsplätze (Mitte jeder Elektronenpaarbindung): Hier sitzen Löcher. Nachbarn = Bindungen am selben Atom.
+  const sites = [], at = {}, key = (i, j, h) => i + ',' + j + ',' + h;
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+    if (i < cols - 1) { at[key(i, j, 1)] = sites.length; sites.push({ x: x0 + (i + 1) * cell, y: y0 + (j + 0.5) * cell, a: [i, j], b: [i + 1, j], h: 1 }); }
+    if (j < rows - 1) { at[key(i, j, 0)] = sites.length; sites.push({ x: x0 + (i + 0.5) * cell, y: y0 + (j + 1) * cell, a: [i, j], b: [i, j + 1], h: 0 }); }
+  }
+  const bondsOf = ([i, j]) => [at[key(i, j, 1)], at[key(i - 1, j, 1)], at[key(i, j, 0)], at[key(i, j - 1, 0)]].filter(v => v !== undefined);
+  sites.forEach((st, k) => { st.nb = [...new Set([...bondsOf(st.a), ...bondsOf(st.b)])].filter(v => v !== k); });
+  PN.geo = { cols, rows, cell, x0, y0, x1: x0 + cols * cell, y1: y0 + rows * cell, xj: x0 + cols * cell / 2, atoms, sites, siteAt: (i, j, h) => at[key(i, j, h)], bondsOf };
+  PN.parts = PN.parts.filter(p => p.k !== 'h');   // Löcher hängen an Bindungsplätzen – nach neuem Layout neu bilden
 }
 function zoneHalf() {
   const t = DT[PN.type], g = PN.geo;
@@ -4158,6 +4555,12 @@ function zoneHalf() {
   return clamp(g.cell * (t.vz ? 0.7 : 1.15) * f, g.cell * 0.18, g.cell * (t.vz ? 1.6 : 3.6));
 }
 function newPart(k, x, y, state = 'free') { const a = Math.random() * 6.283; return { k, x, y, a, state, life: 0 }; }
+/* Loch auf einem Bindungsplatz; es bewegt sich nur durch Platzwechsel mit einem Elektron einer Nachbarbindung */
+function newHole(site, state = 'free') { const st = PN.geo.sites[site]; return { k: 'h', x: st.x, y: st.y, site, hop: null, wait: Math.random() * 0.4, state, life: 0 }; }
+const siteNear = (x, y) => { let b = 0, bd = 1e9; PN.geo.sites.forEach((st, k) => { const d = (st.x - x) ** 2 + (st.y - y) ** 2; if (d < bd) { bd = d; b = k; } }); return b; };
+const holeOcc = () => { const o = new Set(); for (const p of PN.parts) if (p.k === 'h' && !p.dead) { o.add(p.site); if (p.hop) o.add(p.hop.to); } return o; };
+const freeSite = list => { const o = holeOcc(), f = list.filter(k => !o.has(k)); return f.length ? f[Math.floor(Math.random() * f.length)] : null; };   // null: alle Bindungen schon mit Loch
+const holeAtBoron = a => { const k = freeSite(PN.geo.bondsOf([a.i, a.j])); return k === null ? null : newHole(k); };
 function flash(x, y, col, r = 1) { PN.fl.push({ x, y, col, t: 0, r }); }
 
 function pnTargets() {
@@ -4181,11 +4584,11 @@ function pnFrame(dt) {
   if (T.pairs) {
     const ne = T.e - fe.length, nh = T.h - fh.length;
     const pairNeed = Math.min(ne, nh);
-    if (pairNeed > 0 && Math.random() < 0.08 + 0.15 * pairNeed) { const a = g.atoms[Math.floor(Math.random() * g.atoms.length)]; const x = a.x + g.cell / 2, y = a.y; P.push(newPart('e', x, y), newPart('h', x, y)); flash(x, y, '#ffd43b'); }
+    if (pairNeed > 0 && Math.random() < 0.08 + 0.15 * pairNeed) { const a = g.atoms[Math.floor(Math.random() * g.atoms.length)]; const sk = freeSite(g.bondsOf([a.i, a.j])); if (sk !== null) { const st = g.sites[sk], x = st.x, y = st.y; P.push(newPart('e', x, y), newHole(sk)); flash(x, y, '#ffd43b'); } }
     if (ne > 0 && T.extraE && fe.length < T.e - (T.e - T.extraE) && false) { }
     // Dotierungs-Elektronen/Löcher sofort bereitstellen
     if (ne > pairNeed) for (let i = 0; i < ne - Math.max(0, pairNeed); i++) { const ds = g.atoms.filter(a => a.k === 'P'); const a = ds[Math.floor(Math.random() * ds.length)]; if (a) P.push(newPart('e', a.x + 8, a.y - 8)); }
-    if (nh > pairNeed) for (let i = 0; i < nh - Math.max(0, pairNeed); i++) { const ds = g.atoms.filter(a => a.k === 'B'); const a = ds[Math.floor(Math.random() * ds.length)]; if (a) P.push(newPart('h', a.x + 8, a.y - 8)); }
+    if (nh > pairNeed) for (let i = 0; i < nh - Math.max(0, pairNeed); i++) { const ds = g.atoms.filter(a => a.k === 'B'); const a = ds[Math.floor(Math.random() * ds.length)]; const h = a && holeAtBoron(a); if (h) P.push(h); }
     if (ne < 0 && nh < 0 && Math.random() < 0.1) { // Rekombination
       const e = fe[0], h = fh.reduce((b, q) => !b || Math.hypot(q.x - e.x, q.y - e.y) < Math.hypot(b.x - e.x, b.y - e.y) ? q : b, null);
       if (e && h) { e.dead = h.dead = 1; flash((e.x + h.x) / 2, (e.y + h.y) / 2, '#ffffff'); }
@@ -4193,7 +4596,7 @@ function pnFrame(dt) {
     else if (nh < 0 && ne >= 0) { fh.slice(0, -nh).forEach(e => e.dead = 1); }
   } else {
     if (fe.length < T.e) P.push(newPart('e', g.x1 - rnd(3, g.cell), rnd(g.y0 + 5, g.y1 - 5)));
-    if (fh.length < T.h) P.push(newPart('h', g.x0 + rnd(3, g.cell), rnd(g.y0 + 5, g.y1 - 5)));
+    if (fh.length < T.h) { const k = siteNear(g.x0 + rnd(3, g.cell), rnd(g.y0 + 5, g.y1 - 5)); if (!holeOcc().has(k)) P.push(newHole(k)); }
     if (fe.length > T.e) { const e = fe.reduce((b, q) => !b || q.x < b.x ? q : b, null); e.dead = 1; }
     if (fh.length > T.h) { const h = fh.reduce((b, q) => !b || q.x > b.x ? q : b, null); h.dead = 1; }
     // Durchlassrichtung: Elektronen wandern über die Grenzschicht und rekombinieren
@@ -4211,21 +4614,23 @@ function pnFrame(dt) {
     // Z-Durchbruch: Paare in der Raumladungszone
     if (t.vz && I < -1e-4) {
       PN.gacc += dt * 22 * Math.sqrt(clamp(-I / 0.02, 0, 1.5));
-      while (PN.gacc >= 1) { PN.gacc -= 1; const y = rnd(g.y0 + 6, g.y1 - 6); P.push(newPart('e', g.xj, y, 'gen'), newPart('h', g.xj, y, 'gen')); flash(g.xj, y, '#b197fc'); }
+      while (PN.gacc >= 1) { PN.gacc -= 1; const y = rnd(g.y0 + 6, g.y1 - 6); P.push(newPart('e', g.xj, y, 'gen'), newHole(siteNear(g.xj, y), 'gen')); flash(g.xj, y, '#b197fc'); }
     } else PN.gacc = 0;
   }
   // Bewegung
   const s = g.cell / 40;
   const drift = PN.sub !== 'pn' && PN.field ? 1 : 0;
+  PN.occ = holeOcc();
   for (const p of P) {
     if (p.dead) continue;
     p.life += dt;
+    if (p.k === 'h') { holeStep(p, dt, g, s, drift, inRegion, t); continue; }
     const sp = (p.k === 'e' ? 70 : 38) * s * (0.6 + 0.4 * Math.sqrt(Math.max(0.2, (PN.T + 273) / 298)));
     if (p.state === 'cross') {
       const m = p.mate;
       if (!m || m.dead) { p.state = 'free'; continue; }
       const dx = m.x - p.x, dy = m.y - p.y, d = Math.hypot(dx, dy);
-      if (d < 6 * s) { p.dead = m.dead = 1; const c = t.col || '#ffe066'; flash((p.x + m.x) / 2, (p.y + m.y) / 2, c, t.col ? 1.6 : 0.8); if (t.col) PN.fl.push({ x: (p.x + m.x) / 2, y: (p.y + m.y) / 2, col: t.col, t: 0, ph: 1, a: Math.random() * 6.283 }); continue; }
+      if (d < 6 * s) { recomb(m, p, s, t); continue; }
       const v = (p.k === 'e' ? 150 : 90) * s;
       p.x += dx / d * v * dt; p.y += dy / d * v * dt; continue;
     }
@@ -4246,6 +4651,50 @@ function pnFrame(dt) {
   PN.parts = P.filter(p => !p.dead);
   PN.fl = PN.fl.filter(f => (f.t += dt) < (f.ph ? 1.2 : 0.6));
   pnDraw(T); pnGraph(); pnText(T);
+}
+/* Ein Loch wandert, indem ein Elektron aus einer Nachbarbindung in die Lücke springt (Animation: Loch und Elektron tauschen den Platz). */
+function holeStep(p, dt, g, s, drift, inRegion, t) {
+  const S = g.sites, tf = Math.sqrt(Math.max(0.2, (PN.T + 273) / 298));
+  if (p.hop) {
+    p.hop.t += dt / p.hop.d;
+    const A = S[p.hop.from], B = S[p.hop.to], u = Math.min(1, p.hop.t), e = u * u * (3 - 2 * u);
+    p.x = A.x + (B.x - A.x) * e; p.y = A.y + (B.y - A.y) * e;
+    if (u >= 1) { p.site = p.hop.to; p.hop = null; }
+    if (p.state === 'cross' && p.mate && !p.mate.dead && Math.hypot(p.mate.x - p.x, p.mate.y - p.y) < 6 * s) recomb(p, p.mate, s, t);
+    return;
+  }
+  if (p.state === 'cross') {
+    const m = p.mate; if (!m || m.dead) { p.state = 'free'; return; }
+    if (Math.hypot(m.x - p.x, m.y - p.y) < 6 * s + g.cell * 0.2) { recomb(p, m, s, t); return; }
+    const nb = S[p.site].nb, best = nb.reduce((b, k) => !b || Math.hypot(S[k].x - m.x, S[k].y - m.y) < Math.hypot(S[b].x - m.x, S[b].y - m.y) ? k : b, null);
+    p.hop = { from: p.site, to: best, t: 0, d: 0.16 }; return;
+  }
+  if (p.state === 'gen') {
+    const nb = S[p.site].nb, left = nb.filter(k => S[k].x < S[p.site].x - 1);
+    if (!left.length) { p.dead = 1; return; }
+    p.hop = { from: p.site, to: left[Math.floor(Math.random() * left.length)], t: 0, d: 0.09 }; return;
+  }
+  p.wait -= dt * tf; if (p.wait > 0) return;
+  const [a, b] = inRegion('h'), cur = S[p.site], inR = st => st.x >= a && st.x <= b;
+  let cand = cur.nb.filter(k => inR(S[k]));
+  if (!inR(cur)) { const mid = (a + b) / 2; cand = cur.nb.filter(k => Math.abs(S[k].x - mid) < Math.abs(cur.x - mid)); }
+  // Spannung: Löcher wandern zum Minuspol (links), in Durchlassrichtung zur Grenzschicht (rechts)
+  const bias = drift ? -1.7 : PN.sub === 'pn' && PN.U > 0 ? 0.6 : 0;
+  if (drift && cur.x < g.x0 + g.cell * 0.75) {   // links angekommen: über den äußeren Stromkreis rechts wieder hinein
+    const edge = S.map((st, k) => k).filter(k => S[k].x > g.x1 - g.cell * 0.75 && !PN.occ.has(k)); if (!edge.length) { p.wait = 0.2; return; } const nk = edge[Math.floor(Math.random() * edge.length)]; PN.occ.delete(p.site); PN.occ.add(nk);
+    p.site = nk; p.x = S[nk].x; p.y = S[nk].y; p.wait = 0.2; return;
+  }
+  cand = cand.filter(k => !PN.occ.has(k));   // auf einer Bindung ist höchstens ein Loch
+  if (!cand.length) { p.wait = 0.2; return; }
+  const wts = cand.map(k => Math.exp(bias * (S[k].x - cur.x) / (g.cell * 0.7)));
+  let r = Math.random() * wts.reduce((x, y) => x + y, 0), k = cand[0];
+  for (let i = 0; i < cand.length; i++) { r -= wts[i]; if (r <= 0) { k = cand[i]; break; } }
+  p.hop = { from: p.site, to: k, t: 0, d: drift ? 0.22 : 0.32 }; PN.occ.add(k);
+  p.wait = (drift ? 0.05 : 0.15) + Math.random() * (drift ? 0.15 : 0.6);
+}
+function recomb(h, e, s, t) {
+  h.dead = e.dead = 1; const c = t.col || '#ffe066'; flash((h.x + e.x) / 2, (h.y + e.y) / 2, c, t.col ? 1.6 : 0.8);
+  if (t.col) PN.fl.push({ x: (h.x + e.x) / 2, y: (h.y + e.y) / 2, col: t.col, t: 0, ph: 1, a: Math.random() * 6.283 });
 }
 function pnDraw(T) {
   const c = pctx, g = PN.geo, d = PN.dpr, s = g.cell;
@@ -4269,11 +4718,16 @@ function pnDraw(T) {
   }
   c.strokeStyle = '#c3cad6'; c.lineWidth = 1; c.strokeRect(g.x0, g.y0, g.x1 - g.x0, g.y1 - g.y0);
   // Bindungen
-  c.strokeStyle = '#cfd6e2'; c.lineWidth = 1.2;
-  for (const a of g.atoms) {
-    if (a.i < g.cols - 1) { ln(c, a.x + s * 0.3, a.y - 3, a.x + s * 0.7, a.y - 3); ln(c, a.x + s * 0.3, a.y + 3, a.x + s * 0.7, a.y + 3); }
-    if (a.j < g.rows - 1) { ln(c, a.x - 3, a.y + s * 0.3, a.x - 3, a.y + s * 0.7); ln(c, a.x + 3, a.y + s * 0.3, a.x + 3, a.y + s * 0.7); }
-  }
+  // Jeder Strich ist ein Bindungselektron; bei einem Loch fehlt einer der beiden Striche.
+  const holeAt = new Set(); for (const p of PN.parts) if (p.k === 'h' && !p.dead) { if (p.hop) { holeAt.add(p.hop.t < 0.5 ? p.hop.from : p.hop.to); } else holeAt.add(p.site); }
+  c.lineWidth = 1.2;
+  g.sites.forEach((st, k) => {
+    const miss = holeAt.has(k);
+    c.strokeStyle = '#cfd6e2';
+    if (st.h) { ln(c, st.x - s * 0.2, st.y - 3, st.x + s * 0.2, st.y - 3); if (!miss) ln(c, st.x - s * 0.2, st.y + 3, st.x + s * 0.2, st.y + 3); }
+    else { ln(c, st.x - 3, st.y - s * 0.2, st.x - 3, st.y + s * 0.2); if (!miss) ln(c, st.x + 3, st.y - s * 0.2, st.x + 3, st.y + s * 0.2); }
+    if (miss) { c.strokeStyle = '#f1a7a7'; c.setLineDash([2, 3]); if (st.h) ln(c, st.x - s * 0.2, st.y + 3, st.x + s * 0.2, st.y + 3); else ln(c, st.x + 3, st.y - s * 0.2, st.x + 3, st.y + s * 0.2); c.setLineDash([]); }
+  });
   // Atome
   const r = s * 0.27;
   for (const a of g.atoms) {
@@ -4304,6 +4758,14 @@ function pnDraw(T) {
   }
   // Ladungsträger
   const pr = Math.max(5, s * 0.13);
+  // Nachrückende Bindungselektronen: springen von der Nachbarbindung in die Lücke (entgegen der Lochbewegung)
+  for (const p of PN.parts) {
+    if (p.k !== 'h' || !p.hop) continue;
+    const A = g.sites[p.hop.from], B = g.sites[p.hop.to], u = Math.min(1, p.hop.t), e = u * u * (3 - 2 * u);
+    const x = B.x + (A.x - B.x) * e, y = B.y + (A.y - B.y) * e;
+    c.strokeStyle = 'rgba(28,100,242,.35)'; c.lineWidth = 1.5; c.setLineDash([2, 3]); ln(c, B.x, B.y, x, y); c.setLineDash([]);
+    circ0(c, x, y, pr * 0.55); c.fillStyle = '#5b7bd5'; c.fill();
+  }
   for (const p of PN.parts) {
     circ0(c, p.x, p.y, pr);
     if (p.k === 'e') { c.fillStyle = '#1c64f2'; c.fill(); c.fillStyle = '#fff'; }
@@ -4377,21 +4839,21 @@ function pnText(T) {
     k = 'i' + Math.round(PN.T / 25) + PN.field;
     h = '<b>Eigenleitung:</b> Im reinen Silizium-Kristall ist jedes Atom über vier <i>Elektronenpaarbindungen</i> mit seinen Nachbarn verbunden. Alle Elektronen sind gebunden – reines Silizium leitet bei tiefer Temperatur kaum.<br><br>Durch Wärme brechen einzelne Bindungen auf: Es entsteht ein <b>freies Elektron</b> und an seiner alten Stelle ein <b>Loch</b> (Defektelektron), das sich wie eine positive Ladung verhält. '
       + (PN.T > 80 ? 'Bei der hohen Temperatur entstehen viele Elektron-Loch-Paare – der Widerstand ist deutlich kleiner. Deshalb sind Halbleiter <b>Heißleiter</b> (NTC).' : 'Erhöhe die Temperatur und beobachte, wie die Zahl der Ladungsträger steigt.')
-      + (PN.field ? '<br><br>Mit angelegter Spannung bewegen sich die Elektronen zum Pluspol und die Löcher zum Minuspol – es fließt ein Strom.' : '');
+      + (PN.field ? '<br><br>Mit angelegter Spannung bewegen sich die freien Elektronen zum Pluspol. Die Löcher wandern zum Minuspol – indem Bindungselektronen jeweils in Richtung Pluspol nachrücken. Beides zusammen ist der Strom.' : '');
   } else if (PN.sub === 'n') {
     k = 'n' + PN.field;
     h = '<b>n-Dotierung:</b> Einige Silizium-Atome werden durch <b>Phosphor</b> ersetzt. Phosphor hat <b>fünf</b> Außenelektronen – vier werden für die Bindungen gebraucht, das fünfte ist nur schwach gebunden und bereits bei Zimmertemperatur <b>frei beweglich</b>.<br><br>Zurück bleiben ortsfeste, <b>positiv geladene Phosphor-Ionen</b> (rotes +). Der Kristall bleibt insgesamt elektrisch neutral. <b>Majoritätsladungsträger: Elektronen</b> (n wie negativ). Schon wenige Fremdatome (etwa 1 auf 10 Millionen) erhöhen die Leitfähigkeit enorm.';
   } else if (PN.sub === 'p') {
     k = 'p' + PN.field;
-    h = '<b>p-Dotierung:</b> Einige Silizium-Atome werden durch <b>Bor</b> ersetzt. Bor hat nur <b>drei</b> Außenelektronen – eine Bindung bleibt unvollständig: Es entsteht ein <b>Loch</b>. Ein Elektron aus einer Nachbarbindung kann hineinspringen; dadurch wandert das Loch weiter.<br><br>Das Bor-Atom wird dabei zum ortsfesten, <b>negativ geladenen Ion</b> (blaues −). <b>Majoritätsladungsträger: Löcher</b> (p wie positiv).';
+    h = '<b>p-Dotierung:</b> Einige Silizium-Atome werden durch <b>Bor</b> ersetzt. Bor hat nur <b>drei</b> Außenelektronen – eine Bindung bleibt unvollständig: Es entsteht ein <b>Loch</b>. Das Loch ist kein eigenes Teilchen: Ein <b>Elektron aus einer Nachbarbindung</b> springt hinein (kleiner blauer Punkt), dadurch wandert die Lücke eine Bindung weiter. Bewegt werden also immer gebundene Elektronen – Schritt für Schritt. In der Physik (Bändermodell) beschreibt man das vereinfacht als <b>bewegliche positive Ladung</b>; sie lässt sich z. B. mit dem Hall-Effekt nachweisen.<br><br>Das Bor-Atom wird dabei zum ortsfesten, <b>negativ geladenen Ion</b> (blaues −). <b>Majoritätsladungsträger: Löcher</b> (p wie positiv).';
   } else {
     const st = t.vz && U < -t.vz + 0.15 ? 'z' : U < -0.05 ? 'r' : U < 0.05 ? '0' : I < 5e-4 ? 'f0' : 'f';
     k = 'pn' + st + PN.type;
     if (st === '0') h = '<b>pn-Übergang ohne Spannung:</b> An der Grenze diffundieren Elektronen aus dem n-Gebiet ins p-Gebiet und rekombinieren dort mit Löchern. Zurück bleibt eine Zone ohne freie Ladungsträger – die <b>Raumladungszone</b> (Sperrschicht). In ihr sitzen nur die ortsfesten Ionen: positive auf der n-Seite, negative auf der p-Seite. Deren elektrisches Feld verhindert weitere Diffusion. Es entsteht die <b>Diffusionsspannung</b> (bei Silizium ca. 0,7 V).';
     else if (st === 'r') h = '<b>Sperrrichtung</b> (Pluspol am n-Gebiet): Die äußere Spannung zieht die Elektronen und Löcher von der Grenzschicht weg. Die <b>Raumladungszone wird breiter</b>, es fließt praktisch kein Strom (nur ein winziger Sperrstrom im nA-Bereich). Die Diode <b>sperrt</b>.';
     else if (st === 'z') h = '<b>Z-Durchbruch:</b> Bei der Z-Diode ist die Sperrschicht sehr dünn und die Feldstärke darin riesig. Ab der Z-Spannung (hier 4,7 V) werden Elektronen aus ihren Bindungen gerissen (Zener-Effekt/Lawinendurchbruch). Der Sperrstrom steigt steil an, die Spannung bleibt fast konstant – genau das nutzt man zur <b>Spannungsstabilisierung</b>.';
-    else if (st === 'f0') h = '<b>Durchlassrichtung, unter der Schwellenspannung:</b> Der Pluspol liegt am p-Gebiet. Die Raumladungszone wird <b>schmaler</b>, aber solange die äußere Spannung kleiner als die Diffusionsspannung (≈ ' + fmtN(t.vbi, 1) + ' V) ist, fließt nur ein sehr kleiner Strom. Beobachte die Kennlinie!';
-    else h = '<b>Durchlassrichtung:</b> Die äußere Spannung baut die Sperrschicht ab. Elektronen strömen aus dem n-Gebiet, Löcher aus dem p-Gebiet zur Grenze und <b>rekombinieren</b>. Die Batterie liefert ständig Nachschub – es fließt ein großer Strom, der mit der Spannung <b>exponentiell</b> ansteigt (Shockley-Gleichung).'
+    else if (st === 'f0') h = '<b>Durchlassrichtung, unter der Schwellenspannung:</b> Der Pluspol liegt am p-Gebiet. Die äußere Spannung wirkt dem Feld der Ionen entgegen: Elektronen und Löcher werden in die Raumladungszone geschoben, sie wird <b>schmaler</b>, und die <b>Energiebarriere sinkt</b>. Solange die äußere Spannung kleiner als die Diffusionsspannung (≈ ' + fmtN(t.vbi, 1) + ' V) ist, schaffen aber nur wenige Elektronen mit ihrer thermischen Energie den Weg darüber – es fließt nur ein sehr kleiner Strom. Beobachte die Kennlinie!';
+    else h = '<b>Durchlassrichtung:</b> Die äußere Spannung baut die Sperrschicht weitgehend ab – nicht die Elektronen werden „stärker“, sondern die <b>Energiebarriere wird niedriger</b>, sodass immer mehr von ihnen hinüberkommen. Elektronen strömen aus dem n-Gebiet, Löcher aus dem p-Gebiet zur Grenze und <b>rekombinieren</b>. Die Batterie liefert ständig Nachschub – es fließt ein großer Strom, der mit der Spannung <b>exponentiell</b> ansteigt (Shockley-Gleichung).'
       + (t.col ? `<br><br><b>Leuchtdiode:</b> Bei jeder Rekombination wird Energie als <b>Lichtquant (Photon)</b> abgegeben. Die Farbe hängt von der Bandlücke des Materials ab (${t.mat}) – blaues Licht braucht mehr Energie, deshalb ist auch die Schwellenspannung höher.` : '<br><br>Bei Silizium wird die Energie bei der Rekombination als Wärme abgegeben.');
   }
   if (k === PN.txtKey) return; PN.txtKey = k; $('#pnText').innerHTML = h;
@@ -4399,8 +4861,8 @@ function pnText(T) {
 /* ================= Von-Neumann-Rechner (Mikroprogrammierung + Assembler) ================= */
 const SRCS = ['PC', 'DR', 'A', 'B', 'SP', 'ALU', 'IN'];
 const DSTS = ['PC', 'MAR', 'DR', 'A', 'B', 'SP', 'IR', 'OUT'];
-const ALUOPS2 = { ADD: 'A + B', SUB: 'A − B', AND: 'A ∧ B', OR: 'A ∨ B', XOR: 'A ⊕ B', NOT: '¬A', INC: 'A + 1', DEC: 'A − 1', SHL: 'A ≪ 1', SHR: 'A ≫ 1', B: 'B' };
-const CONDS = { '': 'immer', Z: 'nur wenn Z = 1', NZ: 'nur wenn Z = 0', C: 'nur wenn C = 1', NC: 'nur wenn C = 0', N: 'nur wenn N = 1' };
+const ALUOPS2 = { ADD: 'A + B', SUB: 'A − B', AND: 'A ∧ B', OR: 'A ∨ B', XOR: 'A ⊕ B', NOT: '¬A', INC: 'A + 1', DEC: 'A − 1', SHL: 'A ≪ 1', SHR: 'A ≫ 1', B: 'B', A: 'A (unverändert, nur Flags)' };
+const CONDS = { '': 'immer', Z: 'nur wenn Z = 1', NZ: 'nur wenn Z = 0', C: 'nur wenn C = 1', NC: 'nur wenn C = 0', N: 'nur wenn N = 1', NN: 'nur wenn N = 0' };
 const RNAME = { PC: 'Befehlszähler PC', SP: 'Stapelzeiger SP', IR: 'Befehlsregister IR', MAR: 'Adressregister MAR', DR: 'Datenregister DR', A: 'Akkumulator A', B: 'Register B', OUT: 'Ausgabe', IN: 'Eingabe' };
 const ms = (o) => ({ src: '', dst: [], rd: 0, wr: 0, inc: [], alu: '', flags: 0, cond: '', halt: 0, ...o });
 const FETCH = [ms({ src: 'PC', dst: ['MAR'] }), ms({ rd: 1, inc: ['PC+'] }), ms({ src: 'DR', dst: ['IR'] })];
@@ -4445,14 +4907,17 @@ const CPU = {
   phase: 'fetch', step: 0, halted: false, err: '', last: null, isa: defaultISA(), src: '', running: false, speed: 4, acc: 0, tab: 'ram',
   hl: { src: '', opt: true, view: 'map' }, hlRes: null, hlErr: null, hlLoaded: false, iaddr: null,
   instrs: 0, micro: 0, hex: true, editOp: null, draft: null, listing: null, unlock: false,
+  level: (() => { try { return localStorage.getItem('loghex.cpuLevel') === 'basic' ? 'basic' : 'pro'; } catch (e) { return 'pro'; } })(),
+  sum: null, sumCur: null,
 };
+const isBasic = () => CPU.level === 'basic';
 const hx = v => v.toString(16).toUpperCase().padStart(2, '0');
 const fmtV = v => CPU.hex ? '$' + hx(v) : String(v);
 function curInstr() { return CPU.isa.find(i => i.op === CPU.r.IR); }
 function nextMicro() {
   if (CPU.phase === 'fetch') return { ms: FETCH[CPU.step], title: 'Holphase', n: CPU.step + 1, of: 3 };
   const I = curInstr(); if (!I) return null;
-  return { ms: I.steps[CPU.step], title: I.mn + (I.mode === 'imm' ? ' #n' : I.mode === 'adr' ? ' adr' : ''), n: CPU.step + 1, of: I.steps.length };
+  return { ms: I.steps[CPU.step], title: iName(I), n: CPU.step + 1, of: I.steps.length };
 }
 function aluCalc(op, a, b) {
   let r = 0, c = 0;
@@ -4460,11 +4925,11 @@ function aluCalc(op, a, b) {
     case 'ADD': r = a + b; c = r > 255; break; case 'SUB': r = a - b; c = a < b; break;
     case 'AND': r = a & b; break; case 'OR': r = a | b; break; case 'XOR': r = a ^ b; break;
     case 'NOT': r = ~a; break; case 'INC': r = a + 1; c = r > 255; break; case 'DEC': r = a - 1; c = a === 0; break;
-    case 'SHL': r = a << 1; c = (a >> 7) & 1; break; case 'SHR': r = a >> 1; c = a & 1; break; case 'B': r = b; break;
+    case 'SHL': r = a << 1; c = (a >> 7) & 1; break; case 'SHR': r = a >> 1; c = a & 1; break; case 'B': r = b; break; case 'A': r = a; break;
   }
   r &= 255; return { r, Z: r === 0 ? 1 : 0, C: c ? 1 : 0, N: (r >> 7) & 1 };
 }
-function condOk(c) { const f = CPU.f; return !c || (c === 'Z' && f.Z) || (c === 'NZ' && !f.Z) || (c === 'C' && f.C) || (c === 'NC' && !f.C) || (c === 'N' && f.N); }
+function condOk(c) { const f = CPU.f; return !c || (c === 'Z' && f.Z) || (c === 'NZ' && !f.Z) || (c === 'C' && f.C) || (c === 'NC' && !f.C) || (c === 'N' && f.N) || (c === 'NN' && !f.N); }
 function microStep() {
   if (CPU.halted) return false;
   if (CPU.phase === 'fetch' && CPU.step === 0) CPU.iaddr = CPU.r.PC;
@@ -4486,16 +4951,30 @@ function microStep() {
     if (m.halt) CPU.halted = true;
   }
   CPU.last = L; CPU.micro++;
+  const ph0 = CPU.phase;
+  // Zusammenfassung der laufenden Phase (Holen bzw. Ausführen) für die Anfänger-Ansicht
+  const S = CPU.sumCur || (CPU.sumCur = { phase: ph0, addr: CPU.iaddr, reads: [], writes: [], alu: null, changed: new Set(), jump: null, nojump: false, srcs: new Set(), dsts: new Set() });
+  if (m && !L.skipped) {
+    if (m.rd) S.reads.push([old.MAR, R.DR]);
+    if (m.wr) S.writes.push([old.MAR, old.DR]);
+    if (L.alu && m.alu !== 'A' && m.alu !== 'B') S.alu = { op: m.alu, a: old.A, b: old.B, r: L.alu.r };
+    if (m.src) S.srcs.add(m.src); m.dst.forEach(d => S.dsts.add(d));
+    if (ph0 === 'exec' && m.dst.includes('PC')) S.jump = L.bus;
+  } else if (m && L.skipped && m.dst.includes('PC')) S.nojump = true;
+  for (const k of ['PC', 'IR', 'A', 'OUT', 'SP']) if (old[k] !== R[k]) S.changed.add(k);
   // weiterschalten
   CPU.step++;
   if (CPU.phase === 'fetch') { if (CPU.step >= 3) { CPU.phase = 'exec'; CPU.step = 0; const I = curInstr(); if (!I) { CPU.halted = true; CPU.err = `Unbekannter Befehl $${hx(R.IR)} an Adresse $${hx((R.PC - 1) & 255)}.`; } else if (!I.steps.length) { CPU.phase = 'fetch'; CPU.instrs++; } } }
   else { const I = curInstr(); if (!I || CPU.step >= I.steps.length) { CPU.phase = 'fetch'; CPU.step = 0; CPU.instrs++; } }
+  if (CPU.step === 0 || CPU.halted) { S.instr = ph0 === 'fetch' ? curInstr() : curInstr(); S.ir = R.IR; S.halt = CPU.halted; CPU.sum = S; CPU.sumCur = null; }
   return true;
 }
+/* Anfänger-Ansicht: ein Schritt = eine Phase (Befehl holen bzw. Befehl ausführen) */
+function phaseStep() { let n = 0; do { if (!microStep()) break; n++; } while (CPU.step !== 0 && n < 200 && !CPU.halted); }
 function instrStep() { let n = 0; do { if (!microStep()) break; n++; } while (CPU.phase !== 'fetch' && n < 200 && !CPU.halted); }
 function cpuReset(full) {
   Object.assign(CPU.r, { PC: 0, IR: 0, MAR: 0, DR: 0, A: 0, B: 0, SP: 0, OUT: 0 }); Object.assign(CPU.f, { Z: 0, C: 0, N: 0 });
-  CPU.phase = 'fetch'; CPU.step = 0; CPU.halted = false; CPU.err = ''; CPU.last = null; CPU.instrs = 0; CPU.micro = 0; CPU.iaddr = null;
+  CPU.phase = 'fetch'; CPU.step = 0; CPU.halted = false; CPU.err = ''; CPU.last = null; CPU.instrs = 0; CPU.micro = 0; CPU.iaddr = null; CPU.sum = CPU.sumCur = null;
   if (full) CPU.ram.fill(0);
   CPU.running = false; cpuUI();
 }
@@ -4524,6 +5003,8 @@ function assemble(src) {
       try {
         if (mn === 'ORG') { pc = parseNum(arg, labels) & 255; return; }
         if (mn === 'DB') { for (const a of arg.split(',')) { const v = parseNum(a, labels); if (v < -128 || v > 255) throw new Error('Wert außerhalb 0…255'); if (pass === 2) out.push([pc, v & 255, li]); pc++; } return; }
+        const msx = isMsIsa() ? msAsmLine(s, labels) : null;   // MikroSim-Schreibweise (immer 2 Byte, außer DEC IP)
+        if (msx) { if (pass === 2) { out.push([pc, msx.I.op, li]); if (msx.I.mode !== 'none') out.push([pc + 1, msx.v, li]); } pc += msx.I.mode === 'none' ? 1 : 2; return; }
         const mode = !arg ? 'none' : arg.startsWith('#') ? 'imm' : 'adr';
         const I = CPU.isa.find(i => i.mn.toUpperCase() === mn && i.mode === mode);
         if (!I) {
@@ -4546,7 +5027,7 @@ function disasm() {
     const op = CPU.ram[a], I = CPU.isa.find(i => i.op === op);
     if (I && (I.mode === 'none' || a < 255)) {
       const len = I.mode === 'none' ? 1 : 2, o = CPU.ram[a + 1];
-      rows.push([a, len === 1 ? hx(op) : hx(op) + ' ' + hx(o), I.mn + (I.mode === 'imm' ? ' #' + fmtV(o) : I.mode === 'adr' ? ' ' + '$' + hx(o) : '')]);
+      rows.push([a, len === 1 ? hx(op) : hx(op) + ' ' + hx(o), I.syn ? I.syn.replace(/nn/i, hx(o)) : I.mn + (I.mode === 'imm' ? ' #' + fmtV(o) : I.mode === 'adr' ? ' ' + '$' + hx(o) : '')]);
       a += len;
     } else { rows.push([a, hx(op), 'DB ' + fmtV(op)]); a++; }
   }
@@ -4615,13 +5096,16 @@ function cpuDraw() {
   // Rahmen
   const titles = [];
   const frame = (x, y, w, h, t, col, vert) => { rr(g, x, y, w, h, 12); g.fillStyle = col; g.fill(); g.strokeStyle = '#c3cad6'; g.lineWidth = 1.2; g.stroke(); titles.push(vert ? [t, x + 12, y + h / 2, col, 1] : [t, x + 12, y + 14, col]); };
+  const basic = isBasic(), SM = CPU.sum;
   frame(20, 20, 680, 480, 'Prozessor (CPU)', '#f4f6fa');
-  frame(300, 34, 240, SW_B - 34, 'Steuerwerk', '#eef3ff');
-  frame(36, RW_Y, 250, 490 - RW_Y, 'Rechenwerk', '#fff8ec', true);
+  if (basic) { frame(40, 44, 640, 156, 'Steuerwerk', '#eef3ff'); frame(40, 300, 300, 186, 'Rechenwerk', '#fff8ec', true); }
+  else { frame(300, 34, 240, SW_B - 34, 'Steuerwerk', '#eef3ff'); frame(36, RW_Y, 250, 494 - RW_Y, 'Rechenwerk', '#fff8ec', true); }
   frame(300, 515, 440, 105, 'Ein-/Ausgabe', '#f1f8f2', true);
   frame(760, 20, 230, 600, 'Arbeitsspeicher (RAM)', '#f6f3ff');
   // interner Bus
   const busOn = L && L.src;
+  const binS = v => v.toString(2).padStart(8, '0').replace(/(\d{4})/, '$1 ');
+  let busLabel = () => { }, irLines = () => { };
   // Bus als 8 einzelne Leitungen (Bit 7 oben … Bit 0 unten): rot = 1, blau = 0, grau = nicht belegt
   const BSP = 3.5;
   const busLines = (xa, xb, yc, val, on, digits, sp = BSP, n = 8) => {
@@ -4633,9 +5117,9 @@ function cpuDraw() {
     }
     if (digits) { T('Bit', xa - 11, yc - (n / 2) * sp - 6, { s: 9.5, c: '#667085', b: 1 }); }
   };
-  const binS = v => v.toString(2).padStart(8, '0').replace(/(\d{4})/, '$1 ');
+  if (!basic) {
   busLines(44, 690, BUSY, busOn ? CPU.last.bus : 0, busOn, true, IBS);
-  const busLabel = () => { rr(g, 432, BUSY - IBH - 33, 120, 30, 6); g.fillStyle = '#fff'; g.fill(); g.strokeStyle = busOn ? SRC : '#d0d5dd'; g.lineWidth = 1.2; g.stroke(); T('interner Datenbus', 492, BUSY - IBH - 25, { s: 10.5, b: 1, c: '#475467' }); T(busOn ? fmtV(CPU.last.bus) + ' = ' + binS(CPU.last.bus) : 'nicht belegt', 492, BUSY - IBH - 11, { s: 11.5, b: 1, c: busOn ? SRC : '#98a2b3' }); };
+  busLabel = () => { rr(g, 432, BUSY - IBH - 33, 120, 30, 6); g.fillStyle = '#fff'; g.fill(); g.strokeStyle = busOn ? SRC : '#d0d5dd'; g.lineWidth = 1.2; g.stroke(); T('interner Datenbus', 492, BUSY - IBH - 25, { s: 10.5, b: 1, c: '#475467' }); T(busOn ? fmtV(CPU.last.bus) + ' = ' + binS(CPU.last.bus) : 'nicht belegt', 492, BUSY - IBH - 11, { s: 11.5, b: 1, c: busOn ? SRC : '#98a2b3' }); };
   // Verbindungen Register ↔ Bus
   // senkrechtes 8-Bit-Leitungsbündel (Bit 7 links … Bit 0 rechts)
   const vLines = (x, ya, yb, val, on) => {
@@ -4645,6 +5129,7 @@ function cpuDraw() {
       g.strokeStyle = bit === 1 ? '#e5383b' : bit === 0 ? '#3d5a99' : '#c8ced8'; g.lineWidth = bit === 1 ? 2.4 : 1.8; ln(g, xx, ya, xx, yb);
     }
   };
+  irLines = () => vLines(380, SW_B, BOX.IR[1], CPU.r.IR, true);
   const gate = (x, y, on, col, dir, horiz) => {
     g.fillStyle = on ? col : '#fff'; g.strokeStyle = on ? col : '#98a2b3'; g.lineWidth = 1.5;
     if (horiz) { g.fillRect(x - 6, y - 17, 12, 34); g.strokeRect(x - 6, y - 17, 12, 34); }
@@ -4671,22 +5156,22 @@ function cpuDraw() {
   for (const k of ['A', 'B', 'DR', 'IN', 'OUT']) { const [x, y] = BOX[k]; link(k, x + RW / 2, y, false); }
   // ALU
   const aluOn = L && L.alu;
-  vLines(110, BOX.A[1] + RH, 392, aluOn ? CPU.last.ina : 0, !!aluOn); vLines(225, BOX.B[1] + RH, 392, aluOn ? CPU.last.inb : 0, !!aluOn);
-  if (aluOn) { T(fmtV(CPU.last.ina), 128, 375, { s: 10, a: 'left', c: SRC, b: 1 }); T(fmtV(CPU.last.inb), 207, 375, { s: 10, a: 'right', c: SRC, b: 1 }); }
-  g.beginPath(); g.moveTo(80, 392); g.lineTo(255, 392); g.lineTo(225, 440); g.lineTo(110, 440); g.closePath(); g.fillStyle = aluOn ? '#ffe8cc' : '#fff'; g.fill(); g.strokeStyle = aluOn ? SRC : '#98a2b3'; g.lineWidth = 1.5; g.stroke();
-  const SYM = { ADD: '+', SUB: '−', AND: '∧', OR: '∨', XOR: '⊕', NOT: '¬', INC: '+1', DEC: '−1', SHL: '≪', SHR: '≫', B: '=B' };
+  vLines(110, BOX.A[1] + RH, 384, aluOn ? CPU.last.ina : 0, !!aluOn); vLines(225, BOX.B[1] + RH, 384, aluOn ? CPU.last.inb : 0, !!aluOn);
+  if (aluOn) { T(fmtV(CPU.last.ina), 128, 371, { s: 10, a: 'left', c: SRC, b: 1 }); T(fmtV(CPU.last.inb), 207, 371, { s: 10, a: 'right', c: SRC, b: 1 }); }
+  g.beginPath(); g.moveTo(80, 384); g.lineTo(255, 384); g.lineTo(225, 424); g.lineTo(110, 424); g.closePath(); g.fillStyle = aluOn ? '#ffe8cc' : '#fff'; g.fill(); g.strokeStyle = aluOn ? SRC : '#98a2b3'; g.lineWidth = 1.5; g.stroke();
+  const SYM = { ADD: '+', SUB: '−', AND: '∧', OR: '∨', XOR: '⊕', NOT: '¬', INC: '+1', DEC: '−1', SHL: '≪', SHR: '≫', B: '=B', A: '=A' };
   if (aluOn) {
-    T(SYM[L.alu], 167, 409, { b: 1, s: 24, c: SRC });
+    T(SYM[L.alu], 167, 398, { b: 1, s: 21, c: SRC });
     const a = CPU.last.ina, b2 = CPU.last.inb, rres = CPU.last.alu.r;
-    const ex = { NOT: '¬' + fmtV(a), INC: fmtV(a) + ' + 1', DEC: fmtV(a) + ' − 1', SHL: fmtV(a) + ' ≪ 1', SHR: fmtV(a) + ' ≫ 1', B: fmtV(b2) }[L.alu] || fmtV(a) + ' ' + SYM[L.alu] + ' ' + fmtV(b2);
-    T(ex + ' = ' + fmtV(rres), 167, 431, { s: 10, c: '#7a3e00', b: 1 });
-  } else T('ALU', 167, 416, { b: 1, s: 13, c: '#98a2b3' });
+    const ex = { A: fmtV(a), NOT: '¬' + fmtV(a), INC: fmtV(a) + ' + 1', DEC: fmtV(a) + ' − 1', SHL: fmtV(a) + ' ≪ 1', SHR: fmtV(a) + ' ≫ 1', B: fmtV(b2) }[L.alu] || fmtV(a) + ' ' + SYM[L.alu] + ' ' + fmtV(b2);
+    T(ex + ' = ' + fmtV(rres), 167, 415, { s: 10, c: '#7a3e00', b: 1 });
+  } else T('ALU', 167, 404, { b: 1, s: 13, c: '#98a2b3' });
   // ALU-Ausgang zum Bus
   const ao = isSrc('ALU');
   const ar = aluOn ? CPU.last.alu.r : 0;
-  const edgeX = y => 255 - (y - 392) * 30 / 48; // rechte Schrägkante der ALU
+  const edgeX = y => 255 - (y - 384) * 30 / 40; // rechte Schrägkante der ALU
   for (let k = 0; k < 8; k++) {
-    const b = 7 - k, y = 416 + (k - 3.5) * BSP, x = 292 + (k - 3.5) * BSP, bit = (ar >> b) & 1;
+    const b = 7 - k, y = 404 + (k - 3.5) * BSP, x = 292 + (k - 3.5) * BSP, bit = (ar >> b) & 1;
     const col = on => on ? (bit ? '#e5383b' : '#3d5a99') : '#c8ced8';
     g.lineCap = 'butt'; g.lineWidth = aluOn && bit ? 2.4 : 1.8;
     g.strokeStyle = col(aluOn); g.beginPath(); g.moveTo(edgeX(y), y); g.lineTo(x, y); g.lineTo(x, 366); g.stroke();
@@ -4696,16 +5181,39 @@ function cpuDraw() {
   // Anschlusspunkte am Bus
   for (const [dx, dy, bit] of dots) { circ0(g, dx, dy, bit === 1 ? 2.3 : 1.8); g.fillStyle = bit === 1 ? '#e5383b' : bit === 0 ? '#3d5a99' : '#98a2b3'; g.fill(); }
   // Flags
-  ['Z', 'C', 'N'].forEach((f, i) => { const x = 70 + i * 60, on = CPU.f[f], ch = L && L.flags; rr(g, x, 452, 46, 26, 6); g.fillStyle = on ? '#ffe3e3' : '#fff'; g.fill(); g.strokeStyle = ch ? SRC : '#c3cad6'; g.lineWidth = ch ? 2 : 1; g.stroke(); T(f + ' = ' + on, x + 23, 465, { s: 12, b: 1, c: on ? '#c92a2a' : '#475467' }); });
+  // Flag-Logik: Z aus einem NOR-Gatter über alle 8 Ergebnisbits, N = Bit 7, C = Übertragsausgang der ALU.
+  // Farbig nur in Takten, in denen die Flags übernommen werden („Flags setzen“).
+  const fa = !!(aluOn && L.flags), fcol = bit => fa ? (bit ? '#e5383b' : '#3d5a99') : '#c8ced8', fw = bit => fa && bit ? 2.4 : 1.6;
+  const FY = 466, GT = 439, GB = 452;
+  g.lineCap = 'butt';
+  for (let k = 0; k < 8; k++) { const b = 7 - k, x = 153 + (k - 3.5) * BSP, bit = (ar >> b) & 1; g.strokeStyle = fcol(bit); g.lineWidth = fw(bit); ln(g, x, 424, x, GT); }
+  const b7 = (ar >> 7) & 1, xb7 = 153 - 3.5 * BSP;   // N: Abzweig von Bit 7
+  g.strokeStyle = fcol(b7); g.lineWidth = fw(b7); g.beginPath(); g.moveTo(xb7, 430); g.lineTo(93, 430); g.lineTo(93, FY); g.stroke();
+  circ0(g, xb7, 430, 2); g.fillStyle = fa ? fcol(b7) : '#98a2b3'; g.fill();
+  T('Bit 7', 99, 437, { s: 8.5, a: 'left', c: '#667085', b: 1 });
+  const zr = fa ? (ar === 0 ? 1 : 0) : 0;   // Z: NOR-Gatter (≥1 mit Negation)
+  g.fillStyle = '#fff'; g.strokeStyle = fa ? SRC : '#98a2b3'; g.lineWidth = 1.4; g.fillRect(137, GT, 32, GB - GT); g.strokeRect(137, GT, 32, GB - GT);
+  T('≥1', 153, (GT + GB) / 2 + 0.5, { s: 9, b: 1, c: fa ? '#7a3e00' : '#667085' });
+  circ0(g, 153, GB + 2.6, 2.6); g.fillStyle = '#fff'; g.fill(); g.lineWidth = 1.3; g.stroke();
+  g.strokeStyle = fcol(zr); g.lineWidth = fw(zr); ln(g, 153, GB + 5.2, 153, FY);
+  const cr = fa ? CPU.last.alu.C : 0;        // C: Übertragsausgang
+  g.strokeStyle = fcol(cr); g.lineWidth = fw(cr); ln(g, 213, 424, 213, FY);
+  T('Übertrag', 209, 436, { s: 8.5, a: 'right', c: '#667085', b: 1 });
+  ['N', 'Z', 'C'].forEach((f, i) => { const x = 70 + i * 60, on = CPU.f[f], ch = L && L.flags; rr(g, x, FY, 46, 22, 6); g.fillStyle = on ? '#ffe3e3' : '#fff'; g.fill(); g.strokeStyle = ch ? SRC : '#c3cad6'; g.lineWidth = ch ? 2 : 1; g.stroke(); T(f + ' = ' + on, x + 23, FY + 11.5, { s: 11.5, b: 1, c: on ? '#c92a2a' : '#475467' }); });
+  } else cpuBasicParts(g, T, SM, ACT, SRC);
   // Register
-  for (const [k, [x, y]] of Object.entries(BOX)) {
-    const v = R[k], on = isDst(k), sr = isSrc(k);
+  const BX = basic ? BOXB : BOX, RWo = RW;
+  for (const [k, [x, y]] of Object.entries(BX)) {
+    const RW = basic && ['PC', 'IR'].includes(k) ? RWB : RWo;
+    const v = R[k], on = basic ? !!(SM && (SM.changed.has(k) || (k === 'OUT' && SM.dsts.has('OUT')))) : isDst(k), sr = basic ? !!(SM && SM.srcs.has(k) && !on) : isSrc(k);
     rr(g, x, y, RW, RH, 8); g.fillStyle = on ? '#e6f7ea' : sr ? '#fff4e6' : '#fff'; g.fill(); g.strokeStyle = on ? ACT : sr ? SRC : '#98a2b3'; g.lineWidth = on || sr ? 2.5 : 1.2; g.stroke();
-    T(k === 'OUT' ? 'Ausgabe' : k === 'IN' ? 'Eingabe' : k, x + 8, y + 13, { a: 'left', s: 11, c: '#667085', b: 1 });
-    T(CPU.hex ? '$' + hx(v) : String(v), x + RW - 8, y + 13, { a: 'right', s: 12.5, b: 1 });
+    T(basic && BNAME[k] ? BNAME[k] : k === 'OUT' ? 'Ausgabe' : k === 'IN' ? 'Eingabe' : isMsIsa() && k === 'A' ? 'A (AX)' : isMsIsa() && k === 'SP' ? 'SP (BX)' : k, x + 8, y + 13, { a: 'left', s: 11, c: '#667085', b: 1 });
+    T(basic ? (k === 'PC' || k === 'IR' ? '$' + hx(v) : String(v)) : CPU.hex ? '$' + hx(v) : String(v), x + RW - 8, y + 13, { a: 'right', s: 12.5, b: 1 });
     T(v.toString(2).padStart(8, '0').replace(/(\d{4})/, '$1 '), x + RW / 2, y + 33, { s: 11, c: '#475467' });
+    // Quelle und im selben Takt weitergezählt (PC + 1, SP ± 1): Der Bus trägt noch den alten Wert
+    if (!basic && sr && CPU.last.bus !== v) { const st = (L.inc || []).find(i => i[0] === k[0]); T(`auf dem Bus: ${fmtV(CPU.last.bus)}${st ? ', danach ' + (st.endsWith('-') ? '− 1' : '+ 1') : ''}`, x + RW / 2, y - 8, { s: 10, b: 1, c: SRC }); }
   }
-  vLines(380, SW_B, BOX.IR[1], R.IR, true);
+  irLines();
   // Ausgabe-LEDs und Eingabeschalter
   for (let i = 0; i < 8; i++) {
     const b = 7 - i, on = (R.OUT >> b) & 1; circ0(g, 466 + i * 12.5, 604, 4.6); g.fillStyle = on ? '#ff3b30' : '#5b2b2b'; g.fill();
@@ -4722,24 +5230,28 @@ function cpuDraw() {
   const di = $('#cInDec'); if (di) { di.style.left = (ox + 590 * s) + 'px'; di.style.top = (oy + 533 * s) + 'px'; di.style.width = (120 * s) + 'px'; di.style.height = (24 * s) + 'px'; di.style.fontSize = Math.max(11, 14 * s) + 'px'; if (document.activeElement !== di && (di.value === '' || ((+di.value + 256) & 255) !== R.IN)) di.value = R.IN; }
   // Steuerwerk-Inhalt
   const I = curInstr();
-  T('Befehl im IR: ' + (CPU.r.IR || CPU.instrs || CPU.micro ? (I ? I.mn + (I.mode === 'imm' ? ' #n' : I.mode === 'adr' ? ' adr' : '') : '??') : '–'), 312, 62, { a: 'left', s: 12.5, b: 1 });
+  let rd, wr, mY, dY;
+  if (basic) { cpuBasicSW(g, T, SM, I); rd = !!(SM && SM.reads.length); wr = !!(SM && SM.writes.length); mY = dY = BUSB; }
+  else {
+  T('Befehl im IR: ' + (CPU.r.IR || CPU.instrs || CPU.micro ? (I ? iName(I) : '??') : '–'), 312, 62, { a: 'left', s: 12.5, b: 1 });
   const nx = CPU.halted ? null : nextMicro();
   T(CPU.halted ? (CPU.err ? 'FEHLER' : 'angehalten (HLT)') : (CPU.phase === 'fetch' ? 'Holphase' : 'Ausführungsphase') + (nx ? ` · Schritt ${nx.n}/${nx.of}` : ''), 312, 84, { a: 'left', s: 11.5, c: CPU.halted ? '#c92a2a' : '#1f3f8a', b: 1 });
   const wrap = (t, x, y, w, lh, o) => { g.font = `500 ${o.s}px ${FONT}`; const words = t.split(' '); let line = '', yy = y; for (const wd of words) { const tt = line ? line + ' ' + wd : wd; if (g.measureText(tt).width > w && line) { T(line, x, yy, o); line = wd; yy += lh; } else line = tt; } if (line) T(line, x, yy, o); };
   if (nx && nx.ms) wrap('als Nächstes: ' + msText(nx.ms), 312, 106, 216, 14, { a: 'left', s: 11, c: '#475467' });
   else if (CPU.err) wrap(CPU.err, 312, 106, 216, 14, { a: 'left', s: 11, c: '#c92a2a' });
   // Steuerbus
-  const rd = L && L.rd, wr = L && L.wr;
+  rd = L && L.rd; wr = L && L.wr;
   [['RD', rd, 56], ['WR', wr, 66]].forEach(([n, on, y]) => { g.strokeStyle = on ? '#e5383b' : '#3d5a99'; g.lineWidth = on ? 2.6 : 1.8; ln(g, 556, y, 760, y); T(n + ' = ' + (on ? 1 : 0), 552, y, { s: 9, b: 1, a: 'right', c: on ? '#e5383b' : '#667085' }); });
   T('Steuerbus' + (rd ? ' · RD (lesen)' : wr ? ' · WR (schreiben)' : ''), 650, 46, { s: 11.5, b: 1, c: rd || wr ? '#7048e8' : '#667085' });
   // Adressbus MAR → RAM
-  const mY = BOX.MAR[1] + RH / 2, dY = BOX.DR[1] + RH / 2;
+  mY = BOX.MAR[1] + RH / 2; dY = BOX.DR[1] + RH / 2;
   busLines(655, 760, mY, R.MAR, true, false);
   T('Adressbus · ' + fmtV(R.MAR), 708, mY - 21, { s: 11.5, b: 1, c: rd || wr ? '#1c7ed6' : '#667085' }); T(binS(R.MAR), 708, mY + 21, { s: 10, c: '#475467' });
   // Datenbus DR ↔ RAM
   const dv = rd ? R.DR : CPU.ram[R.MAR];
   busLines(655, 760, dY, dv, rd || wr, false);
   T('Datenbus' + (rd || wr ? (rd ? ' ← ' : ' → ') + fmtV(dv) : ''), 708, dY - 21, { s: 11.5, b: 1, c: rd || wr ? '#e67700' : '#667085' }); T(rd || wr ? binS(dv) : 'nicht belegt', 708, dY + 21, { s: 10, c: '#475467' });
+  }
   // RAM-Fenster
   const rows = 22;
   const nxm = !CPU.halted && nextMicro(), uses = m => m && (m.rd || m.wr || m.dst.includes('MAR'));
@@ -4752,6 +5264,7 @@ function cpuDraw() {
   for (let i = 0; i < rows; i++) {
     const a = st + i, y = 50 + i * 25.5, isM = a === R.MAR, isP = a === R.PC;
     if (isP) { g.fillStyle = '#e9f7ec'; g.fillRect(776, y, 200, 23); }
+    if (basic && SM) { const wv = SM.writes.some(w => w[0] === a), rv = SM.reads.some(q => q[0] === a); if ((wv || rv) && !isM) { rr(g, 776, y, 200, 23, 4); g.fillStyle = wv ? '#fff4e6' : '#e3edff'; g.fill(); } }
     if (isM) { marY = y + 11.5; rr(g, 776, y, 200, 23, 4); g.fillStyle = (rd || wr) ? '#cfe0ff' : '#e3edff'; g.fill(); g.strokeStyle = '#1c7ed6'; g.lineWidth = rd || wr ? 2.5 : 1.5; g.stroke(); }
     T('$' + hx(a), 805, y + 12, { s: 11.5, c: isM ? '#1c7ed6' : '#667085', b: isM });
     T(hx(CPU.ram[a]), 860, y + 12, { s: 13, b: 1, c: isM && wr ? '#e67700' : isM && rd ? '#1c7ed6' : COL.ink });
@@ -4777,8 +5290,9 @@ function cpuDraw() {
   rr(g, 980, 50 + st / 256 * 560, 5, rows / 256 * 560, 2.5); g.fillStyle = '#98a2b3'; g.fill();
   if (CPU.ramTop != null) { rr(g, 905, 26, 78, 18, 5); g.fillStyle = '#eaf1ff'; g.fill(); T('↺ mitlaufen', 944, 35, { s: 10.5, b: 1, c: '#2f6fec' }); }
   // Mikroprogramm des aktuellen Befehls
+  if (!basic) {
   const prog = CPU.phase === 'fetch' ? FETCH : (I ? I.steps : []);
-  T(CPU.phase === 'fetch' ? 'Mikroprogramm: Holphase' : 'Mikroprogramm: ' + (I ? I.mn + (I.mode === 'imm' ? ' #n' : I.mode === 'adr' ? ' adr' : '') : '?'), 44, 60, { a: 'left', s: 11.5, b: 1, c: '#1f3f8a' });
+  T(CPU.phase === 'fetch' ? 'Mikroprogramm: Holphase' : 'Mikroprogramm: ' + (I ? iName(I) : '?'), 44, 60, { a: 'left', s: 11.5, b: 1, c: '#1f3f8a' });
   const cur = CPU.halted ? -1 : CPU.step, first = clamp(cur - 2, 0, Math.max(0, prog.length - 6));
   if (!prog.length) T('(keine Mikroschritte)', 44, 80, { a: 'left', s: 11, c: '#667085' });
   for (let i = first; i < Math.min(prog.length, first + 6); i++) {
@@ -4787,6 +5301,7 @@ function cpuDraw() {
     g.save(); g.beginPath(); g.rect(36, y - 8, 252, 16); g.clip();
     T((on ? '▶ ' : '   ') + (i + 1) + '. ' + msText(prog[i]), 42, y, { a: 'left', s: 10.5, c: on ? '#1f3f8a' : '#475467', b: on });
     g.restore();
+  }
   }
   busLabel();
   // Rahmentitel zuletzt, damit keine Linie sie verdeckt
@@ -4797,6 +5312,125 @@ function cpuDraw() {
   }
 }
 
+/* ---------------- Anfänger-Ansicht ---------------- */
+// Nur die Register, die man zum Programmieren braucht; ein Bus als eine Leitung; Rechenwerk als ein Block.
+const BOXB = { PC: [424, 74], IR: [552, 74], A: [64, 324], IN: [330, 545], OUT: [460, 545] }, RWB = 122;
+const BNAME = { PC: 'Befehlszähler', IR: 'Befehl', A: 'Akku A' };
+const BUSB = 250;
+const ALUW = { ADD: '+', SUB: '−', AND: 'UND', OR: 'ODER', XOR: 'XOR', NOT: 'NICHT', INC: '+ 1', DEC: '− 1', SHL: '≪ 1', SHR: '≫ 1' };
+const aluText = a => a.op === 'NOT' ? `NICHT ${a.a} = ${a.r}` : ['INC', 'DEC', 'SHL', 'SHR'].includes(a.op) ? `${a.a} ${ALUW[a.op]} = ${a.r}` : `${a.a} ${ALUW[a.op] || a.op} ${a.b} = ${a.r}`;
+function instrText(I, S) {
+  if (!I) return '??';
+  if (I.syn || I.mode === 'none' || !S || !S.reads.length) return iName(I);
+  const v = S.reads[0][1];
+  return I.mode === 'imm' ? `${I.mn} #${v}` : `${I.mn} $${hx(v)}`;
+}
+/* Was ist in der letzten Phase passiert? – in Worten */
+function sumLines(S) {
+  const R = CPU.r, out = [];
+  if (S.phase === 'fetch') {
+    out.push(`Der Befehlszähler zeigt auf Adresse $${hx(S.addr ?? 0)}.`);
+    out.push(`Das Befehlsbyte $${hx(S.ir)} wird aus dem Speicher ins Befehlsregister geholt${S.instr ? ' – das ist ' + iName(S.instr) : ' – unbekannter Befehl'}.`);
+    out.push(`Der Befehlszähler wird um 1 erhöht: $${hx(R.PC)}.`);
+    return out;
+  }
+  const I = S.instr, reads = S.reads.slice();
+  if (I && I.mode !== 'none' && reads.length) { const [, v] = reads.shift(); out.push(I.mode === 'imm' && !I.syn ? `Holt die Zahl ${v} aus dem Speicher (sie steht direkt hinter dem Befehl).` : `Holt die Adresse $${hx(v)} aus dem Speicher (sie steht direkt hinter dem Befehl).`); }
+  if (S.srcs.has('IN')) out.push(`Liest die Eingabe: ${R.IN}.`);
+  for (const [a, v] of reads) out.push(`Liest ${v} aus Adresse $${hx(a)}.`);
+  if (S.alu) out.push(`Das Rechenwerk rechnet ${aluText(S.alu)}.`);
+  for (const [a, v] of S.writes) out.push(`Schreibt ${v} in den Speicher an Adresse $${hx(a)}.`);
+  if (S.changed.has('A')) out.push(`Im Akku steht jetzt ${R.A}.`);
+  else if (S.dsts.has('A')) out.push(`Der Akku bleibt ${R.A}.`);
+  if (S.dsts.has('OUT')) out.push(`Ausgabe: ${R.OUT}.`);
+  if (S.jump !== null) out.push(`Sprung: Der Befehlszähler wird auf $${hx(S.jump)} gesetzt.`);
+  else if (S.nojump) out.push('Kein Sprung – die Bedingung ist nicht erfüllt.');
+  if (S.halt) out.push('Das Programm hält an.');
+  if (!out.length) out.push('Nichts zu tun.');
+  return out;
+}
+function cpuBasicSW(g, T, S, I) {
+  const R = CPU.r;
+  const wrap = (t, x, y, w, lh, o) => { g.font = `${o.b ? 700 : 500} ${o.s}px ${FONT}`; const words = t.split(' '); let line = '', yy = y; for (const wd of words) { const tt = line ? line + ' ' + wd : wd; if (g.measureText(tt).width > w && line) { T(line, x, yy, o); line = wd; yy += lh; } else line = tt; } if (line) T(line, x, yy, o); return yy + lh; };
+  // Phasen-Anzeige
+  const done = S ? S.phase : null, next = CPU.halted ? null : CPU.phase;
+  [['① Befehl holen', 'fetch', 58], ['② Befehl ausführen', 'exec', 188]].forEach(([t, ph, x]) => {
+    const isN = next === ph, isD = done === ph;
+    rr(g, x, 66, 122, 22, 11); g.fillStyle = isD ? '#ffe8cc' : isN ? '#e7f0ff' : '#fff'; g.fill(); g.strokeStyle = isD ? '#e67700' : isN ? '#2f6fec' : '#c3cad6'; g.lineWidth = isD || isN ? 2 : 1; g.stroke();
+    T(t, x + 61, 77.5, { s: 11.5, b: 1, c: isD ? '#7a3e00' : isN ? '#1f3f8a' : '#667085' });
+  });
+  let y = 106;
+  if (!S) { y = wrap('Bereit. Mit „Schritt“ holt der Prozessor den ersten Befehl aus dem Speicher.', 58, y, 360, 15, { s: 11.5, a: 'left', c: '#475467' }); }
+  else {
+    T(S.phase === 'fetch' ? 'Zuletzt: Befehl geholt' : 'Zuletzt ausgeführt: ' + instrText(S.instr, S), 58, y, { s: 12.5, b: 1, a: 'left', c: '#7a3e00' }); y += 17;
+    const ls = sumLines(S).slice(0, 5);
+    for (const l of ls) { if (y > 172) break; y = wrap('• ' + l, 58, y, 362, 14, { s: 11, a: 'left', c: '#344054' }); }
+  }
+  const nI = curInstr();
+  const nx = CPU.halted ? (CPU.err ? 'Fehler: ' + CPU.err : 'angehalten (HLT) – „Reset“ startet neu') : CPU.phase === 'fetch' ? `Als Nächstes: Befehl von Adresse $${hx(R.PC)} holen` : `Als Nächstes: ${nI ? iName(nI) : '??'} ausführen`;
+  g.save(); g.beginPath(); g.rect(52, 179, 360, 20); g.clip();
+  T(nx, 58, 189, { s: 11.5, b: 1, a: 'left', c: CPU.halted ? '#c92a2a' : '#1f3f8a' }); g.restore();
+  // unter den Registern: Bedeutung
+  T('zeigt auf den nächsten Befehl', 485, 132, { s: 9.5, c: '#667085' });
+  T(nI && (CPU.r.IR || CPU.instrs || CPU.micro) ? '= ' + iName(nI) : '–', 613, 132, { s: 11, b: 1, c: '#1f3f8a' });
+  if (nI && nI.desc && (CPU.r.IR || CPU.instrs || CPU.micro)) { g.save(); g.beginPath(); g.rect(420, 142, 256, 54); g.clip(); wrap(nI.desc, 613, 154, 130, 13, { s: 10, c: '#475467' }); g.restore(); }
+}
+function cpuBasicParts(g, T, S, ACT, SRC) {
+  const R = CPU.r, act = '#e67700', off = '#c8ced8';
+  const arrow = (x, y, dir, col, horiz) => { g.fillStyle = col; g.beginPath(); if (horiz) { g.moveTo(x + 8 * dir, y); g.lineTo(x - 6 * dir, y - 7); g.lineTo(x - 6 * dir, y + 7); } else { g.moveTo(x, y + 8 * dir); g.lineTo(x - 7, y - 6 * dir); g.lineTo(x + 7, y - 6 * dir); } g.fill(); };
+  const any = !!(S && (S.reads.length || S.writes.length || S.srcs.size));
+  // Bus: eine Leitung
+  g.lineCap = 'round'; g.strokeStyle = any ? act : '#98a2b3'; g.lineWidth = 8; ln(g, 52, BUSB, 690, BUSB);
+  const mem = !!(S && (S.reads.length || S.writes.length));
+  g.strokeStyle = mem ? act : '#98a2b3'; ln(g, 690, BUSB, 762, BUSB); g.lineCap = 'butt';
+  if (mem) arrow(726, BUSB, S.writes.length && !S.reads.length ? 1 : -1, '#fff', true);
+  T('Bus', 58, BUSB - 16, { s: 12, b: 1, a: 'left', c: '#475467' });
+  T('Adressen und Daten', 92, BUSB - 16, { s: 10, a: 'left', c: '#98a2b3' });
+  const conn = (x, y1, y2, on, dir) => { g.strokeStyle = on ? act : off; g.lineWidth = 6; ln(g, x, y1, x, y2); if (on) arrow(x, (y1 + y2) / 2, dir, '#fff'); };
+  // Steuerwerk ↔ Bus
+  const swIn = !!(S && (S.dsts.has('IR') || S.jump !== null)), swOn = !!(S && (swIn || S.srcs.has('PC')));
+  conn(500, 200, BUSB - 4, swOn, swIn ? -1 : 1);
+  // Rechenwerk ↔ Bus
+  const rwOut = !!(S && S.srcs.has('A')), rwIn = !!(S && (S.dsts.has('A') || S.dsts.has('B'))), rwOn = rwOut || rwIn;
+  conn(190, BUSB + 4, 300, rwOn, rwOut && !rwIn ? -1 : 1);
+  // Ein-/Ausgabe ↔ Bus
+  const ioIn = !!(S && S.srcs.has('IN')), ioOut = !!(S && S.dsts.has('OUT'));
+  conn(520, BUSB + 4, 515, ioIn || ioOut, ioIn ? -1 : 1);
+  // Rechenwerk als ein Block: Akku (als Register gezeichnet), Rechnen, Flags
+  const A = S && S.alu;
+  rr(g, 180, 324, 146, 46, 8); g.fillStyle = A ? '#ffe8cc' : '#fff'; g.fill(); g.strokeStyle = A ? SRC : '#98a2b3'; g.lineWidth = A ? 2.5 : 1.2; g.stroke();
+  T('rechnen (ALU)', 188, 337, { s: 11, b: 1, a: 'left', c: '#667085' });
+  T(A ? aluText(A) : '–', 253, 357, { s: A ? 13 : 12, b: 1, c: A ? '#7a3e00' : '#98a2b3' });
+  g.strokeStyle = A ? SRC : '#98a2b3'; g.lineWidth = 2; ln(g, 164, 347, 180, 347);
+  [['Z', 'Null'], ['C', 'Übertrag'], ['N', 'negativ']].forEach(([f, d], i) => {
+    const x = 64 + i * 90, on = CPU.f[f]; rr(g, x, 390, 80, 38, 7); g.fillStyle = on ? '#ffe3e3' : '#fff'; g.fill(); g.strokeStyle = on ? '#e5383b' : '#c3cad6'; g.lineWidth = 1.2; g.stroke();
+    T(`${f} = ${on}`, x + 40, 404, { s: 12, b: 1, c: on ? '#c92a2a' : '#475467' }); T(d, x + 40, 419, { s: 9.5, c: '#667085' });
+  });
+  g.font = `500 10px ${FONT}`;
+  const tip = 'Die Flags merken sich Eigenschaften des letzten Ergebnisses. Bedingte Sprünge (JZ, JNZ, JC …) fragen sie ab.';
+  const words = tip.split(' '); let line = '', y = 446; for (const w of words) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > 262 && line) { T(line, 64, y, { s: 10, a: 'left', c: '#667085' }); line = w; y += 13; } else line = t; } if (line) T(line, 64, y, { s: 10, a: 'left', c: '#667085' });
+}
+function cpuHitBasic(x, y) {
+  for (const [k, [bx, by]] of Object.entries(BOXB)) if (x >= bx && x <= bx + (['PC', 'IR'].includes(k) ? RWB : RW) && y >= by && y <= by + RH) return k;
+  if (x >= 180 && x <= 326 && y >= 324 && y <= 370) return 'ALU';
+  for (let i = 0; i < 3; i++) { const fx = 64 + i * 90; if (x >= fx && x <= fx + 80 && y >= 390 && y <= 428) return ['Z', 'C', 'N'][i]; }
+  if (x >= 46 && x <= 766 && Math.abs(y - BUSB) <= 10) return 'SBUS';
+  if (x >= 760 && x <= 990 && y >= 20 && y <= 46) return 'RAM';
+  if (x >= 40 && x <= 680 && y >= 44 && y <= 200) return 'SW';
+  if (x >= 40 && x <= 340 && y >= 300 && y <= 486) return 'RW';
+  if (x >= 300 && x <= 740 && y >= 515 && y <= 620) return 'IO';
+  if (x >= 20 && x <= 700 && y >= 20 && y <= 500) return 'CPU';
+  return null;
+}
+const CPUINFO_B = {
+  SBUS: ['Bus', 'Verbindung zwischen Prozessor, Speicher und Ein-/Ausgabe', 'Über den Bus wandern Adressen (wo im Speicher?) und Daten (welcher Wert?). Orange bedeutet: In diesem Schritt wurde etwas übertragen, die Pfeile zeigen die Richtung.<br><br>In der <b>Profi-Ansicht</b> sieht man, dass ein Bus aus 8 einzelnen Leitungen besteht und es eigentlich mehrere Busse gibt: Datenbus, Adressbus und Steuerbus.'],
+  SW: ['Steuerwerk', 'Control Unit', 'Das Steuerwerk arbeitet ein Programm Befehl für Befehl ab – immer im selben Takt: <b>① Befehl holen</b> (der Befehlszähler sagt, von welcher Adresse) und <b>② Befehl ausführen</b>. Danach geht es mit dem nächsten Befehl weiter. Sprungbefehle setzen den Befehlszähler auf eine andere Adresse – so entstehen Schleifen.'],
+  RW: ['Rechenwerk', 'Arithmetic Logic Unit', 'Hier wird gerechnet und verglichen. Der <b>Akku A</b> enthält die Zahl, mit der gerade gearbeitet wird, und nimmt meist auch das Ergebnis auf. Die <b>Flags</b> merken sich, ob das Ergebnis 0 war (Z), ob es einen Übertrag gab (C) und ob es negativ ist (N).'],
+  ALU: ['ALU', 'Arithmetic Logic Unit – Rechnen', 'Verknüpft den Akku mit einer zweiten Zahl: addieren, subtrahieren, UND, ODER … Das Ergebnis landet wieder im Akku. In der Profi-Ansicht sieht man, wie die zweite Zahl über das Hilfsregister B in die ALU kommt.'],
+  IR: ['Befehl', 'Befehlsregister IR', 'Enthält den Befehl, der gerade ausgeführt wird – als Zahl (Opcode). Darunter steht, welcher Befehl das ist und was er tut.'],
+  PC: ['Befehlszähler', 'Program Counter PC', 'Enthält die Adresse des nächsten Befehls im Speicher. Nach dem Holen wird er automatisch um 1 erhöht; Sprungbefehle setzen ihn auf eine neue Adresse.'],
+  A: ['Akku A', 'Akkumulator', 'Das Rechenregister: LDA lädt eine Zahl hinein, ADD addiert etwas dazu, STA speichert den Inhalt im Speicher, OUT gibt ihn aus.'],
+};
 /* ---------------- Erklärungen zu den Bauteilen ---------------- */
 const CPUINFO = {
   PC: ['PC', 'Program Counter – Befehlszähler', 'Enthält die Adresse des nächsten Bytes, das aus dem Speicher geholt wird. In der Holphase wird sein Inhalt über den Bus ins Adressregister kopiert und danach um 1 erhöht (PC+1). Sprungbefehle wie JMP oder JZ laden einfach eine neue Adresse in den PC – so entstehen Schleifen und Verzweigungen.'],
@@ -4807,9 +5441,9 @@ const CPUINFO = {
   A: ['A', 'Akkumulator', 'Das wichtigste Rechenregister. Es liefert den ersten Operanden für die ALU und nimmt die meisten Ergebnisse auf („akkumulieren“ = ansammeln). LDA lädt den Akku, STA speichert ihn, OUT gibt ihn aus.'],
   B: ['B', 'Hilfsregister (Operandenregister)', 'Liefert den zweiten Operanden für die ALU. Bei ADD #n wird z. B. die Konstante n zuerst ins B-Register geladen und dann zum Akku addiert. Das B-Register ist für Assemblerprogramme nicht direkt sichtbar – es wird nur von den Mikroprogrammen benutzt.'],
   ALU: ['ALU', 'Arithmetic Logic Unit – arithmetisch-logische Einheit', 'Das eigentliche Rechenwerk: Es verknüpft die beiden 8-Bit-Zahlen aus A und B – je nach Steuersignal durch Addition (+), Subtraktion (−), bitweises UND (∧), ODER (∨), Exklusiv-ODER (⊕), Negation (¬) oder Schieben (≪, ≫). Das Ergebnis gelangt über ein Tor auf den Bus; zugleich können die Flags gesetzt werden. Innen arbeiten genau die Volladdierer und Gatter aus dem Reiter „Logikgatter“.'],
-  Z: ['Z', 'Zero-Flag (Null-Flag)', 'Wird 1, wenn das letzte ALU-Ergebnis 0 war. JZ springt, wenn Z = 1 ist, JNZ, wenn Z = 0 ist. Nach CMP bedeutet Z = 1: Die beiden Zahlen sind gleich.'],
-  C: ['C', 'Carry-Flag (Übertrags-Flag)', 'Wird 1, wenn bei einer Addition ein Übertrag über 255 hinaus entsteht – das Ergebnis passt dann nicht mehr in 8 Bit. Bei der Subtraktion zeigt C = 1 ein „Borgen“ an, also dass die abgezogene Zahl größer war. Abfrage mit JC und JNC.'],
-  N: ['N', 'Negative-Flag (Vorzeichen-Flag)', 'Entspricht dem höchsten Bit (Bit 7) des Ergebnisses. Im Zweierkomplement bedeutet N = 1, dass die Zahl negativ ist (z. B. $FF = −1). Abfrage mit JN.'],
+  Z: ['Z', 'Zero-Flag (Null-Flag)', 'Wird 1, wenn das letzte ALU-Ergebnis 0 war. Dafür sorgt ein <b>NOR-Gatter</b> (≥1 mit Negation) an den 8 Ergebnisleitungen der ALU: Es liefert nur dann 1, wenn alle Leitungen 0 sind. JZ springt, wenn Z = 1 ist, JNZ, wenn Z = 0 ist. Nach CMP bedeutet Z = 1: Die beiden Zahlen sind gleich.'],
+  C: ['C', 'Carry-Flag (Übertrags-Flag)', 'Kommt aus dem <b>Übertragsausgang</b> der ALU (beim Volladdierer das Carry des höchsten Bits). Wird 1, wenn bei einer Addition ein Übertrag über 255 hinaus entsteht – das Ergebnis passt dann nicht mehr in 8 Bit. Bei der Subtraktion zeigt C = 1 ein „Borgen“ an, also dass die abgezogene Zahl größer war. Abfrage mit JC und JNC.'],
+  N: ['N', 'Negative-Flag (Vorzeichen-Flag)', 'Entspricht dem höchsten Bit (Bit 7) des Ergebnisses – im Bild zweigt diese Leitung direkt zum N-Flag ab. Im Zweierkomplement bedeutet N = 1, dass die Zahl negativ ist (z. B. $FF = −1). Abfrage mit JN.'],
   IN: ['IN', 'Eingabe (Input-Port)', 'Ein Eingabegerät mit 8 Leitungen – hier dargestellt durch 8 Schalter bzw. das Feld für einen Dezimalwert von 0 bis 255. Negative Zahlen von −128 bis −1 werden im Zweierkomplement gespeichert (−1 = 255 = 1111 1111). Der Befehl IN kopiert den aktuellen Wert über den Bus in den Akku.'],
   OUT: ['OUT', 'Ausgabe (Output-Port)', 'Ein Ausgabegerät mit 8 Leitungen. Der Befehl OUT kopiert den Akku hierher; die 8 LEDs zeigen das Bitmuster, die Anzeige darunter den Dezimalwert – einmal <b>ohne Vorzeichen</b> (0 … 255) und einmal <b>mit Vorzeichen</b> (−128 … 127). Im <b>Zweierkomplement</b> bedeutet das vorderste Bit (Bit 7 = 1) eine negative Zahl: Der Wert ist dann um 256 kleiner. So ergibt 10 − 12 das Bitmuster 1111 1110 = 254, mit Vorzeichen gelesen −2. Der Wert bleibt bis zur nächsten Ausgabe erhalten.'],
   SW: ['Steuerwerk', 'Control Unit', 'Das „Gehirn“ des Prozessors. Es liest den Opcode aus dem IR und führt Takt für Takt das passende Mikroprogramm aus. In jedem Takt erzeugt es die Steuersignale: Es öffnet Tore zum Bus, wählt die ALU-Operation, löst RD oder WR aus und erhöht PC oder SP. Jeder Befehl beginnt mit derselben Holphase.'],
@@ -4825,9 +5459,11 @@ const CPUINFO = {
   IO: ['Ein-/Ausgabe', 'I/O – Input/Output', 'Über die Ein- und Ausgabeeinheit tauscht der Rechner Daten mit der Außenwelt aus. Sie ist neben Prozessor, Speicher und Bussystem der vierte Baustein der Von-Neumann-Architektur.'],
 };
 function cpuHit(x, y) {
+  if (isBasic()) return cpuHitBasic(x, y);
   for (const [k, [bx, by]] of Object.entries(BOX)) if (x >= bx && x <= bx + RW && y >= by && y <= by + RH) return k;
-  for (let i = 0; i < 3; i++) { const fx = 70 + i * 60; if (x >= fx && x <= fx + 46 && y >= 452 && y <= 478) return ['Z', 'C', 'N'][i]; }
-  if (x >= 80 && x <= 255 && y >= 392 && y <= 440) return 'ALU';
+  for (let i = 0; i < 3; i++) { const fx = 70 + i * 60; if (x >= fx && x <= fx + 46 && y >= 466 && y <= 488) return ['N', 'Z', 'C'][i]; }
+  if (x >= 135 && x <= 171 && y >= 437 && y <= 458) return 'Z';
+  if (x >= 80 && x <= 255 && y >= 384 && y <= 424) return 'ALU';
   const gates = [...['PC', 'SP', 'IR', 'MAR'].map(k => [BOX[k][0] + RW / 2, (BOX[k][1] + RH + BUSY - IBH) / 2]), ...['A', 'B', 'DR', 'IN', 'OUT'].map(k => [BOX[k][0] + RW / 2, (BUSY + IBH + BOX[k][1]) / 2]), [292, 366]];
   for (const [gx, gy] of gates) if (Math.abs(x - gx) <= 18 && Math.abs(y - gy) <= 8) return 'GATE';
   if (x >= 432 && x <= 552 && y >= BUSY - IBH - 33 && y <= BUSY - IBH - 3) return 'IBUS';
@@ -4846,14 +5482,14 @@ function cpuHit(x, y) {
 function cpuInfo(k, px, py) {
   let el = $('#cpuInfo');
   if (!k) { if (el) el.remove(); return; }
-  const I = CPUINFO[k]; if (!I) return;
+  const I = (isBasic() && CPUINFO_B[k]) || CPUINFO[k]; if (!I) return;
   if (!el) { el = document.createElement('div'); el.id = 'cpuInfo'; $('#cpuStage').appendChild(el); }
   let val = '';
   if (k in CPU.r && k !== 'IN' || k === 'IN') { const v = CPU.r[k]; val = `<div class="ci-v">Inhalt: <b>$${hx(v)}</b> = <b>${v}</b> = <b>${v.toString(2).padStart(8, '0').replace(/(\d{4})/, '$1 ')}</b></div>`; }
   if (k === 'Z' || k === 'C' || k === 'N') val = `<div class="ci-v">aktuell: <b>${k} = ${CPU.f[k]}</b></div>`;
   if (k === 'IR') { const J = curInstr(); if (J && (CPU.r.IR || CPU.instrs)) val += `<div class="ci-v">Befehl: <b>${esc(J.mn)}${J.mode === 'imm' ? ' #n' : J.mode === 'adr' ? ' adr' : ''}</b> – ${esc(J.desc || '')}</div>`; }
   if (k === 'ABUS') val = `<div class="ci-v">aktuell: <b>$${hx(CPU.r.MAR)}</b> (${CPU.r.MAR})</div>`;
-  if (CPUINNER[k]) val += `<button class="ci-in btn">🔍 Innerer Aufbau aus Logikgattern</button><div class="ci-h">(oder Doppelklick / langes Tippen auf das Bauteil)</div>`;
+  if (CPUINNER[k] && !isBasic()) val += `<button class="ci-in btn">🔍 Innerer Aufbau aus Logikgattern</button><div class="ci-h">(oder Doppelklick / langes Tippen auf das Bauteil)</div>`;
   el.innerHTML = `<button class="ci-x" aria-label="Schließen">×</button><div class="ci-k">${I[0]}</div><div class="ci-n">${I[1]}</div><div class="ci-t">${I[2]}</div>${val}`;
   const bi = el.querySelector('.ci-in'); if (bi) bi.onclick = () => openCpuInner(k);
   el.querySelector('.ci-x').onclick = () => cpuInfo(null);
@@ -4866,7 +5502,7 @@ function cpuInfo(k, px, py) {
 /* ---------------- Seitenleiste ---------------- */
 function cpuUI() {
   const st = $('#cpuStat');
-  if (st) st.innerHTML = `Befehle: <b>${CPU.instrs}</b> · Mikroschritte: <b>${CPU.micro}</b>` + (CPU.halted ? (CPU.err ? ` · <span style="color:#c92a2a">${esc(CPU.err)}</span>` : ' · <b style="color:#c92a2a">angehalten</b>') : '');
+  if (st) st.innerHTML = `Befehle: <b>${CPU.instrs}</b>` + (isBasic() ? '' : ` · Mikroschritte: <b>${CPU.micro}</b>`) + (CPU.halted ? (CPU.err ? ` · <span style="color:#c92a2a">${esc(CPU.err)}</span>` : ' · <b style="color:#c92a2a">angehalten</b>') : '');
   const rb = $('#cRun'), rs = CPU.running ? 'run' : 'stop';
   if (rb.dataset.st !== rs) { rb.dataset.st = rs; rb.innerHTML = CPU.running ? '⏸ Stopp' : '▶ Start'; }
   if (CPU.tab === 'ram') cpuRamRefresh();
@@ -4874,6 +5510,7 @@ function cpuUI() {
   cpuSave();
 }
 function cpuTabs() {
+  if (isBasic() && CPU.tab === 'hl') CPU.tab = 'asm';   // Pseudocode und Compiler gibt es nur in der Profi-Ansicht
   $$('#cpuTabs button').forEach(b => b.classList.toggle('on', b.dataset.t === CPU.tab));
   const el = $('#cpuPanel');
   if (CPU.tab === 'ram') {
@@ -4891,7 +5528,7 @@ function cpuTabs() {
     $('#cHex').onchange = e => { CPU.hex = e.target.checked; cpuUI(); };
     cpuRamRefresh();
   } else if (CPU.tab === 'asm') {
-    el.innerHTML = `<p class="hint2">Ein Befehl pro Zeile. <b>#</b> kennzeichnet Konstanten (LDA #5), sonst ist der Operand eine Adresse (LDA 20 oder LDA zahl). Zahlen: 42, $2A, 2Ah, %101010. Marken enden mit Doppelpunkt. <b>DB</b> legt Datenbytes ab, <b>ORG</b> legt die Startadresse fest, <b>;</b> leitet einen Kommentar ein.</p>
+    el.innerHTML = `<p class="hint2">${isBasic() && !isMsIsa() ? 'Ein Befehl pro Zeile, z. B. <b>LDA #5</b> (lade die Zahl 5 in den Akku), <b>ADD #3</b>, <b>OUT</b>, <b>HLT</b>. Ohne <b>#</b> ist die Zahl eine Speicheradresse: <b>STA 20</b> speichert den Akku an Adresse 20. Marken wie <b>schleife:</b> merken sich eine Stelle für Sprünge (<b>JMP schleife</b>). Alles hinter <b>;</b> ist ein Kommentar. Welche Befehle es gibt, steht im Reiter „Befehle“.' : isMsIsa() ? 'MikroSim-Schreibweise: ein Befehl pro Zeile, z. B. <b>mov AX, 5</b>, <b>mov AX, [80]</b>, <b>ADD [81]</b>, <b>JPZ 10</b>. Zahlen ohne Präfix sind hexadezimal. AX entspricht Register A, BX dem Stapelzeiger SP. Marken enden mit Doppelpunkt, <b>;</b> leitet einen Kommentar ein. Standard-Schreibweise: Reiter „Befehlssatz“ → Standard-Befehlssatz.' : 'Ein Befehl pro Zeile. <b>#</b> kennzeichnet Konstanten (LDA #5), sonst ist der Operand eine Adresse (LDA 20 oder LDA zahl). Zahlen: 42, $2A, 2Ah, %101010. Marken enden mit Doppelpunkt. <b>DB</b> legt Datenbytes ab, <b>ORG</b> legt die Startadresse fest, <b>;</b> leitet einen Kommentar ein.'}</p>
     <textarea id="asmSrc" class="asm" spellcheck="false">${esc(CPU.src)}</textarea>
     <div class="pbtns"><button class="btn pri" id="asmGo">Übersetzen und in den RAM laden</button><label style="font-size:13px;display:flex;gap:6px;align-items:center"><input type="checkbox" id="asmClr" checked> RAM vorher löschen</label></div><div id="asmOut"></div>`;
     const ta = $('#asmSrc'); ta.oninput = () => { CPU.src = ta.value; cpuSave(); };
@@ -4899,8 +5536,8 @@ function cpuTabs() {
     $('#asmGo').onclick = () => asmLoad($('#asmClr').checked);
     if (CPU.listing) showListing(CPU.listing);
   } else if (CPU.tab === 'hl') hlPanel();
-  else if (CPU.tab === 'isa') isaPanel();
-  else el.innerHTML = cpuHelp();
+  else if (CPU.tab === 'isa') { if (isBasic()) isaListBasic(); else isaPanel(); }
+  else el.innerHTML = isBasic() ? cpuHelpBasic() : cpuHelp();
 }
 function asmLoad(clear) {
   const res = assemble(CPU.src); CPU.listing = res;
@@ -4939,14 +5576,43 @@ function cpuHelp() {
   <h4>Stapel</h4><p>SP startet bei $00; PUSH und CALL verringern ihn zuerst, der Stapel wächst also von $FF abwärts.</p>
   <h4>Eigene Befehle</h4><p>Im Reiter <b>Befehlssatz</b> lässt sich jeder Befehl als Folge von Mikroschritten selbst bauen. „Prüfen“ deckt typische Fehler auf (Bus ohne Quelle, Lesen und Schreiben gleichzeitig, Operand nicht übersprungen …). Mit dem Schloss werden fertige Befehle gegen versehentliches Ändern <b>abgesichert</b>.</p>
   <h4>Pseudocode (Hochsprache)</h4><p>Im Reiter <b>Pseudocode</b> schreibt man Programme mit englischen Befehlen (<code>IF</code>, <code>WHILE</code>, <code>FOR</code>, <code>REPEAT</code>, <code>PROCEDURE</code>, <code>ARRAY</code> …). Der Compiler übersetzt sie in Assembler und lädt den Hexcode in den RAM. Die <b>Zuordnung</b> zeigt, welche Maschinenbefehle zu welcher Zeile gehören – beim schrittweisen Ausführen wird die aktuelle Zeile markiert. <b>Tokens</b> und <b>Syntaxbaum</b> zeigen die Phasen des Compilers; im <b>Compiler-Labor</b> sieht man Schritt für Schritt zu, wie der Lexer (mit endlichem Automaten), der Parser (Grammatik, Aufrufstapel, wachsender Baum) und die Codeerzeugung arbeiten – im <b>Vorhersage-Modus</b> raten die Schüler vorher den nächsten Schritt. <b>Laufzeit</b> vergleicht den Code mit und ohne Optimierung. <code>*</code>, <code>DIV</code> und <code>MOD</code> werden zu Unterprogrammen, Feldzugriffe mit variablem Index zu selbstveränderndem Code.</p>
-  <h4>Assembler</h4><p>Zahlen dezimal (<code>42</code>), hexadezimal (<code>$2A</code>, <code>2Ah</code>, <code>0x2A</code>), binär (<code>%00101010</code>) oder als Zeichen (<code>'A'</code>). Marken enden mit Doppelpunkt; Rechnen mit Marken ist möglich (<code>lese+1</code>). <code>DB</code> legt Datenbytes ab, <code>ORG</code> setzt die Adresse, <code>;</code> leitet Kommentare ein.</p>${aboutHTML()}</div>`;
+  <h4>Assembler</h4><p><b>MikroSim:</b> Mit „Öffnen“ lassen sich MikroSim-Dateien laden – Mikroprogramm (<code>.mpd</code>), Programm als Assemblerliste (<code>.ras</code>) oder RAM-Tabelle (<code>.rad</code>). Dann gilt die MikroSim-Schreibweise (<code>mov AX, [80]</code>, Zahlen hexadezimal).</p><p>Zahlen dezimal (<code>42</code>), hexadezimal (<code>$2A</code>, <code>2Ah</code>, <code>0x2A</code>), binär (<code>%00101010</code>) oder als Zeichen (<code>'A'</code>). Marken enden mit Doppelpunkt; Rechnen mit Marken ist möglich (<code>lese+1</code>). <code>DB</code> legt Datenbytes ab, <code>ORG</code> setzt die Adresse, <code>;</code> leitet Kommentare ein.</p>${aboutHTML()}</div>`;
+}
+/* ---------------- Anfänger: Befehlsliste und Hilfe ---------------- */
+function isaListBasic() {
+  const isa = [...CPU.isa].sort((a, b) => a.op - b.op);
+  $('#cpuPanel').innerHTML = `<p class="hint2">Diese Befehle versteht der Rechner. <b>#n</b> steht für eine Zahl (LDA #5), <b>adr</b> für eine Speicheradresse (LDA 20). Wie die Befehle im Inneren ablaufen, zeigt die <b>Profi-Ansicht</b> im Reiter „Befehlssatz“.</p>
+  <table class="isat"><tr><th>Befehl</th><th>Wirkung</th><th>Code</th></tr>${isa.map(I => `<tr><td>${I.syn ? `<b>${esc(I.syn)}</b>` : `<b>${esc(I.mn)}</b>${I.mode === 'imm' ? ' #n' : I.mode === 'adr' ? ' adr' : ''}`}</td><td>${esc(I.desc || '')}</td><td>$${hx(I.op)}</td></tr>`).join('')}</table>`;
+}
+function cpuHelpBasic() {
+  return `<div class="help"><h4>So arbeitet der Rechner</h4><p>Programm und Daten stehen als Zahlen im <b>Speicher</b> (RAM). Der Prozessor arbeitet das Programm Befehl für Befehl ab – immer in zwei Schritten:</p>
+  <ol><li><b>① Befehl holen:</b> Der <b>Befehlszähler</b> sagt, an welcher Adresse der nächste Befehl steht. Der Befehl wird über den Bus ins Steuerwerk geholt, der Befehlszähler zählt weiter.</li><li><b>② Befehl ausführen:</b> Das Steuerwerk führt den Befehl aus – es holt z. B. eine Zahl aus dem Speicher, lässt das Rechenwerk rechnen oder gibt den Akku aus.</li></ol>
+  <p>Im Steuerwerk steht nach jedem Schritt in Worten, was passiert ist. Orange markiert, was gerade benutzt wurde; die Pfeile auf dem Bus zeigen, in welche Richtung die Daten geflossen sind.</p>
+  <h4>Bedienung</h4><ul><li><b>Schritt</b> (Leertaste): ein Schritt – Befehl holen bzw. Befehl ausführen.</li><li><b>Befehl</b> (Eingabetaste): den ganzen nächsten Befehl.</li><li><b>Start</b>: läuft von selbst, Tempo mit dem Regler.</li><li><b>Reset</b>: Befehlszähler auf 0, das Programm im Speicher bleibt.</li></ul>
+  <h4>Programmieren</h4><p>Im Reiter <b>Assembler</b> schreibst du das Programm und lädst es mit „Übersetzen“ in den Speicher. Im Reiter <b>Befehle</b> stehen alle Befehle mit ihrer Wirkung. Tippe im Bild auf ein Bauteil, um zu erfahren, was es tut.</p>
+  <h4>Profi-Ansicht</h4><p>Unten links lässt sich auf <b>Profi</b> umschalten. Dann siehst du alle Register, die 8 einzelnen Busleitungen, die Tore und die Mikroschritte jedes Befehls und kannst eigene Befehle bauen.</p>${aboutHTML()}</div>`;
+}
+/* ---------------- Ansicht umschalten ---------------- */
+function cpuLevel(l) {
+  CPU.level = l === 'basic' ? 'basic' : 'pro';
+  try { localStorage.setItem('loghex.cpuLevel', CPU.level); } catch (e) { }
+  cpuLevelApply(); cpuInfo(null); cpuTabs(); cpuUI();
+}
+function cpuLevelApply() {
+  const b = isBasic();
+  $$('#cLvl button').forEach(x => x.classList.toggle('on', x.dataset.l === CPU.level));
+  const hl = $('#cpuTabs button[data-t="hl"]'); if (hl) hl.style.display = b ? 'none' : '';
+  const isa = $('#cpuTabs button[data-t="isa"]'); if (isa) isa.textContent = b ? 'Befehle' : 'Befehlssatz';
+  $('#cpuTabs').style.gridTemplateColumns = `repeat(${b ? 4 : 5},auto)`;
+  $('#cStep').title = b ? 'Ein Schritt: Befehl holen bzw. Befehl ausführen (Leertaste)' : 'Genau einen Takt ausführen und warten (Leertaste)';
+  $('#cpuView').classList.toggle('basic', b);
 }
 /* ---------------- Befehlssatz-Editor ---------------- */
 function isaPanel() {
   const el = $('#cpuPanel'), isa = [...CPU.isa].sort((a, b) => a.op - b.op);
-  let h = `<details class="fetch"><summary><b>Holphase</b> (fest, vor jedem Befehl)</summary><ol>${FETCH.map(m => `<li>${esc(msText(m))}</li>`).join('')}</ol></details>
+  let h = (isMsIsa() ? `<p class="msinfo"><b>MikroSim-Befehlssatz</b>${CPU.msName ? ' aus ' + esc(CPU.msName) : ''}: AX = Akkumulator A, BX = Stapelzeiger SP, jeder Befehl 2 Byte. Im Assembler gilt die MikroSim-Schreibweise mit hexadezimalen Zahlen (<code>mov AX, [80]</code>, <code>JPZ 10</code>).</p>` : '') + `<details class="fetch"><summary><b>Holphase</b> (fest, vor jedem Befehl)</summary><ol>${FETCH.map(m => `<li>${esc(msText(m))}</li>`).join('')}</ol></details>
   <div class="pbtns"><button class="btn pri" id="isaNew">＋ Neuer Befehl</button><button class="btn" id="isaDef">Standard-Befehlssatz</button></div>
-  <table class="isat"><tr><th>Opcode</th><th>Befehl</th><th>Wirkung</th><th></th></tr>${isa.map(I => `<tr data-op="${I.op}" class="${CPU.editOp === I.op ? 'on' : ''}"><td>$${hx(I.op)}</td><td><b>${esc(I.mn)}</b>${I.mode === 'imm' ? ' #n' : I.mode === 'adr' ? ' adr' : ''}</td><td>${esc(I.desc || '')}</td><td>${I.lock ? '🔒' : '✎'}</td></tr>`).join('')}</table><div id="isaEd"></div>`;
+  <table class="isat"><tr><th>Opcode</th><th>Befehl</th><th>Wirkung</th><th></th></tr>${isa.map(I => `<tr data-op="${I.op}" class="${CPU.editOp === I.op ? 'on' : ''}"><td>$${hx(I.op)}</td><td>${I.syn ? `<b>${esc(I.syn)}</b>` : `<b>${esc(I.mn)}</b>${I.mode === 'imm' ? ' #n' : I.mode === 'adr' ? ' adr' : ''}`}</td><td>${esc(I.desc || '')}</td><td>${I.lock ? '🔒' : '✎'}</td></tr>`).join('')}</table><div id="isaEd"></div>`;
   el.innerHTML = h;
   $$('.isat tr[data-op]').forEach(tr => tr.onclick = () => { CPU.editOp = +tr.dataset.op; const I = CPU.isa.find(i => i.op === CPU.editOp); CPU.draft = JSON.parse(JSON.stringify(I)); CPU.draft.orig = I; isaPanel(); });
   $('#isaNew').onclick = () => {
@@ -5038,7 +5704,8 @@ function cpuInit() {
   try { const s = localStorage.getItem('logix.cpu'); if (s) cpuLoadData(JSON.parse(s)); } catch (e) { }
   if (!CPU.src) CPU.src = '; Mein erstes Programm\n; Ein Befehl pro Zeile, z. B.:\n\n\tLDA #5\n\tADD #3\n\tOUT\n\tHLT\n';
   $$('#cpuTabs button').forEach(b => b.onclick = () => { CPU.tab = b.dataset.t; cpuTabs(); });
-  $('#cStep').onclick = () => { CPU.running = false; microStep(); cpuUI(); };
+  $('#cStep').onclick = () => { CPU.running = false; if (isBasic()) phaseStep(); else microStep(); cpuUI(); };
+  $$('#cLvl button').forEach(b => b.onclick = () => cpuLevel(b.dataset.l)); cpuLevelApply();
   $('#cInstr').onclick = () => { CPU.running = false; instrStep(); cpuUI(); };
   $('#cRun').onclick = () => { if (CPU.halted) cpuReset(false); CPU.running = !CPU.running; CPU.acc = 1; cpuUI(); };
   $('#cReset').onclick = () => cpuReset(false);
@@ -5070,10 +5737,10 @@ function cpuInit() {
     const r0 = $('#cpuCv').getBoundingClientRect(), hk = cpuHit(x, y);
     if (hk) {
       const now = performance.now();
-      if (lastTap && lastTap.k === hk && now - lastTap.t < 450) { lastTap = null; clearTimeout(lpT); openCpuInner(hk); return; }
+      if (lastTap && lastTap.k === hk && now - lastTap.t < 450 && !isBasic()) { lastTap = null; clearTimeout(lpT); openCpuInner(hk); return; }
       lastTap = { k: hk, t: now };
       clearTimeout(lpT); const sx = e.clientX, sy = e.clientY;
-      lpT = setTimeout(() => { if (lpT && Math.hypot(lpPos.x - sx, lpPos.y - sy) < 10 && lpDown) openCpuInner(hk); }, 650);
+      lpT = setTimeout(() => { if (lpT && Math.hypot(lpPos.x - sx, lpPos.y - sy) < 10 && lpDown && !isBasic()) openCpuInner(hk); }, 650);
       lpDown = true; lpPos = { x: sx, y: sy };
       cpuInfo(hk, e.clientX - r0.left, e.clientY - r0.top); if (hk !== 'RAM') return;
     } else cpuInfo(null);
@@ -5543,6 +6210,7 @@ END WHILE
 OUTPUT summe
 `;
 function hlBuild(opt) {
+  if (isMsIsa()) throw new HLError(1, 'Der Pseudocode-Compiler erzeugt LOGHEX-Assembler. Schalte dafür im Reiter „Befehlssatz“ auf den Standard-Befehlssatz zurück (zurzeit ist der MikroSim-Befehlssatz aktiv).');
   const r = hlCompile(CPU.hl.src, opt), a = hlAsmText(r), as = assemble(a.text);
   const size = r.code.reduce((n, c) => n + (c.op ? (c.arg ? 2 : 1) : 0), 0) + r.data.reduce((n, d) => n + d[1].length, 0);
   if (size > 256 - HL_STACK) throw new HLError(0, `Das übersetzte Programm braucht ${size} Byte. Der Speicher hat 256 Byte, davon bleiben ${HL_STACK} Byte am Ende für den Stapel frei (Rücksprungadressen von CALL). ${opt ? 'Kürze das Programm.' : 'Schalte „optimieren“ ein oder kürze das Programm.'}`);
@@ -6494,6 +7162,207 @@ async function ykImport(file) {
     ${unk ? `<p style="color:#c92a2a;font-size:13.5px"><b>Nicht übernommen</b> (als „?“ markiert):</p><ul style="margin:0 0 10px;padding-left:20px;font-size:13.5px;color:#c92a2a">${li(r.report.unknown)}</ul>` : ''}
     <p style="color:#667085;font-size:13px">Die Bauteile sind in LOGHEX kleiner als in Yenka; ihre Anschlüsse wurden deshalb mit kurzen Leitungsstücken verlängert. Schalter stehen anfangs auf „aus“. Mit „Speichern“ lässt sich die Schaltung als LOGHEX-Datei sichern.</p>`);
 }
+/* ================= MikroSim-Programme im Rechner =================
+   MikroSim (MikrSimD) ist frei mikroprogrammierbar: Welcher Code welcher Befehl ist, legt das geladene
+   Mikroprogramm (.mpd) fest – der Befehl beginnt an der gleichnamigen Mikroprogramm-Adresse.
+   Dateien:  .mpd  Mikroprogramm (liefert die Befehlsnamen und damit die Codes)
+             .ras  RAM als Assembler-Liste (Adresse, Opcode, Operand, Befehl)
+             .rad  RAM als Hex-Tabelle (16 × 16, spaltenweise: Spalte = höheres Halbbyte)
+   Der MikroSim-Rechner hat die Register AX und BX (BX ist zugleich Stapelzeiger und Indexregister),
+   jeder Befehl ist 2 Byte lang (Code + Operand). In LOGHEX übernimmt A die Rolle von AX und der
+   Stapelzeiger SP die Rolle von BX; jeder Befehl wird als Mikroprogramm aus LOGHEX-Mikroschritten gebaut.
+   Bedingte Sprünge prüfen – wie in MikroSim – den aktuellen Wert von AX. */
+
+// Befehlsliste des Mikroprogramms „CCAT-2014-03“ (Assembler.mpd), wird ohne eigene .mpd-Datei verwendet
+const MS_DEFAULT = [[0x0A, 'mov AX, [nn]'], [0x0D, 'mov AX,[BX+nn]'], [0x10, 'mov AX, nn'], [0x11, 'mov [nn], AX'], [0x14, 'mov [BX+nn],AX'], [0x17, 'mov BX, nn'], [0x18, 'mov AX, BX'], [0x19, 'mov BX, AX'], [0x1A, 'SWAP AX,BX'], [0x1D, 'CLR [nn]'], [0x20, 'CLR [BX+nn]'], [0x25, 'ADD nn'], [0x26, 'ADD AX'], [0x28, 'ADD BX'], [0x2A, 'ADD [nn]'], [0x2D, 'ADD [BX+nn]'], [0x30, 'SUB nn'], [0x31, 'SUB AX'], [0x33, 'SUB BX'], [0x35, 'SUB [nn]'], [0x38, 'SUB [BX+nn]'], [0x3B, 'ADD BX, nn'], [0x3C, 'SUB BX, nn'], [0x3D, 'NEG AX'], [0x41, 'INC AX'], [0x42, 'DEC AX'], [0x43, 'INC BX'], [0x44, 'DEC BX'], [0x45, 'INC [nn]'], [0x4A, 'DEC [nn]'], [0x4F, 'INC [BX+nn]'], [0x54, 'DEC [BX+nn]'], [0x5B, 'JP nn'], [0x5C, 'JP [nn]'], [0x5F, 'JPS nn'], [0x62, 'JPNS nn'], [0x65, 'CALL nn'], [0x6D, 'RET'], [0x71, 'HALT'], [0x74, 'PUSH AX'], [0x78, 'POP AX'], [0x7B, 'ADDSTACK'], [0x83, 'SUBSTACK'], [0x8D, 'NEGSTACK'], [0x91, 'PUSH nn'], [0x94, 'PUSH [nn]'], [0x99, 'POP [nn]'], [0xA8, 'SWAPSTACK'], [0xB6, 'SWAPSTCK,AX'], [0xC0, 'JPZ nn'], [0xC7, 'JPNZ nn'], [0xFF, 'DEC IP']];
+
+const msKey = s => String(s).toLowerCase().replace(/\s+/g, '');
+/* Mikroprogramme der MikroSim-Befehle aus LOGHEX-Mikroschritten.
+   O: Operand holen (DR := nn), RD: Speicherinhalt RAM[nn] holen, IX: MAR := BX + nn (AX bleibt erhalten),
+   FL: Flags aus dem aktuellen AX bilden (die ALU reicht A unverändert durch, nichts auf dem Bus), P: Operandenbyte überspringen (PC + 1). */
+function msTemplates() {
+  const O = [{ src: 'PC', dst: ['MAR'] }, { rd: 1, inc: ['PC+'] }];
+  const RD = [...O, { src: 'DR', dst: ['MAR'] }, { rd: 1 }];
+  const IX = [...O, { src: 'DR', dst: ['B'] }, { src: 'A', dst: ['DR'] }, { src: 'SP', dst: ['A'] }, { alu: 'ADD', src: 'ALU', dst: ['MAR'] }, { src: 'DR', dst: ['A'] }];
+  const IXRD = [...IX, { rd: 1 }];
+  const FL = [{ alu: 'A', flags: 1 }];
+  const AL = op => ({ alu: op, src: 'ALU', dst: ['A'], flags: 1 });
+  const P = (m) => ({ ...m, inc: [...(m.inc || []), 'PC+'] });
+  const memOp = (pre, op) => [...pre, { src: 'A', dst: ['B'] }, { src: 'DR', dst: ['A'] }, { alu: op, src: 'ALU', dst: ['DR'] }, { src: 'B', dst: ['A'] }, { wr: 1 }];
+  const clr = pre => [...pre, { src: 'A', dst: ['B'] }, { alu: 'XOR', src: 'ALU', dst: ['DR'] }, { wr: 1 }];
+  const bxOp = op => [...O, { src: 'DR', dst: ['B'] }, { src: 'A', dst: ['DR'] }, { src: 'SP', dst: ['A'] }, { alu: op, src: 'ALU', dst: ['SP'] }, { src: 'DR', dst: ['A'] }];
+  const T = {
+    'nop': ['NOP', 'keine Operation (2 Byte)', [P({})]],
+    'movax,[nn]': ['adr', 'AX := RAM[nn]', [...RD, { src: 'DR', dst: ['A'] }]],
+    'movax,[bx+nn]': ['adr', 'AX := RAM[BX + nn]', [...IXRD, { src: 'DR', dst: ['A'] }]],
+    'movax,nn': ['imm', 'AX := nn', [...O, { src: 'DR', dst: ['A'] }]],
+    'mov[nn],ax': ['adr', 'RAM[nn] := AX', [...O, { src: 'DR', dst: ['MAR'] }, { src: 'A', dst: ['DR'] }, { wr: 1 }]],
+    'mov[bx+nn],ax': ['adr', 'RAM[BX + nn] := AX', [...IX, { src: 'A', dst: ['DR'] }, { wr: 1 }]],
+    'movbx,nn': ['imm', 'BX := nn', [...O, { src: 'DR', dst: ['SP'] }]],
+    'movax,bx': ['pad', 'AX := BX', [P({ src: 'SP', dst: ['A'] })]],
+    'movbx,ax': ['pad', 'BX := AX', [P({ src: 'A', dst: ['SP'] })]],
+    'swapax,bx': ['pad', 'AX und BX tauschen', [P({ src: 'A', dst: ['B'] }), { src: 'SP', dst: ['A'] }, { src: 'B', dst: ['SP'] }]],
+    'clr[nn]': ['adr', 'RAM[nn] := 0', clr([...O, { src: 'DR', dst: ['MAR'] }])],
+    'clr[bx+nn]': ['adr', 'RAM[BX + nn] := 0', clr(IX)],
+    'addnn': ['imm', 'AX := AX + nn', [...O, { src: 'DR', dst: ['B'] }, AL('ADD')]],
+    'addax': ['pad', 'AX := AX + AX', [P({ src: 'A', dst: ['B'] }), AL('ADD')]],
+    'addbx': ['pad', 'AX := AX + BX', [P({ src: 'SP', dst: ['B'] }), AL('ADD')]],
+    'add[nn]': ['adr', 'AX := AX + RAM[nn]', [...RD, { src: 'DR', dst: ['B'] }, AL('ADD')]],
+    'add[bx+nn]': ['adr', 'AX := AX + RAM[BX + nn]', [...IXRD, { src: 'DR', dst: ['B'] }, AL('ADD')]],
+    'subnn': ['imm', 'AX := AX − nn', [...O, { src: 'DR', dst: ['B'] }, AL('SUB')]],
+    'subax': ['pad', 'AX := AX − AX (= 0)', [P({ src: 'A', dst: ['B'] }), AL('SUB')]],
+    'subbx': ['pad', 'AX := AX − BX', [P({ src: 'SP', dst: ['B'] }), AL('SUB')]],
+    'sub[nn]': ['adr', 'AX := AX − RAM[nn]', [...RD, { src: 'DR', dst: ['B'] }, AL('SUB')]],
+    'sub[bx+nn]': ['adr', 'AX := AX − RAM[BX + nn]', [...IXRD, { src: 'DR', dst: ['B'] }, AL('SUB')]],
+    'addbx,nn': ['imm', 'BX := BX + nn', bxOp('ADD')],
+    'subbx,nn': ['imm', 'BX := BX − nn', bxOp('SUB')],
+    'negax': ['pad', 'AX := −AX (Zweierkomplement)', [P({ src: 'A', dst: ['B'] }), { alu: 'XOR', src: 'ALU', dst: ['A'] }, AL('SUB')]],
+    'incax': ['pad', 'AX := AX + 1', [P(AL('INC'))]],
+    'decax': ['pad', 'AX := AX − 1', [P(AL('DEC'))]],
+    'incbx': ['pad', 'BX := BX + 1', [{ inc: ['SP+', 'PC+'] }]],
+    'decbx': ['pad', 'BX := BX − 1', [{ inc: ['SP-', 'PC+'] }]],
+    'inc[nn]': ['adr', 'RAM[nn] := RAM[nn] + 1', memOp(RD, 'INC')],
+    'dec[nn]': ['adr', 'RAM[nn] := RAM[nn] − 1', memOp(RD, 'DEC')],
+    'inc[bx+nn]': ['adr', 'RAM[BX + nn] := RAM[BX + nn] + 1', memOp(IXRD, 'INC')],
+    'dec[bx+nn]': ['adr', 'RAM[BX + nn] := RAM[BX + nn] − 1', memOp(IXRD, 'DEC')],
+    'jpnn': ['adr', 'Sprung nach nn', [...O, { src: 'DR', dst: ['PC'] }]],
+    'jp[nn]': ['adr', 'Sprung an die Adresse, die in RAM[nn] steht', [...RD, { src: 'DR', dst: ['PC'] }]],
+    'jpsnn': ['adr', 'Sprung nach nn, wenn AX negativ ist (Bit 7 = 1)', [...O, ...FL, { src: 'DR', dst: ['PC'], cond: 'N' }]],
+    'jpnsnn': ['adr', 'Sprung nach nn, wenn AX nicht negativ ist', [...O, ...FL, { src: 'DR', dst: ['PC'], cond: 'NN' }]],
+    'jpznn': ['adr', 'Sprung nach nn, wenn AX = 0', [...O, ...FL, { src: 'DR', dst: ['PC'], cond: 'Z' }]],
+    'jpnznn': ['adr', 'Sprung nach nn, wenn AX ≠ 0', [...O, ...FL, { src: 'DR', dst: ['PC'], cond: 'NZ' }]],
+    'callnn': ['adr', 'Unterprogramm nn aufrufen (Rücksprungadresse auf den Stapel)', [...O, { src: 'DR', dst: ['B'] }, { src: 'SP', dst: ['MAR'] }, { src: 'PC', dst: ['DR'] }, { wr: 1 }, { inc: ['SP-'] }, { src: 'B', dst: ['PC'] }]],
+    'ret': ['pad', 'Rücksprung aus dem Unterprogramm', [{ inc: ['SP+', 'PC+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'DR', dst: ['PC'] }]],
+    'halt': ['pad', 'Programm anhalten', [{ halt: 1 }]],
+    'pushax': ['pad', 'AX auf den Stapel legen', [P({ src: 'SP', dst: ['MAR'] }), { src: 'A', dst: ['DR'] }, { wr: 1 }, { inc: ['SP-'] }]],
+    'popax': ['pad', 'AX vom Stapel holen', [{ inc: ['SP+', 'PC+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'DR', dst: ['A'] }]],
+    'pushnn': ['imm', 'nn auf den Stapel legen', [...O, { src: 'SP', dst: ['MAR'] }, { wr: 1 }, { inc: ['SP-'] }]],
+    'push[nn]': ['adr', 'RAM[nn] auf den Stapel legen', [...RD, { src: 'SP', dst: ['MAR'] }, { wr: 1 }, { inc: ['SP-'] }]],
+    'pop[nn]': ['adr', 'oberstes Stapelelement nach RAM[nn]', [...O, { src: 'DR', dst: ['B'] }, { inc: ['SP+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'B', dst: ['MAR'] }, { wr: 1 }]],
+    'addstack': ['pad', 'die beiden obersten Stapelelemente addieren (Ergebnis auf dem Stapel und in AX)', [{ inc: ['SP+', 'PC+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'DR', dst: ['A'] }, { inc: ['SP+'] }, { src: 'SP', dst: ['MAR'] }, { inc: ['SP-'] }, { rd: 1 }, { src: 'DR', dst: ['B'] }, AL('ADD'), { src: 'A', dst: ['DR'] }, { wr: 1 }]],
+    'substack': ['pad', 'zweites minus oberstes Stapelelement (Ergebnis auf dem Stapel und in AX)', [{ inc: ['SP+', 'PC+'] }, { inc: ['SP+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'DR', dst: ['A'] }, { inc: ['SP-'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'DR', dst: ['B'] }, AL('SUB'), { src: 'A', dst: ['DR'] }, { inc: ['SP+'] }, { src: 'SP', dst: ['MAR'] }, { inc: ['SP-'] }, { wr: 1 }]],
+    'negstack': ['pad', 'oberstes Stapelelement negieren (auch in AX)', [{ inc: ['SP+', 'PC+'] }, { src: 'SP', dst: ['MAR'] }, { inc: ['SP-'] }, { rd: 1 }, { src: 'A', dst: ['B'] }, { alu: 'XOR', src: 'ALU', dst: ['A'] }, { src: 'DR', dst: ['B'] }, AL('SUB'), { src: 'A', dst: ['DR'] }, { wr: 1 }]],
+    'swapstack': ['pad', 'die beiden obersten Stapelelemente tauschen', [{ inc: ['SP+', 'PC+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'DR', dst: ['B'] }, { inc: ['SP+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { inc: ['SP-'] }, { src: 'SP', dst: ['MAR'] }, { wr: 1 }, { inc: ['SP+'] }, { src: 'SP', dst: ['MAR'] }, { src: 'B', dst: ['DR'] }, { wr: 1 }, { inc: ['SP-'] }, { inc: ['SP-'] }]],
+    'swapstck,ax': ['pad', 'AX mit dem obersten Stapelelement tauschen', [{ inc: ['SP+', 'PC+'] }, { src: 'SP', dst: ['MAR'] }, { rd: 1 }, { src: 'A', dst: ['B'] }, { src: 'DR', dst: ['A'] }, { src: 'B', dst: ['DR'] }, { wr: 1 }, { inc: ['SP-'] }]],
+    'decip': ['none', 'IP := IP − 1 (der Operand wird als nächster Befehl ausgeführt; 1 Byte)', []],
+  };
+  T['swapstack,ax'] = T['swapstck,ax'];
+  return T;
+}
+/* Befehlssatz aus einer Befehlsliste [[Code, MikroSim-Schreibweise], …] bauen */
+function msIsa(list) {
+  const T = msTemplates(), isa = [], unknown = [];
+  const seen = new Set();
+  for (const [op, syn] of [[0x00, 'NOP'], ...list]) {
+    if (seen.has(op)) continue;
+    const t = T[msKey(syn)];
+    if (!t) { unknown.push(hx(op) + ' ' + syn); continue; }
+    seen.add(op);
+    const [kind, desc, steps] = t;
+    isa.push({ op, mn: 'M' + hx(op), mode: kind === 'none' ? 'none' : kind === 'adr' ? 'adr' : 'imm', syn: syn.replace(/\s+/g, ' ').trim(), desc: desc + (kind === 'pad' || kind === 'NOP' ? ' – das Operandenbyte wird übersprungen' : ''), steps: steps.map(ms), lock: true, ms: 1 });
+  }
+  return { isa, unknown };
+}
+const isMsIsa = (isa = CPU.isa) => isa.some(i => i.syn);
+// Anzeigename eines Befehls: MikroSim-Schreibweise oder LOGHEX-Mnemonic mit Operandenart
+const iName = I => I.syn ? I.syn : I.mn + (I.mode === 'imm' ? ' #n' : I.mode === 'adr' ? ' adr' : '');
+
+/* --- Assembler: MikroSim-Schreibweise erkennen (z. B. „mov AX, [80]“, „JPZ 10“; Zahlen hexadezimal wie in MikroSim) --- */
+function msAsmLine(s, labels) {
+  const cands = [];
+  for (const I of CPU.isa) {
+    if (!I.syn) continue;
+    const parts = I.syn.split(/nn/i);
+    const esc2 = t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s*').replace(/,/g, '\\s*,\\s*');
+    const re = new RegExp('^' + parts.map(esc2).join('\\s*(.+?)\\s*') + '$', 'i');
+    cands.push({ I, re, n: parts.length - 1, len: I.syn.length });
+  }
+  cands.sort((a, b) => a.n - b.n || b.len - a.len);   // zuerst Befehle ohne Operand, dann die längsten Muster
+  for (const c of cands) {
+    const m = s.replace(/\s+/g, ' ').trim().match(c.re); if (!m) continue;
+    if (!c.n) return { I: c.I, v: 0 };
+    const t = m[1].trim();
+    let v;
+    if (/^[0-9a-f]{1,2}$/i.test(t)) v = parseInt(t, 16);       // MikroSim: Zahlen sind hexadezimal
+    else { try { v = parseNum(t, labels); } catch (e) { if (labels.__pass2 && /^[A-Za-z_]\w*$/.test(t)) throw e; continue; } }
+    if (v < -128 || v > 255) throw new Error('Operand außerhalb 00…FF');
+    return { I: c.I, v: v & 255 };
+  }
+  return null;
+}
+
+/* --- Dateien lesen --- */
+function msParseMpd(text) {
+  const rows = String(text).split(/\r?\n/), list = [];
+  let fetchEnd = -1;
+  for (const r of rows) {
+    const m = /^([0-9A-Fa-f]{2}) (.{26})/.exec(r); if (!m) continue;
+    const ad = parseInt(m[1], 16), name = m[2].trim(), sig = r.slice(29);
+    if (!sig.includes('.')) continue;                 // Kopfzeile „AD Befehl 0 1 2 …“
+    if (fetchEnd < 0 && /(^|\s)F(\s|$)/.test(sig.trim().split(/\s+/).slice(0, 16).join(' '))) fetchEnd = ad;   // Signal F = Befehl ausführen
+    if (fetchEnd < 0) continue;                       // Holphase (MOV OP,[IP] … do command)
+    if (ad <= fetchEnd || !name || /^[;*]/.test(name)) continue;
+    list.push([ad, name]);
+  }
+  if (fetchEnd < 0) throw new Error('Das ist kein MikroSim-Mikroprogramm (die Holphase „do command“ fehlt).');
+  return list;
+}
+function msParseRas(text) {
+  const ram = new Uint8Array(256), names = new Map(), src = [];
+  let any = false, next = 0;
+  for (const raw of String(text).split(/\r?\n/)) {
+    const r = raw.replace(/\s+$/, '');
+    if (/^\s*;/.test(r)) { src.push(r); continue; }
+    const m = /^([0-9A-Fa-f]{2})\s+([0-9A-Fa-f]{2})(?:\s+([0-9A-Fa-f]{2}))?(?:\s+(.*))?$/.exec(r.trim());
+    if (!m) continue;
+    const a = parseInt(m[1], 16), op = parseInt(m[2], 16), o = m[3] != null ? parseInt(m[3], 16) : null, txt = (m[4] || '').trim();
+    ram[a] = op; if (o != null && a < 255) ram[a + 1] = o; any = true;
+    if (a !== next) src.push(`\tORG ${hx(a)}`);
+    if (txt) { if (!names.has(op)) names.set(op, txt.replace(/\s*,\s*/g, ', ').replace(/\[\s*[0-9A-Fa-f]{1,2}\s*\]/, '[nn]')); src.push('\t' + txt); }
+    else src.push(`\tDB $${hx(op)}` + (o != null ? `, $${hx(o)}` : ''));
+    next = a + (o != null ? 2 : 1);
+  }
+  if (!any) throw new Error('In der Datei wurde kein RAM-Inhalt gefunden.');
+  return { ram, src: src.join('\n') + '\n' };
+}
+function msParseRad(text) {
+  const ram = new Uint8Array(256); let rows = 0;
+  for (const r of String(text).split(/\r?\n/)) {
+    const m = /^([0-9A-Fa-f]{2})((?:\s+[0-9A-Fa-f]{2}){16})\s*$/.exec(r.trim()); if (!m) continue;
+    const lo = parseInt(m[1], 16); if (lo > 15) continue;
+    m[2].trim().split(/\s+/).forEach((v, hi) => { ram[hi * 16 + lo] = parseInt(v, 16); });
+    rows++;
+  }
+  if (rows < 16) throw new Error('Die RAM-Tabelle ist unvollständig (16 Zeilen mit je 16 Werten erwartet).');
+  return { ram };
+}
+
+/* Laden aus „Öffnen“ */
+async function msImport(f) {
+  const text = await readLimited(f.stream(), 2e5);
+  const ext = (/\.(\w+)$/.exec(f.name) || [])[1].toLowerCase();
+  if (App.mode !== 'cpu') setMode('cpu');
+  CPU.running = false;
+  let note = '';
+  if (ext === 'mpd') {
+    const { isa, unknown } = msIsa(msParseMpd(text));
+    CPU.isa = isa; CPU.msName = f.name;
+    note = `<p>Der Befehlssatz aus dem Mikroprogramm „${esc(f.name)}“ ist jetzt aktiv: <b>${isa.length - 1} Befehle</b>.</p>` +
+      (unknown.length ? `<p style="color:#c92a2a;font-size:13px">Nicht nachgebildet (unbekannte Befehle): ${unknown.map(esc).join(', ')}</p>` : '') +
+      `<p style="font-size:13px;color:#667085">Lade nun ein Programm (.ras oder .rad) oder schreibe eines im Reiter <b>Assembler</b> in MikroSim-Schreibweise, z. B. <code>mov AX, [80]</code>.</p>`;
+    CPU.tab = 'isa';
+  } else {
+    const r = ext === 'rad' ? msParseRad(text) : msParseRas(text);
+    if (!isMsIsa()) { CPU.isa = msIsa(MS_DEFAULT).isa; CPU.msName = 'Standard-Mikroprogramm (CCAT-2014-03)'; note = `<p style="font-size:13px">Dafür wurde der <b>MikroSim-Befehlssatz</b> (${esc(CPU.msName)}) eingeschaltet. Ein eigenes Mikroprogramm (.mpd) kann ebenfalls geöffnet werden.</p>`; }
+    CPU.ram.set(r.ram);
+    if (r.src) { CPU.src = r.src; const as = assemble(CPU.src); CPU.listing = as; }
+    CPU.tab = r.src ? 'asm' : 'ram';
+    const used = new Set(); for (let a = 0; a < 256; a += 2) used.add(CPU.ram[a]);
+    note = `<p>„${esc(f.name)}“ wurde in den Speicher geladen.</p>` + note;
+  }
+  CPU.hlLoaded = false; CPU.draft = null; CPU.editOp = null; cpuReset(false); cpuTabs(); cpuSave();
+  openModal('MikroSim-Datei geöffnet', note + `<p style="font-size:13px;color:#667085">So wird übersetzt: <b>AX</b> ist der Akkumulator A, <b>BX</b> übernimmt der Stapelzeiger SP (in MikroSim ist BX zugleich Stapelzeiger und Indexregister). Jeder Befehl ist wie in MikroSim 2 Byte lang. Zurück zum LOGHEX-Befehlssatz geht es im Reiter <b>Befehlssatz</b> mit „Standard wiederherstellen“.</p>`);
+}
 /* ================= Modus, Dialoge, Speichern ================= */
 function setMode(m) {
   if (UI.drag) UI.drag = null;
@@ -6512,7 +7381,7 @@ function setMode(m) {
 }
 $$('.tab').forEach(t => t.onclick = () => setMode(t.dataset.mode));
 
-function openModal(title, html) { $('#mTitle').textContent = title; $('#mBody').innerHTML = html; $('#modal').hidden = false; }
+function openModal(title, html) { $('#modal .mbox').classList.remove('wide'); $('#mTitle').textContent = title; $('#mBody').innerHTML = html; $('#modal').hidden = false; }
 function closeModal() { $('#modal').hidden = true; }
 $('#mClose').onclick = closeModal;
 $('#modal').addEventListener('pointerdown', e => { if (e.target.id === 'modal') closeModal(); });
@@ -6558,6 +7427,7 @@ $('#fileIn').onchange = async e => {
   try {
     const head = new Uint8Array(await f.slice(0, 2).arrayBuffer());
     if (/\.yka$/i.test(f.name) || (head[0] === 0x50 && head[1] === 0x4b)) { await ykImport(f); return; } // Yenka (ZIP)
+    if (/\.(ras|rad|mpd)$/i.test(f.name)) { await msImport(f); return; } // MikroSim
     const o = JSON.parse(await f.text()); loadData(o);
   } catch (err) { openModal('Fehler', `<p>Die Datei konnte nicht gelesen werden.</p><p style="color:#667085">${esc(err.message || '')}</p>`); }
 };
@@ -6678,6 +7548,7 @@ async function shareLink() {
 
 /* --- Wahrheitstabelle --- */
 $('#tTT').onclick = truthTable;
+$('#tKV').onclick = () => kvEditor();
 
 /* --- Werkzeugleiste und Tastatur --- */
 $('#tRot').onclick = () => rotateSel(false);
