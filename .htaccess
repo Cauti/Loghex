@@ -1,0 +1,31 @@
+# LOGHEX – Einstellungen für Apache (bei nginx sinngemäß übernehmen, siehe ANLEITUNG.txt)
+
+# Startseite festlegen; Verzeichnislisten verbieten.
+# SymLinksIfOwnerMatch ist bei vielen Hostern Voraussetzung für RewriteEngine (sonst Fehler 403).
+DirectoryIndex index.html
+Options -Indexes +SymLinksIfOwnerMatch
+
+# Immer HTTPS (nötig für Offline-Betrieb und App-Installation)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Zertifikatsprüfung von Let's Encrypt nicht umleiten
+  RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+AddType application/manifest+json .webmanifest
+AddType application/javascript .js
+AddDefaultCharset utf-8
+
+<IfModule mod_headers.c>
+  # Programm und Service Worker nicht zwischenspeichern, damit Aktualisierungen sofort ankommen
+  <FilesMatch "^(index\.html|sw\.js|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "^index\.html$">
+    Header set Content-Security-Policy "default-src 'none'; script-src 'sha256-4oFtobP/PAyx6S+r9hwTLgtSbGo5ln3U4pTHaDflxTM=' 'self'; style-src 'unsafe-inline'; img-src 'self' data: blob:; font-src data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'"
+  </FilesMatch>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "no-referrer"
+</IfModule>

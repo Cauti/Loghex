@@ -25,10 +25,10 @@ Das gesamte Programm steckt in **einer einzigen HTML-Datei**. Es braucht keine I
 
 | Reiter | Inhalt |
 |---|---|
-| **Logikgatter** | AND, OR, NOT, NAND, NOR, XOR, Flipflops, Zähler, Addierer, Multiplexer, Siebensegmentanzeige u. v. m. Eigene Bausteine lassen sich aus Schaltungen bauen und wiederverwenden; per Doppelklick sieht man ihren inneren Aufbau. Wahrheitstabellen werden automatisch erzeugt. |
-| **Elektronik & Halbleiter** | Analoge Simulation mit Spannungsquellen, Widerständen, Dioden, LEDs, Transistoren, Kondensatoren und Messgeräten. Gatter lassen sich aus Transistoren nachbauen. |
-| **Halbleiter-Modell** | Anschauliches Teilchenmodell des pn-Übergangs: Dotierung, Sperrschicht, Durchlass- und Sperrrichtung. |
-| **Rechner** | 8-Bit-Rechner nach dem Von-Neumann-Prinzip mit Adress-, Daten- und Steuerbus, Mikroschritt-Anzeige und Assembler. Jedes Bauteil (ALU, Register, Steuerwerk …) lässt sich per Doppelklick auf Gatterebene öffnen und testen. |
+| **Logikgatter** | AND, OR, NOT, NAND, NOR, XOR, Flipflops, Zähler, Addierer, Multiplexer, Siebensegmentanzeige u. v. m. Eigene Bausteine lassen sich aus Schaltungen bauen und wiederverwenden; per Doppelklick „zoomt“ man in ein Bauteil hinein und sieht seinen inneren Aufbau – in einem Rahmen mit dem Bauteilsymbol, die Eingänge an derselben Seite wie beim Bauteil, die Ausgänge als Logikanzeigen. Wahrheitstabellen werden automatisch erzeugt; im **KV-Editor** (2×2, 2×4, 4×4) bilden die Schüler die Päckchen selbst, schreiben DNF bzw. KNF selbst auf und lassen beides prüfen. |
+| **Elektronik & Halbleiter** | Analoge Simulation mit Spannungsquellen, Widerständen, Dioden, LEDs, Transistoren, Kondensatoren und Messgeräten. Gatter lassen sich aus Transistoren nachbauen. Halbleiterlogik mit Logikschalter, Logikanzeige, Versorgung +5 V, Schwellenwertschalter und Schmitt-Inverter; Schieberegler direkt an den Bauteilen – der Fotowiderstand zeigt die Helligkeit als Licht-Animation, der Heißleiter hat einen Thermometer-Regler (blau/rot). |
+| **Halbleiter-Modell** | Anschauliches Teilchenmodell: Dotierung, pn-Übergang mit Sperrschicht, Durchlass- und Sperrrichtung sowie animierter NPN- und PNP-Transistor mit Strömen und Stromverstärkung. |
+| **Rechner** | 8-Bit-Rechner nach dem Von-Neumann-Prinzip, umschaltbar zwischen **Anfänger-Ansicht** (ein Bus, Rechenwerk als Block, Schritte „Befehl holen/ausführen“ mit Erklärung in Worten) und **Profi-Ansicht** mit Adress-, Daten- und Steuerbus, Mikroschritt-Anzeige und Assembler. Jedes Bauteil (ALU, Register, Steuerwerk …) lässt sich per Doppelklick auf Gatterebene öffnen und testen. |
 
 ### Pseudocode-Compiler mit Compiler-Labor
 
@@ -42,10 +42,13 @@ Ein **Vorhersage-Modus** lässt die Lernenden den jeweils nächsten Schritt selb
 
 ### Weitere Besonderheiten
 
-- Bedienung mit Maus **und** Touch, optimiert für das iPad
+- Bedienung mit Maus **und** Touch, optimiert für das iPad: links ziehen wählt mit einem Rahmen aus, rechts ziehen verschiebt die Ansicht, **Rechtsklick** öffnet ein Kontextmenü (Ausschneiden, Kopieren, Duplizieren, Drehen, Löschen, Einfügen an der Klickstelle …)
+- Sich kreuzende Leitungen sind nicht verbunden; ein Antippen der Kreuzung setzt einen sichtbaren Knoten
 - Aufgabenmodus für Lehrkräfte: Aufgaben mit automatischer Überprüfung erstellen und verteilen
+- **Prüfungsmodus** (Schloss-Knopf oben rechts): Die Lehrkraft legt per Prüfungscode fest, was erlaubt ist (Dateien öffnen, alte Arbeiten behalten, KV-Editor, Erklärungen, Innenansicht, Schaltung aus Term). Während der Prüfung ist der Kopf orange, alle 3 Minuten wird automatisch gesichert (wahlweise in einen Ordner). Beim Beenden entsteht ein Protokoll mit Start, Ende und Dauer – auch als Bild am Speicherort
 - Schaltungen als Datei speichern, laden oder als Link teilen
 - **Yenka-Dateien (`.yka`) öffnen:** Logikschaltungen (Gatter nach IC-Nummer, eigene Blöcke werden zu Bausteinen) und Elektronikschaltungen werden übernommen und lassen sich weiter simulieren
+- **MikroSim-Programme öffnen:** Mikroprogramme (`.mpd`) und Programme (`.ras`, `.rad`) werden in den Rechner geladen und dort ausgeführt (AX → Register A, BX → Stapelzeiger SP)
 - Export von Schaltbildern als Bild (PNG) oder Vektorgrafik (SVG)
 - 78 Beispielschaltungen, 17 Assembler- und 10 Pseudocode-Programme als separate Dateien – das Programm selbst startet bewusst leer, damit die Schüler selbst entwickeln
 
@@ -85,14 +88,14 @@ Das Paket `LOGHEX-Server.zip` enthält alles für den Betrieb unter einer eigene
 
 ## Handbuch
 
-Das [Handbuch](material/LOGHEX-Handbuch.pdf) (ca. 38 Seiten) erklärt alle Bereiche, enthält Unterrichtsideen und Aufgabenvorschläge und ein eigenes Kapitel für Lehrkräfte.
+Das [Handbuch](material/LOGHEX-Handbuch.pdf) (ca. 52 Seiten) erklärt alle Bereiche, enthält Unterrichtsideen und Aufgabenvorschläge und ein eigenes Kapitel für Lehrkräfte.
 
 ## Sicherheit und Datenschutz
 
 - Keine externen Abhängigkeiten, keine Verbindungen ins Internet, keine Cookies, kein Tracking
 - Gespeichert wird nur im Browser des jeweiligen Geräts (`localStorage`)
 - Die Offline-Fassung schränkt sich per Content-Security-Policy selbst ein; die Server-Fassung erhält die Richtlinie über die `.htaccess`
-- Geladene Dateien werden vollständig geprüft; Regressions-, Touch-, Sicherheits- (XSS), Fuzzing- und Überlastungstests gehören zur Qualitätssicherung (siehe Anhang des Handbuchs)
+- Geladene Dateien werden vollständig geprüft; Regressions-, Touch-, Sicherheits- (XSS), Fuzzing- und Überlastungstests sowie Tests für jede neue Funktion gehören zur Qualitätssicherung (siehe Anhang des Handbuchs)
 
 ## Mitwirken
 

@@ -12,7 +12,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-aGahfdfS3/Xccp4tF8WyVHJBfcteZ+q83PlqzBSd4gc='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-4oFtobP/PAyx6S+r9hwTLgtSbGo5ln3U4pTHaDflxTM='; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -348,6 +348,37 @@ textarea.share{width:100%;height:90px;font:12px ui-monospace,monospace;border:1p
 #gateBtns span{font-size:11.5px;color:#667085;padding:0 6px 0 2px}
 .msinfo{background:#eef8f3;border:1px solid #b9e3cf;border-radius:8px;padding:8px 10px;font-size:12.5px;margin:0 0 10px}
 #printArea{display:none}
+/* Kontextmenü */
+.ctxm{position:fixed;left:0;top:0;background:#fff;color:var(--ink);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.22);padding:5px;z-index:60;min-width:230px;border:1px solid var(--line);font-size:14px}
+.ctxm button{display:flex;width:100%;border:0;background:none;padding:7px 11px;border-radius:6px;text-align:left;font:inherit;color:inherit;gap:18px;align-items:center;justify-content:space-between;cursor:pointer}
+.ctxm button:hover:not(:disabled){background:var(--chip)}.ctxm button:disabled{opacity:.4;cursor:default}.ctxm button.danger{color:#c92a2a}
+.ctxm kbd{font:12px var(--font);color:#98a2b3}.ctxm hr{border:0;border-top:1px solid var(--line);margin:4px 2px}.ctxh{padding:5px 11px 3px;font-size:12px;color:#667085}
+/* Prüfungsmodus */
+#bExam{background:#e8590c;color:#fff;border-color:#e8590c}#bExam:hover{background:#d9480f}
+body.exam #bExam{background:#fff;color:#d9480f;border-color:#fff;font-weight:700}
+.exwarn{margin-top:14px;border:2px solid #e03131;background:#fff5f5;border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.5}.exwarn b{color:#c92a2a;font-size:15px}.exwarn p{margin:6px 0 0}
+canvas.exlog{display:block;width:100%;max-width:720px;height:auto;margin:10px auto;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+body.exam header#top{background:#d9480f;background:linear-gradient(90deg,#e8590c,#f76707)}
+body.exam .tab.active{color:#d9480f}
+#examBar{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;padding:5px 14px;background:#fff4e6;border-bottom:3px solid #e8590c;color:#7a2e04;font-size:13.5px;cursor:pointer;line-height:1.3}
+#examBar b{background:#e8590c;color:#fff;padding:2px 10px;border-radius:6px;letter-spacing:.06em}
+#examBar span+span::before{content:'·';margin-right:14px;color:#f08c00}
+.exam-dlg h4{margin:14px 0 6px;font-size:15px}.exam-dlg h4:first-child{margin-top:0}
+.exam-dlg .exp{font-size:14px;line-height:1.5;color:#475467;margin:4px 0}
+.exin{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}.exin label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:#475467;flex:1;min-width:180px}
+.exin input:not([type=checkbox]){font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit}
+.exin #exCode,.exin #exEc{font-family:ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}.exin #exCode::placeholder,.exin #exEc::placeholder{text-transform:none;letter-spacing:0;font-family:var(--font)}
+.exin label.chk2{flex-direction:row;align-items:flex-start;gap:8px;font-size:14px;color:var(--ink)}
+.exsw{border:1px solid var(--line);border-radius:10px;padding:2px 12px;background:#fbfcfe}
+.exrow{font-family:var(--font)!important;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #eef1f6;font-size:14px}.exrow:last-child{border-bottom:0}
+.exrow small,.exrow b{font-family:var(--font);}.exrow small{display:block;color:#667085;font-size:12.5px;margin-top:2px}.exrow.exdis{opacity:.85}
+.swi{appearance:none;-webkit-appearance:none;width:42px;height:24px;border-radius:12px;background:#d0d5dd;position:relative;flex:none;cursor:pointer;transition:background .15s}
+.swi::after{content:'';position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}
+.swi:checked{background:#2b8a3e}.swi:checked::after{left:21px}.swi:disabled{cursor:default}
+.exbtn{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}
+.exteach{margin-top:18px;border-top:1px solid var(--line);padding-top:10px}.exteach summary{cursor:pointer;font-weight:600;font-size:14px;color:#475467}
+.excodes{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-top:10px}.excodes div{display:flex;flex-direction:column;font-size:12.5px;color:#667085}
+.excodes b{font:700 22px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--ink);background:#f2f4f7;border-radius:8px;padding:4px 10px;margin-top:2px}
 @media print{body>*:not(#printArea){display:none!important} #printArea{display:block!important;position:static} #printArea svg{width:100%;height:auto} html,body{overflow:visible;height:auto;background:#fff}}
 </style>
 </head>
@@ -365,6 +396,7 @@ textarea.share{width:100%;height:90px;font:12px ui-monospace,monospace;border:1p
     <button class="hb" id="bOpen" title="Datei öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h6l2 2h10v10H3z"/></svg><span>Öffnen</span></button>
     <button class="hb" id="bSave" title="Als Datei speichern"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Speichern</span></button>
     <button class="hb" id="bMore" title="Weitere Funktionen"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
+    <button class="hb" id="bExam" title="Prüfungsmodus" aria-label="Prüfungsmodus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path id="exShk" d="M8 11V7a4 4 0 0 1 7.5-2"/><circle cx="12" cy="16" r="1.2" fill="currentColor"/></svg></button>
     <a class="hb school" id="bSchool" href="https://www.asgspez.de" target="_blank" rel="noopener" title="MINT-Spezialklassen am Albert-Schweitzer-Gymnasium Erfurt – www.asgspez.de" aria-label="Website der MINT-Spezialklassen"><img alt=""></a>
   </div>
 </header>
@@ -407,6 +439,8 @@ textarea.share{width:100%;height:90px;font:12px ui-monospace,monospace;border:1p
       <button data-s="n">n-Dotierung</button>
       <button data-s="p">p-Dotierung</button>
       <button data-s="pn">pn-Übergang</button>
+      <button data-s="npn">NPN-Transistor</button>
+      <button data-s="pnp">PNP-Transistor</button>
     </div>
     <div id="pnCtl"></div>
     <canvas id="pnGraph"></canvas>
@@ -444,7 +478,7 @@ const App = {
   circ: { digital: { comps: [], wires: [] }, analog: { comps: [], wires: [] } },
   view: { digital: { x: 80, y: 60, z: 1 }, analog: { x: 80, y: 60, z: 1 } },
   sel: null, placing: null,
-  settings: { symbols: 'din', flow: 'conv', colorV: true, dots: true, slow: false, speed: 1, values: true, sound: true, beamer: false, hints: true },
+  settings: { symbols: 'din', flow: 'conv', colorV: true, dots: true, slow: false, speed: 1, values: true, sound: true, beamer: false, hints: true, sliders: true },
   running: true,
   hist: { digital: { u: [], r: [] }, analog: { u: [], r: [] } },
   nid: 1, netDirty: true, net: null, netMode: null,
@@ -515,7 +549,8 @@ function addWire(cc, x1, y1, x2, y2) {
     }
   }
   const seg = { x1, y1, x2, y2 };
-  const pts = connPoints(cc).filter(p => onSegInterior(p.x, p.y, seg));
+  // Nur dort teilen (= verbinden), wo das neue Kabel wirklich auf etwas trifft – nicht an reinen Kreuzungen
+  const pts = connPoints(cc).filter(p => onSegInterior(p.x, p.y, seg) && joinsAt(cc, p.x, p.y, seg));
   const dx = x2 - x1, dy = y2 - y1;
   pts.sort((a, b) => ((a.x - x1) * dx + (a.y - y1) * dy) - ((b.x - x1) * dx + (b.y - y1) * dy));
   let px = x1, py = y1;
@@ -523,6 +558,44 @@ function addWire(cc, x1, y1, x2, y2) {
     if (!cc.wires.some(w => sameWire(w, px, py, p.x, p.y))) cc.wires.push({ id: uid(), x1: px, y1: py, x2: p.x, y2: p.y });
     px = p.x; py = p.y;
   }
+}
+/* Trifft ein neues Kabelstück am Punkt (x,y) auf etwas, das verbunden werden soll?
+   ja: Anschluss eines Bauteils, ein dort endendes Kabel (T) oder ein Kabel, das auf derselben Linie liegt (Überlagerung)
+   nein: eine durchgehende Leitung quer dazu (Kreuzung) – auch wenn sie dort aus zwei Stücken besteht */
+function joinsAt(cc, x, y, seg) {
+  if (cc.comps.some(c => pinsW(c).some(p => p.x === x && p.y === y))) return true;
+  const sx = Math.sign(seg.x2 - seg.x1), sy = Math.sign(seg.y2 - seg.y1), dirs = [];
+  for (const w of cc.wires) for (const [ax, ay, bx, by] of [[w.x1, w.y1, w.x2, w.y2], [w.x2, w.y2, w.x1, w.y1]]) {
+    if (ax !== x || ay !== y) continue;
+    const dx = Math.sign(bx - x), dy = Math.sign(by - y);
+    if (dx * sy - dy * sx === 0) return true;          // liegt auf derselben Linie wie das neue Kabel
+    dirs.push(dx + ',' + dy);
+  }
+  if (!dirs.length) return false;
+  const through = dirs.some(d => { const [dx, dy] = d.split(',').map(Number); return dirs.includes(-dx + ',' + -dy); });
+  return !through;                                    // durchgehende Leitung = Kreuzung, sonst T
+}
+/* Knoten an einer Kreuzung setzen: alle Kabel, die durch (x,y) laufen, dort teilen */
+function makeNode(cc, x, y) {
+  let k = 0;
+  for (const w of [...cc.wires]) if (onSegInterior(x, y, w)) { cc.wires.push({ id: uid(), x1: x, y1: y, x2: w.x2, y2: w.y2 }); w.x2 = x; w.y2 = y; k++; }
+  return k;
+}
+/* Knoten wieder lösen: Kabel, die sich in (x,y) gerade gegenüberliegen, zu je einem Kabel verbinden.
+   Nur wenn dort kein Anschluss liegt und sich alle Kabelenden paarweise gerade fortsetzen (Kreuzung). */
+function dissolveNode(cc, x, y) {
+  if (cc.comps.some(c => pinsW(c).some(p => p.x === x && p.y === y))) return false;
+  const ends = [];
+  for (const w of cc.wires) { if (w.x1 === x && w.y1 === y) ends.push([w, w.x2, w.y2]); if (w.x2 === x && w.y2 === y) ends.push([w, w.x1, w.y1]); }
+  if (ends.length !== 4 && ends.length !== 2) return false;
+  const dir = ([, ox, oy]) => [Math.sign(ox - x), Math.sign(oy - y)], used = new Set(), pairs = [];
+  for (let i = 0; i < ends.length; i++) {
+    if (used.has(i)) continue; const [dx, dy] = dir(ends[i]);
+    const j = ends.findIndex((e, k) => k !== i && !used.has(k) && dir(e)[0] === -dx && dir(e)[1] === -dy);
+    if (j < 0) return false; used.add(i); used.add(j); pairs.push([ends[i], ends[j]]);
+  }
+  for (const [[w1, ax, ay], [w2, bx, by]] of pairs) { cc.wires = cc.wires.filter(w => w !== w2); w1.x1 = ax; w1.y1 = ay; w1.x2 = bx; w1.y2 = by; }
+  return true;
 }
 /* Streckenzug: [x1,y1,x2,y2,...] */
 function addPath(cc, pts) { for (let i = 0; i + 3 < pts.length; i += 2) addWire(cc, pts[i], pts[i + 1], pts[i + 2], pts[i + 3]); }
@@ -684,6 +757,12 @@ function cleanData(o) { // ganze Datei bzw. Link
   if (o.task) { r.task = cleanTask(o.task); if (!r.task) throw new Error('Die Aufgabe in der Datei ist unvollständig.'); }
   if (o.cpu) r.cpu = cleanCpu(o.cpu);
   if (o.circuit) r.circuit = cleanCircuit(o.circuit);
+  if (isObj(o.backup)) {   // Sicherung aus dem Prüfungsmodus: alle Bereiche
+    r.backup = { name: cleanStr(o.backup.name, 60), n: cleanInt(o.backup.n, 0, 99999, 0), time: cleanStr(o.backup.time, 40) };
+    if (o.digital) r.digital = cleanCircuit(o.digital);
+    if (o.analog) r.analog = cleanCircuit(o.analog);
+    if (isObj(o.kv)) r.kv = JSON.parse(JSON.stringify(o.kv).slice(0, 20000));
+  }
   return r;
 }
 async function readLimited(stream, max) { // entpacken mit Obergrenze (Schutz vor „Zip-Bomben“)
@@ -810,6 +889,7 @@ function glow(ctx, x, y, r, col, a) {
   g.addColorStop(1, col + '00');
   ctx.fillStyle = g; circ0(ctx, x, y, r); ctx.fill();
 }
+const isOutT = t => t === 'led' || t === 'lind';
 def('led', {
   mode: 'digital', cat: 'Ein- und Ausgabe', name: 'Lampe (LED)', prefix: '@out',
   props: [{ key: 'color', label: 'Farbe', type: 'select', options: colorOpts, def: 'red' }],
@@ -824,6 +904,17 @@ def('led', {
     ctx.fill(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 0.09; ctx.stroke();
   },
   info: '<b>Lampe</b> (Ausgang): leuchtet, wenn am Eingang 1 anliegt. Die Lampen werden für die Wahrheitstabelle als Ausgangsvariablen verwendet.',
+});
+def('lind', {
+  mode: 'digital', cat: 'Ein- und Ausgabe', name: 'Logikanzeige', prefix: '@out',
+  pins: () => [{ x: -2, y: 0, dir: 'in', name: 'Eingang' }], box: () => [-1.2, -0.9, 0.9, 0.9],
+  draw(ctx, c, R) {
+    R.lead(-2, 0, -0.8, 0, 0);
+    const v = R.dv(0), live = R.live && (v === 0 || v === 1), q = v === 1;
+    circ0(ctx, 0, 0, 0.8); ctx.fillStyle = live ? (q ? '#ff6b6b' : '#c9d6ee') : '#fff'; ctx.fill(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 0.1; ctx.stroke();
+    if (live) R.text(q ? '1' : '0', 0, 0, { size: 13, bold: true, color: q ? '#fff' : '#3d5a99' });
+  },
+  info: '<b>Logikanzeige</b> (Ausgang): zeigt den Logikwert am Eingang als <b>1</b> oder <b>0</b> an. Sie zählt wie eine Lampe als Ausgangsvariable der Wahrheitstabelle.',
 });
 const SEG = [0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71];
 def('seg7', {
@@ -1011,7 +1102,7 @@ def('mod', {
         const pos = (a, b) => a.y - b.y || a.x - b.x;
         c.st.sub = dMake(cc); c.st.ver = M.ver;
         c.st.sin = cc.comps.filter(q => q.type === 'switch' || q.type === 'button').sort(pos);
-        c.st.sout = cc.comps.filter(q => q.type === 'led').sort(pos);
+        c.st.sout = cc.comps.filter(q => isOutT(q.type)).sort(pos);
       } finally { M.busy = 0; }
     }
     const S = c.st.sub;
@@ -1079,6 +1170,7 @@ def('resistor', {
   info: '<b>Widerstand</b>: Nach dem ohmschen Gesetz gilt <b>U = R · I</b>. Widerstände begrenzen Ströme (z. B. als Vorwiderstand einer LED) und teilen Spannungen. Ein normaler Kohleschichtwiderstand verträgt etwa 0,25 W.',
 });
 def('pot', {
+  slider: 'pos',
   mode: 'analog', cat: 'Bauteile', name: 'Potentiometer', prefix: 'P',
   props: [{ key: 'R', label: 'Gesamtwiderstand', type: 'num', unit: 'Ω', def: 10000 }, { key: 'pos', label: 'Schleiferstellung', type: 'range', min: 0, max: 1, step: 0.01, def: 0.5, fmt: v => Math.round(v * 100) + ' %' }],
   pins: () => [{ x: -2, y: 0, name: 'A' }, { x: 2, y: 0, name: 'B' }, { x: 0, y: 2, name: 'Schleifer' }],
@@ -1136,6 +1228,7 @@ def('capacitor', {
   info: '<b>Kondensator</b>: speichert elektrische Ladung, <b>Q = C · U</b>. Wird er über einen Widerstand geladen, steigt seine Spannung nicht sprunghaft, sondern exponentiell an: Nach der Zeitkonstante <b>τ = R · C</b> sind 63 % erreicht, nach 5τ ist er praktisch voll.',
 });
 def('battery', {
+  slider: 'U',
   mode: 'analog', cat: 'Quellen und Schalter', name: 'Spannungsquelle', prefix: 'U',
   props: [{ key: 'U', label: 'Spannung', type: 'range', min: 0, max: 24, step: 0.1, def: 9, fmt: v => fmtN(+v, 1) + ' V' }],
   pins: () => [{ x: -2, y: 0, name: 'Minuspol' }, { x: 2, y: 0, name: 'Pluspol' }], box: () => [-1.6, -1.1, 1.6, 1.1],
@@ -1192,22 +1285,52 @@ def('abutton', {
   meas: c => meas2(c).slice(0, 2),
   info: '<b>Taster</b>: schließt den Stromkreis nur, solange er gedrückt gehalten wird.',
 });
+/* Fotowiderstand: Lichtquelle, deren Strahlen und Lichtteilchen mit der Helligkeit zunehmen (statt Prozentangabe) */
+function ldrLight(ctx, t) {
+  const sx = -1.3, sy = -2.35, now = (typeof performance !== 'undefined' ? performance.now() : 0) / 1000;
+  const sun = t > 0.02 ? mix('#e9d27a', '#ffc400', t) : '#5b6170';
+  if (t > 0.02) glow(ctx, sx, sy, 0.55 + 0.75 * t, '#ffd84d', 0.25 + 0.6 * t);
+  // Strahlenkranz: Länge und Deckkraft wachsen mit der Helligkeit
+  ctx.save(); ctx.lineCap = 'round'; ctx.strokeStyle = sun; ctx.lineWidth = 0.09; ctx.globalAlpha = 0.25 + 0.75 * t;
+  for (let k = 0; k < 8; k++) {
+    const a = k * Math.PI / 4 + now * 0.4 * t, r0 = 0.48, r1 = 0.55 + 0.45 * t;
+    ln(ctx, sx + r0 * Math.cos(a), sy + r0 * Math.sin(a), sx + r1 * Math.cos(a), sy + r1 * Math.sin(a));
+  }
+  ctx.restore();
+  circ0(ctx, sx, sy, 0.38); ctx.fillStyle = sun; ctx.fill(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 0.06; ctx.stroke();
+  // Pfeile zum Widerstand; Lichtteilchen wandern darauf – je heller, desto mehr
+  const col = t > 0.02 ? mix('#c9a227', '#ffb000', t) : '#9aa1ad';
+  const A = [[-1.15, -1.55, -0.45, -0.6], [-0.45, -1.55, 0.25, -0.6]];
+  ctx.save(); ctx.globalAlpha = 0.35 + 0.65 * t;
+  A.forEach(([x1, y1, x2, y2]) => arrow(ctx, x1, y1, x2, y2, 0.28, col));
+  ctx.restore();
+  const n = Math.round(4 * t);
+  ctx.fillStyle = '#ffcf33';
+  A.forEach(([x1, y1, x2, y2], j) => {
+    for (let i = 0; i < n; i++) {
+      const f = ((now * 0.9 + i / n + j * 0.37) % 1);
+      ctx.globalAlpha = Math.sin(Math.PI * f); circ0(ctx, x1 + (x2 - x1) * f, y1 + (y2 - y1) * f, 0.11); ctx.fill();
+    }
+  });
+  ctx.globalAlpha = 1;
+}
 def('ldr', {
+  slider: 'light',
   mode: 'analog', cat: 'Bauteile', name: 'Fotowiderstand (LDR)', prefix: 'LDR',
   props: [{ key: 'light', label: 'Helligkeit', type: 'range', min: 0, max: 100, step: 1, def: 50, fmt: v => v + ' %' }],
-  pins: twoPins, box: () => [-1.6, -1.6, 1.6, 0.8],
+  pins: twoPins, box: () => [-1.8, -3.1, 1.6, 0.8],
   ...resStamp(c => Math.pow(10, 6 - 4 * c.props.light / 100)),
   draw(ctx, c, R) {
     drawRes(ctx, c, R);
-    const col = '#d9a400';
-    arrow(ctx, -1.2, -1.55, -0.45, -0.6, 0.28, col); arrow(ctx, -0.45, -1.55, 0.3, -0.6, 0.28, col);
+    ldrLight(ctx, clamp(+c.props.light / 100, 0, 1));
   },
-  value: c => c.props.light + ' % Licht',
+  value: () => '',
   meas(c) { const m = meas2(c); m.unshift(['Widerstand', fmtSI(Math.pow(10, 6 - 4 * c.props.light / 100), 'Ω')]); return m; },
   info: '<b>Fotowiderstand</b> (LDR): Licht setzt im Halbleitermaterial zusätzliche Ladungsträger frei. Je heller, desto kleiner der Widerstand (hier ca. 1 MΩ bei Dunkelheit bis 100 Ω bei voller Helligkeit). Typischer Einsatz: Dämmerungsschalter.',
 });
 const ntcR = c => c.props.R25 * Math.exp(3950 * (1 / (c.props.T + 273.15) - 1 / 298.15));
 def('ntc', {
+  slider: 'T', thermo: true,
   mode: 'analog', cat: 'Bauteile', name: 'Heißleiter (NTC)', prefix: 'NTC',
   props: [{ key: 'R25', label: 'Widerstand bei 25 °C', type: 'num', unit: 'Ω', def: 10000 }, { key: 'T', label: 'Temperatur', type: 'range', min: -20, max: 120, step: 1, def: 25, fmt: v => v + ' °C' }],
   pins: twoPins, box: () => [-1.6, -1, 1.6, 1.1],
@@ -1470,7 +1593,7 @@ def('voltmeter', {
 });
 
 const PALETTE = {
-  digital: [['Ein- und Ausgabe', ['switch', 'button', 'clock', 'const', 'led', 'seg7']], ['Gatter', ['and', 'or', 'not', 'nand', 'nor', 'xor', 'xnor', 'buf']], ['Speicher', ['rsff', 'rsffc', 'dff', 'jkff', 'tff']], ['Sonstiges', ['text']]],
+  digital: [['Ein- und Ausgabe', ['switch', 'button', 'clock', 'const', 'led', 'lind', 'seg7']], ['Gatter', ['and', 'or', 'not', 'nand', 'nor', 'xor', 'xnor', 'buf']], ['Speicher', ['rsff', 'rsffc', 'dff', 'jkff', 'tff']], ['Sonstiges', ['text']]],
   analog: [['Quellen und Schalter', ['battery', 'ground', 'aswitch', 'abutton']], ['Bauteile', ['resistor', 'pot', 'lamp', 'capacitor', 'ldr', 'ntc']], ['Halbleiter', ['diode', 'aled', 'zener', 'npn', 'pnp', 'nmos', 'pmos']], ['Messgeräte', ['ammeter', 'voltmeter']], ['Sonstiges', ['text']]],
 };
 /* ================= Weitere Analog-Bauteile ================= */
@@ -1481,6 +1604,7 @@ function waveVal(c, t) {
   return p.off + p.amp * w;
 }
 def('acsrc', {
+  slider: 'amp',
   mode: 'analog', cat: 'Quellen und Schalter', name: 'Funktionsgenerator', prefix: 'G', dynamic: true,
   props: [
     { key: 'shape', label: 'Signalform', type: 'select', options: Object.entries(WAVES), def: 'sin' },
@@ -1598,6 +1722,7 @@ def('motor', {
   info: '<b>Gleichstrommotor</b>: wandelt elektrische in mechanische Energie um. Die Drehzahl steigt mit der Stromstärke, die Drehrichtung kehrt sich mit der Stromrichtung um. (Vereinfacht als Widerstand von 20 Ω.)',
 });
 def('opamp', {
+  implicitGnd: true,
   mode: 'analog', cat: 'Halbleiter', name: 'Operationsverstärker', prefix: 'OP',
   props: [{ key: 'vs', label: 'Versorgung (Aussteuergrenze)', type: 'select', options: [[5, '±5 V'], [12, '±12 V'], [15, '±15 V']], def: 12 }],
   pins: () => [{ x: -2, y: -1, name: 'invertierender Eingang (−)' }, { x: -2, y: 1, name: 'nichtinvertierender Eingang (+)' }, { x: 2, y: 0, name: 'Ausgang' }],
@@ -1653,10 +1778,112 @@ def('timer555', {
   meas(c) { const N = App.net.compNodes.get(c.id); const V = nodeV(N[4]) - nodeV(N[5]); return [['Versorgung', fmtSI(V, 'V')], ['Schwelle (THR)', fmtSI(nodeV(N[1]) - nodeV(N[5]), 'V')], ['Trigger (TRIG)', fmtSI(nodeV(N[2]) - nodeV(N[5]), 'V')], ['Ausgang', c.st.q ? 'HIGH' : 'LOW'], ['Schaltschwellen', fmtSI(V / 3, 'V') + ' / ' + fmtSI(2 * V / 3, 'V')]]; },
   info: '<b>Timer 555</b>: einer der bekanntesten integrierten Schaltkreise. Innen vergleichen zwei Komparatoren die Spannungen an TRIG und THR mit ⅓ bzw. ⅔ der Versorgungsspannung und steuern ein RS-Flipflop: TRIG &lt; ⅓ U → Ausgang HIGH; THR &gt; ⅔ U → Ausgang LOW und DIS entlädt den Kondensator. Als <b>astabile Kippstufe</b> beschaltet, entsteht ein Taktgeber mit f ≈ 1,44 / ((R<sub>1</sub> + 2 R<sub>2</sub>) · C).',
 });
+/* ================= Halbleiterlogik: Logikpegel im Elektronik-Reiter (5 V = 1, 0 V = 0) ================= */
+const LV = 5, LG = 1 / 50;   // Logikpegel und Ausgangsleitwert (50 Ω Innenwiderstand)
+const lOutStamp = (S, o, q) => { sG(S, o, -1, LG); sI(S, -1, o, q ? LV * LG : 0); };
+const lOutI = (P, o, q) => ((q ? LV : 0) - Vn(P, o)) * LG;   // Strom aus dem Ausgang heraus
+const lvlCol = q => q ? '#e5383b' : '#3d5a99';
+def('logsw', {
+  implicitGnd: true,
+  mode: 'analog', cat: 'Halbleiterlogik', name: 'Logikschalter', prefix: 'E', defaults: { on: 0 },
+  pins: () => [{ x: 2, y: 0, name: 'Ausgang' }], box: () => [-1.5, -0.9, 1.3, 0.9],
+  onTap(c) { c.props.on = c.props.on ? 0 : 1; App.aDirty = true; },
+  stamp(c, N, S) { lOutStamp(S, N[0], c.props.on); },
+  post(c, N, P) { c.st.pinI = [-lOutI(P, N[0], c.props.on)]; },
+  draw(ctx, c, R) {
+    R.lead(1.25, 0, 2, 0, 0);
+    rr(ctx, -1.4, -0.8, 2.65, 1.6, 0.25); body(ctx, '#f6f8fc');
+    rr(ctx, -1.15, -0.45, 1.3, 0.9, 0.45); ctx.fillStyle = c.props.on ? '#ffd8d6' : '#dfe7f6'; ctx.fill();
+    circ0(ctx, c.props.on ? -0.05 : -0.7, 0, 0.36); ctx.fillStyle = lvlCol(c.props.on); ctx.fill();
+    R.text(c.props.on ? '1' : '0', 0.72, 0, { size: 14, bold: true, color: lvlCol(c.props.on) });
+  },
+  meas(c) { const N = App.net.compNodes.get(c.id); return [['Ausgang', fmtSI(nodeV(N[0]), 'V')], ['Logikwert', c.props.on ? '1' : '0']]; },
+  info: '<b>Logikschalter</b>: liefert einen Logikpegel – <b>1 = 5 V</b>, <b>0 = 0 V</b> (gegen Masse). Antippen schaltet um. Anders als ein mechanischer Schalter braucht er keinen Pull-down-Widerstand: Der Ausgang ist nie offen.',
+});
+def('vdd', {
+  implicitGnd: true,
+  mode: 'analog', cat: 'Halbleiterlogik', name: 'Versorgung +5 V', prefix: 'UB', noLabel: true,
+  pins: () => [{ x: 0, y: 0, name: '+5 V' }], box: () => [-1, -1.6, 1, 0.1],
+  stamp(c, N, S) { lOutStamp(S, N[0], 1); },
+  post(c, N, P) { c.st.pinI = [-lOutI(P, N[0], 1)]; },
+  draw(ctx, c, R) {
+    R.lead(0, 0, 0, -0.8, 0); ctx.strokeStyle = COL.ink; ctx.lineWidth = 0.12; ctx.lineCap = 'round';
+    ln(ctx, -0.65, -0.8, 0.65, -0.8);
+    R.text('+5 V', 0, -1.25, { size: 9, bold: true, color: '#e5383b' });
+  },
+  info: '<b>Versorgung +5 V</b>: Anschluss an den Pluspol der Betriebsspannung (5 V gegen Masse). So zeichnet man in Schaltplänen die Versorgung, ohne die Batterie jedes Mal mit Leitungen anzuschließen.',
+});
+def('logind', {
+  implicitGnd: true,
+  mode: 'analog', cat: 'Halbleiterlogik', name: 'Logikanzeige', prefix: 'A',
+  pins: () => [{ x: -2, y: 0, name: 'Eingang' }], box: () => [-1.3, -0.9, 0.9, 0.9],
+  stamp(c, N, S) { sG(S, N[0], -1, 1e-7); },
+  post(c, N, P) { c.st.pinI = [Vn(P, N[0]) * 1e-7]; c.st.v = Vn(P, N[0]); },
+  draw(ctx, c, R) {
+    R.lead(-2, 0, -0.8, 0, 0);
+    const v = c.st.v || 0, q = v >= LV / 2, live = R.live;
+    circ0(ctx, 0, 0, 0.8); ctx.fillStyle = live ? (q ? '#ff6b6b' : '#c9d6ee') : '#fff'; ctx.fill(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 0.1; ctx.stroke();
+    if (live) R.text(q ? '1' : '0', 0, 0, { size: 13, bold: true, color: q ? '#fff' : '#3d5a99' });
+  },
+  meas(c) { const v = c.st.v || 0; return [['Eingangsspannung', fmtSI(v, 'V')], ['Logikwert', v >= LV / 2 ? '1' : '0']]; },
+  info: '<b>Logikanzeige</b>: zeigt, ob am Eingang eine logische <b>1</b> (mindestens 2,5 V) oder eine <b>0</b> anliegt. Sie belastet die Schaltung praktisch nicht (10 MΩ gegen Masse).',
+});
+def('thresh', {
+  implicitGnd: true,
+  mode: 'analog', cat: 'Halbleiterlogik', name: 'Schwellenwertschalter', prefix: 'SW',
+  props: [{ key: 'US', label: 'Schwelle', type: 'range', min: 0.1, max: 4.9, step: 0.1, def: 2.5, fmt: v => fmtN(+v, 1) + ' V' }],
+  slider: 'US',
+  pins: () => [{ x: -2, y: 0, name: 'Eingang (analog)' }, { x: 2, y: 0, name: 'Ausgang (Logikpegel)' }], box: () => [-1.4, -1.1, 1.4, 1.1],
+  stamp(c, N, S) { sG(S, N[0], -1, 1e-9); lOutStamp(S, N[1], c.st.q); },
+  post(c, N, P) {
+    const vin = Vn(P, N[0]); c.st.vin = vin; c.st.pinI = [vin * 1e-9, -lOutI(P, N[1], c.st.q)];
+    const q = vin >= +c.props.US ? 1 : 0; if (q !== (c.st.q || 0)) { c.st.q = q; App.aDirty = true; }
+  },
+  draw(ctx, c, R) {
+    R.lead(-2, 0, -1.3, 0, 0); R.lead(1.3, 0, 2, 0, 1);
+    rr(ctx, -1.3, -1, 2.6, 2, 0.15); body(ctx, '#f6f8fc');
+    ctx.strokeStyle = COL.ink; ctx.lineWidth = 0.09; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(-0.85, 0.5); ctx.lineTo(0, 0.5); ctx.lineTo(0, -0.5); ctx.lineTo(0.85, -0.5); ctx.stroke();
+    R.text('U', -0.55, -0.45, { size: 8.5, color: '#667085', bold: true });
+    if (R.live) { circ0(ctx, 0.9, 0.6, 0.2); ctx.fillStyle = c.st.q ? '#ff6b6b' : '#55607a'; ctx.fill(); }
+  },
+  value: c => 'Schwelle ' + fmtN(+c.props.US, 1) + ' V',
+  meas(c) { return [['Eingangsspannung', fmtSI(c.st.vin || 0, 'V')], ['Schwelle', fmtN(+c.props.US, 1) + ' V'], ['Ausgang', c.st.q ? '1 (5 V)' : '0 (0 V)']]; },
+  info: '<b>Schwellenwertschalter</b>: vergleicht die Eingangsspannung mit der einstellbaren <b>Schwelle U<sub>S</sub></b>. Liegt sie darüber, liefert der Ausgang eine logische <b>1</b> (5 V), sonst eine <b>0</b>. So wird aus einem analogen Signal ein digitales. Typischer Einsatz: ein Sensor (Fotowiderstand, Heißleiter) im <b>Spannungsteiler</b> steuert über den Schwellenwertschalter eine Lampe oder ein Logikgatter.',
+});
+def('schmitt', {
+  implicitGnd: true,
+  mode: 'analog', cat: 'Halbleiterlogik', name: 'Schmitt-Inverter', prefix: 'IC',
+  props: [{ key: 'UTp', label: 'obere Schwelle', type: 'range', min: 0.5, max: 4.5, step: 0.1, def: 3, fmt: v => fmtN(+v, 1) + ' V' },
+    { key: 'UTm', label: 'untere Schwelle', type: 'range', min: 0.5, max: 4.5, step: 0.1, def: 2, fmt: v => fmtN(+v, 1) + ' V' }],
+  pins: () => [{ x: -2, y: 0, name: 'Eingang' }, { x: 2, y: 0, name: 'Ausgang' }], box: () => [-1.4, -1.1, 1.4, 1.1],
+  stamp(c, N, S) { sG(S, N[0], -1, 1e-9); lOutStamp(S, N[1], schQ(c)); },
+  post(c, N, P) {
+    const vin = Vn(P, N[0]), q = schQ(c); c.st.vin = vin; c.st.pinI = [vin * 1e-9, -lOutI(P, N[1], q)];
+    const hi = Math.max(+c.props.UTp, +c.props.UTm), lo = Math.min(+c.props.UTp, +c.props.UTm);
+    let nq = q; if (vin > hi) nq = 0; else if (vin < lo) nq = 1;   // invertierend mit Hysterese
+    if (nq !== q) { c.st.q = nq; App.aDirty = true; }
+  },
+  dynamic: true,
+  draw(ctx, c, R) {
+    R.lead(-2, 0, -1.2, 0, 0); R.lead(1.38, 0, 2, 0, 1);
+    ctx.beginPath(); ctx.moveTo(-1.2, -1); ctx.lineTo(0.95, 0); ctx.lineTo(-1.2, 1); ctx.closePath(); body(ctx);
+    circ0(ctx, 1.15, 0, 0.2); ctx.fillStyle = '#fff'; ctx.fill(); ctx.strokeStyle = COL.ink; ctx.lineWidth = 0.08; ctx.stroke();
+    // Hysterese-Symbol
+    ctx.lineWidth = 0.07; ctx.lineCap = 'round';
+    ln(ctx, -0.95, 0.28, -0.25, 0.28); ln(ctx, -0.25, 0.28, -0.25, -0.28); ln(ctx, -0.65, -0.28, 0.05, -0.28); ln(ctx, -0.65, -0.28, -0.65, 0.28);
+    if (R.live) { circ0(ctx, -0.55, 0.72, 0.17); ctx.fillStyle = schQ(c) ? '#ff6b6b' : '#55607a'; ctx.fill(); }
+  },
+  value: c => fmtN(Math.min(+c.props.UTp, +c.props.UTm), 1) + ' / ' + fmtN(Math.max(+c.props.UTp, +c.props.UTm), 1) + ' V',
+  meas(c) { return [['Eingangsspannung', fmtSI(c.st.vin || 0, 'V')], ['Schwellen', fmtN(Math.min(+c.props.UTp, +c.props.UTm), 1) + ' V / ' + fmtN(Math.max(+c.props.UTp, +c.props.UTm), 1) + ' V'], ['Ausgang', schQ(c) ? '1 (5 V)' : '0 (0 V)']]; },
+  info: '<b>Schmitt-Inverter</b> (z. B. 74HC14): ein NICHT-Gatter mit <b>Hysterese</b>. Der Ausgang wird erst 0, wenn die Eingangsspannung über die <b>obere Schwelle U<sub>T+</sub></b> steigt, und erst wieder 1, wenn sie unter die <b>untere Schwelle U<sub>T−</sub></b> fällt. Dazwischen behält er seinen Zustand. So erzeugen auch langsam ansteigende oder verrauschte Signale saubere Schaltflanken, ohne zu „flattern“. Mit einem Widerstand vom Ausgang zum Eingang und einem Kondensator gegen Masse wird er zum <b>Taktgeber</b>.',
+});
+const schQ = c => c.st.q === undefined ? 1 : c.st.q;
 PALETTE.analog = [
   ['Quellen und Schalter', ['battery', 'acsrc', 'ground', 'aswitch', 'abutton', 'relay']],
   ['Bauteile', ['resistor', 'pot', 'lamp', 'capacitor', 'inductor', 'ldr', 'ntc', 'buzzer', 'motor']],
   ['Halbleiter', ['diode', 'aled', 'zener', 'npn', 'pnp', 'nmos', 'pmos', 'opamp', 'timer555']],
+  ['Halbleiterlogik', ['logsw', 'logind', 'vdd', 'thresh', 'schmitt']],
   ['Messgeräte', ['ammeter', 'voltmeter']], ['Sonstiges', ['text']],
 ];
 /* ================= Digitale Funktionsblöcke (Rechenwerk, Speicher) ================= */
@@ -1666,7 +1893,7 @@ function blockDef(type, o) {
   const n = o.ins.length, m = o.outs.length, H = Math.max(n, m), top = -Math.floor((H - 1) / 2);
   const iy = i => top + Math.floor((H - n) / 2) + i, oy = i => top + Math.floor((H - m) / 2) + i;
   def(type, {
-    mode: 'digital', cat: o.cat, name: o.name, prefix: o.prefix || 'IC',
+    mode: 'digital', cat: o.cat, name: o.name, prefix: o.prefix || 'IC', sym: o.sym,
     pins: () => [...o.ins.map((nm, i) => ({ x: -3, y: iy(i), dir: 'in', name: nm })), ...o.outs.map((nm, i) => ({ x: 3, y: oy(i), dir: 'out', name: nm }))],
     box: () => [-2.5, top - 1.4, 2.5, top + H - 1 + 0.7],
     evalD: o.evalD, onTap: o.onTap, measD: o.measD, props: o.props, defaults: o.defaults,
@@ -1780,7 +2007,7 @@ def('numin', {
   info: '<b>Zahleneingabe</b>: liefert eine 4-Bit-Dualzahl (0–15). Jedes Antippen erhöht den Wert um 1 (nach 15 folgt 0). Die Ausgänge haben die Wertigkeiten 1, 2, 4 und 8.',
 });
 PALETTE.digital = [
-  ['Ein- und Ausgabe', ['switch', 'button', 'clock', 'const', 'led', 'seg7', 'numin']],
+  ['Ein- und Ausgabe', ['switch', 'button', 'clock', 'const', 'led', 'lind', 'seg7', 'numin']],
   ['Gatter', ['and', 'or', 'not', 'nand', 'nor', 'xor', 'xnor', 'buf']],
   ['Speicher', ['rsff', 'rsffc', 'dff', 'jkff', 'tff', 'reg4', 'shift4', 'cnt4', 'ram16']],
   ['Schaltnetze', ['mux2', 'mux4', 'dec2']],
@@ -1893,7 +2120,8 @@ function aInit() {
   let g = -1;
   for (const c of cc.comps) if (c.type === 'ground') { g = net.compNodes.get(c.id)[0]; break; }
   if (g < 0) for (const c of cc.comps) if (c.type === 'battery') { g = net.compNodes.get(c.id)[0]; break; }
-  if (g < 0) g = 0;
+  // Logikbauteile beziehen sich intern auf Masse: Dann ist die Masse ein eigener (unsichtbarer) Bezugspunkt
+  if (g < 0 && !cc.comps.some(c => DEFS[c.type].implicitGnd)) g = 0;
   A.map = new Int32Array(net.n); let k = 0;
   for (let i = 0; i < net.n; i++) A.map[i] = i === g ? -1 : k++;
   A.n = k; A.v = new Float64Array(k);
@@ -2043,6 +2271,8 @@ function drawScene(g, opt = {}) {
     for (let gx = Math.floor(w0.x / G / step) * step; gx * G <= w1.x; gx += step)
       for (let gy = Math.floor(w0.y / G / step) * step; gy * G <= w1.y; gy += step) g.fillRect(gx * G - r, gy * G - r, 2 * r, 2 * r);
   }
+  // Rahmen der Innenansicht („hineingezoomtes“ Bauteil)
+  const IF = innerFrame(); if (IF) drawFrame(g, IF);
   // Leitungen
   g.lineCap = 'round'; g.lineJoin = 'round';
   const selW = App.sel && App.sel.kind === 'wire' ? App.sel.id : null, mW = isMulti() && !opt.export ? App.sel.wires : null;
@@ -2086,6 +2316,7 @@ function drawScene(g, opt = {}) {
       }
     }
   }
+  if (!opt.export) for (const c of cc.comps) { const sg = sliderGeo(c); if (sg) drawSlider(g, c, sg); }
   drawTexts(g, texts);
   if (opt.export) return;
   if (!cc.comps.length && !opt.export) {
@@ -2128,9 +2359,79 @@ function labelFor(c, d, texts) {
   lines.forEach((l, i) => texts.push({ s: l.s, x: lp.x * G + (align === 'left' ? 2 : align === 'right' ? -2 : 0), y: y0 + i * lh, align, base, size: l.strong ? 12 : 11, bold: l.bold || l.strong, color: l.strong ? '#0b5394' : l.bold ? COL.ink : '#5b6578', bg: l.strong ? 'rgba(255,255,255,.88)' : 'rgba(251,252,254,.78)' }));
 }
 
+/* ================= Schieberegler direkt am Bauteil ================= */
+/* Lage: möglichst auf der dem Namen gegenüberliegenden Seite und so, dass kein Anschluss und keine Leitung darunter liegt */
+function sliderGeo(c) {
+  const d = DEFS[c.type]; if (!d.slider || !App.settings.sliders || App.mode !== 'analog') return null;
+  const p = (d.props || []).find(q => q.key === d.slider); if (!p) return null;
+  const b = d.box(c), pts = [[b[0], b[1]], [b[2], b[1]], [b[0], b[3]], [b[2], b[3]]].map(([x, y]) => xf(c, x, y));
+  const x0 = Math.min(...pts.map(q => q.x)), x1 = Math.max(...pts.map(q => q.x)), y0 = Math.min(...pts.map(q => q.y)), y1 = Math.max(...pts.map(q => q.y));
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, L = 3.2, gap = 0.75;
+  const lp = xf(c, (b[0] + b[2]) / 2, b[1] - 0.35), dx = lp.x - cx, dy = lp.y - cy;
+  const below = { x0: cx - L / 2, x1: cx + L / 2, y: y1 + gap }, above = { x0: cx - L / 2, x1: cx + L / 2, y: y0 - gap };
+  const right = { x0: x1 + 0.6, x1: x1 + 0.6 + L, y: cy }, left = { x0: x0 - 0.6 - L, x1: x0 - 0.6, y: cy };
+  const bR = { x0: cx + 0.7, x1: cx + 0.7 + L, y: y1 + gap }, bL = { x0: cx - 0.7 - L, x1: cx - 0.7, y: y1 + gap };
+  const aR = { x0: cx + 0.7, x1: cx + 0.7 + L, y: y0 - gap }, aL = { x0: cx - 0.7 - L, x1: cx - 0.7, y: y0 - gap };
+  const order = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? [left, below, bR, bL, above, right] : [right, below, bR, bL, above, left]) : (dy < 0 ? [below, bR, bL, right, left, above, aR, aL] : [above, aR, aL, right, left, below, bR, bL]);
+  const cc = circ(), pins = cc.comps.flatMap(o => pinsW(o));
+  const free = r => {
+    const X0 = r.x0 - 0.3, X1 = r.x1 + 0.3, Y0 = r.y - 0.45, Y1 = r.y + 0.45;
+    if (pins.some(q => q.x >= X0 && q.x <= X1 && q.y >= Y0 && q.y <= Y1)) return false;
+    for (const w of cc.wires) { const wx0 = Math.min(w.x1, w.x2), wx1 = Math.max(w.x1, w.x2), wy0 = Math.min(w.y1, w.y2), wy1 = Math.max(w.y1, w.y2); if (wx1 >= X0 && wx0 <= X1 && wy1 >= Y0 && wy0 <= Y1) return false; }
+    for (const o of cc.comps) { if (o === c) continue; const ob = DEFS[o.type].box(o), q1 = xf(o, ob[0], ob[1]), q2 = xf(o, ob[2], ob[3]); if (Math.max(q1.x, q2.x) >= X0 && Math.min(q1.x, q2.x) <= X1 && Math.max(q1.y, q2.y) >= Y0 && Math.min(q1.y, q2.y) <= Y1) return false; }
+    return true;
+  };
+  const r = order.find(free) || order[0];
+  return { ...r, p, k: d.slider };
+}
+/* Heißleiter: Regler als Thermometer – Flüssigkeitssäule und Kugel von blau (kalt) nach rot (heiß) */
+function drawThermo(g, c, sg) {
+  const p = sg.p, v = +c.props[sg.k], t = clamp((v - p.min) / (p.max - p.min), 0, 1), y = sg.y * G;
+  const x0 = sg.x0 * G, x1 = sg.x1 * G, x = x0 + (x1 - x0) * t, h = 0.19 * G, rb = 0.36 * G, bx = x0 - 0.5 * G;
+  // kalt = blau (dunkel → hell), ab etwa Zimmertemperatur warm = orange → rot
+  const S = [[-20, '#1d4ed8'], [20, '#60a5fa'], [30, '#f97316'], [120, '#dc2626']];
+  let col = S[0][1]; for (let i = 1; i < S.length; i++) if (v >= S[i - 1][0]) col = mix(S[i - 1][1], S[i][1], clamp((v - S[i - 1][0]) / (S[i][0] - S[i - 1][0]), 0, 1));
+  g.save(); g.lineCap = 'round';
+  // Röhre
+  g.fillStyle = '#ffffff'; g.strokeStyle = '#475467'; g.lineWidth = 1.6;
+  g.beginPath(); g.moveTo(bx, y - h); g.lineTo(x1, y - h); g.arc(x1, y, h, -Math.PI / 2, Math.PI / 2); g.lineTo(bx, y + h); g.closePath(); g.fill(); g.stroke();
+  // Skalenstriche (alle 20 °C)
+  g.strokeStyle = '#98a2b3'; g.lineWidth = 1;
+  for (let T = Math.ceil(p.min / 20) * 20; T <= p.max; T += 20) { const tx = x0 + (x1 - x0) * (T - p.min) / (p.max - p.min); ln(g, tx, y - h - 0.22 * G, tx, y - h - 0.05 * G); }
+  // Flüssigkeit
+  g.fillStyle = col;
+  g.beginPath(); g.moveTo(bx, y - h * 0.55); g.lineTo(x, y - h * 0.55); g.lineTo(x, y + h * 0.55); g.lineTo(bx, y + h * 0.55); g.closePath(); g.fill();
+  // Kugel
+  circ0(g, bx - rb * 0.6, y, rb); g.fillStyle = col; g.fill(); g.strokeStyle = '#475467'; g.lineWidth = 1.6; g.stroke();
+  g.fillStyle = 'rgba(255,255,255,.55)'; circ0(g, bx - rb * 0.85, y - rb * 0.3, rb * 0.25); g.fill();
+  // Griff
+  g.fillStyle = '#fff'; g.strokeStyle = col; g.lineWidth = 2.2; circ0(g, x, y, 0.26 * G); g.fill(); g.stroke();
+  g.restore();
+}
+function drawSlider(g, c, sg) {
+  if (DEFS[c.type].thermo) return drawThermo(g, c, sg);
+  const p = sg.p, v = +c.props[sg.k], t = clamp((v - p.min) / (p.max - p.min), 0, 1), x = sg.x0 + (sg.x1 - sg.x0) * t, y = sg.y;
+  g.lineCap = 'round';
+  g.strokeStyle = '#d0d5dd'; g.lineWidth = 0.16 * G; ln(g, sg.x0 * G, y * G, sg.x1 * G, y * G);
+  g.strokeStyle = '#2f6fec'; ln(g, sg.x0 * G, y * G, x * G, y * G);
+  g.fillStyle = '#fff'; g.strokeStyle = '#2f6fec'; g.lineWidth = 2.2; circ0(g, x * G, y * G, 0.3 * G); g.fill(); g.stroke();
+  g.lineCap = 'butt';
+}
+function sliderSet(c, w) {
+  const sg = sliderGeo(c); if (!sg) return;
+  const p = sg.p, t = clamp((w.x / G - sg.x0) / (sg.x1 - sg.x0), 0, 1);
+  let v = p.min + t * (p.max - p.min); v = Math.round(v / p.step) * p.step; v = +clamp(v, p.min, p.max).toFixed(6);
+  if (c.props[sg.k] !== v) { c.props[sg.k] = v; App.aDirty = true; }
+}
+
 /* ================= Treffertest ================= */
 function hitTest(w) {
   const cc = circ(), z = view().z;
+  for (let i = cc.comps.length - 1; i >= 0; i--) {
+    const c = cc.comps[i], sg = sliderGeo(c); if (!sg) continue;
+    const x = w.x / G, y = w.y / G, tol = Math.max(0.5, 12 / z / G);
+    if (Math.abs(y - sg.y) <= tol && x >= sg.x0 - tol && x <= sg.x1 + tol) return { kind: 'slider', comp: c, sg };
+  }
   const tol = Math.max(0.42 * G, 13 / z);
   let best = null, bd = tol;
   for (const c of cc.comps) for (const p of pinsW(c)) { const d = Math.hypot(p.x * G - w.x, p.y * G - w.y); if (d < bd) { bd = d; best = { kind: 'pin', x: p.x, y: p.y, comp: c }; } }
@@ -2170,11 +2471,14 @@ cv.addEventListener('pointerdown', e => {
   }
   if (UI.pointers.size > 2) return;
   const w = s2w(p.x, p.y);
+  // Maus: rechte oder mittlere Taste gedrückt halten = Ansicht verschieben („Drag-Scrollen“)
+  if (e.pointerType === 'mouse' && (e.button === 2 || e.button === 1)) { e.preventDefault(); UI.drag = { type: 'pan', s: p, v0: { ...view() }, moved: false, btn: e.button }; return; }
   if (App.placing) { UI.drag = { type: 'place', s: p }; return; }
   const h = hitTest(w);
   const inSel = h && h.kind === 'comp' && isMulti() && App.sel.ids.has(h.comp.id);
   if ((e.shiftKey || UI.selTool) && !inSel && (!h || h.kind === 'comp' || h.kind === 'wire')) { UI.drag = { type: 'rect', s: p, w0: w, w1: w, moved: false }; return; }
   if (inSel) { UI.drag = groupDrag(p, w); return; }
+  if (h && h.kind === 'slider' && !taskLocked()) { pushUndo(); UI.drag = { type: 'slider', c: h.comp, s: p }; sliderSet(h.comp, w); return; }
   if (h && h.kind === 'point' && App.sel && App.sel.kind === 'wire') {
     const sw = findWire(App.sel.id);
     if (sw && ((sw.x1 === h.x && sw.y1 === h.y) || (sw.x2 === h.x && sw.y2 === h.y)) && !pinAt(h.x, h.y)) { UI.drag = { type: 'movept', s: p, x0: h.x, y0: h.y, ends: endsAt(h.x, h.y), moved: false }; return; }
@@ -2191,8 +2495,11 @@ cv.addEventListener('pointerdown', e => {
     return;
   }
   if (h && h.kind === 'wire') { UI.drag = { type: 'wireseg', wire: h.wire, s: p, w0: w }; return; }
+  // Maus, linke Taste auf freier Fläche: Auswahlrechteck; Finger/Stift: Ansicht verschieben
+  if (e.pointerType === 'mouse') { UI.drag = { type: 'rect', s: p, w0: w, w1: w, moved: false }; return; }
   UI.drag = { type: 'pan', s: p, v0: { ...view() }, moved: false };
 });
+cv.addEventListener('contextmenu', e => e.preventDefault());   // rechte Maustaste: Ziehen = Verschieben, Klick = eigenes Kontextmenü
 cv.addEventListener('pointermove', e => {
   const p = evPos(e);
   if (UI.pointers.has(e.pointerId)) UI.pointers.set(e.pointerId, p);
@@ -2207,6 +2514,7 @@ cv.addEventListener('pointermove', e => {
     const wx = (dr.c0.x - dr.v0.x) / dr.v0.z, wy = (dr.c0.y - dr.v0.y) / dr.v0.z;
     v.z = z; v.x = c.x - wx * z; v.y = c.y - wy * z; return;
   }
+  if (dr.type === 'slider') { sliderSet(dr.c, w); return; }
   const moved = Math.hypot(p.x - dr.s.x, p.y - dr.s.y) > 6;
   if (dr.type === 'rect') { if (moved) dr.moved = true; dr.w1 = w; return; }
   if (dr.type === 'group' || dr.type === 'movept') {
@@ -2256,8 +2564,18 @@ function endPointer(e, cancel) {
   if (cancel) { if (dr.press) DEFS[dr.press.type].onRelease(dr.press); return; }
   const w = s2w(p.x, p.y);
   if (dr.type === 'place') { const g = snapG(w); placeComp(App.placing, g.x, g.y); return; }
+  if (dr.type === 'slider') { scheduleSave(); if (App.sel && App.sel.kind === 'comp' && App.sel.id === dr.c.id) renderProps(); return; }
   if (dr.type === 'rect') { if (dr.moved) selectRect(dr.w0, dr.w1); else select(null); return; }
-  if (dr.type === 'movept') { if (dr.moved) { const cc = circ(); cc.wires = cc.wires.filter(wi => wi.x1 !== wi.x2 || wi.y1 !== wi.y2); changed(); } return; }
+  if (dr.type === 'movept') {
+    if (dr.moved) {
+      const cc = circ(); cc.wires = cc.wires.filter(wi => wi.x1 !== wi.x2 || wi.y1 !== wi.y2);
+      // Kabelende auf ein anderes Kabel geschoben: dort verbinden (T)
+      const g = snapG(w), mine = new Set(dr.ends.map(e => e[0]));
+      for (const wi of [...cc.wires]) if (!mine.has(wi) && onSegInterior(g.x, g.y, wi)) makeNode(cc, g.x, g.y);
+      changed();
+    }
+    return;
+  }
   if (dr.type === 'group') { if (dr.moved) changed(); else { const h = hitTest(w); if (h && h.kind === 'comp') select({ kind: 'comp', id: h.comp.id }); } return; }
   if (dr.type === 'wire') {
     if (dr.moved && (dr.b.x !== dr.a.x || dr.b.y !== dr.a.y)) {
@@ -2265,6 +2583,12 @@ function endPointer(e, cancel) {
       addWire(cc, dr.a.x, dr.a.y, m.x, m.y); addWire(cc, m.x, m.y, dr.b.x, dr.b.y);
       changed();
     } else if (dr.hit && dr.hit.comp) select({ kind: 'comp', id: dr.hit.comp.id });
+    else if (dr.hit && dr.hit.kind === 'point' && !taskLocked()) {
+      // Antippen eines Knotens, an dem sich zwei gerade Kabel kreuzen: wieder trennen
+      const cc = circ(), x = dr.hit.x, y = dr.hit.y, n = cc.wires.filter(wi => (wi.x1 === x && wi.y1 === y) || (wi.x2 === x && wi.y2 === y)).length;
+      if (n === 4) { pushUndo(); if (dissolveNode(cc, x, y)) { changed(); flashHint('Knoten gelöst: Die Kabel kreuzen sich jetzt ohne Verbindung.'); } else App.hist[App.mode].u.pop(); }
+      else if (n === 3) flashHint('Ein Abzweig lässt sich nicht durch Antippen lösen – lösche dafür das abzweigende Kabelstück.');
+    }
     return;
   }
   if (dr.type === 'comp') {
@@ -2278,9 +2602,72 @@ function endPointer(e, cancel) {
     select({ kind: 'comp', id: dr.c.id });
     return;
   }
-  if (dr.type === 'wireseg') { select({ kind: 'wire', id: dr.wire.id }); return; }
-  if (dr.type === 'pan' && !dr.moved) select(null);
+  if (dr.type === 'wireseg') {
+    // Antippen genau auf einer Kreuzung: Knoten setzen (Kabel verbinden)
+    const g = snapG(dr.w0), cc = circ(), near = Math.hypot(g.x * G - dr.w0.x, g.y * G - dr.w0.y) < Math.max(0.32 * G, 10 / view().z);
+    const thru = cc.wires.filter(wi => onSegInterior(g.x, g.y, wi)), endAt = cc.wires.filter(wi => (wi.x1 === g.x && wi.y1 === g.y) || (wi.x2 === g.x && wi.y2 === g.y));
+    if (near && thru.length && thru.length + endAt.length >= 2 && !taskLocked()) {
+      pushUndo(); makeNode(cc, g.x, g.y); changed(); select(null);
+      flashHint('Knoten gesetzt: Die Kabel sind jetzt verbunden. Erneut antippen trennt sie wieder.'); return;
+    }
+    select({ kind: 'wire', id: dr.wire.id }); return;
+  }
+  if (dr.type === 'pan' && !dr.moved && !dr.btn) select(null);
+  if (dr.type === 'pan' && !dr.moved && dr.btn === 2 && !cancel) ctxMenu(e, dr.s);
 }
+/* ---------- Kontextmenü (Rechtsklick ohne Ziehen) ---------- */
+function ctxClose() { const m = $('.ctxm'); if (m) m.remove(); }
+function ctxMenu(e, p) {
+  ctxClose(); if (App.placing) { setPlacing(null); return; }
+  const w = s2w(p.x, p.y), g = snapG(w); let h = hitTest(w);
+  if (h && (h.kind === 'pin' || h.kind === 'slider') && h.comp) h = { kind: 'comp', comp: h.comp };
+  if (h && h.kind === 'point') { const wi = circ().wires.find(q => (q.x1 === h.x && q.y1 === h.y) || (q.x2 === h.x && q.y2 === h.y)); h = wi ? { kind: 'wire', wire: wi } : null; }
+  // Rechtsklick in eine bestehende Mehrfachauswahl: Auswahl behalten; sonst das getroffene Element auswählen
+  const inSel = h && isMulti() && (h.kind === 'comp' ? App.sel.ids.has(h.comp.id) : h.kind === 'wire' && App.sel.wires.has(h.wire.id));
+  if (h && !inSel) select(h.kind === 'comp' ? { kind: 'comp', id: h.comp.id } : { kind: 'wire', id: h.wire.id });
+  if (!h) select(null);
+  const s = App.sel, c = s && s.kind === 'comp' ? findComp(s.id) : null, d = c && DEFS[c.type], lock = taskLocked();
+  const mac = /Mac|iPhone|iPad/.test(navigator.platform || ''), K = k => (mac ? '⌘' : 'Strg+') + k;
+  const it = [];   // [Text, Tastenkürzel, Aktion, Klasse] oder null = Trennlinie
+  if (s && s.kind !== 'wire') {
+    if (isMulti()) it.push([`${s.ids.size + s.wires.size} Elemente ausgewählt`, '', null, 'head']);
+    if (!lock) it.push(['Ausschneiden', K('X'), () => { copySel(); deleteSel(); }]);
+    it.push(['Kopieren', K('C'), copySel]);
+    if (!lock) it.push(['Duplizieren', K('D'), dupSel]);
+    if (c && !d.noRot && !lock) it.push(null, ['Drehen', 'R', () => rotateSel(false)], ['Spiegeln', 'M', () => rotateSel(true)]);
+    if (c && d.repair && c.st.broken) it.push(null, [d.repairLabel || 'Reparieren', '', () => { c.st.broken = 0; c.st.v = 0; App.aDirty = true; }]);
+    if (c && hasInner(c) && (c.type === 'mod' || examAllow('inner'))) it.push(null, [PNLINK[c.type] ? 'Im Halbleiter-Modell ansehen' : 'Innerer Aufbau', 'Doppelklick', () => openInner(c)]);
+    if (c && hasCurve(c)) it.push(['Kennlinie', '', () => curveDialog(c)]);
+    if (c) { const ro = recOptions(c); if (ro.length) it.push([App.mode === 'digital' ? 'Im Impulsdiagramm anzeigen' : 'Im Diagramm aufzeichnen', '', () => recAdd(App.mode === 'digital' ? ro : [ro[0]])]); }
+    if (!lock) it.push(null, ['Löschen', 'Entf', deleteSel, 'danger']);
+  } else if (s && s.kind === 'wire') {
+    it.push(['Messwert aufzeichnen', '', () => recAdd([{ kind: 'wire', id: s.id, label: 'Leitung ' + (recM().traces.length + 1), unit: 'V' }])]);
+    if (!lock) it.push(null, ['Leitung löschen', 'Entf', deleteSel, 'danger']);
+  } else {
+    if (!lock) it.push(['Einfügen', K('V'), App.clip[App.mode] ? () => pasteAt(g.x, g.y) : null]);
+    it.push(['Alles auswählen', K('A'), circ().comps.length ? selectAll : null], null, ['Ansicht einpassen', '', fitView]);
+    if (!lock) { const hh = App.hist[App.mode] || { u: [], r: [] }; it.push(null, ['Rückgängig', K('Z'), hh.u.length ? () => { undo(); updateToolbar(); } : null], ['Wiederholen', K('Y'), hh.r.length ? () => { redo(); updateToolbar(); } : null]); }
+  }
+  if (!it.length) return;
+  const m = document.createElement('div'); m.className = 'ctxm';
+  for (const x of it) {
+    if (!x) { m.appendChild(document.createElement('hr')); continue; }
+    const [t, k, fn, cls] = x;
+    if (cls === 'head') { const q = document.createElement('div'); q.className = 'ctxh'; q.textContent = t; m.appendChild(q); continue; }
+    const b = document.createElement('button'); if (cls) b.className = cls; b.disabled = !fn;
+    b.innerHTML = `<span>${esc(t)}</span><kbd>${esc(k)}</kbd>`;
+    b.onclick = () => { ctxClose(); fn(); };
+    m.appendChild(b);
+  }
+  document.body.appendChild(m);
+  const r = m.getBoundingClientRect();
+  m.style.left = Math.max(4, Math.min(e.clientX, innerWidth - r.width - 6)) + 'px';
+  m.style.top = Math.max(4, Math.min(e.clientY, innerHeight - r.height - 6)) + 'px';
+}
+document.addEventListener('pointerdown', e => { const m = $('.ctxm'); if (m && !m.contains(e.target)) m.remove(); }, true);
+window.addEventListener('keydown', e => { if (e.key === 'Escape') ctxClose(); }, true);
+window.addEventListener('blur', ctxClose); window.addEventListener('resize', ctxClose);
+cv.addEventListener('wheel', ctxClose, { passive: true });
 cv.addEventListener('pointerup', e => endPointer(e, false));
 cv.addEventListener('pointercancel', e => endPointer(e, true));
 cv.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { UI.ghost = null; $('#hover').style.display = 'none'; } });
@@ -2357,6 +2744,7 @@ function fitView(cc = circ()) {
   const ext = (x, y) => { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); };
   for (const c of cc.comps) { const b = DEFS[c.type].box(c); const p = xf(c, b[0], b[1]), q = xf(c, b[2], b[3]); ext(p.x, p.y); ext(q.x, q.y); }
   for (const w of cc.wires) { ext(w.x1, w.y1); ext(w.x2, w.y2); }
+  const IF = cc === circ() && innerFrame(); if (IF) { ext(IF.x0, IF.y0); ext(IF.x1, IF.y1); }
   const v = view(); if (!v) return; // z. B. Reiter „Rechner“ oder „Halbleiter-Modell“ ohne Arbeitsfläche
   if (!isFinite(x0)) { v.x = 60; v.y = 60; v.z = 1; return; }
   let top = 0;
@@ -2452,7 +2840,7 @@ function renderProps() {
     if (hasCurve(c)) h += '<button class="btn" data-a="curve">Kennlinie</button>';
     if (hasInner(c)) h += `<button class="btn pri" data-a="inner">${PNLINK[c.type] ? 'Im Halbleiter-Modell ansehen' : 'Innerer Aufbau'}</button>`;
     h += '<button class="btn danger" data-a="del">Löschen</button></div>';
-    if (d.info) h += `<div class="info">${d.info}${hasInner(c) ? `<br><br><i>Tipp: Doppelklick oder langes Tippen auf das Bauteil zeigt ${PNLINK[c.type] ? 'die Vorgänge im Halbleiter-Kristall' : 'seinen inneren Aufbau'}.</i>` : ''}</div>`;
+    if (d.info && examAllow('info')) h += `<div class="info">${d.info}${hasInner(c) ? `<br><br><i>Tipp: Doppelklick oder langes Tippen auf das Bauteil zeigt ${PNLINK[c.type] ? 'die Vorgänge im Halbleiter-Kristall' : 'seinen inneren Aufbau'}.</i>` : ''}</div>`;
     el.innerHTML = h;
   }
   bindPropBtns(el);
@@ -2533,15 +2921,17 @@ function helpPanel() {
   <h4>So geht's</h4><ul>
   <li><b>Bauteil einfügen:</b> links antippen, dann auf die Arbeitsfläche tippen – oder direkt hineinziehen.</li>
   <li><b>Verbinden:</b> von einem Anschluss (kleiner Kreis) zum nächsten ziehen. Auch von einer Leitung aus kann man abzweigen.</li>
+  <li><b>Kreuzen:</b> Sich kreuzende Leitungen sind nicht verbunden. Ein Tipp auf die Kreuzung setzt einen Knotenpunkt (= Verbindung), ein weiterer Tipp löst ihn wieder.</li>
   <li><b>Verschieben:</b> Bauteil ziehen – die Leitungen wandern mit.</li>
   <li><b>Schalter/Taster</b> antippen bzw. gedrückt halten.</li>
   <li><b>Innerer Aufbau:</b> Doppelklick oder langes Tippen auf ein Gatter, Flipflop oder Halbleiterbauteil zeigt, wie es innen aufgebaut ist.</li>
-  <li><b>Ansicht:</b> Fläche ziehen zum Verschieben, mit zwei Fingern oder dem Mausrad zoomen.</li></ul>
+  <li><b>Kontextmenü:</b> <b>Rechtsklick</b> auf ein Bauteil oder eine Auswahl öffnet ein Menü mit Ausschneiden, Kopieren, Duplizieren, Drehen, Löschen …; auf freier Fläche: Einfügen an dieser Stelle.</li><li><b>Ansicht:</b> mit der <b>rechten Maustaste</b> (oder einem Finger) auf der Fläche ziehen verschiebt die Ansicht; mit zwei Fingern oder dem Mausrad zoomen.</li>
+  <li><b>Innerer Aufbau verlassen:</b> „← Zurück“ geht eine Ebene hoch, „✕“ sofort zur obersten Ebene.</li></ul>
   ${dig ? '<h4>Farben</h4><p><span style="color:#e5383b;font-weight:700">Rot</span> = 1 (HIGH), <span style="color:#3d5a99;font-weight:700">Blau</span> = 0 (LOW), Grau = nicht angeschlossen.</p><h4>Wahrheitstabelle</h4><p>Die Schaltfläche unten erzeugt aus allen Schaltern (Eingänge) und Lampen (Ausgänge) die Wahrheitstabelle und die vereinfachte Schaltfunktion.</p><h4>Eigene Bausteine</h4><p>Baue eine Teilschaltung mit Schaltern als Eingängen und Lampen als Ausgängen und wähle links unten <b>„Schaltung als Baustein“</b>. Der neue Baustein lässt sich beliebig oft einsetzen – auch in anderen Bausteinen.</p>'
     : '<h4>Darstellung</h4><p>Die Leitungsfarbe zeigt das Potential: <span style="color:#e5383b;font-weight:700">rot</span> = hohe Spannung, grau = 0 V. Die gelben Punkte zeigen den Stromfluss – je schneller, desto größer die Stromstärke.</p><p>Tippe ein Bauteil an, um <b>Spannung, Stromstärke</b> und – bei Transistoren – den <b>Arbeitsbereich</b> abzulesen.</p>'}
   <h4>Messschreiber</h4><p>Bauteil oder Leitung antippen → <b>📈 aufzeichnen</b>. ${dig ? 'Das Impulsdiagramm zeigt die Signale über der Zeit.' : 'Mit einem Funktionsgenerator wird er zum Oszilloskop. Bei Dioden und Transistoren zeigt <b>Kennlinie</b> die Kennlinienfelder.'} Die Messwerte lassen sich als CSV exportieren.</p>
   ${dig ? '<h4>Werkzeuge (⋯-Menü)</h4><p><b>Schaltung aus Term erzeugen</b> (auch nur aus NAND oder NOR) und <b>Aufgabe erstellen</b>: Aus einer Musterlösung entsteht eine Aufgabendatei, deren Lösung die Schülerinnen und Schüler mit „Prüfen“ selbst kontrollieren.</p>' : ''}
-  <h4>Auswählen und Kopieren</h4><p><kbd>Umschalt</kbd> + Ziehen (oder Knopf „Auswahl“) markiert mehrere Bauteile. Ausgewählte Bauteile gemeinsam verschieben, kopieren (<kbd>Strg</kbd>+<kbd>C</kbd>/<kbd>V</kbd>) oder löschen. Bei einer angetippten Leitung lassen sich die Eckpunkte (weiße Quadrate) verschieben.</p>
+  <h4>Auswählen und Kopieren</h4><p>Mit der <b>linken Maustaste</b> neben den Bauteilen ziehen (auf dem iPad: Knopf „Auswahl“) markiert mehrere Bauteile mit einem Rahmen. Ausgewählte Bauteile gemeinsam verschieben, kopieren (<kbd>Strg</kbd>+<kbd>C</kbd>/<kbd>V</kbd>) oder löschen. Bei einer angetippten Leitung lassen sich die Eckpunkte (weiße Quadrate) verschieben.</p>
   <h4>Tastatur</h4><p><kbd>R</kbd> drehen · <kbd>M</kbd> spiegeln · <kbd>Entf</kbd> löschen · <kbd>Strg</kbd>+<kbd>Z</kbd> rückgängig · <kbd>Strg</kbd>+<kbd>D</kbd> duplizieren · <kbd>Strg</kbd>+<kbd>A</kbd> alles · <kbd>Esc</kbd> abbrechen</p>${aboutHTML()}</div>`;
 }
 
@@ -2614,7 +3004,7 @@ const posSort = (a, b) => a.y - b.y || a.x - b.x;
 function circIO(cc) {
   return {
     ins: cc.comps.filter(c => c.type === 'switch' || c.type === 'button').sort(posSort),
-    outs: cc.comps.filter(c => c.type === 'led').sort(posSort),
+    outs: cc.comps.filter(c => isOutT(c.type)).sort(posSort),
   };
 }
 function newModId() { return 'm' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
@@ -2757,64 +3147,47 @@ function mergeModules(list) {
 }
 const modsForSave = () => App.modules.map(({ busy, ...m }) => m);
 /* ================= Innerer Aufbau (Doppelklick / langes Tippen) ================= */
-/* Hilfen für Transistorschaltungen: Versorgung, Eingänge mit Pull-down, Ausgang mit LED */
-function cmosFrame(b, inputs, rails) {
-  const [yT, yB, xT, xR] = rails;
-  b.add('battery', 2, Math.round((yT + yB) / 2), { r: 3, p: { U: 5 }, l: 'UB' });
-  const ym = Math.round((yT + yB) / 2);
-  b.w(2, ym - 2, 2, yT, xT, yT); b.w(2, ym + 2, 2, yB, xR, yB);
-  inputs.forEach(([x, l, on]) => {
-    b.add('aswitch', x, yT + 5, { r: 1, l, p: { on } });
-    b.add('resistor', x, yB - 6, { r: 1, p: { R: 100000 }, l: 'R' + l });
-    b.w(x, yT, x, yT + 3); b.w(x, yT + 7, x, yB - 8); b.w(x, yB - 4, x, yB);
-  });
-}
-function cmosOut(b, x, y, yB) {
-  // Ausgang bei (x,y): Vorwiderstand, LED, Spannungsmesser
-  b.add('resistor', x + 4, y, { p: { R: 330 }, l: 'RV' });
-  b.add('aled', x + 6, y + 4, { r: 1, l: 'Y' });
-  b.add('voltmeter', x + 10, y + 4, { r: 1, l: 'UY' });
-  b.w(x, y, x + 2, y); b.w(x + 6, y, x + 6, y + 2); b.w(x + 6, y + 6, x + 6, yB);
-  b.w(x + 1, y, x + 1, y - 2, x + 10, y - 2, x + 10, y + 2); b.w(x + 10, y + 6, x + 10, yB);
-}
+/* Hilfen für Transistorschaltungen: Eingänge über Logikschalter (links), Versorgung +5 V und Masse, Ausgang mit Logikanzeige (rechts) */
+function cmosIn(b, y, l, on, tap) { b.add('logsw', 1, y, { l, p: { on } }); b.w(3, y, tap, y); }
+function cmosOut(b, x, y) { b.w(x, y, x + 4, y); b.add('logind', x + 6, y, { l: 'Y' }); }
 const INNER = {
   not: {
     mode: 'analog', title: 'NICHT-Gatter in CMOS-Technik (2 Transistoren)',
     text: 'Ein p-MOSFET (oben) und ein n-MOSFET (unten) bilden einen Inverter. Liegt am Eingang 1 (5 V), leitet der untere Transistor und zieht den Ausgang auf 0 V. Liegt 0 an, leitet der obere und verbindet den Ausgang mit 5 V. Es leitet immer nur einer – deshalb verbraucht CMOS im Ruhezustand fast keinen Strom.',
     build(b, ins) {
-      cmosFrame(b, [[6, 'A', ins[0]]], [2, 22, 14, 24]);
+      b.add('vdd', 14, 4); b.add('ground', 14, 20);
       b.add('pmos', 13, 8, { l: 'T1' }); b.add('nmos', 13, 16, { l: 'T2' });
-      b.w(14, 2, 14, 6); b.w(14, 10, 14, 14); b.w(14, 18, 14, 22);
-      b.w(11, 8, 10, 8, 10, 16, 11, 16); b.w(6, 12, 10, 12);
-      cmosOut(b, 14, 12, 22);
+      b.w(14, 4, 14, 6); b.w(14, 10, 14, 14); b.w(14, 18, 14, 20);
+      b.w(11, 8, 10, 8, 10, 16, 11, 16); cmosIn(b, 12, 'A', ins[0], 10);
+      cmosOut(b, 14, 12);
     },
   },
   nand: {
     mode: 'analog', title: 'NAND-Gatter in CMOS-Technik (4 Transistoren)',
     text: 'Oben liegen zwei p-MOSFETs <b>parallel</b>: Ist mindestens ein Eingang 0, verbindet einer von ihnen den Ausgang mit 5 V. Unten liegen zwei n-MOSFETs in <b>Reihe</b>: Nur wenn <i>beide</i> Eingänge 1 sind, ist der Weg zur Masse frei und der Ausgang wird 0. NAND ist das einfachste Gatter in CMOS – deshalb baut man UND aus NAND + NICHT.',
     build(b, ins) {
-      cmosFrame(b, [[5, 'A', ins[0]], [8, 'B', ins[1]]], [2, 26, 22, 32]);
+      b.add('vdd', 16, 2); b.add('vdd', 22, 2); b.add('ground', 16, 24);
       b.add('pmos', 15, 6, { l: 'T1' }); b.add('pmos', 21, 6, { l: 'T2' });
       b.add('nmos', 15, 14, { l: 'T3' }); b.add('nmos', 15, 20, { l: 'T4' });
       b.w(16, 2, 16, 4); b.w(22, 2, 22, 4); b.w(16, 8, 16, 10, 22, 10, 22, 8);
-      b.w(16, 10, 16, 12); b.w(16, 16, 16, 18); b.w(16, 22, 16, 26);
-      b.w(5, 11, 11, 11); b.w(11, 6, 13, 6); b.w(11, 6, 11, 14, 13, 14);
-      b.w(8, 15, 10, 15); b.w(10, 3, 10, 20, 13, 20); b.w(10, 3, 18, 3, 18, 6, 19, 6);
-      cmosOut(b, 22, 10, 26);
+      b.w(16, 10, 16, 12); b.w(16, 16, 16, 18); b.w(16, 22, 16, 24);
+      cmosIn(b, 11, 'A', ins[0], 11); b.w(11, 6, 13, 6); b.w(11, 6, 11, 14, 13, 14);
+      cmosIn(b, 15, 'B', ins[1], 10); b.w(10, 3, 10, 20, 13, 20); b.w(10, 3, 18, 3, 18, 6, 19, 6);
+      cmosOut(b, 22, 10);
     },
   },
   nor: {
     mode: 'analog', title: 'NOR-Gatter in CMOS-Technik (4 Transistoren)',
     text: 'Oben liegen zwei p-MOSFETs in <b>Reihe</b>: Nur wenn <i>beide</i> Eingänge 0 sind, ist der Ausgang mit 5 V verbunden. Unten liegen zwei n-MOSFETs <b>parallel</b>: Ist mindestens ein Eingang 1, wird der Ausgang auf 0 gezogen. Vergleiche mit dem NAND: Reihen- und Parallelschaltung sind genau vertauscht.',
     build(b, ins) {
-      cmosFrame(b, [[5, 'A', ins[0]], [8, 'B', ins[1]]], [2, 26, 16, 32]);
+      b.add('vdd', 16, 2); b.add('ground', 16, 24); b.add('ground', 22, 24);
       b.add('pmos', 15, 6, { l: 'T1' }); b.add('pmos', 15, 11, { l: 'T2' });
       b.add('nmos', 15, 19, { l: 'T3' }); b.add('nmos', 21, 19, { l: 'T4' });
       b.w(16, 2, 16, 4); b.w(16, 8, 16, 9); b.w(16, 13, 16, 15, 22, 15, 22, 17); b.w(16, 15, 16, 17);
-      b.w(16, 21, 16, 26); b.w(22, 21, 22, 26);
-      b.w(5, 14, 11, 14); b.w(11, 6, 13, 6); b.w(11, 6, 11, 19, 13, 19);
-      b.w(8, 15, 10, 15); b.w(10, 11, 13, 11); b.w(10, 11, 10, 23, 18, 23, 18, 19, 19, 19);
-      cmosOut(b, 22, 15, 26);
+      b.w(16, 21, 16, 24); b.w(22, 21, 22, 24);
+      cmosIn(b, 14, 'A', ins[0], 11); b.w(11, 6, 13, 6); b.w(11, 6, 11, 19, 13, 19);
+      cmosIn(b, 17, 'B', ins[1], 10); b.w(10, 11, 13, 11); b.w(10, 11, 10, 23, 18, 23, 18, 19, 19, 19);
+      cmosOut(b, 22, 15);
     },
   },
   and: { mode: 'digital', title: 'UND = NAND + NICHT', text: 'In CMOS-Technik ist das NAND-Gatter das Grundgatter. Ein UND entsteht, indem man den Ausgang des NAND noch einmal invertiert. Doppelklicke auf die Gatter, um die Transistoren zu sehen.', build: (b, ins) => twoStage(b, ins, 'nand') },
@@ -2848,9 +3221,9 @@ const INNER = {
       b.w(5, 4, 9, 4); b.w(5, 14, 9, 14); b.w(5, 9, 7, 9); b.w(7, 9, 7, 6, 9, 6); b.w(7, 9, 7, 12, 9, 12);
       b.add('nor', 19, 6); b.add('nor', 19, 12);
       b.w(13, 5, 17, 5); b.w(13, 13, 17, 13);
-      b.add('led', 27, 6, { l: 'Q̄' }); b.add('led', 27, 12, { l: 'Q' });
-      b.w(21, 6, 25, 6); b.w(22, 6, 22, 9, 16, 9, 16, 11, 17, 11);
-      b.w(21, 12, 25, 12); b.w(23, 12, 23, 8, 15, 8, 15, 7, 17, 7);
+      b.add('led', 29, 4, { l: 'Q' }); b.add('led', 29, 14, { l: 'Q̄' });
+      b.w(21, 6, 25, 6, 25, 14, 27, 14); b.w(22, 6, 22, 9, 16, 9, 16, 11, 17, 11);
+      b.w(21, 12, 24, 12, 24, 4, 27, 4); b.w(23, 12, 23, 8, 15, 8, 15, 7, 17, 7);
     },
   },
   dff: {
@@ -2859,7 +3232,7 @@ const INNER = {
       b.add('switch', 3, 4, { l: 'D', p: { on: ins[0] } }); b.add('switch', 3, 12, { l: 'C', p: { on: ins[1] } });
       b.add('not', 10, 7); b.add('not', 10, 12);
       b.add('rsffc', 17, 6, { l: 'Master' }); b.add('rsffc', 27, 6, { l: 'Slave' });
-      b.add('led', 22, 2, { l: 'QM', p: { color: 'yellow' } });
+      b.add('led', 22, 2, { l: 'QM', p: { color: 'yellow' } }).probe = 1;
       b.add('led', 33, 5, { l: 'Q' }); b.add('led', 33, 8, { l: 'Q̄' });
       b.w(5, 4, 7, 4, 7, 5, 15, 5); b.w(7, 5, 7, 7, 8, 7); b.w(12, 7, 15, 7);
       b.w(5, 12, 8, 12); b.w(12, 12, 14, 12, 14, 6, 15, 6); b.w(6, 12, 6, 15, 23, 15, 23, 6, 25, 6);
@@ -2900,16 +3273,113 @@ function twoStage(b, ins, first) {
 function rsLatch(b, y, s, r) {
   b.add('switch', 3, y + 4, { l: 'S', p: { on: s } }); b.add('switch', 3, y + 12, { l: 'R', p: { on: r } });
   b.add('nor', 11, y + 5); b.add('nor', 11, y + 11);
-  b.add('led', 19, y + 5, { l: 'Q̄' }); b.add('led', 19, y + 11, { l: 'Q' });
+  b.add('led', 21, y + 3, { l: 'Q' }); b.add('led', 21, y + 13, { l: 'Q̄' });
   b.w(5, y + 4, 9, y + 4); b.w(5, y + 12, 9, y + 12);
-  b.w(13, y + 5, 17, y + 5); b.w(14, y + 5, 14, y + 8, 8, y + 8, 8, y + 10, 9, y + 10);
-  b.w(13, y + 11, 17, y + 11); b.w(15, y + 11, 15, y + 7, 7, y + 7, 7, y + 6, 9, y + 6);
+  b.w(13, y + 5, 17, y + 5, 17, y + 13, 19, y + 13); b.w(14, y + 5, 14, y + 8, 8, y + 8, 8, y + 10, 9, y + 10);
+  b.w(13, y + 11, 16, y + 11, 16, y + 3, 19, y + 3); b.w(15, y + 11, 15, y + 7, 7, y + 7, 7, y + 6, 9, y + 6);
 }
+/* ================= „Hineinzoomen“: Rahmen um die Innenschaltung, Ein-/Ausgänge an den Seiten des Bauteils ================= */
+const IO_IN_T = ['switch', 'button', 'logsw'], IO_OUT_T = ['led', 'lind', 'logind'];
+const FF_SYM = { rsff: 'RS-FF', rsffc: 'RS-FF', dff: 'D-FF', jkff: 'JK-FF', tff: 'T-FF', alu1: 'ALU' };
+function innerSym(type) {
+  if (type === 'nand' || type === 'nor') return type.toUpperCase();   // „&“ allein wäre beim NAND verwirrend
+  if (GT[type]) return GT[type].din;
+  return FF_SYM[type] || DEFS[type].sym || DEFS[type].name;
+}
+function onSegIncl(x, y, w) {
+  if (w.x1 === w.x2) return x === w.x1 && y >= Math.min(w.y1, w.y2) && y <= Math.max(w.y1, w.y2);
+  if (w.y1 === w.y2) return y === w.y1 && x >= Math.min(w.x1, w.x2) && x <= Math.max(w.x1, w.x2);
+  return false;
+}
+/* Bauteil c so verschieben, dass sein (einziger) Anschluss p nach t wandert; Leitung verlängern bzw. kürzen */
+function moveIO(cc, c, p, t) {
+  const dx = t.x - p.x, dy = t.y - p.y; if (!dx && !dy) return;
+  const at = cc.wires.filter(w => (w.x1 === p.x && w.y1 === p.y) || (w.x2 === p.x && w.y2 === p.y));
+  const inw = at.find(w => onSegIncl(t.x, t.y, w));
+  if (inw) {
+    if (at.length > 1) return;                                    // Abzweig direkt am Anschluss: nicht kürzen
+    if (inw.x1 === p.x && inw.y1 === p.y) { inw.x1 = t.x; inw.y1 = t.y; } else { inw.x2 = t.x; inw.y2 = t.y; }
+    if (inw.x1 === inw.x2 && inw.y1 === inw.y2) cc.wires.splice(cc.wires.indexOf(inw), 1);
+  } else if (at.length) cc.wires.push({ id: uid(), x1: t.x, y1: t.y, x2: p.x, y2: p.y });
+  else return;
+  c.x += dx; c.y += dy;
+}
+/* o: { label, rot, mir, inv, move } – liefert den Rahmen in Weltkoordinaten */
+function zoomFrame(cc, o) {
+  for (const c of cc.comps) if (c.type === 'led') { c.type = 'lind'; c.props = {}; }
+  const isIO = c => !c.probe && (IO_IN_T.includes(c.type) || IO_OUT_T.includes(c.type));
+  const ioPins = new Set();
+  for (const c of cc.comps) if (isIO(c)) for (const p of pinsW(c)) ioPins.add(p.x + ',' + p.y);
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  const ext = (x, y) => { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); };
+  for (const c of cc.comps) if (!isIO(c) && c.type !== 'text') { const r = compRect(c); ext(r[0], r[1]); ext(r[2], r[3]); }
+  for (const w of cc.wires) for (const [x, y] of [[w.x1, w.y1], [w.x2, w.y2]]) if (!ioPins.has(x + ',' + y)) ext(x, y);
+  if (!isFinite(x0)) return null;
+  const rot = o.rot || 0, mir = !!o.mir;
+  // welche Seite der Innenschaltung zeigt nach dem Drehen nach oben? Dort ist Platz für die Beschriftung.
+  let ux = 0, uy = -1; for (let i = 0; i < rot; i++) { const t = ux; ux = uy; uy = -t; } if (mir) uy = -uy;
+  const pad = { L: 1, R: 1, T: 1, B: 1 }; pad[ux < 0 ? 'L' : ux > 0 ? 'R' : uy < 0 ? 'T' : 'B'] = 3;
+  const F = { x0: Math.floor(x0) - pad.L, y0: Math.floor(y0) - pad.T, x1: Math.ceil(x1) + pad.R, y1: Math.ceil(y1) + pad.B };
+  const bub = [];
+  if (o.move !== false) for (const c of cc.comps) {
+    if (!isIO(c)) continue;
+    const ps = pinsW(c); if (ps.length !== 1) continue;
+    const p = ps[0];
+    const s = p.x < x0 ? 'L' : p.x > x1 ? 'R' : p.y < y0 ? 'T' : p.y > y1 ? 'B' : null; if (!s) continue;
+    const t = s === 'L' ? { x: Math.min(p.x, F.x0 - 1), y: p.y } : s === 'R' ? { x: Math.max(p.x, F.x1 + 1), y: p.y } : s === 'T' ? { x: p.x, y: Math.min(p.y, F.y0 - 1) } : { x: p.x, y: Math.max(p.y, F.y1 + 1) };
+    moveIO(cc, c, p, t);
+    if (o.inv && IO_OUT_T.includes(c.type)) { const q = pinsW(c)[0]; bub.push([q.x + Math.sign(F.x0 + F.x1 - 2 * q.x) * (s === 'L' || s === 'R' ? 1 : 0), q.y + Math.sign(F.y0 + F.y1 - 2 * q.y) * (s === 'T' || s === 'B' ? 1 : 0)]); }
+  }
+  // ganze Innenschaltung wie das Bauteil drehen / spiegeln
+  const T = (x, y) => { if (mir) y = -y; for (let i = 0; i < rot; i++) { const t = x; x = -y; y = t; } return [x, y]; };
+  if (rot || mir) {
+    for (const c of cc.comps) {
+      [c.x, c.y] = T(c.x, c.y);
+      if (c.type === 'text') continue;
+      if (mir) { c.rot = ((rot - c.rot) % 4 + 4) % 4; c.mir = !c.mir; } else c.rot = (c.rot + rot) % 4;
+    }
+    for (const w of cc.wires) { [w.x1, w.y1] = T(w.x1, w.y1); [w.x2, w.y2] = T(w.x2, w.y2); }
+    bub.forEach((b, i) => { bub[i] = T(...b); });
+    const a = T(F.x0, F.y0), b = T(F.x1, F.y1);
+    F.x0 = Math.min(a[0], b[0]); F.x1 = Math.max(a[0], b[0]); F.y0 = Math.min(a[1], b[1]); F.y1 = Math.max(a[1], b[1]);
+  }
+  F.label = o.label || ''; F.bub = bub; F.lx = 0.5; F.ly = 1.5; F.la = 'center';
+  // Beschriftung oben in der Mitte – liegt dort etwas, dann oben links bzw. rechts, sonst als Schild über dem Rahmen
+  if (F.label) {
+    const hw = F.label.length * (F.label.length > 3 ? 0.42 : 0.55) + 0.3, rects = cc.comps.filter(c => c.type !== 'text').map(compRect);
+    const free = (cx, cy) => {
+      const r = [cx - hw, cy - 0.8, cx + hw, cy + 0.8], hit = (a, b) => a[0] < b[2] && a[2] > b[0] && a[1] < b[3] && a[3] > b[1];
+      if (rects.some(q => hit(r, q))) return false;
+      return !cc.wires.some(w => hit(r, [Math.min(w.x1, w.x2) - 0.1, Math.min(w.y1, w.y2) - 0.1, Math.max(w.x1, w.x2) + 0.1, Math.max(w.y1, w.y2) + 0.1]));
+    };
+    const W = F.x1 - F.x0, cy = F.y0 + 1.5;
+    const cand = [[F.x0 + W / 2, cy], [F.x0 + 0.4 + hw, cy], [F.x1 - 0.4 - hw, cy]].find(([x, y]) => free(x, y));
+    if (cand) { F.lx = (cand[0] - F.x0) / W; F.ly = cand[1] - F.y0; }
+    else { F.tab = true; F.lx = (0.4 + hw) / W; F.ly = -0.9; }
+  }
+  return F;
+}
+function drawFrame(g, F) {
+  const x = F.x0 * G, y = F.y0 * G, w = (F.x1 - F.x0) * G, h = (F.y1 - F.y0) * G;
+  g.save();
+  g.fillStyle = 'rgba(47,111,236,0.045)'; g.fillRect(x, y, w, h);
+  g.strokeStyle = '#1f3f8a'; g.lineWidth = 3; g.setLineDash && g.setLineDash([10, 6]); g.strokeRect(x, y, w, h); g.setLineDash && g.setLineDash([]);
+  for (const [bx, by] of F.bub || []) { g.beginPath(); g.arc(bx * G, by * G, 0.32 * G, 0, 2 * Math.PI); g.fillStyle = '#fff'; g.fill(); g.lineWidth = 2.5; g.stroke(); }
+  if (F.label) {
+    const lx = x + (F.lx ?? 0.5) * w, ly = y + (F.ly ?? 1.5) * G;
+    g.font = `bold ${F.label.length > 3 ? 26 : 34}px system-ui, sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.fillStyle = 'rgba(251,252,254,0.85)'; const tw = g.measureText ? g.measureText(F.label).width : F.label.length * 18; g.fillRect(lx - tw / 2 - 6, ly - 0.75 * G, tw + 12, 1.5 * G);
+    g.fillStyle = '#1f3f8a'; g.fillText(F.label, lx, ly);
+  }
+  g.restore();
+}
+function innerFrame() { const E = App.inner[App.inner.length - 1]; return E && E.target === App.mode ? E.frame : null; }
 /* Halbleiter-Bauteile führen zum Halbleiter-Modell */
 const PNLINK = { diode: ['pn', 'si'], zener: ['pn', 'zener'], aled: ['pn', null], ldr: ['intr'], ntc: ['intr'] };
 const hasInner = c => !!(INNER[c.type] || PNLINK[c.type] || c.type === 'mod');
 
 function openInner(c) {
+  if (c.type !== 'mod' && examBlocked('inner')) return;
   if (c.type === 'mod') { if (App.inner.length) { flashHint('Erst die Innenansicht verlassen'); return; } editModule(c.props.mid); return; }
   if (PNLINK[c.type]) {
     const [sub, t] = PNLINK[c.type];
@@ -2929,6 +3399,7 @@ function openInner(c) {
   App.inner.push({ target: t, prevMode: App.mode, backup: JSON.stringify(serialize(App.circ[t])), hist: App.hist[t], view: { ...App.view[t] }, title: I.title, text: I.text, n: c.type in GT && gN(c) > 2 ? gN(c) : 0 });
   const cc = { comps: [], wires: [] };
   I.build(mkB(cc), ins);
+  App.inner[App.inner.length - 1].frame = zoomFrame(cc, { label: innerSym(c.type), rot: c.rot, mir: c.mir, inv: !!(GT[c.type] && GT[c.type].inv) });
   App.circ[t] = cc; App.hist[t] = { u: [], r: [] };
   App.sel = null;
   if (App.mode !== t) setMode(t); else changed();
@@ -2936,6 +3407,8 @@ function openInner(c) {
   requestAnimationFrame(() => { fitView(); });
   showInnerBar();
 }
+/* alle Ebenen schließen: sofort zurück zur obersten Ebene */
+function closeAllInner() { while (App.inner.length) closeInner(); }
 function closeInner() {
   const E = App.inner.pop(); if (!E) return;
   App.circ[E.target] = deserialize(JSON.parse(E.backup)); App.hist[E.target] = E.hist; App.view[E.target] = E.view;
@@ -2957,9 +3430,10 @@ function showInnerBar() {
   if (!b) { b = document.createElement('div'); b.id = 'innerbar'; document.body.appendChild(b); }
   document.body.classList.add('inner');
   const crumbs = App.inner.map(e => esc(e.title.split(/[(:=]/)[0].trim())).join(' › ');
-  b.innerHTML = `<div class="ib-top"><button class="btn pri" id="ibBack">← Zurück</button><div><div class="ib-crumb">Innerer Aufbau: ${crumbs}</div><b>${esc(E.title)}</b>${E.n ? ` <span style="color:#667085">(vereinfacht mit 2 statt ${E.n} Eingängen)</span>` : ''}</div><button class="btn" id="ibMore">Erklärung</button></div><div class="ib-text" ${App.innerTextHidden ? 'hidden' : ''}>${E.text} <span style="color:#667085">Probiere die Schalter aus! Änderungen hier werden beim Zurückgehen verworfen.</span></div>`;
+  b.innerHTML = `<div class="ib-top"><button class="btn pri" id="ibBack">← Zurück</button><div><div class="ib-crumb">Innerer Aufbau: ${crumbs}</div><b>${esc(E.title)}</b>${E.n ? ` <span style="color:#667085">(vereinfacht mit 2 statt ${E.n} Eingängen)</span>` : ''}</div>${examAllow('info') ? '<button class="btn" id="ibMore">Erklärung</button>' : ''}<button class="btn" id="ibClose" title="Alle inneren Ansichten schließen und zur obersten Ebene zurückkehren" aria-label="Schließen">✕</button></div><div class="ib-text" ${App.innerTextHidden ? 'hidden' : ''}>${examAllow('info') ? E.text : ''} <span style="color:#667085">${E.target === 'analog' ? 'Probiere die Logikschalter aus!' : 'Probiere die Schalter aus!'} Änderungen hier werden beim Zurückgehen verworfen.</span></div>`;
   $('#ibBack').onclick = closeInner;
-  $('#ibMore').onclick = () => { App.innerTextHidden = !App.innerTextHidden; showInnerBar(); fitView(); };
+  $('#ibClose').onclick = closeAllInner;
+  if ($('#ibMore')) $('#ibMore').onclick = () => { App.innerTextHidden = !App.innerTextHidden; showInnerBar(); fitView(); };
 }
 /* ================= Innenansichten der Funktionsblöcke ================= */
 Object.assign(INNER, {
@@ -2986,16 +3460,16 @@ Object.assign(INNER, {
   add4: {
     mode: 'digital', title: '4-Bit-Addierer aus vier Volladdierern', text: 'Jeder Volladdierer (VA) addiert eine Stelle. Sein Übertrag Cout wird an den Cin-Eingang der nächsthöheren Stelle weitergereicht – wie beim schriftlichen Addieren. Doppelklicke auf einen VA, um seinen Aufbau zu sehen.',
     build(b, ins) {
-      b.add('switch', 3, -3, { l: 'Cin', p: { on: ins[8] } }); b.w(5, -3, 8, -3, 8, 4, 9, 4);
+      // Eingänge in der Reihenfolge des Bausteins: A0…A3, B0…B3, Cin – jede Leitung in einer eigenen Spalte zu ihrem Volladdierer
+      const IN = [['A0', 0, 2, 13], ['A1', 1, 8, 12], ['A2', 2, 14, 11], ['A3', 3, 20, 10], ['B0', 4, 3, 17], ['B1', 5, 9, 16], ['B2', 6, 15, 15], ['B3', 7, 21, 14], ['Cin', 8, 4, 18]];
+      IN.forEach(([l, k, t, col], j) => { const r = 3 * j - 6; b.add('switch', 1, r, { l, p: { on: ins[k] } }); b.w(3, r, col, r, col, t, 21, t); });
       for (let i = 0; i < 4; i++) {
         const y = 6 * i;
-        b.add('switch', 3, 1 + y, { l: 'A' + i, p: { on: ins[i] } }); b.add('switch', 3, 4 + y, { l: 'B' + i, p: { on: ins[4 + i] } });
-        b.add('fa', 12, 3 + y); b.add('led', 21, 2 + y, { l: 'S' + i });
-        b.w(5, 1 + y, 7, 1 + y, 7, 2 + y, 9, 2 + y); b.w(5, 4 + y, 6, 4 + y, 6, 3 + y, 9, 3 + y);
-        b.w(15, 2 + y, 19, 2 + y);
-        if (i < 3) b.w(15, 3 + y, 16, 3 + y, 16, 6 + y, 8, 6 + y, 8, 10 + y, 9, 10 + y);
+        b.add('fa', 24, 3 + y); b.add('led', 33, 2 + y, { l: 'S' + i });
+        b.w(27, 2 + y, 31, 2 + y);
+        if (i < 3) b.w(27, 3 + y, 28, 3 + y, 28, 6 + y, 20, 6 + y, 20, 10 + y, 21, 10 + y);
       }
-      b.add('led', 21, 22, { l: 'Cout' }); b.w(15, 21, 16, 21, 16, 22, 19, 22);
+      b.add('led', 33, 25, { l: 'Cout' }); b.w(27, 21, 28, 21, 28, 25, 31, 25);
     },
   },
   mux2: {
@@ -3049,22 +3523,22 @@ Object.assign(INNER, {
       b.w(5, 2, 10, 2); b.w(5, 8, 7, 8, 7, 6, 28, 6);
       for (let i = 0; i < 4; i++) {
         const x = 6 * i;
-        b.add('dff', 12 + x, 3); b.add('led', 15 + x, 11, { r: 1, l: 'Q' + i });
+        b.add('dff', 12 + x, 3); b.add('led', 40, 3 * i - 10, { l: 'Q' + i });
         b.w(10 + x, 6, 10 + x, 4);
         if (i < 3) b.w(14 + x, 2, 16 + x, 2); else b.w(32, 2, 33, 2);
-        b.w(15 + x, 2, 15 + x, 9);
+        b.w(15 + x, 2, 15 + x, 3 * i - 10, 38, 3 * i - 10);
       }
     },
   },
   cnt4: {
     mode: 'digital', title: 'Zähler aus vier T-Flipflops (Asynchronzähler)', text: 'Jedes T-Flipflop halbiert die Frequenz: Das erste kippt bei jeder Taktflanke, das zweite immer dann, wenn das erste von 1 auf 0 fällt (steigende Flanke an Q̄), usw. So entsteht die Dualzahl Q3 Q2 Q1 Q0. (Vereinfacht ohne Rücksetzeingang R.)',
     build(b, ins) {
-      b.add('const', 3, 2, { p: { v: 1 } }); b.add('switch', 3, 6, { l: 'C', p: { on: ins[0] } });
+      b.add('const', 8, -1, { r: 1, p: { v: 1 } }); b.add('switch', 3, 6, { l: 'C', p: { on: ins[0] } });
       [10, 18, 26, 34].forEach(x => b.add('tff', x, 6));
-      ['Q0', 'Q1', 'Q2', 'Q3'].forEach((l, i) => b.add('led', 15 + 8 * i, 10, { l, p: { color: 'green' } }));
-      b.w(5, 2, 32, 2);[8, 16, 24, 32].forEach(x => b.w(x, 2, x, 5));
+      ['Q0', 'Q1', 'Q2', 'Q3'].forEach((l, i) => b.add('led', 44, 9 + 3 * i, { l }));
+      b.w(8, 1, 8, 2); b.w(8, 2, 32, 2);[8, 16, 24, 32].forEach(x => b.w(x, 2, x, 5));
       b.w(5, 6, 6, 6, 6, 7, 8, 7); b.w(12, 7, 16, 7); b.w(20, 7, 24, 7); b.w(28, 7, 32, 7);
-      [12, 20, 28, 36].forEach(x => b.w(x, 5, x + 1, 5, x + 1, 10));
+      [12, 20, 28, 36].forEach((x, i) => b.w(x, 5, x + 1, 5, x + 1, 9 + 3 * i, 42, 9 + 3 * i));
     },
   },
 });
@@ -3160,19 +3634,19 @@ Object.assign(INNER, {
     text: 'Jede Scheibe berechnet ein Bit des Ergebnisses. Der Übertrag läuft von rechts (Bit 0) nach links (Bit 7) – wie beim schriftlichen Addieren. Bei der Subtraktion (S0 = 1) wird B invertiert und rechts eine 1 eingespeist: A − B = A + ¬B + 1 (Zweierkomplement). INC und DEC sind ADD bzw. SUB mit B = 1. Stelle A, B und die Operation mit den Schaltern ein! Doppelklicke auf eine Scheibe, um ihren Aufbau zu sehen.',
     build(b, o) {
       const X = i => 20 + (7 - i) * 12, X0 = X(0);
-      txt(b, 2, -17, 'B', 14); txt(b, 2, -12, 'A', 14);
+      txt(b, 2, -20, 'B', 14); txt(b, 2, -16, 'A', 14);
       for (let i = 0; i < 8; i++) {
         const x = X(i);
         b.add('alu1', x, 0, { l: 'Bit ' + i });
-        b.add('switch', x - 1, -16, { r: 1, l: 'B' + i, p: { on: bitOf(o.b, i) } }); b.w(x - 1, -14, x - 1, -5);
-        b.add('switch', x + 1, -11, { r: 1, l: 'A' + i, p: { on: bitOf(o.a, i) } }); b.w(x + 1, -9, x + 1, -5);
+        b.add('switch', x - 1, -19, { r: 1, l: 'B' + i, p: { on: bitOf(o.b, i) } }); b.w(x - 1, -17, x - 1, -5);
+        b.add('switch', x + 1, -15, { r: 1, l: 'A' + i, p: { on: bitOf(o.a, i) } }); b.w(x + 1, -13, x + 1, -5);
         if (i < 7) b.w(x + 1, -7, x - 9, -7, x - 9, -5);
         if (i > 0) b.w(x + 1, -8, x + 9, -8, x + 9, -5);
         if (i < 7) b.w(x - 5, 0, x - 7, 0);
         b.add('led', x + 4, 16, { l: 'Y' + i });
       }
       b.add('const', X(7) - 5, -8, { p: { v: 0 } }); b.w(X(7) - 3, -8, X(7) - 3, -5);
-      b.add('const', X0 + 3, -9, { r: 1, p: { v: 0 } }); b.w(X0 + 3, -7, X0 + 3, -5);
+      b.add('const', X0 + 3, -7, { r: 1, p: { v: 0 } });
       b.add('led', X(7) - 9, 0, { r: 2, l: 'C₇', p: { color: 'yellow' } }); b.w(X(7) - 5, 0, X(7) - 7, 0);
       // Operation
       const op = o.op;
@@ -3343,8 +3817,10 @@ Object.assign(INNER, {
   },
 });
 const CPUINNER = { ALU: 'cpu_alu', RW: 'cpu_alu', A: 'cpu_reg', B: 'cpu_reg', IR: 'cpu_reg', MAR: 'cpu_reg', DR: 'cpu_reg', OUT: 'cpu_reg', PC: 'cpu_cnt', SP: 'cpu_cnt', Z: 'cpu_flags', C: 'cpu_flags', N: 'cpu_flags', RAM: 'cpu_ram', ABUS: 'cpu_ram', DBUS: 'cpu_ram', CBUS: 'cpu_ram', IBUS: 'cpu_bus', GATE: 'cpu_bus', IN: 'cpu_bus', SW: 'cpu_ctrl', MP: 'cpu_ctrl' };
+const CPUSYM = { RW: 'ALU', Z: 'Flags', C: 'Flags', N: 'Flags', ABUS: 'RAM', DBUS: 'RAM', CBUS: 'RAM', IBUS: 'Bus', GATE: 'Bus', IN: 'Bus', SW: 'Steuerwerk', MP: 'Steuerwerk' };
 const ALUCODE = { ADD: 0, SUB: 1, AND: 2, OR: 3, XOR: 4, NOT: 5, SHL: 6, SHR: 7, INC: 0, DEC: 1, B: 3, A: 3 };
 function openCpuInner(k) {
+  if (examBlocked('inner')) return;
   const key = CPUINNER[k]; if (!key) { flashHint('Doppelklicke auf ein einzelnes Bauteil (z. B. ALU, Register, RAM).'); return; }
   if (App.editMod) finishEdit(false);
   while (App.inner.length) closeInner();
@@ -3375,6 +3851,7 @@ function openCpuInner(k) {
   App.inner.push({ target: t, prevMode: 'cpu', backup: JSON.stringify(serialize(App.circ[t])), hist: App.hist[t], view: { ...App.view[t] }, title, text: text + ' <b>„← Zurück“ führt wieder zum Rechner.</b>', n: 0 });
   const cc = { comps: [], wires: [] };
   I.build(mkB(cc), o); tidyLabels(cc);
+  App.inner[App.inner.length - 1].frame = zoomFrame(cc, { label: CPUSYM[k] || k, move: key !== 'cpu_ctrl' && key !== 'cpu_bus' });
   App.circ[t] = cc; App.hist[t] = { u: [], r: [] }; App.sel = null; App.running = true;
   cpuInfo(null); CPU.running = false;
   setMode(t);
@@ -3688,11 +4165,12 @@ function truthTable() {
   h += '</table><div style="flex:1;min-width:260px">';
   outs.forEach((c, k) => {
     const mt = []; rows.forEach((o, r) => { if (o[k]) mt.push(r); });
-    h += `<h4 style="margin:4px 0">${esc(name(c))}</h4><div class="formula">${esc(name(c))} = ${minimize(mt, n, vars)}</div>`;
-    if (n >= 2 && n <= 4) h += kvSVG(mt, n, vars) + `<div><button class="btn kvopen" data-k="${k}">Im KV-Editor selbst Päckchen bilden</button></div>`;
+    if (examAllow('synth')) h += `<h4 style="margin:4px 0">${esc(name(c))}</h4><div class="formula">${esc(name(c))} = ${minimize(mt, n, vars)}</div>`;
+    if (examAllow('synth') && n >= 2 && n <= 4) h += kvSVG(mt, n, vars);
+    if (examAllow('kv') && n >= 2 && n <= 4) h += `<div><button class="btn kvopen" data-k="${k}">${examAllow('synth') ? '' : esc(name(c)) + ': '}Im KV-Editor selbst Päckchen bilden</button></div>`;
   });
   h += '</div></div><p style="font-size:12.5px;color:#667085">Schreibweise: ∧ = UND, ∨ = ODER, ¬ = NICHT. Die Formeln sind die disjunktive Minimalform; die farbigen Blöcke im KV-Diagramm zeigen die zusammengefassten Terme. Eingänge sind die Schalter von oben nach unten, Ausgänge die Lampen.</p><div class="pbtns"><button class="btn" id="ttCsv">Als CSV herunterladen</button>';
-  if (!taskLocked()) h += '<button class="btn" id="ttSyn">Schaltung daraus neu aufbauen …</button>';
+  if (!taskLocked() && examAllow('synth')) h += '<button class="btn" id="ttSyn">Schaltung daraus neu aufbauen …</button>';
   h += '</div>';
   openModal('Wahrheitstabelle', h);
   document.querySelectorAll('#mBody .kvopen').forEach(b => b.onclick = () => { const k = +b.dataset.k, mt = []; rows.forEach((o, r) => { if (o[k]) mt.push(r); }); kvEditor({ n, vars, out: name(outs[k]), mts: mt }); });
@@ -3844,6 +4322,7 @@ function synthCircuit(outsList, varOrder, mode) {
   return { cc, gates: gates.length };
 }
 function synthDialog(preset, varsHint) {
+  if (examBlocked('synth')) return;
   if (App.mode !== 'digital') setMode('digital');
   openModal('Schaltung aus Schaltfunktion erzeugen', `<div class="help"><p>Gib eine oder mehrere Schaltfunktionen ein (eine pro Zeile). Erlaubt sind <b>∧ &amp; *</b> (UND), <b>∨ | +</b> (ODER), <b>¬ ! ~</b> (NICHT), <b>⊕ ^</b> (XOR), Klammern und die Wörter und/oder/nicht. Variablen bestehen aus Buchstaben (z. B. A, B, Cin).</p></div>
   <textarea id="synT" class="share" style="height:110px;font-size:14px">${esc(preset || 'Y = (A ∧ ¬B) ∨ C')}</textarea>
@@ -3885,7 +4364,7 @@ function parseLines(txt) {
 }
 
 /* ---------------- Aufgabenmodus ---------------- */
-const IO_TYPES = ['switch', 'button', 'led', 'text'];
+const IO_TYPES = ['switch', 'button', 'led', 'lind', 'text'];
 const taskLocked = () => !!(App.task && App.task.lockTools);
 function taskAllowed(type) {
   const T = App.task; if (!T || !T.allowed) return true;
@@ -4174,7 +4653,7 @@ function kvRender() {
   h += `<h4 style="margin:12px 0 4px">${KV.form === 'dnf' ? 'Disjunktive Normalform (DNF)' : 'Konjunktive Normalform (KNF)'}</h4>
   <div class="kvterm"><b>${esc(KV.out)} =</b><input id="kvTerm" class="${tst}" value="${esc(KV.term || '')}" maxlength="300" placeholder="${KV.form === 'dnf' ? 'Päckchen-Terme mit ∨ verbinden' : 'Klauseln mit ∧ verbinden'}" autocomplete="off" autocapitalize="characters" spellcheck="false"><span class="kvst ${tst}">${tst === 'ok' ? '✓' : tst === 'bad' ? '✗' : tst === 'warn' ? '!' : ''}</span></div>
   <div class="pbtns kvsym">${['¬', '∧', '∨', '(', ')'].map(c => `<button class="btn" data-sym="${c}">${c}</button>`).join('')}<span class="kvhint" style="margin:0">Statt der Zeichen geht auch NICHT/UND/ODER, ! &amp; | oder A' für ¬A.</span></div>`;
-  h += `<div class="pbtns"><button class="btn pri" id="kvChk">Prüfen</button>${KV.groups.length ? '<button class="btn" id="kvDelAll">Alle Päckchen löschen</button>' : ''}${taskLocked() ? '' : '<button class="btn" id="kvSyn">Schaltung daraus aufbauen …</button>'}</div>`;
+  h += `<div class="pbtns"><button class="btn pri" id="kvChk">Prüfen</button>${KV.groups.length ? '<button class="btn" id="kvDelAll">Alle Päckchen löschen</button>' : ''}${taskLocked() || !examAllow('synth') ? '' : '<button class="btn" id="kvSyn">Schaltung daraus aufbauen …</button>'}</div>`;
   if (chk) h += `<div class="kvres">${chk.html}</div>`;
   h += `<p class="kvhint">Die kleinen Zahlen in den Feldern sind die Zeilennummern der Wahrheitstabelle.</p>`;
   body.innerHTML = h;
@@ -4312,6 +4791,7 @@ function kvFromCircuit(k) {
 }
 /* Aufruf: optional mit Vorgabe {n, vars, out, mts} (z. B. aus der Wahrheitstabelle) */
 function kvEditor(pre) {
+  if (examBlocked('kv')) return;
   kvLoad(); KVS.pend.clear(); KVS.chk = null; KVS.drag = null;
   if (pre) {
     KV.n = pre.n; KV.vars = KV.vars.map((d, i) => i < pre.n ? kvName(pre.vars[i], 'ABCD'[i]) : d); KV.out = kvName(pre.out, 'Y');
@@ -4368,6 +4848,17 @@ function pasteClip(off = 3) {
   }
   for (const w of d.wires) { const n = { id: uid(), x1: w.x1 + off, y1: w.y1 + off, x2: w.x2 + off, y2: w.y2 + off }; cc.wires.push(n); wires.add(n.id); }
   changed(); select({ kind: 'multi', ids, wires });
+}
+/* Einfügen an einer Stelle (Kontextmenü): linke obere Ecke der Zwischenablage landet am Rasterpunkt */
+function pasteAt(gx, gy) {
+  const s = App.clip[App.mode]; if (!s) return;
+  const d = JSON.parse(s); let x0 = Infinity, y0 = Infinity;
+  for (const o of d.comps) { x0 = Math.min(x0, o.x); y0 = Math.min(y0, o.y); }
+  for (const w of d.wires) { x0 = Math.min(x0, w.x1, w.x2); y0 = Math.min(y0, w.y1, w.y2); }
+  if (!isFinite(x0)) return;
+  for (const o of d.comps) { o.x += gx - x0; o.y += gy - y0; }
+  for (const w of d.wires) { w.x1 += gx - x0; w.x2 += gx - x0; w.y1 += gy - y0; w.y2 += gy - y0; }
+  const keep = App.clip[App.mode]; App.clip[App.mode] = JSON.stringify(d); pasteClip(0); App.clip[App.mode] = keep;
 }
 function dupSel() { const d = selectionData(); if (!d) return; App.clip[App.mode] = JSON.stringify(d); pasteClip(2); }
 function multiProps() {
@@ -4429,6 +4920,7 @@ function circBounds(cc) {
   const ext = (x, y) => { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); };
   for (const c of cc.comps) { const r = compRect(c); ext(r[0], r[1] - 1.6); ext(r[2], r[3] + 0.6); for (const pp of pinsW(c)) ext(pp.x, pp.y); }
   for (const w of cc.wires) { ext(w.x1, w.y1); ext(w.x2, w.y2); }
+  const IF = cc === circ() && innerFrame(); if (IF) { ext(IF.x0, IF.y0); ext(IF.x1, IF.y1); }
   return [x0, y0, x1, y1];
 }
 function makeSVG() {
@@ -4456,10 +4948,10 @@ function diagnose() {
   if (App.mode === 'digital') {
     const open = [];
     for (const c of cc.comps) { const d = DEFS[c.type]; if (!d.evalD) continue; d.pins(c).forEach((p, i) => { if (p.dir === 'in' && net.deg.get(net.pinKeys.get(c.id)[i]) === 1) open.push(esc((c.label || d.name) + ' (' + p.name + ')')); }); }
-    for (const c of cc.comps) if (c.type === 'led' && net.deg.get(net.pinKeys.get(c.id)[0]) === 1) open.push('Lampe ' + esc(c.label));
+    for (const c of cc.comps) if (isOutT(c.type) && net.deg.get(net.pinKeys.get(c.id)[0]) === 1) open.push((c.type === 'led' ? 'Lampe ' : 'Anzeige ') + esc(c.label));
     if (open.length) msgs.push('Nicht angeschlossen (gilt als 0): ' + open.slice(0, 3).join(', ') + (open.length > 3 ? ` und ${open.length - 3} weitere` : ''));
   } else {
-    const src = cc.comps.some(c => ['battery', 'acsrc'].includes(c.type));
+    const src = cc.comps.some(c => ['battery', 'acsrc', 'vdd', 'logsw'].includes(c.type));
     const loads = cc.comps.filter(c => !['text', 'ground', 'battery', 'acsrc'].includes(c.type));
     if (!src && loads.length) msgs.push('Es fehlt eine Spannungsquelle.');
     const open = loads.filter(c => !['relay', 'timer555', 'pot'].includes(c.type) && net.pinKeys.get(c.id).some(k => net.deg.get(k) === 1));
@@ -4478,7 +4970,9 @@ const DT = {
   blue: { name: 'LED blau', Is: ledIs(3.0), n: 2, vbi: 3.0, col: '#2a84ff', mat: 'InGaN' },
   zener: { name: 'Z-Diode 4,7 V', Is: 2.5e-9, n: 1.75, vbi: 0.7, vz: 4.7 },
 };
-const PN = { sub: 'pn', U: 0, T: 25, type: 'si', field: false, parts: [], fl: [], acc: 0, gacc: 0, W: 0, H: 0, geo: null, t: 0, txtKey: '' };
+const TR_BE = 6, TR_BC = 9;   // Transistor: Spalten 0–5 Emitter, 6–8 Basis (dünn), 9–15 Kollektor
+function trZoneOf(i) { return i < TR_BE ? 'E' : i < TR_BC ? 'B' : 'C'; }
+const PN = { sub: 'pn', U: 0, ube: 0, uce: 5, T: 25, type: 'si', field: false, parts: [], fl: [], acc: 0, gacc: 0, W: 0, H: 0, geo: null, t: 0, txtKey: '' };
 function pnI(U, t = DT[PN.type]) {
   let I = t.Is * (Math.exp(U / (t.n * VT)) - 1);
   if (t.vz) I -= 5e-3 * Math.exp((-U - t.vz) / 0.06);
@@ -4486,14 +4980,28 @@ function pnI(U, t = DT[PN.type]) {
 }
 function pnRange(t = DT[PN.type]) { return [t.vz ? -Math.round((t.vz + 0.12) * 100) / 100 : -6, Math.round(t.n * VT * Math.log(0.03 / t.Is + 1) * 100) / 100]; }
 
+const isTr = () => PN.sub === 'npn' || PN.sub === 'pnp';
 function pnShow() {
   $$('#pnSub button').forEach(b => b.classList.toggle('on', b.dataset.s === PN.sub));
-  gcv.style.display = PN.sub === 'pn' ? 'block' : 'none';   // vor dem Ausmessen einblenden, sonst bleibt die Kennlinie leer
+  gcv.style.display = PN.sub === 'pn' || isTr() ? 'block' : 'none';   // vor dem Ausmessen einblenden, sonst bleibt die Kennlinie leer
   pnControls(); pnResize(); pnLayout();
 }
 $$('#pnSub button').forEach(b => b.onclick = () => { PN.sub = b.dataset.s; PN.parts = []; pnShow(); scheduleSave(); });
 function pnControls() {
   const el = $('#pnCtl'); let h = '';
+  if (isTr()) {
+    const sg = PN.sub === 'pnp' ? '−' : '';
+    h += `<div class="fld"><label>Basis-Emitter-Spannung U<sub>BE</sub></label><input type="range" id="trBE" min="0" max="0.72" step="0.01" value="${PN.ube}"><div class="rv"><span>0 V</span><b id="trBEv"></b><span>${sg}0,72 V</span></div></div>`;
+    h += `<div class="fld"><label>Kollektor-Emitter-Spannung U<sub>CE</sub></label><input type="range" id="trCE" min="0" max="10" step="0.1" value="${PN.uce}"><div class="rv"><span>0 V</span><b id="trCEv"></b><span>${sg}10 V</span></div></div>`;
+    h += `<div class="pbtns"><button class="btn" id="trOff">gesperrt</button><button class="btn" id="trOn">leitend</button><button class="btn" id="trCE0">U<sub>CE</sub> = 0</button></div>`;
+    el.innerHTML = h;
+    const BE = $('#trBE'), CE = $('#trCE');
+    const upd = () => { PN.ube = +BE.value; PN.uce = +CE.value; $('#trBEv').textContent = (PN.sub === 'pnp' && PN.ube ? '−' : '') + fmtN(PN.ube, 2) + ' V'; $('#trCEv').textContent = (PN.sub === 'pnp' && PN.uce ? '−' : '') + fmtN(PN.uce, 1) + ' V'; };
+    BE.oninput = upd; CE.oninput = upd; upd();
+    const set = (be, ce) => { if (be !== null) BE.value = be; if (ce !== null) CE.value = ce; upd(); };
+    $('#trOff').onclick = () => set(0, null); $('#trOn').onclick = () => set(0.68, PN.uce < 1 ? 5 : null); $('#trCE0').onclick = () => set(null, 0);
+    return;
+  }
   if (PN.sub === 'pn') {
     const [a, b] = pnRange();
     PN.U = clamp(PN.U, a, b);
@@ -4525,13 +5033,17 @@ new ResizeObserver(() => { if (App.mode === 'pn') { pnResize(); pnLayout(); } })
 function pnLayout() {
   const W = PN.W, H = PN.H; if (!W || !H) return;
   const cols = 16, rows = 7;
-  const cell = Math.min((W - 60) / cols, (H - 200) / rows, 64);
+  const cell = Math.min((W - (isTr() ? 170 : 60)) / cols, (H - (isTr() ? 240 : 200)) / rows, 64);
   const x0 = (W - cell * cols) / 2, y0 = 56;
   const atoms = [];
   for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
     let k = 'si';
     const dop = ((i * 2 + j * 3) % 5) === 2;
     if (dop) { if (PN.sub === 'n') k = 'P'; else if (PN.sub === 'p') k = 'B'; else if (PN.sub === 'pn') k = i < cols / 2 ? 'B' : 'P'; }
+    if (isTr()) {   // Emitter stark, Basis schwach, Kollektor mittel dotiert
+      const z = trZoneOf(i), npn = PN.sub === 'npn', d2 = z === 'E' ? ((i + j * 2) % 3) === 1 : z === 'B' ? ((i * 3 + j) % 7) === 3 : ((i * 2 + j * 3) % 5) === 2;
+      k = d2 ? ((z === 'B') === npn ? 'B' : 'P') : 'si';
+    }
     atoms.push({ i, j, x: x0 + (i + 0.5) * cell, y: y0 + (j + 0.5) * cell, k });
   }
   // Bindungsplätze (Mitte jeder Elektronenpaarbindung): Hier sitzen Löcher. Nachbarn = Bindungen am selben Atom.
@@ -4542,7 +5054,7 @@ function pnLayout() {
   }
   const bondsOf = ([i, j]) => [at[key(i, j, 1)], at[key(i - 1, j, 1)], at[key(i, j, 0)], at[key(i, j - 1, 0)]].filter(v => v !== undefined);
   sites.forEach((st, k) => { st.nb = [...new Set([...bondsOf(st.a), ...bondsOf(st.b)])].filter(v => v !== k); });
-  PN.geo = { cols, rows, cell, x0, y0, x1: x0 + cols * cell, y1: y0 + rows * cell, xj: x0 + cols * cell / 2, atoms, sites, siteAt: (i, j, h) => at[key(i, j, h)], bondsOf };
+  PN.geo = { cols, rows, cell, x0, y0, x1: x0 + cols * cell, y1: y0 + rows * cell, xj: x0 + cols * cell / 2, xBE: x0 + TR_BE * cell, xBC: x0 + TR_BC * cell, atoms, sites, siteAt: (i, j, h) => at[key(i, j, h)], bondsOf };
   PN.parts = PN.parts.filter(p => p.k !== 'h');   // Löcher hängen an Bindungsplätzen – nach neuem Layout neu bilden
 }
 function zoneHalf() {
@@ -4571,6 +5083,7 @@ function pnTargets() {
 function pnFrame(dt) {
   if (!PN.geo) pnLayout(); const g = PN.geo; if (!g) return;
   PN.t += dt;
+  if (isTr()) { trFrame(dt); return; }
   const T = pnTargets(), P = PN.parts, t = DT[PN.type];
   const free = k => P.filter(p => p.k === k && p.state === 'free');
   const rnd = (a, b) => a + Math.random() * (b - a);
@@ -4662,8 +5175,9 @@ function holeStep(p, dt, g, s, drift, inRegion, t) {
   if (p.state === 'cross') {
     const m = p.mate; if (!m || m.dead) { p.state = 'free'; return; }
     if (Math.hypot(m.x - p.x, m.y - p.y) < 6 * s + g.cell * 0.2) { recomb(p, m, s, t); return; }
-    const nb = S[p.site].nb, best = nb.reduce((b, k) => !b || Math.hypot(S[k].x - m.x, S[k].y - m.y) < Math.hypot(S[b].x - m.x, S[b].y - m.y) ? k : b, null);
-    p.hop = { from: p.site, to: best, t: 0, d: 0.16 }; return;
+    const nb = S[p.site].nb.filter(k => !PN.occ || !PN.occ.has(k)), best = nb.reduce((b, k) => b === null || Math.hypot(S[k].x - m.x, S[k].y - m.y) < Math.hypot(S[b].x - m.x, S[b].y - m.y) ? k : b, null);
+    if (best === null) return;
+    p.hop = { from: p.site, to: best, t: 0, d: 0.16 }; if (PN.occ) PN.occ.add(best); return;
   }
   if (p.state === 'gen') {
     const nb = S[p.site].nb, left = nb.filter(k => S[k].x < S[p.site].x - 1);
@@ -4671,11 +5185,11 @@ function holeStep(p, dt, g, s, drift, inRegion, t) {
     p.hop = { from: p.site, to: left[Math.floor(Math.random() * left.length)], t: 0, d: 0.09 }; return;
   }
   p.wait -= dt * tf; if (p.wait > 0) return;
-  const [a, b] = inRegion('h'), cur = S[p.site], inR = st => st.x >= a && st.x <= b;
+  const [a, b] = inRegion('h', p), cur = S[p.site], inR = st => st.x >= a && st.x <= b;
   let cand = cur.nb.filter(k => inR(S[k]));
   if (!inR(cur)) { const mid = (a + b) / 2; cand = cur.nb.filter(k => Math.abs(S[k].x - mid) < Math.abs(cur.x - mid)); }
   // Spannung: Löcher wandern zum Minuspol (links), in Durchlassrichtung zur Grenzschicht (rechts)
-  const bias = drift ? -1.7 : PN.sub === 'pn' && PN.U > 0 ? 0.6 : 0;
+  const bias = p.bias !== undefined ? p.bias : drift ? -1.7 : PN.sub === 'pn' && PN.U > 0 ? 0.6 : 0;
   if (drift && cur.x < g.x0 + g.cell * 0.75) {   // links angekommen: über den äußeren Stromkreis rechts wieder hinein
     const edge = S.map((st, k) => k).filter(k => S[k].x > g.x1 - g.cell * 0.75 && !PN.occ.has(k)); if (!edge.length) { p.wait = 0.2; return; } const nk = edge[Math.floor(Math.random() * edge.length)]; PN.occ.delete(p.site); PN.occ.add(nk);
     p.site = nk; p.x = S[nk].x; p.y = S[nk].y; p.wait = 0.2; return;
@@ -4696,9 +5210,10 @@ function pnDraw(T) {
   const c = pctx, g = PN.geo, d = PN.dpr, s = g.cell;
   c.setTransform(d, 0, 0, d, 0, 0); c.clearRect(0, 0, PN.W, PN.H);
   c.fillStyle = '#fbfcfe'; c.fillRect(0, 0, PN.W, PN.H);
-  const pn = PN.sub === 'pn', w = T.w || 0;
+  const pn = PN.sub === 'pn', w = T.w || 0, tr = isTr();
   // Gebiete
-  if (pn) {
+  if (tr) trRegions(c, g, T);
+  else if (pn) {
     c.fillStyle = '#fff0ef'; c.fillRect(g.x0, g.y0, g.xj - g.x0, g.y1 - g.y0);
     c.fillStyle = '#edf3ff'; c.fillRect(g.xj, g.y0, g.x1 - g.xj, g.y1 - g.y0);
     c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(g.xj - w, g.y0, 2 * w, g.y1 - g.y0);
@@ -4733,8 +5248,8 @@ function pnDraw(T) {
     c.fillStyle = '#475467'; c.font = `600 ${Math.max(9, r * 0.75)}px ${FONT}`; c.textAlign = 'center'; c.textBaseline = 'middle';
     c.fillText(a.k === 'si' ? 'Si' : a.k, a.x, a.y + 0.5);
     if (a.k !== 'si') {
-      const inZone = pn && Math.abs(a.x - g.xj) < w;
-      const alpha = !pn || inZone ? 1 : 0.28;
+      const inZone = tr ? (Math.abs(a.x - g.xBE) < T.wBE || Math.abs(a.x - g.xBC) < T.wBC) : pn && Math.abs(a.x - g.xj) < w;
+      const alpha = (!pn && !tr) || inZone ? 1 : 0.28;
       c.globalAlpha = alpha;
       const bx = a.x + r * 0.85, by = a.y - r * 0.85, br = Math.max(6, r * 0.42);
       circ0(c, bx, by, br); c.fillStyle = a.k === 'P' ? '#e03131' : '#1c64f2'; c.fill();
@@ -4769,6 +5284,7 @@ function pnDraw(T) {
     c.font = `700 ${pr * 1.6}px ${FONT}`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(p.k === 'e' ? '−' : '+', p.x, p.y + 0.5);
   }
   // äußerer Stromkreis
+  if (tr) { trCircuit(c, g, T); return; }
   const showCirc = pn || PN.field;
   if (showCirc) {
     const yb = Math.min(PN.H - 40, g.y1 + 90), xm = (g.x0 + g.x1) / 2;
@@ -4799,6 +5315,7 @@ function pnDraw(T) {
   }
 }
 function pnGraph() {
+  if (isTr()) { gcv.style.display = 'block'; trGraph(); return; }
   const show = PN.sub === 'pn'; gcv.style.display = show ? 'block' : 'none'; if (!show) return;
   const c = gctx, d = window.devicePixelRatio || 1, W = gcv.width / d, H = gcv.height / d; if (!W) return;
   c.setTransform(d, 0, 0, d, 0, 0); c.clearRect(0, 0, W, H);
@@ -4831,7 +5348,8 @@ function pnGraph() {
 function pnText(T) {
   const t = DT[PN.type], U = PN.U, I = pnI(U);
   let k, h;
-  if (PN.sub === 'intr') {
+  if (isTr()) { const r = trText(); k = r[0]; h = r[1]; }
+  else if (PN.sub === 'intr') {
     k = 'i' + Math.round(PN.T / 25) + PN.field;
     h = '<b>Eigenleitung:</b> Im reinen Silizium-Kristall ist jedes Atom über vier <i>Elektronenpaarbindungen</i> mit seinen Nachbarn verbunden. Alle Elektronen sind gebunden – reines Silizium leitet bei tiefer Temperatur kaum.<br><br>Durch Wärme brechen einzelne Bindungen auf: Es entsteht ein <b>freies Elektron</b> und an seiner alten Stelle ein <b>Loch</b> (Defektelektron), das sich wie eine positive Ladung verhält. '
       + (PN.T > 80 ? 'Bei der hohen Temperatur entstehen viele Elektron-Loch-Paare – der Widerstand ist deutlich kleiner. Deshalb sind Halbleiter <b>Heißleiter</b> (NTC).' : 'Erhöhe die Temperatur und beobachte, wie die Zahl der Ladungsträger steigt.')
@@ -4853,6 +5371,208 @@ function pnText(T) {
       + (t.col ? `<br><br><b>Leuchtdiode:</b> Bei jeder Rekombination wird Energie als <b>Lichtquant (Photon)</b> abgegeben. Die Farbe hängt von der Bandlücke des Materials ab (${t.mat}) – blaues Licht braucht mehr Energie, deshalb ist auch die Schwellenspannung höher.` : '<br><br>Bei Silizium wird die Energie bei der Rekombination als Wärme abgegeben.');
   }
   if (k === PN.txtKey) return; PN.txtKey = k; $('#pnText').innerHTML = h;
+}
+
+/* ================= Transistor (NPN / PNP) im Teilchenmodell ================= */
+/* Text mit tiefgestelltem Index, z. B. ['U', 'BE', ' = 0,68 V'] */
+function subText(c, [a, i, b], x, y, size, align, col) {
+  c.fillStyle = col; c.textBaseline = 'middle';
+  c.font = `700 ${size}px ${FONT}`; const wa = c.measureText(a).width, wb = c.measureText(b).width;
+  c.font = `700 ${size * 0.72}px ${FONT}`; const wi = c.measureText(i).width;
+  const W = wa + wi + wb, x0 = align === 'right' ? x - W : align === 'center' ? x - W / 2 : x;
+  c.textAlign = 'left';
+  c.font = `700 ${size}px ${FONT}`; c.fillText(a, x0, y); c.fillText(b, x0 + wa + wi, y);
+  c.font = `700 ${size * 0.72}px ${FONT}`; c.fillText(i, x0 + wa, y + size * 0.3);
+}
+const TRV = { Is: 1.7e-14, beta: 100, vis: 0.13 };   // vis: Anteil, der im Modell sichtbar in der Basis rekombiniert
+function trCur() {
+  const inj = TRV.Is * (Math.exp(PN.ube / VT) - 1), fc = 1 - Math.exp(-PN.uce / 0.08);
+  const ic = inj * fc * TRV.beta / (TRV.beta + 1);
+  return { inj, fc, ic, ib: inj - ic, ie: inj };
+}
+function trZones() {
+  const c = PN.geo.cell, ucb = Math.max(0, PN.uce - PN.ube);
+  return { wBE: clamp(c * 0.55 * Math.sqrt(clamp((0.75 - PN.ube) / 0.75, 0.03, 1)), c * 0.12, c * 0.55), wBC: clamp(c * 0.5 * Math.sqrt((0.7 + ucb) / 0.7), c * 0.3, c * 1.25) };
+}
+function trFrame(dt) {
+  const g = PN.geo, P = PN.parts, s = g.cell / 40, Z = trZones(), npn = PN.sub === 'npn';
+  const kEC = npn ? 'e' : 'h', kB = npn ? 'h' : 'e', rnd = (a, b) => a + Math.random() * (b - a);
+  const rI = r => r === 'E' ? [g.x0 + 4, g.xBE - Z.wBE - 3] : r === 'B' ? [g.xBE + Z.wBE + 3, g.xBC - Z.wBC - 3] : [g.xBC + Z.wBC + 3, g.x1 - 4];
+  const inRegion = (k, p) => rI(p && p.reg ? p.reg : 'B');
+  const dopE = npn ? 'P' : 'B', dopB = npn ? 'B' : 'P';
+  const tgt = {
+    E: g.atoms.filter(a => a.k === dopE && trZoneOf(a.i) === 'E' && a.x < g.xBE - Z.wBE).length,
+    B: g.atoms.filter(a => a.k === dopB && trZoneOf(a.i) === 'B' && a.x > g.xBE + Z.wBE && a.x < g.xBC - Z.wBC).length,
+    C: g.atoms.filter(a => a.k === dopE && trZoneOf(a.i) === 'C' && a.x > g.xBC + Z.wBC).length,
+  };
+  PN.occ = holeOcc();
+  const xb = (g.xBE + g.xBC) / 2;
+  const spawn = (k, r) => {
+    const [a, b] = rI(r), x = r === 'E' ? g.x0 + rnd(3, g.cell) : r === 'C' ? g.x1 - rnd(3, g.cell) : rnd(a, b), y = r === 'B' ? g.y1 - rnd(4, g.cell * 0.8) : rnd(g.y0 + 5, g.y1 - 5);
+    if (k === 'e') { const p = newPart('e', clamp(x, a, b), y); p.reg = r; P.push(p); return; }
+    const sk = siteNear(clamp(x, a, b), y); if (PN.occ.has(sk)) return; const h = newHole(sk); h.reg = r; P.push(h); PN.occ.add(sk);
+  };
+  // Anzahl der Majoritätsträger je Gebiet: fehlende kommen aus dem Anschlussdraht, überzählige verlassen den Kristall
+  for (const r of ['E', 'B', 'C']) {
+    const k = r === 'B' ? kB : kEC, L = P.filter(p => p.k === k && p.reg === r && p.state === 'free' && !p.dead && !p.hop);
+    if (L.length < tgt[r]) { const n = Math.min(tgt[r] - L.length, r === 'B' ? 1 : 3); for (let i = 0; i < n; i++) spawn(k, r); }
+    else if (L.length > tgt[r]) {
+      const pick = r === 'E' ? L.reduce((b, q) => q.x < b.x ? q : b) : r === 'C' ? L.reduce((b, q) => q.x > b.x ? q : b) : L.reduce((b, q) => Math.hypot(q.x - xb, q.y - g.y1) < Math.hypot(b.x - xb, b.y - g.y1) ? q : b);
+      pick.dead = 1;
+    }
+  }
+  // Injektion aus dem Emitter
+  const I = trCur(), busy = P.filter(p => !p.dead && p.state !== 'free').length;
+  if (I.inj > 1e-7) {
+    PN.acc += dt * 11 * Math.sqrt(clamp(I.inj / 0.02, 0, 1.5));
+    if (busy >= 14) PN.acc = Math.min(PN.acc, 1);
+    while (PN.acc >= 1 && busy < 14) {
+      PN.acc -= 1;
+      const E = P.filter(p => p.k === kEC && p.reg === 'E' && p.state === 'free' && !p.dead && !p.hop); if (!E.length) break;
+      const q = E.reduce((b, v) => v.x > b.x ? v : b);
+      const rec = Math.random() < (1 - I.fc) + I.fc * TRV.vis;
+      const Bs = rec ? P.filter(p => p.k === kB && p.reg === 'B' && p.state === 'free' && !p.dead && !p.hop) : [];
+      if (Bs.length) { const m = Bs.reduce((b, v) => Math.abs(v.x - g.xBE) < Math.abs(b.x - g.xBE) ? v : b); q.state = 'cross'; m.state = 'cross'; q.mate = m; m.mate = q; }
+      else if (rec && I.fc < 0.5) { PN.acc = Math.min(PN.acc, 0.5); break; }   // ohne Feld zum Kollektor: erst wenn die Basis Nachschub hat
+      else q.state = 'inj';
+    }
+  } else PN.acc = 0;
+  // Bewegung
+  const xB0 = g.xBE + Z.wBE + 3, xC0 = g.xBC - Z.wBC, xC1 = g.xBC + Z.wBC + 3, stateBy = p => {
+    if (p.state === 'inj' && p.x >= xB0) { p.state = 'base'; p.reg = 'B'; }
+    if (p.state === 'base' && p.x >= xC0) { if (I.fc >= 0.3) p.state = 'sw'; else if (p.k === 'e') { p.x = xC0 - 3; p.a = Math.PI - p.a; } }
+    if (p.state === 'sw' && p.x >= xC1) { p.state = 'free'; p.reg = 'C'; }
+  };
+  for (const p of P) {
+    if (p.dead) continue;
+    p.life += dt;
+    if (p.k === 'h') { trHoleStep(p, dt, g, s, inRegion); stateBy(p); continue; }
+    const sp = 70 * s;
+    if (p.state === 'cross') {
+      const m = p.mate; if (!m || m.dead) { p.state = 'free'; continue; }
+      const dx = m.x - p.x, dy = m.y - p.y, d = Math.hypot(dx, dy);
+      if (d < 6 * s + (m.k === 'h' ? g.cell * 0.2 : 0)) { recomb(m.k === 'h' ? m : p, m.k === 'h' ? p : m, s, {}); continue; }
+      const v = 150 * s; p.x += dx / d * v * dt; p.y += dy / d * v * dt; continue;
+    }
+    if (p.state === 'inj' || p.state === 'sw') { p.x += (p.state === 'sw' ? 230 : 120) * s * dt; p.y += Math.sin(p.life * 7 + p.a) * 0.6; stateBy(p); continue; }
+    p.a += (Math.random() - 0.5) * 18 * dt;
+    let vx = Math.cos(p.a) * sp, vy = Math.sin(p.a) * sp;
+    if (p.state === 'base') vx = Math.abs(vx) * 0.4 + 40 * s;   // Diffusion durch die dünne Basis
+    p.x += vx * dt; p.y += vy * dt;
+    if (p.state === 'base') { stateBy(p); }
+    else { const [a, b] = rI(p.reg); if (p.x < a) { p.x = a; p.a = Math.PI - p.a; } if (p.x > b) { p.x = b; p.a = Math.PI - p.a; } }
+    if (p.y < g.y0 + 4) { p.y = g.y0 + 4; p.a = -p.a; } if (p.y > g.y1 - 4) { p.y = g.y1 - 4; p.a = -p.a; }
+  }
+  // ohne Kollektorfeld: Ladungsträger, die in der Basis unterwegs sind, rekombinieren dort
+  if (I.fc < 0.3) for (const p of P) {
+    if (p.dead || p.state !== 'base' || p.mate) continue;
+    const Bs = P.filter(q => q.k === kB && q.reg === 'B' && q.state === 'free' && !q.dead && !q.hop); if (!Bs.length) break;
+    const m = Bs.reduce((b, v) => Math.hypot(v.x - p.x, v.y - p.y) < Math.hypot(b.x - p.x, b.y - p.y) ? v : b); p.state = 'cross'; m.state = 'cross'; p.mate = m; m.mate = p;
+  }
+  PN.parts = P.filter(p => !p.dead);
+  PN.fl = PN.fl.filter(f => (f.t += dt) < (f.ph ? 1.2 : 0.6));
+  const T = { wBE: Z.wBE, wBC: Z.wBC };
+  pnDraw(T); pnGraph(); pnText(T);
+}
+/* Löcher im Transistor: injizierte Löcher (PNP) springen gerichtet von Bindung zu Bindung zum Kollektor */
+function trHoleStep(p, dt, g, s, inRegion) {
+  const S = g.sites;
+  if (!p.hop && ['inj', 'base', 'sw'].includes(p.state)) {
+    const cur = S[p.site], cand = cur.nb.filter(k => !PN.occ.has(k));
+    let k = null;
+    if (p.state === 'base') {   // Diffusion mit leichter Vorzugsrichtung
+      const xlim = trCur().fc < 0.3 ? PN.geo.xBC - trZones().wBC - 3 : Infinity; cand.splice(0, cand.length, ...cand.filter(q => S[q].x <= xlim));
+      const w = cand.map(q => Math.exp(1.1 * (S[q].x - cur.x) / (g.cell * 0.7))); let r = Math.random() * w.reduce((a, b) => a + b, 0);
+      for (let i = 0; i < cand.length; i++) { r -= w[i]; if (r <= 0) { k = cand[i]; break; } }
+    } else { const fw = cand.filter(q => S[q].x > cur.x + 1); if (fw.length) k = fw[Math.floor(Math.random() * fw.length)]; }
+    if (k === null) return;
+    p.hop = { from: p.site, to: k, t: 0, d: p.state === 'sw' ? 0.07 : p.state === 'inj' ? 0.1 : 0.16 }; PN.occ.add(k);
+    return;
+  }
+  holeStep(p, dt, g, s, 0, inRegion, {});
+}
+function trRegions(c, g, T) {
+  const npn = PN.sub === 'npn', nC = '#edf3ff', pC = '#fff0ef';
+  c.fillStyle = npn ? nC : pC; c.fillRect(g.x0, g.y0, g.xBE - g.x0, g.y1 - g.y0); c.fillRect(g.xBC, g.y0, g.x1 - g.xBC, g.y1 - g.y0);
+  c.fillStyle = npn ? pC : nC; c.fillRect(g.xBE, g.y0, g.xBC - g.xBE, g.y1 - g.y0);
+  c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(g.xBE - T.wBE, g.y0, 2 * T.wBE, g.y1 - g.y0); c.fillRect(g.xBC - T.wBC, g.y0, 2 * T.wBC, g.y1 - g.y0);
+  c.strokeStyle = '#98a2b3'; c.setLineDash([5, 4]); c.lineWidth = 1.2;
+  for (const x of [g.xBE - T.wBE, g.xBE + T.wBE, g.xBC - T.wBC, g.xBC + T.wBC]) ln(c, x, g.y0 - 6, x, g.y1 + 6);
+  c.setLineDash([]);
+  c.font = `600 14px ${FONT}`; c.textAlign = 'center'; c.textBaseline = 'bottom';
+  const n = '#1c4fa0', p = '#c92a2a';
+  c.fillStyle = npn ? n : p; c.fillText(`Emitter (${npn ? 'n' : 'p'}, stark dotiert)`, (g.x0 + g.xBE) / 2, g.y0 - 10); c.fillText(`Kollektor (${npn ? 'n' : 'p'})`, (g.xBC + g.x1) / 2, g.y0 - 10);
+  c.fillStyle = npn ? p : n; c.fillText(`Basis (${npn ? 'p' : 'n'}, dünn)`, (g.xBE + g.xBC) / 2, g.y0 - 10);
+}
+function trCircuit(c, g, T) {
+  const npn = PN.sub === 'npn', I = trCur(), ym = (g.y0 + g.y1) / 2, yb = Math.min(PN.H - 40, g.y1 + 116), xb = (g.xBE + g.xBC) / 2;
+  const xl = g.x0 - 20, xr = g.x1 + 20;
+  const paths = { E: [[g.x0, ym], [xl, ym], [xl, yb], [xb, yb]], C: [[g.x1, ym], [xr, ym], [xr, yb], [xb, yb]], B: [[xb, g.y1 + 24], [xb, yb]] };
+  c.strokeStyle = '#4a5468'; c.lineWidth = 3; c.lineJoin = 'round';
+  const poly = pts => { c.beginPath(); pts.forEach(([x, y], i) => i ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke(); };
+  poly(paths.E); poly(paths.C); poly([[xb, g.y1], [xb, yb]]);
+  circ0(c, xb, yb, 4); c.fillStyle = '#4a5468'; c.fill();
+  // Elektronen im Draht (gestrichelt, bewegt)
+  const flow = (pts, cur, outward) => {
+    if (Math.abs(cur) < 1e-9) return;
+    const sp = clamp(Math.log10(Math.abs(cur) / 1e-9) * 10, 4, 80);
+    c.strokeStyle = '#1c64f2'; c.lineWidth = 3; c.setLineDash([3, 13]); c.lineDashOffset = (outward ? -1 : 1) * PN.t * sp; poly(pts); c.setLineDash([]);
+  };
+  flow(paths.E, I.ie, !npn); flow(paths.C, I.ic, npn); flow(paths.B, I.ib, npn);
+  // Spannungsquellen (lange Platte = Plus)
+  const bat = (x, y, plusUp, label, val) => {
+    c.fillStyle = '#fbfcfe'; c.fillRect(x - 20, y - 12, 40, 24);
+    const yL = plusUp ? y - 6 : y + 6, yS = plusUp ? y + 6 : y - 6;
+    c.strokeStyle = '#263043'; c.lineWidth = 2; ln(c, x - 17, yL, x + 17, yL); c.lineWidth = 6; ln(c, x - 9, yS, x + 9, yS);
+    c.strokeStyle = '#4a5468'; c.lineWidth = 3; ln(c, x, y - 12, x, yL); ln(c, x, yS, x, y + 12);
+    c.font = `700 13px ${FONT}`; c.textBaseline = 'middle'; c.textAlign = 'center'; c.fillStyle = '#c92a2a'; c.fillText('+', x + 26, yL); c.fillStyle = '#1c4fa0'; c.fillText('−', x + 26, yS);
+    subText(c, ['U', label, ' = ' + val], x - 26, y, 12.5, 'right', '#263043');
+  };
+  const sg = npn ? '' : '−';
+  bat(xb, (g.y1 + 24 + yb) / 2, npn, 'BE', (PN.ube ? sg : '') + fmtN(PN.ube, 2) + ' V');
+  bat(xr, (g.y1 + 24 + yb) / 2, npn, 'CE', (PN.uce ? sg : '') + fmtN(PN.uce, 1) + ' V');
+  // Ströme
+  const fI = v => fmtSI(Math.abs(v) < 1e-12 ? 0 : v, 'A');
+  subText(c, ['I', 'B', ' = ' + fI(I.ib)], xb + 9, g.y1 + 34, 13, 'left', '#7a3e00');
+  subText(c, ['I', 'C', ' = ' + fI(I.ic)], xr - 9, g.y1 + 34, 13, 'right', '#7a3e00');
+  subText(c, ['I', 'E', ' = ' + fI(I.ie)], xl + 9, g.y1 + 34, 13, 'left', '#7a3e00');
+  c.font = `12px ${FONT}`; c.fillStyle = '#667085'; c.textAlign = 'center'; c.textBaseline = 'top';
+  c.fillText('blaue Striche: Bewegung der Elektronen in den Drähten', (g.x0 + g.x1) / 2, yb + 8);
+}
+function trGraph() {
+  const c = gctx, d = window.devicePixelRatio || 1, W = gcv.width / d, H = gcv.height / d; if (!W) return;
+  c.setTransform(d, 0, 0, d, 0, 0); c.clearRect(0, 0, W, H);
+  const L = 42, R = 10, Tp = 16, B = 36, ua = 0, ub = 0.75, Imax = 0.025;
+  const X = u => L + (u - ua) / (ub - ua) * (W - L - R), Y = i => Tp + (Imax - i) / Imax * (H - Tp - B);
+  c.strokeStyle = '#eef1f6'; c.lineWidth = 1;
+  for (let u = 0.1; u <= ub; u += 0.1) ln(c, X(u), Tp, X(u), H - B);
+  for (let i = 5; i <= 25; i += 5) ln(c, L, Y(i / 1000), W - R, Y(i / 1000));
+  c.strokeStyle = '#667085'; c.lineWidth = 1.3; ln(c, L, Y(0), W - R, Y(0)); ln(c, X(0), Tp, X(0), H - B);
+  c.fillStyle = '#667085'; c.font = `11px ${FONT}`; c.textAlign = 'center'; c.textBaseline = 'top';
+  for (let k = 2; k <= 7; k += 1) c.fillText(fmtN(k / 10, 1), X(k / 10), Y(0) + 3);
+  c.textAlign = 'right'; c.textBaseline = 'middle'; for (let i = 5; i <= 25; i += 5) c.fillText(i, X(0) - 4, Y(i / 1000));
+  c.font = `11px ${FONT}`; subText(c, [(PN.sub === 'pnp' ? '−' : '') + 'U', 'BE', ' in V'], X(0) + 4, Y(0) + 9, 11, 'left', '#667085');
+  subText(c, ['I', 'C', ' in mA'], X(0) + 4, 7, 11, 'left', '#667085');
+  const save = PN.ube; c.save(); c.beginPath(); c.rect(L, Tp - 2, W - L - R, H - Tp - B + 4); c.clip();
+  c.strokeStyle = '#2f6fec'; c.lineWidth = 2.4; c.beginPath();
+  for (let k = 0; k <= 200; k++) { PN.ube = ua + (ub - ua) * k / 200; const i = Math.min(trCur().ic, Imax * 1.2); k ? c.lineTo(X(PN.ube), Y(i)) : c.moveTo(X(PN.ube), Y(i)); }
+  c.stroke(); c.restore(); PN.ube = save;
+  const I = trCur(), px = X(PN.ube), py = Y(clamp(I.ic, 0, Imax));
+  circ0(c, px, py, 5.5); c.fillStyle = '#e5383b'; c.fill(); c.strokeStyle = '#fff'; c.lineWidth = 2; c.stroke();
+  c.fillStyle = '#263043'; c.font = `600 12px ${FONT}`; c.textAlign = 'left'; c.textBaseline = 'top';
+  if (I.ib > 1e-9 && I.ic > 1e-9) c.fillText(`Stromverstärkung B = IC / IB ≈ ${Math.round(I.ic / I.ib)}`, L + 4, H - 14);
+  else c.fillText(`Steuerkennlinie bei UCE = ${(PN.sub === 'pnp' && PN.uce ? '−' : '') + fmtN(PN.uce, 1)} V`, L + 4, H - 14);
+}
+function trText() {
+  const npn = PN.sub === 'npn', I = trCur(), st = I.inj < 1e-6 ? 'off' : I.fc < 0.5 ? 'sat' : 'on';
+  const tr = npn ? 'Elektronen' : 'Löcher', Ein = npn ? 'Elektron' : 'Loch', m = npn ? 'Löchern' : 'Elektronen';
+  const head = npn ? '<b>NPN-Transistor:</b> zwei n-Gebiete (Emitter und Kollektor), dazwischen eine sehr dünne, schwach p-dotierte Basis – also zwei pn-Übergänge hintereinander. '
+    : '<b>PNP-Transistor:</b> zwei p-Gebiete (Emitter und Kollektor), dazwischen eine sehr dünne, schwach n-dotierte Basis. Alles ist gegenüber dem NPN-Transistor umgekehrt: Ladungsträger sind <b>Löcher</b>, und Basis und Kollektor liegen <b>negativ</b> gegenüber dem Emitter. ';
+  let h;
+  if (st === 'off') h = head + '<br><br><b>Gesperrt:</b> Bei kleiner Basis-Emitter-Spannung (unter etwa 0,5 V) sperrt die Basis-Emitter-Diode: Die Raumladungszone zwischen Emitter und Basis ist eine Barriere, es gelangen keine ' + tr + ' in die Basis. Die Basis-Kollektor-Diode sperrt ebenfalls – egal wie groß U<sub>CE</sub> ist, es fließt <b>kein Kollektorstrom</b>. Erhöhe U<sub>BE</sub>!';
+  else if (st === 'sat') h = head + '<br><br><b>U<sub>CE</sub> ≈ 0:</b> Der Emitter schickt zwar ' + tr + ' in die Basis, aber ohne Spannung zwischen Kollektor und Emitter fehlt das elektrische Feld, das sie in den Kollektor zieht. Sie rekombinieren in der Basis – es fließt nur <b>Basisstrom</b>. Erhöhe U<sub>CE</sub>!';
+  else h = head + '<br><br><b>Leitend:</b> Die Basis-Emitter-Diode ist in Durchlassrichtung gepolt (ihre Raumladungszone ist schmal): Der stark dotierte <b>Emitter</b> schickt viele ' + tr + ' in die <b>Basis</b>. Weil die Basis sehr <b>dünn</b> und nur schwach dotiert ist, treffen die meisten dort keinen Partner zum Rekombinieren. Sie gelangen bis zur gesperrten Basis-Kollektor-Diode, deren <b>elektrisches Feld</b> sie in den <b>Kollektor</b> zieht. Nur wenige rekombinieren in der Basis mit ' + m + '; den Ersatz liefert der kleine <b>Basisstrom</b>.<br><br>So steuert ein kleiner Basisstrom einen großen Kollektorstrom: <b>Stromverstärkung B = I<sub>C</sub> / I<sub>B</sub> ≈ ' + TRV.beta + '</b>. Im Modell rekombiniert etwa jedes achte ' + Ein + ' in der Basis, damit man es sieht – in einem echten Transistor nur etwa jedes hundertste.';
+  return [PN.sub + st, h];
 }
 /* ================= Von-Neumann-Rechner (Mikroprogrammierung + Assembler) ================= */
 const SRCS = ['PC', 'DR', 'A', 'B', 'SP', 'ALU', 'IN'];
@@ -5485,8 +6205,8 @@ function cpuInfo(k, px, py) {
   if (k === 'Z' || k === 'C' || k === 'N') val = `<div class="ci-v">aktuell: <b>${k} = ${CPU.f[k]}</b></div>`;
   if (k === 'IR') { const J = curInstr(); if (J && (CPU.r.IR || CPU.instrs)) val += `<div class="ci-v">Befehl: <b>${esc(J.mn)}${J.mode === 'imm' ? ' #n' : J.mode === 'adr' ? ' adr' : ''}</b> – ${esc(J.desc || '')}</div>`; }
   if (k === 'ABUS') val = `<div class="ci-v">aktuell: <b>$${hx(CPU.r.MAR)}</b> (${CPU.r.MAR})</div>`;
-  if (CPUINNER[k] && !isBasic()) val += `<button class="ci-in btn">🔍 Innerer Aufbau aus Logikgattern</button><div class="ci-h">(oder Doppelklick / langes Tippen auf das Bauteil)</div>`;
-  el.innerHTML = `<button class="ci-x" aria-label="Schließen">×</button><div class="ci-k">${I[0]}</div><div class="ci-n">${I[1]}</div><div class="ci-t">${I[2]}</div>${val}`;
+  if (CPUINNER[k] && !isBasic() && examAllow('inner')) val += `<button class="ci-in btn">🔍 Innerer Aufbau aus Logikgattern</button><div class="ci-h">(oder Doppelklick / langes Tippen auf das Bauteil)</div>`;
+  el.innerHTML = `<button class="ci-x" aria-label="Schließen">×</button><div class="ci-k">${I[0]}</div><div class="ci-n">${I[1]}</div>${examAllow('info') ? `<div class="ci-t">${I[2]}</div>` : ''}${val}`;
   const bi = el.querySelector('.ci-in'); if (bi) bi.onclick = () => openCpuInner(k);
   el.querySelector('.ci-x').onclick = () => cpuInfo(null);
   const st = $('#cpuStage').getBoundingClientRect(), w = Math.min(340, st.width - 20);
@@ -7359,6 +8079,347 @@ async function msImport(f) {
   CPU.hlLoaded = false; CPU.draft = null; CPU.editOp = null; cpuReset(false); cpuTabs(); cpuSave();
   openModal('MikroSim-Datei geöffnet', note + `<p style="font-size:13px;color:#667085">So wird übersetzt: <b>AX</b> ist der Akkumulator A, <b>BX</b> übernimmt der Stapelzeiger SP (in MikroSim ist BX zugleich Stapelzeiger und Indexregister). Jeder Befehl ist wie in MikroSim 2 Byte lang. Zurück zum LOGHEX-Befehlssatz geht es im Reiter <b>Befehlssatz</b> mit „Standard wiederherstellen“.</p>`);
 }
+/* ================= Prüfungsmodus =================
+   Die Lehrkraft stellt mit Schaltern ein, was in der Prüfung erlaubt ist, und erhält daraus einen Prüfungscode
+   (z. B. „K7QM-3F“). Die Schüler starten den Prüfungsmodus mit diesem Code (Knopf oben rechts); die Einstellungen
+   sind dann fest. Beenden können die Schüler selbst – nach einer Warnung wird die Arbeitsfläche geleert, die
+   Lösungen bleiben nur in den Sicherungen. Am Ende entsteht ein Protokoll (Start, Ende, Dauer), das auch als Bild
+   am Speicherort abgelegt wird und der Lehrkraft gezeigt wird.
+   Während der Prüfung: orangefarbener Kopf + Banner, alle 3 Minuten eine neue Sicherung (nur bei Änderungen),
+   wahlweise in einen gewählten Ordner, immer zusätzlich im Browser. Der Zustand übersteht ein Neuladen der Seite. */
+const EXAM_OPTS = [
+  ['load', 'Gespeicherte Dateien öffnen', 'Öffnen-Knopf, Beispiel- und Yenka-Dateien, geteilte Links'],
+  ['keep', 'Eigene Bausteine und vorhandene Schaltungen/Programme behalten', 'aus: Beim Start wird alles geleert (der alte Stand wird aufbewahrt)'],
+  ['kv', 'KV-Editor', 'Werkzeug „KV-Diagramm“'],
+  ['info', 'Erklärungen der Bauelemente', 'Infotexte, Erklärungen in Innenansichten und im Rechner, Halbleiter-Modell'],
+  ['inner', 'Bauelemente öffnen (inneren Aufbau ansehen)', 'Doppelklick auf Gatter, Flipflops, Halbleiter, Rechner-Bauteile'],
+  ['synth', 'Schaltung aus Term erzeugen', 'auch: Minimalform und fertige KV-Päckchen in der Wahrheitstabelle, „Schaltung daraus aufbauen“'],
+];
+const EXAM_SHORT = { load: 'Öffnen', keep: 'alte Arbeiten', kv: 'KV', info: 'Erklärungen', inner: 'Innenansicht', synth: 'Schaltung aus Term' };
+const EXAM_INTERVAL = 180000, EXAM_LOG = 'loghex.examLog', EXAM_KEY = 'loghex.exam', EXAM_BK = 'loghex.examBackups', EXAM_PRE = 'loghex.preExam', EXAM_MAXBK = 40;
+const B32 = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+const EX = { st: null, dir: null, timer: 0, lastHash: '', gen: null };
+
+function fnv(s) { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
+const b32 = (v, n) => { let s = ''; for (let i = 0; i < n; i++) { s = B32[v & 31] + s; v >>>= 5; } return s; };
+const unb32 = s => { let v = 0; for (const ch of s) { const k = B32.indexOf(ch); if (k < 0) return -1; v = v * 32 + k; } return v; };
+function examBitsOf(o) { return EXAM_OPTS.reduce((b, [k], i) => b | (o[k] ? 1 << i : 0), 0); }
+function examOptsOf(bits) { const o = {}; EXAM_OPTS.forEach(([k], i) => { o[k] = !!(bits & (1 << i)); }); return o; }
+function examMakeCode(bits, nonce) {
+  const p = ((nonce & 0x3fff) << 6 | bits) >>> 0;
+  return b32(p, 4) + '-' + b32(fnv('LGX:' + p) & 0x3ff, 2);
+}
+function examParse(code) {
+  const s = String(code || '').toUpperCase().replace(/[^0-9A-Z]/g, '').replace(/O/g, '0').replace(/[IL]/g, '1');
+  if (s.length !== 6) return null;
+  const p = unb32(s.slice(0, 4)), c = unb32(s.slice(4));
+  if (p < 0 || c !== (fnv('LGX:' + p) & 0x3ff)) return null;
+  return { p, bits: p & 63, code: b32(p, 4) + '-' + b32(c, 2) };
+}
+
+/* --- Abfrage für die übrigen Programmteile --- */
+function examActive() { return !!(EX.st && EX.st.active); }
+function examAllow(k) { return !examActive() || !!EX.st.opt[k]; }
+function examBlocked(k) { if (examAllow(k)) return false; flashHint('Im Prüfungsmodus gesperrt'); return true; }
+
+/* --- Zustand speichern / laden --- */
+function examStore() { try { if (EX.st) localStorage.setItem(EXAM_KEY, JSON.stringify(EX.st)); else localStorage.removeItem(EXAM_KEY); } catch (e) { } }
+function examLoadState() {
+  try {
+    const o = JSON.parse(localStorage.getItem(EXAM_KEY) || 'null');
+    if (!o || !o.active) return null;
+    const P = examParse(o.code); if (!P) return null;
+    return { active: true, code: P.code, p: P.p, opt: isObj(o.opt) ? Object.fromEntries(EXAM_OPTS.map(([k]) => [k, o.opt[k] === true])) : examOptsOf(P.bits), name: cleanStr(o.name, 60), start: +o.start || Date.now(), n: cleanInt(o.n, 0, 99999, 0), last: +o.last || 0, dirName: cleanStr(o.dirName, 120), reloads: cleanInt(o.reloads, 0, 9999, 0) };
+  } catch (e) { return null; }
+}
+function examSnapshot() {
+  let kv = null; try { kv = JSON.parse(localStorage.getItem('loghex.kv') || 'null'); } catch (e) { }
+  return { digital: serialize(baseCirc('digital')), analog: serialize(baseCirc('analog')), modules: modsForSave(), cpu: cpuData(), kv };
+}
+function examBackups() { try { const a = JSON.parse(localStorage.getItem(EXAM_BK) || '[]'); return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+
+/* --- Ordner für die Sicherungen (nur Chrome/Edge am Computer) --- */
+const examCanDir = () => typeof window.showDirectoryPicker === 'function' && !FRAMED;
+function idb(mode, fn) {
+  return new Promise((res, rej) => {
+    if (!window.indexedDB) return rej(new Error('kein IndexedDB'));
+    const rq = indexedDB.open('loghex', 1);
+    rq.onupgradeneeded = () => rq.result.createObjectStore('kv');
+    rq.onerror = () => rej(rq.error);
+    rq.onsuccess = () => { const tx = rq.result.transaction('kv', mode), r = fn(tx.objectStore('kv')); tx.oncomplete = () => res(r && r.result); tx.onerror = () => rej(tx.error); };
+  });
+}
+async function examPickDir() {
+  try {
+    const d = await window.showDirectoryPicker({ id: 'loghex-pruefung', mode: 'readwrite' });
+    EX.dir = d; if (EX.st) { EX.st.dirName = d.name; examStore(); }
+    try { await idb('readwrite', s => s.put(d, 'examDir')); } catch (e) { }
+    return d;
+  } catch (e) { return null; }
+}
+async function examDirOk() {
+  if (!EX.dir) return false;
+  try { if (EX.dir.queryPermission && await EX.dir.queryPermission({ mode: 'readwrite' }) !== 'granted') return false; } catch (e) { return false; }
+  return true;
+}
+async function examRestoreDir() {   // nach dem Neuladen: Ordner wieder freigeben (braucht einen Klick)
+  try {
+    const d = await idb('readonly', s => s.get('examDir')); if (!d) return false;
+    if (d.requestPermission && await d.requestPermission({ mode: 'readwrite' }) !== 'granted') return false;
+    EX.dir = d; return true;
+  } catch (e) { return false; }
+}
+
+/* --- Sichern: alle 3 Minuten, nur wenn sich etwas geändert hat --- */
+const examSafeName = s => (s || 'Schueler').normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss').replace(/[^A-Za-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 40) || 'Schueler';
+function examFileName(n, t) {
+  const d = new Date(t), z = v => String(v).padStart(2, '0');
+  return `Pruefung_${examSafeName(EX.st.name)}_${String(n).padStart(3, '0')}_${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}_${z(d.getHours())}-${z(d.getMinutes())}.json`;
+}
+async function examSave(force) {
+  if (!examActive()) return false;
+  const snap = examSnapshot(), h = String(fnv(JSON.stringify(snap)));
+  if (!force && h === EX.lastHash) { examBanner(); return false; }
+  const t = Date.now(), n = EX.st.n + 1;
+  const data = { app: 'logix', version: 2, backup: { name: EX.st.name, n, time: new Date(t).toISOString(), code: EX.st.code }, ...snap };
+  const txt = JSON.stringify(data), name = examFileName(n, t);
+  let a = examBackups(); a.push({ name, t, data: txt }); if (a.length > EXAM_MAXBK) a = a.slice(-EXAM_MAXBK);
+  let okB = false; for (let k = 0; k < 6 && !okB; k++) { try { localStorage.setItem(EXAM_BK, JSON.stringify(a)); okB = true; } catch (e) { a = a.slice(Math.ceil(a.length / 3)); } }
+  let okD = false;
+  if (await examDirOk()) {
+    try { const fh = await EX.dir.getFileHandle(name, { create: true }), w = await fh.createWritable(); await w.write(txt); await w.close(); okD = true; } catch (e) { okD = false; }
+  }
+  EX.lastHash = h; EX.st.n = n; EX.st.last = t; EX.st.lastDir = okD; examStore();
+  examBanner(); return okB || okD;
+}
+function examSchedule() { clearInterval(EX.timer); if (examActive()) EX.timer = setInterval(() => examSave(false), EXAM_INTERVAL); }
+
+/* --- Sperren anwenden --- */
+function examApply() {
+  const on = examActive(), o = on ? EX.st.opt : null;
+  document.body.classList.toggle('exam', on);
+  const hb = $('#bExam'); if (hb) { hb.title = on ? 'Prüfungsmodus (aktiv) – Status, Sichern, Beenden' : 'Prüfungsmodus'; hb.setAttribute('aria-label', hb.title); $('#exShk').setAttribute('d', on ? 'M8 11V7a4 4 0 0 1 8 0v4' : 'M8 11V7a4 4 0 0 1 7.5-2'); }
+  const vis = (el, v) => { if (el) el.style.display = v ? '' : 'none'; };
+  vis($('#bOpen'), !on || o.load);
+  vis($('#tKV'), !on || o.kv);
+  vis($('.tab[data-mode="pn"]'), !on || o.info);
+  if (on && !o.info && App.mode === 'pn') setMode('digital');
+  if (on && !o.inner && App.inner.length) closeAllInner();
+  if (on && !o.kv) { const m = $('#modal'); if (m && !m.hidden && $('#kvN')) closeModal(); }
+  if (on && !o.info) { App.innerTextHidden = true; if (App.inner.length) showInnerBar(); cpuInfo(null); }
+  examBanner();
+  if (isCirc()) renderProps();
+  window.dispatchEvent(new Event('resize'));
+}
+function examBanner() {
+  let b = $('#examBar');
+  if (!examActive()) { if (b) b.remove(); return; }
+  if (!b) { b = document.createElement('div'); b.id = 'examBar'; $('#top').after(b); b.onclick = examDialog; }
+  const S = EX.st, tm = t => new Date(t).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+  const where = EX.dir ? (S.lastDir === false && S.n ? 'Ordner nicht erreichbar – nur im Browser' : `Ordner „${esc(EX.dir.name)}“ + Browser`) : (S.dirName ? `<u>Ordner „${esc(S.dirName)}“ neu freigeben</u>` : 'im Browser');
+  b.innerHTML = `<b>PRÜFUNGSMODUS</b><span>${esc(S.name || '–')}</span><span>Code ${esc(S.code)}</span><span>seit ${tm(S.start)}</span>`
+    + `<span>erlaubt: ${EXAM_OPTS.filter(([k]) => S.opt[k]).map(([k]) => EXAM_SHORT[k]).join(', ') || 'nichts davon'}</span>`
+    + `<span>${S.n ? `Sicherung ${S.n} um ${tm(S.last)}` : 'noch keine Sicherung'} · ${where}</span>${S.reloads ? `<span>neu geladen: ${S.reloads}×</span>` : ''}`;
+}
+
+/* --- Start / Ende --- */
+async function examStart(code, name, useDir) {
+  const P = examParse(code); if (!P) return 'Der Prüfungscode ist ungültig.';
+  if (!name.trim()) return 'Bitte deinen Namen eintragen.';
+  const opt = examOptsOf(P.bits);
+  if (useDir && examCanDir() && !EX.dir) { if (!await examPickDir()) return 'Es wurde kein Ordner gewählt.'; }
+  // alten Stand immer aufbewahren (nach der Prüfung wiederherstellbar); ohne „Behalten“ alles leeren
+  try { localStorage.setItem(EXAM_PRE, JSON.stringify({ app: 'logix', version: 2, backup: { name: 'Stand vor der Prüfung', n: 0, time: new Date().toISOString() }, ...examSnapshot() })); } catch (e) { }
+  if (!opt.keep) examClear();
+  try { localStorage.removeItem(EXAM_BK); } catch (e) { }
+  EX.st = { active: true, code: P.code, p: P.p, opt, name: name.trim().slice(0, 60), start: Date.now(), n: 0, last: 0, dirName: EX.dir ? EX.dir.name : '', reloads: 0 };
+  EX.lastHash = ''; examStore();
+  setMode(App.mode === 'pn' && !opt.info ? 'digital' : App.mode); changed();
+  examApply(); await examSave(true); examSchedule();
+  return '';
+}
+/* Arbeitsfläche vollständig leeren: beide Editoren, eigene Bausteine, Rechner, KV-Diagramm */
+function examClear() {
+  while (App.inner.length) closeInner();
+  if (App.editMod) finishEdit(false);
+  App.circ.digital = { comps: [], wires: [] }; App.circ.analog = { comps: [], wires: [] }; App.modules = []; App.task = null; refreshModules();
+  CPU.ram.fill(0); CPU.src = ''; CPU.listing = null; CPU.hl.src = ''; CPU.hlLoaded = false; cpuReset(false); cpuTabs(); cpuSave();
+  try { localStorage.removeItem('loghex.kv'); } catch (e) { } KV = null;
+  for (const h of Object.values(App.hist || {})) { if (h && h.u) { h.u.length = 0; h.r.length = 0; } }
+  App.sel = null; changed();
+}
+/* Beenden (ohne Code): letzte Sicherung, Protokoll (auch als Bild am Speicherort), Arbeitsfläche leeren */
+async function examEnd() {
+  if (!examActive()) return null;
+  await examSave(false);
+  const S = EX.st, end = Date.now();
+  const L = { name: S.name, code: S.code, opt: { ...S.opt }, start: S.start, end, n: S.n, last: S.last, reloads: S.reloads, dir: EX.dir ? EX.dir.name : '', file: '', inDir: false };
+  const d = new Date(end), z = v => String(v).padStart(2, '0');
+  L.file = `Pruefung_${examSafeName(S.name)}_Protokoll_${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}_${z(d.getHours())}-${z(d.getMinutes())}.png`;
+  if (await examDirOk()) {
+    try {
+      L.inDir = true; const blob = await examLogBlob(L);
+      const fh = await EX.dir.getFileHandle(L.file, { create: true }), w = await fh.createWritable(); await w.write(blob); await w.close();
+    } catch (e) { L.inDir = false; }
+  }
+  try { localStorage.setItem(EXAM_LOG, JSON.stringify(L)); } catch (e) { }
+  clearInterval(EX.timer); EX.st = null; examStore();
+  examClear(); examApply();
+  return L;
+}
+function examLastLog() {
+  try {
+    const o = JSON.parse(localStorage.getItem(EXAM_LOG) || 'null'); if (!isObj(o) || !(+o.start) || !(+o.end)) return null;
+    return { name: cleanStr(o.name, 60), code: cleanStr(o.code, 12), opt: Object.fromEntries(EXAM_OPTS.map(([k]) => [k, !!(o.opt && o.opt[k] === true)])), start: +o.start, end: +o.end, n: cleanInt(o.n, 0, 99999, 0), last: +o.last || 0, reloads: cleanInt(o.reloads, 0, 9999, 0), dir: cleanStr(o.dir, 120), file: cleanStr(o.file, 160), inDir: o.inDir === true };
+  } catch (e) { return null; }
+}
+function examDur(ms) {
+  const t = Math.max(0, Math.round(ms / 1000)), h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), sec = t % 60;
+  return (h ? h + ' h ' : '') + (h || m ? m + ' min ' : '') + sec + ' s';
+}
+const examDT = t => new Date(t).toLocaleString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }) + ' Uhr';
+function examLogRows(L) {
+  const al = EXAM_OPTS.filter(([k]) => L.opt[k]).map(([k]) => EXAM_SHORT[k]).join(', ') || '–', no = EXAM_OPTS.filter(([k]) => !L.opt[k]).map(([k]) => EXAM_SHORT[k]).join(', ') || '–';
+  return [['Name', L.name], ['Prüfungscode', L.code], ['Start', examDT(L.start)], ['Ende', examDT(L.end)], ['Dauer', examDur(L.end - L.start)],
+    ['Sicherungen', L.n + (L.last ? ' (letzte um ' + new Date(L.last).toLocaleTimeString('de-DE') + ' Uhr)' : '')],
+    ['Speicherort', L.dir ? 'Ordner „' + L.dir + '“ und Browser' : 'Browser'], ['Seite neu geladen', L.reloads + '×'], ['Erlaubt', al], ['Gesperrt', no]];
+}
+/* Protokoll als Bild zeichnen */
+function examLogCanvas(L) {
+  const rows = examLogRows(L), W = 900, H = 150 + rows.length * 44 + 50, k = 2;
+  const cv = document.createElement('canvas'); cv.width = W * k; cv.height = H * k; cv.className = 'exlog';
+  const g = cv.getContext('2d'); g.scale(k, k);
+  g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#e8590c'; g.fillRect(0, 0, W, 96);
+  g.fillStyle = '#fff'; g.textBaseline = 'middle'; g.font = 'bold 34px system-ui, sans-serif'; g.fillText('Prüfungsprotokoll', 36, 42);
+  g.font = '17px system-ui, sans-serif'; g.fillText('LOGHEX – Prüfungsmodus beendet', 36, 76);
+  let y = 140;
+  for (const [a, b] of rows) {
+    const big = a === 'Start' || a === 'Ende' || a === 'Dauer';
+    if (big) { g.fillStyle = '#fff4e6'; g.fillRect(24, y - 21, W - 48, 42); }
+    g.fillStyle = '#667085'; g.font = '18px system-ui, sans-serif'; g.fillText(a, 36, y);
+    g.fillStyle = '#1d2433'; g.font = (big || a === 'Name' ? 'bold ' : '') + '20px system-ui, sans-serif';
+    let t = String(b); while (g.measureText(t).width > W - 280 && t.length > 4) t = t.slice(0, -2); if (t !== String(b)) t += '…';
+    g.fillText(t, 240, y);
+    g.strokeStyle = '#eef1f6'; g.lineWidth = 1; g.beginPath(); g.moveTo(24, y + 22); g.lineTo(W - 24, y + 22); g.stroke();
+    y += 44;
+  }
+  g.fillStyle = '#98a2b3'; g.font = '14px system-ui, sans-serif'; g.fillText('Dieses Protokoll der Lehrkraft zeigen. Erstellt mit LOGHEX · loghex.asgspez.de', 36, H - 28);
+  g.strokeStyle = '#e8590c'; g.lineWidth = 4; g.strokeRect(2, 2, W - 4, H - 4);
+  return cv;
+}
+const examLogBlob = L => new Promise(res => examLogCanvas(L).toBlob(res, 'image/png'));
+function examLogDialog(L, fresh) {
+  L = L || examLastLog(); if (!L) return;
+  const pre = (() => { try { return !!localStorage.getItem(EXAM_PRE); } catch (e) { return false; } })();
+  openModal('Prüfungsprotokoll', `<div class="exam-dlg"><p class="exp"><b>Zeige dieses Protokoll deiner Lehrkraft.</b> ${L.inDir ? `Es liegt als Bild <code>${esc(L.file)}</code> im Ordner „${esc(L.dir)}“ bei den Sicherungen.` : 'Es wurde kein Ordner gewählt – das Bild lässt sich hier herunterladen.'}</p>
+  <div id="exLogBox"></div>
+  <div class="exbtn" style="justify-content:flex-start"><button class="btn" id="exLogDl">Protokoll als Bild herunterladen</button><button class="btn" id="exDl2" ${examBackups().length ? '' : 'disabled'}>Letzte Sicherung herunterladen</button>${pre ? '<button class="btn" id="exPre">Stand von vor der Prüfung wiederherstellen</button>' : ''}<button class="btn pri" id="exOk">Schließen</button></div></div>`);
+  $('#exLogBox').appendChild(examLogCanvas(L));
+  $('#exLogDl').onclick = async () => download(L.file || 'Pruefungsprotokoll.png', await examLogBlob(L));
+  $('#exDl2').onclick = examDownloadAll; $('#exOk').onclick = closeModal;
+  const pb = $('#exPre'); if (pb) pb.onclick = () => { examRestorePre(); closeModal(); };
+}
+function examRestorePre() {
+  let o = null; try { o = JSON.parse(localStorage.getItem(EXAM_PRE) || 'null'); } catch (e) { }
+  if (!o) return false;
+  loadData(o); try { localStorage.removeItem(EXAM_PRE); } catch (e) { }
+  return true;
+}
+/* Sicherungsdatei wieder öffnen: alle Bereiche zurückholen */
+function loadBackup(o) {
+  while (App.inner.length) closeInner();
+  if (App.editMod) finishEdit(false);
+  mergeModules(o.modules); refreshModules();
+  pushUndo();
+  if (o.digital) App.circ.digital = deserialize(o.digital);
+  if (o.analog) App.circ.analog = deserialize(o.analog);
+  if (o.cpu) cpuLoadData(o.cpu);
+  if (o.kv) { try { localStorage.setItem('loghex.kv', JSON.stringify(o.kv)); } catch (e) { } KV = null; }
+  setMode(App.mode === 'pn' || App.mode === 'cpu' ? 'digital' : App.mode); changed(); fitView();
+  flashHint(`Sicherung geladen${o.backup && o.backup.name ? ': ' + o.backup.name : ''}${o.backup && o.backup.n ? ' (Nr. ' + o.backup.n + ')' : ''}`);
+}
+function examDownloadAll() {
+  const a = examBackups(); if (!a.length) return;
+  const last = a[a.length - 1];
+  const all = { app: 'logix', version: 2, examBackups: a.map(x => ({ name: x.name, time: new Date(x.t).toISOString() })), ...JSON.parse(last.data) };
+  const txt = JSON.stringify(all);
+  download(last.name.replace(/_\d{3}_/, '_letzte_'), new Blob([txt], { type: 'application/json' }), txt);
+}
+
+/* --- Dialog --- */
+function examSwitches(o, dis, pre) {
+  return `<div class="exsw">${EXAM_OPTS.map(([k, t, d]) => `<label class="exrow${dis ? ' exdis' : ''}"><span><b>${t}</b><small>${d}</small></span><input type="checkbox" class="swi" id="${pre}${k}" ${o[k] ? 'checked' : ''} ${dis ? 'disabled' : ''}></label>`).join('')}</div>`;
+}
+function examDialog() {
+  if (examActive()) return examStatusDialog();
+  if (!EX.gen) EX.gen = { opt: { load: false, keep: false, kv: true, info: true, inner: true, synth: false }, nonce: Math.floor(Math.random() * 0x4000) };
+  const canDir = examCanDir();
+  openModal('Prüfungsmodus', `<div class="exam-dlg">
+  <h4>Prüfung starten</h4>
+  <p class="exp">Gib den Prüfungscode deiner Lehrkraft und deinen Namen ein. Danach ist das Programm im Prüfungsmodus (oranger Balken), deine Lösungen werden alle 3 Minuten gesichert. Am Ende entsteht ein Protokoll mit Start, Ende und Dauer.</p>
+  <div class="exin"><label>Prüfungscode<input id="exCode" autocomplete="off" spellcheck="false" placeholder="z. B. K7QM-3F" maxlength="9"></label><label>Name<input id="exName" autocomplete="off" maxlength="60" placeholder="Vor- und Nachname"></label></div>
+  <div id="exPrev"></div>
+  <div class="exin">${canDir ? `<label class="chk2"><input type="checkbox" id="exDir" checked><span>Sicherungen zusätzlich in einen <b>Ordner</b> schreiben (beim Start wählen, z. B. Netzlaufwerk oder USB-Stick)</span></label>` : `<p class="exp">Die Sicherungen werden im Browser aufbewahrt und lassen sich jederzeit als Datei herunterladen.${FRAMED ? '' : ' (Einen Ordner direkt beschreiben können Chrome und Edge am Computer.)'}</p>`}</div>
+  <div class="exbtn"><span id="exErr" class="bad"></span>${examLastLog() ? '<button class="btn" id="exLast">Letztes Protokoll anzeigen</button>' : ''}<button class="btn pri" id="exGo" disabled>Prüfungsmodus starten</button></div>
+  <details class="exteach"><summary>Für Lehrkräfte: Prüfungscode erzeugen</summary>
+    <p class="exp">Stelle ein, was erlaubt ist, und gib den <b>Prüfungscode</b> den Schülern (z. B. an der Tafel). Er steht während der Prüfung im orangen Balken und später im Protokoll.</p>
+    ${examSwitches(EX.gen.opt, false, 'exg_')}
+    <div class="excodes"><div>Prüfungscode<b id="exgC"></b></div><button class="btn" id="exgN">Neuer Code</button><button class="btn" id="exgU">Code übernehmen</button></div>
+  </details></div>`);
+  const upd = () => {
+    const P = examParse($('#exCode').value);
+    $('#exPrev').innerHTML = P ? `<p class="exp" style="margin:10px 0 4px">Mit diesem Code gilt:</p>${examSwitches(examOptsOf(P.bits), true, 'exp_')}` : '';
+    $('#exGo').disabled = !P || !$('#exName').value.trim();
+  };
+  const gen = () => {
+    EXAM_OPTS.forEach(([k]) => { EX.gen.opt[k] = $('#exg_' + k).checked; });
+    $('#exgC').textContent = examMakeCode(examBitsOf(EX.gen.opt), EX.gen.nonce);
+  };
+  $('#exCode').oninput = upd; $('#exName').oninput = upd;
+  EXAM_OPTS.forEach(([k]) => { $('#exg_' + k).onchange = gen; });
+  $('#exgN').onclick = () => { EX.gen.nonce = Math.floor(Math.random() * 0x4000); gen(); };
+  $('#exgU').onclick = () => { $('#exCode').value = $('#exgC').textContent; upd(); $('#exName').focus(); };
+  gen(); upd();
+  if ($('#exLast')) $('#exLast').onclick = () => examLogDialog();
+  $('#exGo').onclick = async () => {
+    $('#exGo').disabled = true;
+    const err = await examStart($('#exCode').value, $('#exName').value, canDir && $('#exDir') && $('#exDir').checked);
+    if (err) { $('#exErr').textContent = err; upd(); return; }
+    closeModal(); flashHint('Prüfungsmodus aktiv – viel Erfolg!');
+  };
+}
+function examStatusDialog() {
+  const S = EX.st, a = examBackups(), tm = t => new Date(t).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+  const needDir = S.dirName && !EX.dir;
+  openModal('Prüfungsmodus aktiv', `<div class="exam-dlg">
+  <p class="exp"><b>${esc(S.name)}</b> · Code ${esc(S.code)} · seit ${tm(S.start)} · ${S.n} Sicherung${S.n === 1 ? '' : 'en'}${S.last ? `, zuletzt ${tm(S.last)}` : ''}${EX.dir ? ` · Ordner „${esc(EX.dir.name)}“` : ''}</p>
+  <div class="exbtn" style="justify-content:flex-start"><button class="btn pri" id="exNow">Jetzt sichern</button>${needDir ? `<button class="btn" id="exReDir">Ordner „${esc(S.dirName)}“ wieder freigeben</button>` : ''}${!S.dirName && examCanDir() ? '<button class="btn" id="exReDir">Ordner für Sicherungen wählen</button>' : ''}<button class="btn" id="exDl" ${a.length ? '' : 'disabled'}>Letzte Sicherung herunterladen</button></div>
+  <h4>Einstellungen dieses Prüfungscodes</h4>
+  ${examSwitches(S.opt, true, 'exs_')}
+  <div id="exEndBox" class="exbtn" style="justify-content:flex-start"><button class="btn danger" id="exEnd">Prüfungsmodus beenden …</button></div>
+  </div>`);
+  $('#exNow').onclick = async () => { await examSave(true); examStatusDialog(); };
+  const rd = $('#exReDir'); if (rd) rd.onclick = async () => { if (!(needDir && await examRestoreDir())) await examPickDir(); examBanner(); examStatusDialog(); };
+  $('#exDl').onclick = examDownloadAll;
+  $('#exEnd').onclick = () => {
+    $('#exEndBox').outerHTML = `<div class="exwarn"><b>Achtung: Beim Beenden gehen alle Lösungen im Programm verloren!</b>
+      <p>Die Arbeitsfläche wird vollständig geleert (Schaltungen, eigene Bausteine, Rechnerprogramm, KV-Diagramm). Deine Arbeit bleibt nur in den Sicherungen erhalten. Es wird ein Protokoll mit Start, Ende und Dauer erstellt, das du deiner Lehrkraft zeigst. Beende die Prüfung erst, wenn du wirklich fertig bist.</p>
+      <div class="exbtn" style="justify-content:flex-start"><button class="btn pri" id="exNo">Abbrechen – weiterarbeiten</button><button class="btn danger" id="exYes">Ja, Prüfung beenden und alles leeren</button></div></div>`;
+    $('#exNo').onclick = examStatusDialog;
+    $('#exYes').onclick = async () => { $('#exYes').disabled = true; const L = await examEnd(); examLogDialog(L, true); };
+  };
+}
+function examInit() {
+  EX.st = examLoadState();
+  if (!EX.st) return;
+  EX.st.reloads++; examStore();
+  try { const L = examBackups().slice(-1)[0]; if (L) { const { app, version, backup, ...r } = JSON.parse(L.data); EX.lastHash = String(fnv(JSON.stringify(r))); } } catch (e) { EX.lastHash = ''; }
+  examApply(); examSchedule();
+  // Ordner ohne Klick wieder verwenden, falls die Freigabe noch gilt
+  idb('readonly', s => s.get('examDir')).then(async d => { if (d && d.queryPermission && await d.queryPermission({ mode: 'readwrite' }) === 'granted') { EX.dir = d; examBanner(); } }).catch(() => { });
+}
+window.addEventListener('pagehide', () => { if (examActive()) examSave(false); });
 /* ================= Modus, Dialoge, Speichern ================= */
 function setMode(m) {
   if (UI.drag) UI.drag = null;
@@ -7416,9 +8477,11 @@ $('#bSave').onclick = () => {
   const name = (App.mode === 'digital' ? 'logikschaltung' : 'elektronikschaltung') + '.json';
   const txt = JSON.stringify(data, null, 1); download(name, new Blob([txt], { type: 'application/json' }), txt);
 };
-$('#bOpen').onclick = () => $('#fileIn').click();
+$('#bExam').onclick = examDialog;
+$('#bOpen').onclick = () => { if (examBlocked('load')) return; $('#fileIn').click(); };
 $('#fileIn').onchange = async e => {
   const f = e.target.files[0]; if (!f) return; e.target.value = '';
+  if (examBlocked('load')) return;
   if (f.size > LIMITS.file) { openModal('Fehler', '<p>Die Datei ist zu groß (höchstens 5 MB).</p>'); return; }
   try {
     const head = new Uint8Array(await f.slice(0, 2).arrayBuffer());
@@ -7429,6 +8492,7 @@ $('#fileIn').onchange = async e => {
 };
 function loadData(o) {
   o = cleanData(o);
+  if (o && o.backup) { loadBackup(o); return; }
   if (o && Array.isArray(o.collection)) { pickFromCollection(o); return; }
   if (o && o.task) { startTask(o); return; }
   if (o && o.cpu) { if (App.mode !== 'cpu') setMode('cpu'); cpuLoadData(o.cpu); return; }
@@ -7462,7 +8526,7 @@ $('#bMore').onclick = e => {
   m = document.createElement('div'); m.className = 'menu';
   const items = [];
   if (App.mode === 'digital') {
-    if (!taskLocked()) items.push(['syn', 'Schaltung aus Term erzeugen', '<path d="M4 6h16M4 12h10M4 18h6"/><path d="M17 14l3 3-3 3"/>']);
+    if (!taskLocked() && examAllow('synth')) items.push(['syn', 'Schaltung aus Term erzeugen', '<path d="M4 6h16M4 12h10M4 18h6"/><path d="M17 14l3 3-3 3"/>']);
     items.push(['task', 'Aufgabe aus dieser Schaltung erstellen', '<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>']);
   }
   if (isCirc()) {
@@ -7502,9 +8566,10 @@ function settingsDialog() {
   <label>Hinweise zur Fehlersuche anzeigen<input type="checkbox" id="sHint" ${s.hints ? 'checked' : ''}></label>
   <label>Ton für den Summer<input type="checkbox" id="sSnd" ${s.sound ? 'checked' : ''}></label>
   <label>Werte an Bauteilen anzeigen<input type="checkbox" id="sVal" ${s.values ? 'checked' : ''}></label>
+  <label>Schieberegler an Bauteilen (Elektronik)<input type="checkbox" id="sSld" ${s.sliders ? 'checked' : ''}></label>
   <label>Simulationstempo (Kondensatoren)<select id="sSpd">${[[0.001, '0,001× (für kHz)'], [0.01, '0,01× (für 50 Hz)'], [0.05, '0,05×'], [0.1, '0,1× (Zeitlupe)'], [0.25, '0,25×'], [0.5, '0,5×'], [1, '1× (Echtzeit)'], [2, '2×'], [5, '5× (Zeitraffer)']].map(o => `<option value="${o[0]}" ${+s.speed === o[0] ? 'selected' : ''}>${o[1]}</option>`).join('')}</select></label></div>`);
   const bind = (id, k, f = v => v) => { $('#' + id).onchange = e => { s[k] = f(e.target.type === 'checkbox' ? e.target.checked : e.target.value); scheduleSave(); buildPaletteIfNeeded(); }; };
-  bind('sSym', 'symbols'); bind('sSlow', 'slow'); bind('sFlow', 'flow'); bind('sDots', 'dots'); bind('sCol', 'colorV'); bind('sVal', 'values'); bind('sSpd', 'speed', Number); bind('sBeam', 'beamer'); bind('sHint', 'hints'); bind('sSnd', 'sound');
+  bind('sSym', 'symbols'); bind('sSlow', 'slow'); bind('sFlow', 'flow'); bind('sDots', 'dots'); bind('sCol', 'colorV'); bind('sVal', 'values'); bind('sSpd', 'speed', Number); bind('sBeam', 'beamer'); bind('sHint', 'hints'); bind('sSnd', 'sound'); bind('sSld', 'sliders');
 }
 function buildPaletteIfNeeded() { if (isCirc()) buildPalette(); }
 function exportPNG() {
@@ -7544,7 +8609,7 @@ async function shareLink() {
 
 /* --- Wahrheitstabelle --- */
 $('#tTT').onclick = truthTable;
-$('#tKV').onclick = () => kvEditor();
+$('#tKV').onclick = () => { if (!examBlocked('kv')) kvEditor(); };
 
 /* --- Werkzeugleiste und Tastatur --- */
 $('#tRot').onclick = () => rotateSel(false);
@@ -7597,12 +8662,13 @@ function loadLocal() {
 async function init() {
   resize(); cpuInit();
   let st = loadLocal(), fromHash = null;
-  if (location.hash.startsWith('#c=')) { try { fromHash = await decodeData(location.hash.slice(3)); } catch (e) { } }
+  examInit();
+  if (location.hash.startsWith('#c=') && examAllow('load')) { try { fromHash = await decodeData(location.hash.slice(3)); } catch (e) { } }
   if (st) {
     if (isObj(st.settings)) for (const k of Object.keys(App.settings)) if (k in st.settings && typeof st.settings[k] === typeof App.settings[k]) App.settings[k] = typeof App.settings[k] === 'number' ? cleanNum(st.settings[k], App.settings[k]) : st.settings[k];
     mergeModules(st.modules); App.task = st.task ? cleanTask(st.task) : null;
     App.circ.digital = deserialize(st.digital || {}); App.circ.analog = deserialize(st.analog || {});
-    if (st.pn) { PN.sub = st.pn.sub || PN.sub; PN.type = st.pn.type || PN.type; }
+    if (st.pn) { if (['intr', 'n', 'p', 'pn', 'npn', 'pnp'].includes(st.pn.sub)) PN.sub = st.pn.sub; if (Object.prototype.hasOwnProperty.call(DT, st.pn.type)) PN.type = st.pn.type; }
   }
   App.mode = st && st.mode ? st.mode : 'digital';
   if (fromHash && fromHash.circuit) { mergeModules(fromHash.modules); const m = fromHash.mode === 'analog' ? 'analog' : 'digital'; App.circ[m] = deserialize(fromHash.circuit); App.mode = m; history.replaceState(null, '', location.href.split('#')[0]); }
